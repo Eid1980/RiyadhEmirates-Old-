@@ -1,0 +1,23 @@
+/*!
+ * Dashboard
+ * ================================*/
+
+// 1 - TOOLS
+@import "1-tools/_vars.sass";
+@import "1-tools/animate";
+
+// 2 - BASICS
+@import "2-basics/layout";
+@import "2-basics/structure";
+@import "2-basics/helpers";
+
+// 3 - Component
+@import "3-components/top-navbar";
+@import "3-components/sidebar";
+@import "3-components/sidebar-mini";
+@import "3-components/dropdown";
+@import "3-components/calendar";
+@import "3-components/card";
+@import "3-components/custom-radio-n-checkbox";
+@import "3-components/toggle-button";
+@import "3-components/widgets";
