@@ -1,12 +1,105 @@
-.primary {
-  color: $Primary-2;
-}
-
-.en-font {
-  font-family: $en-font;
-  font-weight: $font-semi-bold;
-}
-.ar-font {
-  font-family: $ar-font;
-  font-weight: $font-bold;
+.auth-wrapper {
+  height: 100%;
+  padding: 0;
+  background-color: $white;
+  .vision-logo {
+    position: absolute;
+    left: 3%;
+    top: 3%;
+  }
+  .auth-card {
+    padding: 40px 10px 10px;
+    text-align: center;
+    .title {
+      font-weight: 600;
+      margin: 30px;
+    }
+    .lang-btn {
+      font-size: 12px;
+    }
+    .forget-pass {
+      font-size: 12px;
+      text-align: left;
+      display: block;
+      margin-top: 11px;
+      font-weight: 500;
+    }
+    .form-group {
+      position: relative;
+    }
+    .label {
+      transition: 0.3s all ease-in-out;
+      position: absolute;
+      right: 12px;
+      top: 14px;
+      font-size: 11px;
+    }
+    input {
+      height: calc(2em + 0.75rem + 2px);
+      color: $dark;
+      background: $light-lighter;
+      &:not(:invalid) {
+        + {
+          label {
+            transition: 0.3s all ease-in-out;
+            position: absolute;
+            right: 6px;
+            top: -9px;
+            padding: 0px 8px;
+            color: $text-color;
+            font-size: 10px;
+          }
+        }
+      }
+      &:focus {
+        box-shadow: none;
+        + {
+          label {
+            transition: 0.3s all ease-in-out;
+            position: absolute;
+            right: 6px;
+            top: -9px;
+            padding: 0px 8px;
+            color: $text-color;
+            background-color: $white;
+            font-size: 10px;
+          }
+        }
+      }
+    }
+    .submit {
+      display: block;
+      max-width: 100%;
+      width: 85%;
+      font-size: 13px;
+      font-weight: 600;
+      height: 46px;
+      margin: 30px auto 0;
+    }
+    .unifyied-login {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      box-shadow: 0 3px 6px rgb(0 0 0 / 20%);
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 40px;
+      span {
+        font-size: 14px;
+        display: inline-block;
+        width: 45%;
+      }
+    }
+    .or {
+      margin: 26px auto 0;
+      border-bottom: 1px solid $light-dark;
+      span {
+        display: inline-block;
+        position: relative;
+        top: 9px;
+        background: $white;
+        padding: 0 10px;
+      }
+    }
+  }
 }

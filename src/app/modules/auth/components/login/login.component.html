@@ -1,3 +1,62 @@
-<div>
-  <h1>Login Page</h1>
+<div class="auth-card">
+  <div class="auth-head">
+    <div class="flex_row">
+      <a href="#">
+        <img src="assets/images/logo.svg" alt="" class="log-logo" width="180">
+      </a>
+      <button class="btn btn-sm btn-primary lang-btn">English</button>
+    </div>
+  </div>
+  <div class="w-100">
+    <h4 class="title">تسجيل الدخول</h4>
+
+    <!-- Form -->
+    <div class="row mx-0">
+      <div class="col-md-8 mx-auto">
+
+        <!-- ID -->
+        <div class="form-group mb-lg-4">
+          <input type="text" name="" id="national_ID" class="form-control" required>
+          <label for="national_ID" class="label">رقم الهوية/الإقامة</label>
+        </div>
+        <!-- password -->
+        <div class="form-group">
+          <input type="password" name="" id="password" class="form-control" required>
+          <label for="password" class="label">كلمة المرور</label>
+        </div>
+        <!-- Forget Password -->
+        <div class="">
+          <a href="">
+            <span class="forget-pass">نسيت كلمة المرور؟</span>
+          </a>
+        </div>
+
+        <!-- Login Button -->
+        <div class="">
+          <button type="submit" class="btn btn-primary submit">تسجيل دخول</button>
+        </div>
+
+        <!-- Have Account -->
+        <div class="mt-4">
+          <span class=""> ليس لديك حساب؟</span>
+          <a [routerLink]="['/auth/register']">
+            <span class="primary-text"> إنشاء حساب جديد </span>
+          </a>
+        </div>
+
+        <div class="or">
+          <span class="">أو</span>
+        </div>
+
+        <a href="#">
+          <div class="unifyied-login">
+            <img src="./assets/images/NIC_logo.png" alt="" width="200">
+            <span>عن طريق حسابك في منصة النفاذ الوطني الموحد</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
 </div>

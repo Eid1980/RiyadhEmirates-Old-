@@ -1,3 +1,55 @@
-<div>
-  <h1>Register Page</h1>
+<div class="auth-card">
+  <div class="auth-head">
+    <div class="flex_row">
+      <a href="#">
+        <img src="assets/images/logo.svg" alt="" class="log-logo" width="180">
+      </a>
+      <button class="btn btn-sm btn-primary lang-btn">English</button>
+    </div>
+  </div>
+  <div class="w-100">
+    <h4 class="title">حساب جديد</h4>
+
+    <!-- Form -->
+    <div class="row mx-0">
+      <div class="col-md-8 mx-auto">
+
+        <!-- ID -->
+        <div class="form-group mb-lg-4">
+          <input type="text" name="" id="national_ID" class="form-control" required>
+          <label for="national_ID" class="label">رقم الهوية/الإقامة</label>
+        </div>
+        <!-- phone -->
+        <div class="form-group mb-lg-4">
+          <input type="text" name="" id="phone" class="form-control" required>
+          <label for="phone" class="label">رقم الجوال</label>
+        </div>
+        <!-- username -->
+        <div class="form-group mb-lg-4">
+          <input type="text" name="" id="username" class="form-control" required>
+          <label for="username" class="label">اسم المستخدم</label>
+        </div>
+        <!-- password -->
+        <div class="form-group">
+          <input type="password" name="" id="password" class="form-control" required>
+          <label for="password" class="label">كلمة المرور</label>
+        </div>
+
+        <!-- Login Button -->
+        <div class="">
+          <button type="submit" class="btn btn-primary submit">إنشاء حساب</button>
+        </div>
+
+        <!-- Have Account -->
+        <div class="mt-4">
+          <span class=""> لديك حساب سابق؟</span>
+          <a [routerLink]="['/auth/login']">
+            <span class="primary-text"> العودة إلي تسجل الدخول </span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>
