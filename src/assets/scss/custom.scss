@@ -1,3 +1,8 @@
+/*file: styling website pages for Electonic Services of Riyad Emirate*/
+/*By: Mohamed Salem*/
+/*Creation Date: 2022*/
+
+// Authentication Module
 .auth-wrapper {
   height: 100%;
   padding: 0;
@@ -99,6 +104,67 @@
         top: 9px;
         background: $white;
         padding: 0 10px;
+      }
+    }
+  }
+}
+
+// Header Component
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 100px;
+  background-color: $white;
+  .header-img {
+    img {
+      width: 400px;
+    }
+  }
+}
+
+.header {
+  background-color: $Primary-1;
+  height: 50px;
+  .navbar {
+    padding: 0;
+    height: 50px;
+    .navbar-collapse {
+      width: 100%;
+      .navbar-nav {
+        padding-right: 100px;
+        .nav-link {
+          color: $white;
+          line-height: 34px;
+          font-size: 0.9rem;
+          font-weight: 400;
+          padding-right: 1.5rem;
+          padding-left: 1.5rem;
+          &:hover {
+            color: #fff;
+            background: $Primary-2;
+          }
+          .ic-home {
+            width: 30px;
+            position: relative;
+            top: -2px;
+          }
+          .ic-open-data {
+            width: 24px;
+            margin-left: 6px;
+          }
+          .ic-search,
+          .ic-settings {
+            width: 24px;
+          }
+        }
+      }
+      .head-vision {
+        margin-left: 100px;
+        margin-right: auto;
+        img {
+          width: 70px;
+        }
       }
     }
   }

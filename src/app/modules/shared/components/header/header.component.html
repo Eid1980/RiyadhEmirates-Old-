@@ -1,6 +1,93 @@
-<!-- BEGIN: Header -->
-<header>
-  <h1>Header Component</h1>
-</header>
+<div class="top-bar">
+  <div>
+    <a [routerLink]="['/']">
+      <img src="./assets/images/logo.svg" alt="" width="180">
+    </a>
+  </div>
+  <div class="header-img">
+    <img src="./assets/images/header-img.svg" alt="">
+  </div>
+  <div>
+    <span>الخميس، 23 ربيع أول 1443 هـ، 22 مايو 2022</span>
+    <div>
+      <a href="#" class="mx-2">
+        <i class="fa-brands fa-twitter fa-2x"></i>
+      </a>
+      <a href="#" class="mx-2">
+        <i class="fa-brands fa-facebook fa-2x"></i>
+      </a>
+      <a href="#" class="mx-2">
+        <i class="fa-brands fa-instagram fa-2x"></i>
+      </a>
+      <a href="#" class="mx-2">
+        <i class="fa-brands fa-youtube fa-2x"></i>
+      </a>
+    </div>
+  </div>
+</div>
 
-<!-- END: Header -->
+<header class="header" id="navabr">
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:;">
+            <img src="./assets/images/icons/home.svg" alt="" class="ic-home">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:;">
+            عن الإمارة
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:;">
+            أمراء المنطقة
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:;">
+            المحافظات
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:;">
+            الخدمات الإلكترونية
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:;">
+            الأخبار
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:;">
+            التقارير الإعلامية
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:;">
+            <img src="./assets/images/icons/open-data.svg" alt="" class="ic-open-data">
+            البيانات المفتوحة
+          </a>
+        </li>
+        <li class="nav-item search">
+          <a class="nav-link" href="javascript:;">
+            <img src="./assets/images/icons/header-search.svg" alt="" class="ic-search">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link settings" href="javascript:;">
+            <img src="./assets/images/icons/settings.svg" alt="" class="ic-settings">
+          </a>
+        </li>
+      </ul>
+      <div class="head-vision">
+        <img src="./assets/images/header-vision.svg" alt="">
+      </div>
+    </div>
+  </nav>
+</header>
