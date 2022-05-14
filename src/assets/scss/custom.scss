@@ -169,3 +169,318 @@
     }
   }
 }
+
+// BreadCrumb
+.breadcrumb {
+  background-image: url("../images/bread-img.png");
+  height: 80px;
+  align-items: center;
+  padding: 0 114px;
+  background-position: center;
+  img {
+    width: 20px;
+    margin-left: 6px;
+    vertical-align: sub;
+  }
+  .breadcrumb-item {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    + {
+      .breadcrumb-item {
+        padding-left: 0;
+        padding-right: 0.5rem;
+        &::before {
+          float: right;
+          padding-right: 0;
+          padding-left: 0.5rem;
+          color: #fff;
+        }
+      }
+    }
+    &.active {
+      color: $secondary-1;
+    }
+  }
+}
+
+// Side menu for user
+.side-card {
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border: 0.1px solid #bdbdbd;
+  padding: 18px 0;
+  border-radius: 8px;
+  height: 97%;
+  .user {
+    padding: 0 18px 6px;
+    .user-img {
+      width: 70px;
+      height: 70px;
+      border: 1px solid $Primary-1;
+      border-radius: 50%;
+      margin-left: 10px;
+    }
+    .name {
+      font-size: 1rem;
+    }
+    .mail,
+    .phone {
+      color: $text-color;
+      font-size: 0.7rem;
+      font-weight: 400;
+      direction: ltr;
+      text-align: right;
+    }
+  }
+  .prof-menu {
+    margin-top: 1.5rem;
+    li {
+      .link {
+        display: block;
+        padding: 14px 36px 14px 20px;
+        border-bottom: 0.1px solid #bbb;
+        color: $text-color;
+        img {
+          width: 20px;
+          margin-left: 16px;
+        }
+        &:hover,
+        &.active {
+          background: $light-lighter;
+          color: $Primary-2;
+          &::after {
+            content: "\f104";
+            font-family: "Font Awesome 6 Free";
+            font-style: normal;
+            font-weight: 900;
+            float: left;
+            font-size: 20px;
+            position: relative;
+            top: -5px;
+            color: $Primary-2;
+          }
+        }
+      }
+      &:last-child {
+        .link {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// Page title
+.page-title {
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+  border: 0.1px solid #bdbdbd;
+  padding: 18px;
+  border-radius: 6px;
+  height: 60px;
+  position: relative;
+  margin-bottom: 1rem;
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 60px;
+    width: 5px;
+    background-color: $Primary-2;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+}
+
+// Form Card
+.form-card {
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+  border: 0.1px solid #bdbdbd;
+  border-radius: 6px;
+  position: relative;
+  margin-bottom: 1rem;
+  .form-header {
+    padding: 14px;
+    border-bottom: 0.1px solid #bbb;
+    h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0;
+      color: $text-color;
+    }
+  }
+  .form-content {
+    padding: 16px 0;
+    .info-col {
+      position: relative;
+      padding-bottom: 16px;
+      display: flex;
+      .form-lbl,
+      .form-val {
+        display: inline-block;
+        font-size: 0.8rem;
+        text-align: right;
+      }
+      .form-lbl {
+        color: $primary-alt-3;
+        font-weight: 400;
+        &.lbl-33 {
+          min-width: 33%;
+        }
+        &.lbl-18 {
+          min-width: 18%;
+        }
+      }
+      .form-val {
+        color: $text-color;
+        font-weight: 700;
+      }
+    }
+    .order-date {
+      position: absolute;
+      left: 3%;
+      top: -2%;
+      display: flex;
+      width: fit-content;
+      align-items: end;
+      img {
+        margin-left: 8px;
+      }
+      span {
+        color: $Primary-2;
+      }
+    }
+  }
+  .separator-af-be {
+    &::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 0.1px;
+      background-color: $dimmed;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0.1px;
+      background-color: $dimmed;
+    }
+  }
+  .form-group {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    margin-bottom: 1rem;
+    .form-lbl {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: $primary-alt-3;
+      display: inline-block;
+      margin-bottom: 3px;
+    }
+    .form-control {
+      background-color: $light-lighter;
+      border-color: $dimmed;
+      font-size: 0.9rem;
+      &:focus {
+        box-shadow: none;
+        border-color: $Primary-2;
+      }
+    }
+  }
+}
+
+// Form Actions
+.form-actions {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  .btn-save,
+  .btn-draft,
+  .btn-cancel {
+    font-weight: 600;
+    font-size: 0.8rem;
+    width: 140px;
+    margin-right: 12px;
+    &:focus {
+      box-shadow: none;
+      outline: 0;
+    }
+  }
+  .btn-save {
+    background-color: $Primary-1;
+    border-color: $Primary-1;
+    color: $white;
+    &:hover {
+      background-color: $primary-hover;
+      border-color: $primary-hover;
+      color: $white;
+    }
+  }
+  .btn-draft {
+    background-color: $secondary-1;
+    border-color: $secondary-1;
+    color: $white;
+    &:hover {
+      background-color: $Secondary-hover;
+      border-color: $Secondary-hover;
+      color: $white;
+    }
+  }
+  .btn-cancel {
+    background-color: $white;
+    color: $Primary-2;
+    border-color: $dimmed;
+    &:hover {
+      background-color: $highlight;
+    }
+  }
+}
+
+// Query Box
+.query-box {
+  margin-bottom: 1rem;
+  .form-group {
+    position: relative;
+    .form-control {
+      padding-left: 50px;
+      height: 2.9rem;
+      font-size: 1rem;
+      &::placeholder {
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+  }
+  .query-search-btn {
+    border: 0;
+    background: none;
+    position: absolute;
+    top: 16%;
+    left: 1%;
+    cursor: pointer;
+  }
+}
+
+// attachments
+.attachments {
+  height: 90px;
+  .file {
+    border-radius: 6px;
+    border: 1px solid $Primary-1;
+  }
+}

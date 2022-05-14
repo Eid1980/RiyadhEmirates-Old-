@@ -10,6 +10,9 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { SavedOrdersComponent } from './components/saved-orders/saved-orders.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserDashboradComponent } from './components/user-dashborad/user-dashborad.component';
+import { UserSidemenuComponent } from './components/user-sidemenu/user-sidemenu.component';
+import { OrderInquiryComponent } from './components/order-inquiry/order-inquiry.component';
+import { RateServiceComponent } from './components/rate-service/rate-service.component';
 
 
 @NgModule({
@@ -20,7 +23,10 @@ import { UserDashboradComponent } from './components/user-dashborad/user-dashbor
     MyOrdersComponent,
     SavedOrdersComponent,
     UserProfileComponent,
-    UserDashboradComponent
+    UserDashboradComponent,
+    UserSidemenuComponent,
+    OrderInquiryComponent,
+    RateServiceComponent
   ],
   imports: [
     ElectronicCouncilRoutingModule,
