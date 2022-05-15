@@ -14,27 +14,29 @@
     <div class="row mx-0">
       <div class="col-md-8 mx-auto">
 
-        <!-- ID -->
-        <div class="form-group mb-lg-4">
-          <input type="text" name="" id="national_ID" class="form-control" required>
-          <label for="national_ID" class="label">رقم الهوية/الإقامة</label>
-        </div>
-        <!-- password -->
-        <div class="form-group">
-          <input type="password" name="" id="password" class="form-control" required>
-          <label for="password" class="label">كلمة المرور</label>
-        </div>
-        <!-- Forget Password -->
-        <div class="">
-          <a href="">
-            <span class="forget-pass">نسيت كلمة المرور؟</span>
-          </a>
-        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="formSubmit()" class="fs-13px">
+              <!-- ID -->
+              <div class="form-group mb-lg-4">
+                <input type="text" name="" id="national_ID" class="form-control" formControlName="userName">
+                <label for="national_ID" class="label">رقم الهوية/الإقامة</label>
+              </div>
+              <!-- password -->
+              <div class="form-group">
+                <input type="password" name="" id="password" class="form-control" formControlName="password">
+                <label for="password" class="label">كلمة المرور</label>
+              </div>
+              <!-- Forget Password -->
+              <div class="">
+                <a href="">
+                  <span class="forget-pass">نسيت كلمة المرور؟</span>
+                </a>
+              </div>
 
-        <!-- Login Button -->
-        <div class="">
-          <button type="submit" class="btn btn-primary submit">تسجيل دخول</button>
-        </div>
+              <!-- Login Button -->
+              <div class="">
+                <button type="submit" class="btn btn-primary submit">تسجيل دخول</button>
+              </div>
+        </form>
 
         <!-- Have Account -->
         <div class="mt-4">
