@@ -59,6 +59,7 @@ export class RegisterComponent implements OnInit {
       (result : any) => {
         if(result.code == 200){
           this.toastr.success('تم التسجيل بنجاح' , 'تم التسجيل بنجاح' )
+          this.router.navigate(['/auth/login']);
         }else{
           this.toastr.error(result.errorMessageAr, 'Error');
         }
