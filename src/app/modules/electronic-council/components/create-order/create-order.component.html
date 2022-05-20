@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <!-- Breadcrumb -->
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
@@ -99,7 +100,7 @@
                 </div>
 
                 <div class="form-group col-md-10">
-                  <input type="file" class="custom-file-input" id="validatedCustomFile" (change)="upload($any($event.target).files)" required>
+                  <input type="file" #inputFile class="custom-file-input" id="validatedCustomFile" (change)="upload($any($event.target).files)" required>
               </div>
 
               </div>

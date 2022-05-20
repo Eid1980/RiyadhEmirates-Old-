@@ -12,20 +12,20 @@ export class UserService {
   constructor(private sessionService : SessionStorageService) { 
     this.currentUser = new UserModel();
 
-    let userInfojson = JSON.parse(this.sessionService.get('user'));
+    let userInfojson : UserModel = JSON.parse(this.sessionService.get('user'));
 
-    debugger
     if( userInfojson != null ){
-      this.currentUser.displayName =  userInfojson.displayName;
-      console.log('userInfo');
-      console.log(this.currentUser)
+      this.currentUser =  userInfojson;
      }
   }
 
   saveUserInfo(userModel : UserModel){
-    debugger
     this.currentUser = userModel;
-    JSON.stringify(this.sessionService.setJSON('user' , userModel));
+    this.sessionService.setJSON('user' , userModel);
+  }
+
+  logout(){
+    this.sessionService.remove('user');
   }
 
 

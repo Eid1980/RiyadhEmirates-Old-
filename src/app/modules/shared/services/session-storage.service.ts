@@ -15,8 +15,8 @@ export class SessionStorageService {
      sessionStorage.setItem(key, JSON.stringify(value));
  }
 
- get(key: string) : string{
-     return JSON.stringify(sessionStorage.getItem(key));
+ get(key: string) : any{
+     return sessionStorage.getItem(key);
  }
 
  remove(key: string) {

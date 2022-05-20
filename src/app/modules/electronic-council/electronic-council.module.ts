@@ -14,6 +14,10 @@ import { UserSidemenuComponent } from './components/user-sidemenu/user-sidemenu.
 import { OrderInquiryComponent } from './components/order-inquiry/order-inquiry.component';
 import { RateServiceComponent } from './components/rate-service/rate-service.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MessageModule } from 'primeng/message';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { AppModule } from 'src/app/app.module';
 
 
 @NgModule({
@@ -33,7 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ElectronicCouncilRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ElectronicCouncilModule { }

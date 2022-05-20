@@ -8,6 +8,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
+import { MessageModule } from 'primeng/message';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import {TableModule} from 'primeng/table';
+import {DialogModule} from 'primeng/dialog';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +24,16 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     PageNotFoundComponent,
   ],
-  imports: [CommonModule, FormsModule, SharedRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SharedRoutingModule,
+    MessageModule,
+    ButtonModule,
+    ToastModule,
+    TableModule,
+    DialogModule
+  ],
   exports: [
     CommonModule,
     AuthLayoutComponent,
@@ -26,6 +41,12 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
+    MessageModule,
+    ButtonModule,
+    ToastModule,
+    TableModule,
+    DialogModule
+
   ],
 })
 export class SharedModule {}

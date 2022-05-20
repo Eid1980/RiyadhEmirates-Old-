@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserModel } from '@shared/Models/user-model';
 import { UserService } from '@shared/services/user.service';
 
 @Component({
@@ -8,24 +9,24 @@ import { UserService } from '@shared/services/user.service';
 })
 export class UserSidemenuComponent implements OnInit {
 
-  displayName : string;
-  address : string;
-  email : string;
-  phoneNumber : string;
+  userModel : UserModel
+
 
   constructor(private userService : UserService) { 
+
+    this.userModel = new UserModel();
+    
     debugger
-    this.displayName = this.userService.currentUser.displayName
-    this.email = this.userService.currentUser.email
-    this.address = this.userService.currentUser.address
-    this.phoneNumber = this.userService.currentUser.phoneNumber
+    this.userModel.displayName = this.userService.currentUser?.displayName
+    this.userModel.email = this.userService.currentUser?.email
+    this.userModel.address = this.userService.currentUser?.address
+    this.userModel.phoneNumber = this.userService.currentUser?.phoneNumber
 
     console.log(typeof(this.userService.currentUser))
   }
 
   ngOnInit(): void {
-    console.log('user-side-menu')
-    console.log(this.userService.currentUser.displayName)
+
   }
 
 }
