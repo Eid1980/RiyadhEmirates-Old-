@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
           this.userService.saveUserInfo(result.data);
           this.router.navigate(['home']);
         }else{
-          this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
+          this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
         }
       },
       (err) => {}

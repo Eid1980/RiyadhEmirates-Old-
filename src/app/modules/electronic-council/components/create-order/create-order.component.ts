@@ -19,11 +19,13 @@ export class CreateOrderComponent implements OnInit {
   @ViewChild('inputFile') inputFile: ElementRef;
 
   orderFormData : FormData
+  fileToUpload : File
 
   orderForm = this.fb.group({
     header: ['' , Validators.required],
     content: ['' , Validators.required],
     type: ['' , Validators.required],
+    attachmentName: ['' ,  Validators.required]
   });
 
   constructor(private requestService : RequestService,
@@ -38,15 +40,18 @@ export class CreateOrderComponent implements OnInit {
 
   upload(files: FileList) {
 
-    const fileToUpload = files[0] as File;
+    this.fileToUpload = files[0] as File;
 
-    this.orderFormData.append('attachments'  , fileToUpload , fileToUpload.name);    
    }
 
    formSubmit(){
+     this.orderFormData = new FormData();
+
+     this.orderFormData.append('attachments'  , this.fileToUpload , this.fileToUpload.name);    
      this.orderFormData.append('header' , this.orderForm.value.header)
      this.orderFormData.append('content' , this.orderForm.value.content)
-     this.orderFormData.append('type' , this.orderForm.value.type)
+     this.orderFormData.append('requestTypeId' , this.orderForm.value.type)
+     
 
      this.requestService.createRequest(this.orderFormData).subscribe(
         (result : any) =>{

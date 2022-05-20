@@ -43,7 +43,7 @@
               <td>{{request.header}}</td>
               <td>{{request.content}}</td>
               <td>{{request.statusMsgAr}}</td>
-              <td><button type="button" (click)="showDialog()" icon="pi pi-info-circle" label="Show"></button></td>
+              <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button></td>
 
             </tr>
         </ng-template>
@@ -55,5 +55,5 @@
 
 
 <p-dialog header="Title" [(visible)]="display">
-  <app-order-status-details></app-order-status-details>
+  <app-order-status-details [seletedOrder]="selectedOrder"></app-order-status-details>
 </p-dialog>

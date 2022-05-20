@@ -11,9 +11,7 @@ export class UserSidemenuComponent implements OnInit {
 
   userModel : UserModel
 
-
   constructor(private userService : UserService) { 
-
     this.userModel = new UserModel();
     
     debugger

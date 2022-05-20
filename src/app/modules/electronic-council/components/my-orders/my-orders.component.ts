@@ -18,6 +18,7 @@ import {DialogModule} from 'primeng/dialog';
 export class MyOrdersComponent implements OnInit {
 
   requests : RequestModel[];
+  selectedOrder : RequestModel;
   searchCriteria: InquiryModel;
   multiSortMeta : any[]
 
@@ -52,7 +53,8 @@ export class MyOrdersComponent implements OnInit {
     this.multiSortMeta.push({field: 'brand', order: -1}); 
   }
 
-  showDialog() {
+  showDialog(selectedOrder : RequestModel) {
+    this.selectedOrder = selectedOrder;
     this.display = true;
 }
 

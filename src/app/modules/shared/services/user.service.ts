@@ -10,13 +10,17 @@ export class UserService {
   currentUser : UserModel ;
 
   constructor(private sessionService : SessionStorageService) { 
-    this.currentUser = new UserModel();
 
+    this.currentUser = new UserModel();
     let userInfojson : UserModel = JSON.parse(this.sessionService.get('user'));
 
-    if( userInfojson != null ){
+    if( userInfojson != null && this.currentUser != null){
       this.currentUser =  userInfojson;
      }
+  }
+
+  getAuthStatus() : boolean{
+    return this.currentUser.email == null || this.currentUser.email == undefined  || this.currentUser.email == "" ? false : true
   }
 
   saveUserInfo(userModel : UserModel){
@@ -27,6 +31,4 @@ export class UserService {
   logout(){
     this.sessionService.remove('user');
   }
-
-
 }
