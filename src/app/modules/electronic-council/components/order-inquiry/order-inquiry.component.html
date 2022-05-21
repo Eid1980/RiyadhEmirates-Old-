@@ -24,9 +24,9 @@
       <div class="row mx-0 query-box">
         <div class="col-md-8 col-12 mx-auto">
           <div class="form-group">
-            <input type="text" name="" id="" class="form-control" placeholder="ادخل رقم المعاملة" aria-describedby="helpId">
-            <button type="submit" class="query-search-btn">
-              <img src="./assets/images/icons/query-search.svg" alt="">
+            <input type="text" name="" id="" class="form-control" placeholder="ادخل رقم المعاملة" aria-describedby="helpId" [(ngModel)]="inquiryModel.requestSerial">
+            <button type="submit" class="query-search-btn" (click)="inquiry()">
+              <img src="./assets/images/icons/query-search.svg" alt="" >
             </button>
           </div>
         </div>

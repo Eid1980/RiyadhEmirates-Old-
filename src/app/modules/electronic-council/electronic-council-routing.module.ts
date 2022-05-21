@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@shared/services/auth.guard';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { OrderInquiryComponent } from './components/order-inquiry/order-inquiry.component';
@@ -11,10 +12,10 @@ import { UserDashboradComponent } from './components/user-dashborad/user-dashbor
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
-  { path: 'create', component: CreateOrderComponent },
-  { path: 'my-orders', component: MyOrdersComponent },
+  { path: 'create', component: CreateOrderComponent , canActivate: [AuthGuard]},
+  { path: 'my-orders', component: MyOrdersComponent , canActivate: [AuthGuard]},
   { path: 'inquiry', component: OrderInquiryComponent },
-  { path: 'order-status', component: OrderStatusDetailsComponent },
+  { path: 'order-status', component: OrderStatusDetailsComponent , canActivate: [AuthGuard] },
   { path: 'rate', component: RateServiceComponent },
   { path: 'saved', component: SavedOrdersComponent },
   { path: 'service-details', component: ServiceDetailsComponent },

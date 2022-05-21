@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@shared/services/auth.service';
-import { ToastrService } from 'ngx-toastr';
+import { SessionStorageService } from '@shared/services/session-storage.service';
+import { UserService } from '@shared/services/user.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  providers: [MessageService]
+
 })
 export class LoginComponent implements OnInit {
 
@@ -17,9 +21,10 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private authService : AuthService,
-      private toastr: ToastrService,
-      private router: Router,
-      private fb: FormBuilder) {}
+    private userService : UserService,
+    private messageService: MessageService,
+    private router: Router,
+    private fb: FormBuilder) {}
 
   ngOnInit() {}
 
@@ -27,13 +32,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe(
       (result : any) => {
         if(result.code == 200){
+          this.userService.saveUserInfo(result.data);
           this.router.navigate(['home']);
         }else{
-          console.log(result)
-
-          console.log(result.errorMessageAr)
-
-          this.toastr.error(result.errorMessageAr, 'Error');
+          this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
         }
       },
       (err) => {}

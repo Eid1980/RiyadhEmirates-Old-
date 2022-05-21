@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InquiryModel } from '@shared/Models/inquiry-model';
+import { RequestService } from '@shared/services/request.service';
 
 @Component({
   selector: 'app-order-inquiry',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderInquiryComponent implements OnInit {
 
-  constructor() { }
+  inquiryModel :  InquiryModel 
+
+  constructor(private requestService : RequestService) {
+    this.inquiryModel = new InquiryModel()
+   }
 
   ngOnInit(): void {
+  }
+
+  inquiry(){
+    this.requestService.inquire(this.inquiryModel).subscribe(
+      (result : any) => {
+        if(result.code == 200){
+          console.log(result);
+
+        }
+      },
+      (err) => {}
+    )
   }
 
 }

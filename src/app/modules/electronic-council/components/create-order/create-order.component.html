@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <!-- Breadcrumb -->
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
@@ -8,104 +9,111 @@
   <span class="breadcrumb-item active">المجلس الإلكتروني</span>
 </nav>
 
-<div class="page-wrapper">
-  <div class="row mx-0">
-    <!-- user side menu -->
-    <div class="col-md-3 col-12">
-      <app-user-sidemenu></app-user-sidemenu>
+<form  [formGroup]="orderForm" (ngSubmit)="formSubmit()" class="fs-13px">
+  <div class="page-wrapper">
+    <div class="row mx-0">
+      <!-- user side menu -->
+      <div class="col-md-3 col-12">
+        <app-user-sidemenu></app-user-sidemenu>
+      </div>
+      <!-- user page content -->
+      <div class="col-md-9 col-12">
+        <!-- page title -->
+        <div class="page-title">
+          <h4>المجلس الإلكتروني لسمو أمير منطقة الرياض - إنشاء طلب جديد</h4>
+        </div>
+        <!-- form card -->
+        <div class="form-card">
+          <div class="form-header">
+            <h5>بيانات مقدم الطلب</h5>
+          </div>
+          <div class="form-content">
+            <div class="row mx-0">
+              <div class="info-col col-md-4 col-12">
+                <span class="form-lbl lbl-33">اسم مقدم الطلب</span>
+                <span class="form-val">محمد سالم أحمد عبد العزيز</span>
+              </div>
+              <div class="info-col col-md-4 col-12 separator-af-be">
+                <span class="form-lbl lbl-33">تاريخ الميلاد</span>
+                <span class="form-val">24/03/1997</span>
+              </div>
+              <div class="info-col col-md-4 col-12">
+                <span class="form-lbl lbl-33">الجنس</span>
+                <span class="form-val">ذكر</span>
+              </div>
+              <div class="info-col col-md-4 col-12">
+                <span class="form-lbl lbl-33">البريد الإلكتروني</span>
+                <span class="form-val">bareed-electrony@gmail.com</span>
+              </div>
+              <div class="info-col col-md-4 col-12 separator-af-be">
+                <span class="form-lbl lbl-33">رقم الهوية</span>
+                <span class="form-val">464867840383402</span>
+              </div>
+              <div class="info-col col-md-4 col-12">
+                <span class="form-lbl lbl-33">رقم الجوال</span>
+                <span class="form-val">055 2948394</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mx-0">
+          
+          <div class="col-md-6 col-12 pr-0">
+            <!-- form card -->
+            <div class="form-card h-95">
+              <div class="form-header">
+                <h5>بيانات الطلب</h5>
+              </div>
+              <div class="form-content">
+
+                <div class="form-group col-md-10">
+                  <label for="" class="form-lbl lbl-33">نوع الطلب</label>
+                  <select class="form-control" name="" id="" formControlName="type">
+                    <option value="3">شكوى</option>
+                    <option value="1">طلب</option>
+                    <option value="2">اقتراح</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-10">
+                  <label for="" class="form-lbl lbl-33">عنوان الطلب</label>
+                  <input type="text" name="" id="" class="form-control" formControlName="header">
+                </div>
+                <div class="form-group col-md-10">
+                  <label for="" class="form-lbl lbl-33">الوصف</label>
+                  <textarea rows="4" name="" id="" class="form-control" formControlName="content"></textarea>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-12 pl-0">
+            <!-- form card -->
+            <div class="form-card h-95">
+              <div class="form-header">
+                <h5>المرفقات</h5>
+              </div>
+              <div class="form-content">
+
+                <div class="form-group col-md-10">
+                  <label for="" class="form-lbl lbl-33">اسم المرفق</label>
+                  <input type="text" name="" id="" class="form-control" formControlName="attachmentName" required>
+                </div>
+
+                <div class="form-group col-md-10">
+                  <input type="file" #inputFile class="custom-file-input" id="validatedCustomFile" (change)="upload($any($event.target).files)" required>
+              </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- user page content -->
-    <div class="col-md-9 col-12">
-      <!-- page title -->
-      <div class="page-title">
-        <h4>المجلس الإلكتروني لسمو أمير منطقة الرياض - إنشاء طلب جديد</h4>
-      </div>
-      <!-- form card -->
-      <div class="form-card">
-        <div class="form-header">
-          <h5>بيانات مقدم الطلب</h5>
-        </div>
-        <div class="form-content">
-          <div class="row mx-0">
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">اسم مقدم الطلب</span>
-              <span class="form-val">محمد سالم أحمد عبد العزيز</span>
-            </div>
-            <div class="info-col col-md-4 col-12 separator-af-be">
-              <span class="form-lbl lbl-33">تاريخ الميلاد</span>
-              <span class="form-val">24/03/1997</span>
-            </div>
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">الجنس</span>
-              <span class="form-val">ذكر</span>
-            </div>
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">البريد الإلكتروني</span>
-              <span class="form-val">bareed-electrony@gmail.com</span>
-            </div>
-            <div class="info-col col-md-4 col-12 separator-af-be">
-              <span class="form-lbl lbl-33">رقم الهوية</span>
-              <span class="form-val">464867840383402</span>
-            </div>
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">رقم الجوال</span>
-              <span class="form-val">055 2948394</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mx-0">
-        <div class="col-md-6 col-12 pr-0">
-          <!-- form card -->
-          <div class="form-card h-95">
-            <div class="form-header">
-              <h5>بيانات الطلب</h5>
-            </div>
-            <div class="form-content">
-
-              <div class="form-group col-md-10">
-                <label for="" class="form-lbl lbl-33">نوع الطلب</label>
-                <select class="form-control" name="" id="">
-                  <option>شكوى</option>
-                  <option>طلب</option>
-                  <option>اقتراح</option>
-                </select>
-              </div>
-              <div class="form-group col-md-10">
-                <label for="" class="form-lbl lbl-33">عنوان الطلب</label>
-                <input type="text" name="" id="" class="form-control">
-              </div>
-              <div class="form-group col-md-10">
-                <label for="" class="form-lbl lbl-33">الوصف</label>
-                <textarea rows="4" name="" id="" class="form-control"></textarea>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-12 pl-0">
-          <!-- form card -->
-          <div class="form-card h-95">
-            <div class="form-header">
-              <h5>المرفقات</h5>
-            </div>
-            <div class="form-content">
-
-              <div class="form-group col-md-10">
-                <label for="" class="form-lbl lbl-33">اسم المرفق</label>
-                <input type="text" name="" id="" class="form-control">
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- form actions -->
+    <div class="form-actions">
+      <button type="submit" class="btn btn-save"  [disabled]="orderForm.status == 'INVALID'">إرسال الطلب</button>
+      <button type="submit" class="btn btn-draft">حفظ كمسودة</button>
+      <button type="submit" class="btn btn-cancel">إلغاء</button>
     </div>
   </div>
-  <!-- form actions -->
-  <div class="form-actions">
-    <button type="submit" class="btn btn-save">إرسال الطلب</button>
-    <button type="submit" class="btn btn-draft">حفظ كمسودة</button>
-    <button type="submit" class="btn btn-cancel">إلغاء</button>
-  </div>
-</div>
+</form>

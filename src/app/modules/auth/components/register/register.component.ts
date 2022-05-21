@@ -2,20 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@shared/services/auth.service';
-import { ToastrService } from 'ngx-toastr';
+import {MessageService} from 'primeng/api';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  providers: [MessageService]
+
 })
 export class RegisterComponent implements OnInit {
 
   registerationFormData : FormData;
 
   registerationForm = this.fb.group({
-    firstName: ['' , Validators.required],
-    lastName: ['' , Validators.required],
+    name: ['' , Validators.required],
     nationalID: ['' , Validators.required],
     userName: ['' , Validators.required],
     email: ['' , Validators.required],
@@ -27,7 +29,7 @@ export class RegisterComponent implements OnInit {
   });
   
   constructor(private authService : AuthService,
-    private toastr: ToastrService,
+    private messageService: MessageService,
     private router: Router,
     private fb: FormBuilder) { 
 
@@ -40,13 +42,13 @@ export class RegisterComponent implements OnInit {
 
   formSubmit(){
     // TODO
-
-    this.registerationForm.value.lastName = this.registerationForm.value.firstName;
+    this.registerationFormData = new FormData();
+    
+    // set default values for address and nationId
     this.registerationForm.value.address = 'Saudi Arabia'
     this.registerationForm.value.nationalID = '29706055985889'
 
-    this.registerationFormData.append('firstName'  , this.registerationForm.value.firstName); 
-    this.registerationFormData.append('lastName'  , this.registerationForm.value.lastName); 
+    this.registerationFormData.append('name'  , this.registerationForm.value.name); 
     this.registerationFormData.append('nationalID'  , this.registerationForm.value.nationalID); 
     this.registerationFormData.append('userName'  , this.registerationForm.value.userName); 
     this.registerationFormData.append('email'  , this.registerationForm.value.email); 
@@ -58,14 +60,25 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.registerationFormData).subscribe(
       (result : any) => {
         if(result.code == 200){
-          this.toastr.success('تم التسجيل بنجاح' , 'تم التسجيل بنجاح' )
+          this.messageService.add({severity:'success', summary: 'نجاح', detail: 'تم التسجيل بنجاح'});
+          setTimeout(() => {
+            this.router.navigate(['/auth/login']);
+          }, 2000);
         }else{
-          this.toastr.error(result.errorMessageAr, 'Error');
+          this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
         }
       },
-      (err) => {}
+      (err) => {
+        this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
+      }
     )
 
   }
+
+  resetForm(){
+    this.registerationFormData = new FormData();
+
+    this.registerationForm.reset();  
+   }
 
 }

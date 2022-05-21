@@ -6,7 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '@shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { ToastrModule } from 'ngx-toastr';
+import { MessagesModule } from 'primeng/messages';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -15,8 +17,8 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    ToastrModule.forRoot() // ToastrModule added
-
+    FormsModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

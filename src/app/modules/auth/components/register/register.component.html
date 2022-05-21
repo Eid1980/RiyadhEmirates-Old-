@@ -1,3 +1,5 @@
+<p-toast></p-toast>
+
 <div class="auth-card">
   <div class="auth-head">
     <div class="flex_row">
@@ -23,7 +25,7 @@
 
               <!-- username -->
               <div class="form-group mb-lg-4">
-                <input type="text" name="" id="username" class="form-control" required formControlName="firstName">
+                <input type="email" name="" id="username" class="form-control" required formControlName="name">
                 <label for="username" class="label">اسم المستخدم</label>
               </div>
 
@@ -60,8 +62,14 @@
           </a>
         </div>
 
+        
+        <p>Form Values : {{ registerationForm.value | json }}</p>
+        <p>Form Status: {{ registerationForm.status }}</p>
+
       </div>
     </div>
 
   </div>
 </div>
+
+

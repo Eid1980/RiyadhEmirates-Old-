@@ -13,6 +13,11 @@ import { UserDashboradComponent } from './components/user-dashborad/user-dashbor
 import { UserSidemenuComponent } from './components/user-sidemenu/user-sidemenu.component';
 import { OrderInquiryComponent } from './components/order-inquiry/order-inquiry.component';
 import { RateServiceComponent } from './components/rate-service/rate-service.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MessageModule } from 'primeng/message';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { AppModule } from 'src/app/app.module';
 
 
 @NgModule({
@@ -30,7 +35,9 @@ import { RateServiceComponent } from './components/rate-service/rate-service.com
   ],
   imports: [
     ElectronicCouncilRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ElectronicCouncilModule { }
