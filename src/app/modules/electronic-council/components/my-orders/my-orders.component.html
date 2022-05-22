@@ -25,29 +25,36 @@
 
       <p-table [value]="requests" sortMode="multiple" [multiSortMeta]="multiSortMeta">
         <ng-template pTemplate="header">
-            <tr>
-              <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon></th>
-              <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon></th>
-              <th pSortableColumn="requestTypeAr">نوع الطلب <p-sortIcon field="requestTypeAr"></p-sortIcon></th>
-              <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon></th>
-              <th pSortableColumn="content">الوصف  <p-sortIcon field="content"></p-sortIcon></th>
-              <th pSortableColumn="statusMsgAr">الحالة   <p-sortIcon field="statusMsgAr"></p-sortIcon></th>
-              <th>التفاصيل </th>
-            </tr>
+          <tr>
+            <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
+            </th>
+            <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
+            </th>
+            <th pSortableColumn="requestTypeAr">نوع الطلب <p-sortIcon field="requestTypeAr"></p-sortIcon>
+            </th>
+            <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
+            </th>
+            <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+            </th>
+            <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
+            </th>
+            <th>التفاصيل </th>
+          </tr>
         </ng-template>
         <ng-template pTemplate="body" let-request>
-            <tr>
-              <td>{{request.creationDate}}</td>
-              <td>{{request.serialNumber}}</td>
-              <td>{{request.requestTypeAr}}</td>
-              <td>{{request.header}}</td>
-              <td>{{request.content}}</td>
-              <td>{{request.statusMsgAr}}</td>
-              <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button></td>
-
-            </tr>
+          <tr>
+            <td>tt</td>
+            <td>dd</td>
+            <td>ee</td>
+            <td>rr</td>
+            <td>ff</td>
+            <td>tt</td>
+            <td>
+              <button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button>
+            </td>
+          </tr>
         </ng-template>
-    </p-table>
+      </p-table>
     </div>
   </div>
 

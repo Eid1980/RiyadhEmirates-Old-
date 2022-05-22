@@ -13,11 +13,11 @@
     top: 3%;
   }
   .auth-card {
-    padding: 40px 10px 10px;
+    padding: 20px 10px 10px;
     text-align: center;
     .title {
       font-weight: 600;
-      margin: 30px;
+      margin: 20px;
     }
     .lang-btn {
       font-size: 12px;
@@ -39,13 +39,13 @@
       top: 14px;
       font-size: 11px;
     }
-    input {
+    .form-control {
       height: calc(2em + 0.75rem + 2px);
       color: $dark;
       background: $light-lighter;
       &:not(:invalid) {
         + {
-          label {
+          .label {
             transition: 0.3s all ease-in-out;
             position: absolute;
             right: 6px;
@@ -59,7 +59,7 @@
       &:focus {
         box-shadow: none;
         + {
-          label {
+          .label {
             transition: 0.3s all ease-in-out;
             position: absolute;
             right: 6px;
@@ -70,6 +70,27 @@
             font-size: 10px;
           }
         }
+      }
+    }
+    .dob {
+      .form-control {
+        width: calc(100% - 110px);
+      }
+    }
+    .form-switch {
+      position: absolute;
+      left: 0;
+      width: 105px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0;
+      top: 8px;
+      .form-check-input {
+        height: 1.3em;
+      }
+      .form-check-label {
+        font-size: 0.68rem;
       }
     }
     .submit {
