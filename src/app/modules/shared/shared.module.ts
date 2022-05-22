@@ -13,6 +13,8 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
+import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicker';
+
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import {DialogModule} from 'primeng/dialog';
     NotAuthorizedComponent,
     FooterComponent,
     PageNotFoundComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,9 @@ import {DialogModule} from 'primeng/dialog';
     ButtonModule,
     ToastModule,
     TableModule,
-    DialogModule
+    DialogModule,
+    NgxHijriGregorianDatepickerModule
+
   ],
   exports: [
     CommonModule,
@@ -45,8 +50,8 @@ import {DialogModule} from 'primeng/dialog';
     ButtonModule,
     ToastModule,
     TableModule,
-    DialogModule
-
+    DialogModule,
+    NgxHijriGregorianDatepickerModule
   ],
 })
 export class SharedModule {}

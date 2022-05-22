@@ -7,5 +7,11 @@ export class RequestModel {
     requsetStatusEn: string
     requestTypeEn : string;
     requestTypeAr : string; 
+    attachment1 : string;
+    attachment2 : string;
+    attachment3 : string;
+    attachment4 : string;
+    attachment5 : string
     creationDate : Date;
+
 }

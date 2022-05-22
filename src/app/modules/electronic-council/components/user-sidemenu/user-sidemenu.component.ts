@@ -19,6 +19,7 @@ export class UserSidemenuComponent implements OnInit {
     this.userModel.email = this.userService.currentUser?.email
     this.userModel.address = this.userService.currentUser?.address
     this.userModel.phoneNumber = this.userService.currentUser?.phoneNumber
+    this.userModel.role = this.userService.currentUser?.role;
 
     console.log(typeof(this.userService.currentUser))
   }

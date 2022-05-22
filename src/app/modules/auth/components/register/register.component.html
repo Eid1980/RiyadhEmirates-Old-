@@ -21,13 +21,39 @@
               <div class="form-group mb-lg-4">
                 <input type="text" name="" id="national_ID" class="form-control" required  formControlName="userName">
                 <label for="national_ID" class="label">رقم الهوية/الإقامة</label>
+              
+                  <div *ngIf="registerationForm.controls['userName'].invalid && (registerationForm.controls['userName'].dirty || registerationForm.controls['userName'].touched)" class="text-danger">
+                    <div *ngIf="registerationForm.controls['userName'].errors?.required">
+                      Name is required.
+                    </div>
+                    <div *ngIf="registerationForm.controls['userName'].errors?.['pattern']">
+                      Name
+                    </div>
+                  </div>
               </div>
 
               <!-- username -->
               <div class="form-group mb-lg-4">
                 <input type="email" name="" id="username" class="form-control" required formControlName="name">
-                <label for="username" class="label">اسم المستخدم</label>
+                <label for="username" class="label">الاسم </label>
               </div>
+
+              <!-- birthdate -->
+              <div class="form-group mb-lg-4">
+                <hijri-gregorian-datepicker id="birthdate" [placeHolder]="'سنة/شهر/يوم'"
+                    [(selectedDate)]="date"
+                    [isRequired]="true"
+                    [GregLabel]="'ميلادي'"
+                    [hijriLabel] ="'هجري'"
+                    [minGreg] = 'minGreg'
+                    [selectedDateType]="selectedDateType"
+                    [disabled]="isDisabled"
+                    [readonly]="isReadOnly"
+                    #datePicker>
+                </hijri-gregorian-datepicker>
+              <label for="birthdate" class="label">تاريخ الميلاد </label>
+
+            </div>
 
               <!-- phone -->
               <div class="form-group mb-lg-4">
@@ -63,8 +89,8 @@
         </div>
 
         
-        <p>Form Values : {{ registerationForm.value | json }}</p>
-        <p>Form Status: {{ registerationForm.status }}</p>
+        <!--<p>Form Values : {{ registerationForm.value | json }}</p>
+        <p>Form Status: {{ registerationForm.status }}</p>-->
 
       </div>
     </div>

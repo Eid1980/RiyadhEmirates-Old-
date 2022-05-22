@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@shared/services/auth.service';
 import {MessageService} from 'primeng/api';
+import { NgbDate, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { DateFormatterService , DateType } from 'ngx-hijri-gregorian-datepicker';
+
+import * as momentjs from 'moment';
+const moment = momentjs;
+
+import * as moment_ from 'moment-hijri';
+const momentHijri = moment_;
 
 
 @Component({
@@ -14,12 +22,24 @@ import {MessageService} from 'primeng/api';
 })
 export class RegisterComponent implements OnInit {
 
+  date: NgbDateStruct;
+  minHigriDate : NgbDateStruct;
+  minGreg : NgbDateStruct;
+  dateString: string;
+  selectedDateType = DateType.Gregorian;
+
+  isDisabled: boolean;
+  isReadOnly: boolean;
+
+  @ViewChild('datePicker') startDatePicker: any;
+
+
   registerationFormData : FormData;
 
   registerationForm = this.fb.group({
-    name: ['' , Validators.required],
+    name: ['' , Validators.required ],
     nationalID: ['' , Validators.required],
-    userName: ['' , Validators.required],
+    userName: ['' , [Validators.required , Validators.pattern('(1)|(2){1}[0-9]{9}\w+')]],
     email: ['' , Validators.required],
     confirmEmail: ['' , Validators.required],
     phoneNumber:[ , Validators.required],
@@ -31,9 +51,16 @@ export class RegisterComponent implements OnInit {
   constructor(private authService : AuthService,
     private messageService: MessageService,
     private router: Router,
-    private fb: FormBuilder) { 
+    private fb: FormBuilder,
+    private dateFormatterService: DateFormatterService) { 
 
       this.registerationFormData = new FormData();
+
+      this.date = this.dateFormatterService.GetTodayGregorian();
+
+      this.minGreg = {day : 1,month : 1,  year : 1950 }
+ 
+
 
     }
 
@@ -41,8 +68,15 @@ export class RegisterComponent implements OnInit {
   }
 
   formSubmit(){
+
+    console.log(this.date)
+    console.log(this.selectedDateType)
+
+    let birthDate =  `${this.date.year}/${this.date.month}/${this.date.day}` ;//new Date(this.date.year, this.date.month , this.date.day);
     // TODO
     this.registerationFormData = new FormData();
+
+
     
     // set default values for address and nationId
     this.registerationForm.value.address = 'Saudi Arabia'
@@ -55,7 +89,9 @@ export class RegisterComponent implements OnInit {
     this.registerationFormData.append('password'  , this.registerationForm.value.password); 
     this.registerationFormData.append('confirmPassword'  , this.registerationForm.value.password); 
     this.registerationFormData.append('phoneNumber'  , this.registerationForm.value.phoneNumber); 
+    this.registerationFormData.append('birthDate'  , birthDate); 
     this.registerationFormData.append('address'  , this.registerationForm.value.address); 
+
 
     this.authService.register(this.registerationFormData).subscribe(
       (result : any) => {
@@ -80,5 +116,36 @@ export class RegisterComponent implements OnInit {
 
     this.registerationForm.reset();  
    }
+
+
+   makeReadonly() {
+    if (this.isReadOnly) {
+      this.isReadOnly = false;
+    } else {
+      this.isReadOnly = true;
+    }
+  }
+
+  makeDisabled() {
+    if (this.isDisabled) {
+      this.isDisabled = false;
+    } else {
+      this.isDisabled = true;
+    }
+  }
+
+  getDate() {
+    this.dateString = this.startDatePicker.getSelectedDate();
+  }
+
+  setCurrentGreg() {
+    this.selectedDateType = DateType.Gregorian;
+    this.date = this.dateFormatterService.GetTodayGregorian();
+  }
+
+  setHijri() {
+    this.selectedDateType = DateType.Hijri;
+    this.date = this.dateFormatterService.GetTodayHijri();
+  }
 
 }

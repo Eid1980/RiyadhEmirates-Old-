@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@shared/services/auth.guard';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
+import { IncomingOrdersComponent } from './components/incoming-orders/incoming-orders.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { OrderInquiryComponent } from './components/order-inquiry/order-inquiry.component';
 import { OrderStatusDetailsComponent } from './components/order-status-details/order-status-details.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'service-details', component: ServiceDetailsComponent },
   { path: 'dashboard', component: UserDashboradComponent },
   { path: 'profile', component: UserProfileComponent },
+  {path : 'incoming-orders' , component : IncomingOrdersComponent , canActivate: [AuthGuard]},
   { path: '', redirectTo: 'service-details', pathMatch: 'full' },
 ];
 

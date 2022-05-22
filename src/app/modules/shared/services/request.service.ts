@@ -17,6 +17,7 @@ export class RequestService {
     private _httpClient : HttpClient,
     private _userService :UserService) {
 
+      debugger
       let token = this._userService.currentUser?.token;
 
       this.header = new HttpHeaders({
@@ -31,12 +32,13 @@ export class RequestService {
   }
 
   inquire(inquiryModel : any){
-    return this._httpClient.post(`${environment.apiUrl}/request/Inquire` , inquiryModel);
+    debugger
+    return this._httpClient.post(`${environment.apiUrl}/request/Inquire` , inquiryModel , {headers : this.header});
   }
 
   // get user request
   getRequests(searchCriteria : InquiryModel) : Observable<RequestModel>{
-    return this._httpClient.post<RequestModel>(`${environment.apiUrl}/request/Inquire` , searchCriteria);
+    return this._httpClient.post<RequestModel>(`${environment.apiUrl}/request/Inquire` , searchCriteria , {headers : this.header});
   }
 
 }

@@ -4,6 +4,7 @@ export class UserModel {
     email : string;
     address : string;
     phoneNumber : string;
+    role : string;
     token : string;
 
     constructor ()
@@ -14,5 +15,6 @@ export class UserModel {
         this.address = "";
         this.phoneNumber = "";
         this.token = "";
+        this.role = "";
     }
 }

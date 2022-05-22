@@ -18,6 +18,7 @@ import { MessageModule } from 'primeng/message';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { AppModule } from 'src/app/app.module';
+import { IncomingOrdersComponent } from './components/incoming-orders/incoming-orders.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AppModule } from 'src/app/app.module';
     UserDashboradComponent,
     UserSidemenuComponent,
     OrderInquiryComponent,
-    RateServiceComponent
+    RateServiceComponent,
+    IncomingOrdersComponent
   ],
   imports: [
     ElectronicCouncilRoutingModule,

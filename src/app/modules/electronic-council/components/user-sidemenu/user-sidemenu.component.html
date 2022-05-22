@@ -14,12 +14,20 @@
         الملف الشخصي
       </a>
     </li>
+
     <li>
       <a routerLink="/e-council/dashboard" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-dash.svg" alt="">
         لوحة المتابعة
       </a>
     </li>
+    <li *ngIf="userModel.role == 'admin' || userModel.role == 'Admin'">
+      <a routerLink="/e-council/incoming-orders" routerLinkActive="active" class="link">
+        <img src="./assets/images/icons/prof-dash.svg" alt="">
+        الطلبات الواردة
+      </a>
+    </li>
+    
     <li>
       <a routerLink="/e-council/inquiry" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-search.svg" alt="">
