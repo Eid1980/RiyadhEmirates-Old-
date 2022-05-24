@@ -14,6 +14,9 @@ import { ToastModule } from 'primeng/toast';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
 import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicker';
+import {TabMenuModule} from 'primeng/tabmenu';
+import {FileUploadModule} from 'primeng/fileupload';
+
 
 
 
@@ -36,8 +39,9 @@ import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicke
     ToastModule,
     TableModule,
     DialogModule,
-    NgxHijriGregorianDatepickerModule
-
+    NgxHijriGregorianDatepickerModule,
+    TabMenuModule,
+    FileUploadModule,
   ],
   exports: [
     CommonModule,
@@ -51,7 +55,11 @@ import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicke
     ToastModule,
     TableModule,
     DialogModule,
-    NgxHijriGregorianDatepickerModule
+    NgxHijriGregorianDatepickerModule,
+    TabMenuModule,
+    FileUploadModule,
+
+
   ],
 })
 export class SharedModule {}

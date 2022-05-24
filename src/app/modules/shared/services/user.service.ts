@@ -11,6 +11,7 @@ export class UserService {
 
   constructor(private sessionService : SessionStorageService) { 
 
+    debugger
     this.currentUser = new UserModel();
     let userInfojson : UserModel = JSON.parse(this.sessionService.get('user'));
 

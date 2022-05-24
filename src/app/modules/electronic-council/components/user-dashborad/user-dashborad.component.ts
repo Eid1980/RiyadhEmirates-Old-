@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TypeCountModel } from '@shared/Models/type-count-model';
+import { RequestService } from '@shared/services/request.service';
 
 @Component({
   selector: 'app-user-dashborad',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDashboradComponent implements OnInit {
 
-  constructor() { }
+  requestTypeCount : TypeCountModel[] 
+
+  constructor(private _requestService : RequestService) { }
 
   ngOnInit(): void {
+    this._requestService.getRequestsTypeCount().subscribe(
+      (result : any) => {
+        this.requestTypeCount = result.data
+      },
+      () => {}
+    )
   }
 
 }

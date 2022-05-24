@@ -1,5 +1,7 @@
+import { UserModel } from "./user-model";
+
 export class RequestModel {
-    Id : number;
+    id : number;
     header : string;
     content : string;
     SerialNumber : string;
@@ -13,5 +15,6 @@ export class RequestModel {
     attachment4 : string;
     attachment5 : string
     creationDate : Date;
+    user : UserModel
 
 }

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { InquiryModel } from '@shared/Models/inquiry-model';
 import { RequestModel } from '@shared/Models/request-model';
+import { TypeCountModel } from '@shared/Models/type-count-model';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserService } from './user.service';
@@ -41,4 +42,14 @@ export class RequestService {
     return this._httpClient.post<RequestModel>(`${environment.apiUrl}/request/Inquire` , searchCriteria , {headers : this.header});
   }
 
+
+    // get user request
+    getRequestsTypeCount() : Observable<TypeCountModel>{
+      return this._httpClient.post<TypeCountModel>(`${environment.apiUrl}/request/getRequestTypeCount` , null , {headers : this.header});
+    }
+
+    updateRequestStatus(requestStatusModel : any){
+      return this._httpClient.post(`${environment.apiUrl}/request/updateRequestStatus` , requestStatusModel , {headers : this.header});
+    }
+  
 }

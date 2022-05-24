@@ -1,23 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { InquiryModel } from '@shared/Models/inquiry-model';
-import { RequestModel } from '@shared/Models/request-model';
-import { RequestService } from '@shared/services/request.service';
 import { MessageService } from 'primeng/api';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
-import { SharedService } from '@shared/services/shared.service';
-import { Router } from '@angular/router';
-
-
+import { RequestModel } from '@shared/Models/request-model';
+import { InquiryModel } from '@shared/Models/inquiry-model';
+import { RequestService } from '@shared/services/request.service';
 
 @Component({
-  selector: 'app-my-orders',
-  templateUrl: './my-orders.component.html',
-  styleUrls: ['./my-orders.component.scss'],
-  providers: [MessageService]
-
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
 })
-export class MyOrdersComponent implements OnInit {
+export class TableComponent implements OnInit {
 
   requests : RequestModel[];
   selectedOrder : RequestModel;
@@ -25,18 +19,16 @@ export class MyOrdersComponent implements OnInit {
   multiSortMeta : any[]
 
   display: boolean = false;
-
-  constructor(
-    private requsetService : RequestService,
-    private messageService : MessageService,
-    private _sharedService : SharedService,
-    private _router: Router, 
-
-    ) { 
-      this.searchCriteria = new InquiryModel();
-    }
+  
+  constructor( private requsetService : RequestService,
+    private messageService: MessageService,) { }
 
   ngOnInit(): void {
+
+    //items: MenuItem[];
+
+    this.searchCriteria = new InquiryModel();
+    this.searchCriteria.requestTypeId = 1
     debugger
     this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
@@ -59,12 +51,8 @@ export class MyOrdersComponent implements OnInit {
   }
 
   showDialog(selectedOrder : RequestModel) {
-    this._sharedService.selectedRequest = selectedOrder;
-
-    this._router.navigate(['/e-council/order-status']);
-    
-   /* this.selectedOrder = selectedOrder;
-    this.display = true;*/
+    this.selectedOrder = selectedOrder;
+    this.display = true;
 }
 
 }

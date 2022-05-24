@@ -3,4 +3,6 @@ export class InquiryModel {
     nationalID : string = "";
     requestDate : Date | undefined;
     requestTypeId : number = 0
+    requestStatusId : number
+
 }

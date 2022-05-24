@@ -70,7 +70,7 @@
                   <label for="" class="form-lbl lbl-33">نوع الطلب</label>
                   <select class="form-control" name="" id="" formControlName="type">
                     <option value="3">شكوى</option>
-                    <option value="1">طلب</option>
+                    <option value="1" selected>طلب</option>
                     <option value="2">اقتراح</option>
                   </select>
                 </div>
@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="form-group col-md-10">
-                  <input type="file" #inputFile class="custom-file-input" id="validatedCustomFile" (change)="upload($any($event.target).files)" required>
+                  <input type="file" #inputFile class="custom-file-input" id="validatedCustomFile" (change)="upload($any($event.target).files)" required multiple >
               </div>
 
               </div>

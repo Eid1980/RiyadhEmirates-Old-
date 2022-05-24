@@ -42,7 +42,6 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-request>
-<<<<<<< HEAD
             <tr>
               <td>{{request.creationDate | date}}</td>
               <td>{{request.serialNumber}}</td>
@@ -50,22 +49,10 @@
               <td>{{request.header}}</td>
               <td>{{request.content}}</td>
               <td>{{request.statusMsgAr}}</td>
-              <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button></td>
+              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
 
+              
             </tr>
-=======
-          <tr>
-            <td>tt</td>
-            <td>dd</td>
-            <td>ee</td>
-            <td>rr</td>
-            <td>ff</td>
-            <td>tt</td>
-            <td>
-              <button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button>
-            </td>
-          </tr>
->>>>>>> 93e5b58ab7c796c4a9ff1214719a952529f6aca3
         </ng-template>
       </p-table>
     </div>
@@ -74,6 +61,6 @@
 </div>
 
 
-<p-dialog header="Title" [(visible)]="display">
+<!--<p-dialog header="Title" [(visible)]="display">
   <app-order-status-details [seletedOrder]="selectedOrder"></app-order-status-details>
-</p-dialog>
+</p-dialog>-->

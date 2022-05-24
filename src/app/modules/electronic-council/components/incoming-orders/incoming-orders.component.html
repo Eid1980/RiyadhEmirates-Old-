@@ -1,5 +1,4 @@
 <p-toast></p-toast>
-
 <!-- Breadcrumb -->
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
@@ -9,7 +8,6 @@
   <a class="breadcrumb-item" href="#"> دليل الخدمات</a>
   <span class="breadcrumb-item active">المجلس الإلكتروني</span>
 </nav>
-
 <div class="page-wrapper">
   <div class="row mx-0">
     <!-- user side menu -->
@@ -20,40 +18,166 @@
     <div class="col-md-9 col-12">
       <!-- page title -->
       <div class="page-title">
-        <h4>طلباتى</h4>
+        <h4>الطلبات الوراده</h4>
       </div>
-
-      <p-table [value]="requests" sortMode="multiple" [multiSortMeta]="multiSortMeta">
-        <ng-template pTemplate="header">
-            <tr>
-              <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon></th>
-              <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon></th>
-              <th pSortableColumn="requestTypeAr">نوع الطلب <p-sortIcon field="requestTypeAr"></p-sortIcon></th>
-              <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon></th>
-              <th pSortableColumn="content">الوصف  <p-sortIcon field="content"></p-sortIcon></th>
-              <th pSortableColumn="statusMsgAr">الحالة   <p-sortIcon field="statusMsgAr"></p-sortIcon></th>
-              <th>التفاصيل </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-request>
-            <tr>
-              <td>{{request.creationDate | date}}</td>
-              <td>{{request.serialNumber}}</td>
-              <td>{{request.requestTypeAr}}</td>
-              <td>{{request.header}}</td>
-              <td>{{request.content}}</td>
-              <td>{{request.statusMsgAr}}</td>
-              <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button></td>
-
-            </tr>
-        </ng-template>
-    </p-table>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#new" type="button"
+            role="tab" aria-controls="new" aria-selected="true" (click)="onNewTabClick(newRequest)">الطلبات
+            الجديدة</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button"
+            role="tab" aria-controls="pending" aria-selected="false" (click)="onPendingTabClick(pendingRequest)">الطلبات
+            تحت الاجراء</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#accept" type="button"
+            role="tab" aria-controls="accept" aria-selected="false" (click)="onAcceptTabClick(acceptRequest)">الطلبات
+            المقبوله</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#reject" type="button"
+            role="tab" aria-controls="reject" aria-selected="false"
+            (click)="onRejectedTabClick(rejectedRequest)">الطلبات المرفوضه</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
+          <p-table [value]="requests" sortMode="multiple" [multiSortMeta]="multiSortMeta">
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
+                </th>
+                <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
+                </th>
+                <th pSortableColumn="requestTypeAr">نوع الطلب <p-sortIcon field="requestTypeAr"></p-sortIcon>
+                </th>
+                <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
+                </th>
+                <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+                </th>
+                <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
+                </th>
+                <th>التفاصيل </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-request>
+              <tr>
+                <td>{{request.creationDate | date}}</td>
+                <td>{{request.serialNumber}}</td>
+                <td>{{request.requestTypeAr}}</td>
+                <td>{{request.header}}</td>
+                <td>{{request.content}}</td>
+                <td>{{request.statusMsgAr}}</td>
+                <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+          <p-table [value]="requests" sortMode="multiple" [multiSortMeta]="multiSortMeta">
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
+                </th>
+                <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
+                </th>
+                <th pSortableColumn="requestTypeAr">نوع الطلب <p-sortIcon field="requestTypeAr"></p-sortIcon>
+                </th>
+                <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
+                </th>
+                <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+                </th>
+                <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
+                </th>
+                <th>التفاصيل </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-request>
+              <tr>
+                <td>{{request.creationDate | date}}</td>
+                <td>{{request.serialNumber}}</td>
+                <td>{{request.requestTypeAr}}</td>
+                <td>{{request.header}}</td>
+                <td>{{request.content}}</td>
+                <td>{{request.statusMsgAr}}</td>
+                <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="tab-pane fade" id="accept" role="tabpanel" aria-labelledby="accept-tab">
+          <p-table [value]="requests" sortMode="multiple" [multiSortMeta]="multiSortMeta">
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
+                </th>
+                <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
+                </th>
+                <th pSortableColumn="requestTypeAr">نوع الطلب <p-sortIcon field="requestTypeAr"></p-sortIcon>
+                </th>
+                <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
+                </th>
+                <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+                </th>
+                <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
+                </th>
+                <th>التفاصيل </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-request>
+              <tr>
+                <td>{{request.creationDate | date}}</td>
+                <td>{{request.serialNumber}}</td>
+                <td>{{request.requestTypeAr}}</td>
+                <td>{{request.header}}</td>
+                <td>{{request.content}}</td>
+                <td>{{request.statusMsgAr}}</td>
+                <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <div class="tab-pane fade" id="reject" role="tabpanel" aria-labelledby="reject-tab">
+          <p-table [value]="requests" sortMode="multiple" [multiSortMeta]="multiSortMeta">
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
+                </th>
+                <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
+                </th>
+                <th pSortableColumn="requestTypeAr">نوع الطلب <p-sortIcon field="requestTypeAr"></p-sortIcon>
+                </th>
+                <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
+                </th>
+                <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+                </th>
+                <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
+                </th>
+                <th>التفاصيل </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-request>
+              <tr>
+                <td>{{request.creationDate | date}}</td>
+                <td>{{request.serialNumber}}</td>
+                <td>{{request.requestTypeAr}}</td>
+                <td>{{request.header}}</td>
+                <td>{{request.content}}</td>
+                <td>{{request.statusMsgAr}}</td>
+                <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
     </div>
-  </div>
 
-</div>
-
-
-<p-dialog header="Title" [(visible)]="display">
-  <app-order-status-details [seletedOrder]="selectedOrder"></app-order-status-details>
-</p-dialog>
+    <!--<p-dialog header="Title" [(visible)]="display">
+      <app-order-status-details [seletedOrder]="selectedOrder"></app-order-status-details>
+    </p-dialog>-->

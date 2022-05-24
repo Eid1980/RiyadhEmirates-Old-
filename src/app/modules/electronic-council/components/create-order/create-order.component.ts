@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RequestService } from '@shared/services/request.service';
 import { UserService } from '@shared/services/user.service';
 import {MessageService} from 'primeng/api';
@@ -18,6 +19,9 @@ export class CreateOrderComponent implements OnInit {
 
   @ViewChild('inputFile') inputFile: ElementRef;
 
+  uploadedFiles: any[] = [];
+
+
   orderFormData : FormData
   fileToUpload : File
 
@@ -29,7 +33,8 @@ export class CreateOrderComponent implements OnInit {
   });
 
   constructor(private requestService : RequestService,
-    private userService : UserService,
+    private _userService : UserService,
+    private _router: Router,
     private messageService: MessageService,
     private fb: FormBuilder) { 
     this.orderFormData = new FormData()
@@ -58,6 +63,7 @@ export class CreateOrderComponent implements OnInit {
           if(result.code == 200){
             this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
             this.resetForm();
+            this._router.navigate(['/e-council/my-orders']);
           }else {
             this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
           }
@@ -75,5 +81,23 @@ export class CreateOrderComponent implements OnInit {
 
     this.inputFile.nativeElement.value = ''
    }
+
+   onUpload(event : any) {
+     debugger
+    for(let file of event.files) {
+        this.uploadedFiles.push(file);
+    }
+
+    this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+}
+
+
+onBasicUpload(event : any) {
+  this.messageService.add({severity: 'info', summary: 'Success', detail: 'File Uploaded with Basic Mode'});
+}
+
+onBasicUploadAuto(event : any) {
+  this.messageService.add({severity: 'info', summary: 'Success', detail: 'File Uploaded with Auto Mode'});
+}
 
 }

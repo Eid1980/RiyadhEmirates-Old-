@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { InquiryModel } from '@shared/Models/inquiry-model';
 import { RequestModel } from '@shared/Models/request-model';
 import { RequestService } from '@shared/services/request.service';
+import { SharedService } from '@shared/services/shared.service';
 import { MessageService } from 'primeng/api';
+import {MenuItem} from 'primeng/api';
+
 
 @Component({
   selector: 'app-incoming-orders',
@@ -17,18 +22,47 @@ export class IncomingOrdersComponent implements OnInit {
   selectedOrder : RequestModel;
   searchCriteria: InquiryModel;
   multiSortMeta : any[]
+  newRequest : number = RequestStatusEnum.New;
+  pendingRequest : number = RequestStatusEnum.Pending;
+  acceptRequest : number = RequestStatusEnum.Accept;
+  rejectedRequest : number = RequestStatusEnum.Rejected;
+  dreatedRequest : number = RequestStatusEnum.Drafted; 
+
+
 
   display: boolean = false;
   
   constructor( private requsetService : RequestService,
-    private messageService: MessageService,) { }
+    private messageService: MessageService,
+    private _sharedService : SharedService,
+    private _router: Router) { }
 
   ngOnInit(): void {
 
-    this.searchCriteria = new InquiryModel();
-    this.searchCriteria.requestTypeId = 1
+    this.searchCriteria = new InquiryModel();  
+    this.getRequests(this.newRequest);
+
+
+    // sort critera
+    this.multiSortMeta = [];
+    this.multiSortMeta.push({field: 'year', order: 1});
+    this.multiSortMeta.push({field: 'brand', order: -1}); 
+  }
+
+  showDialog(selectedOrder : RequestModel) {
+    this.selectedOrder = selectedOrder;
+    this.display = true;
+
     debugger
-    this.requsetService.getRequests(this.searchCriteria).subscribe(
+    this._sharedService.selectedRequest = selectedOrder;
+
+    this._router.navigate(['/e-council/order-status']);
+}
+
+ getRequests(requestTypeId : number){
+   debugger
+  this.searchCriteria.requestStatusId = requestTypeId
+  this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)
       if(result.code == 200){
@@ -41,16 +75,30 @@ export class IncomingOrdersComponent implements OnInit {
       this.messageService.add({severity:'error', summary: 'خطأ', detail: error});
     }
     );
+ }
 
-    // sort critera
-    this.multiSortMeta = [];
-    this.multiSortMeta.push({field: 'year', order: 1});
-    this.multiSortMeta.push({field: 'brand', order: -1}); 
-  }
+ onNewTabClick(id : any)
+ {
+  this.getRequests(id);
+  console.log(id)
+ }
 
-  showDialog(selectedOrder : RequestModel) {
-    this.selectedOrder = selectedOrder;
-    this.display = true;
-}
+ onPendingTabClick(id : any)
+ {
+  this.getRequests(id);
+  console.log(id)
+ }
+
+ onAcceptTabClick(id : any)
+ {
+  this.getRequests(id);
+  console.log(id)
+ }
+
+ onRejectedTabClick(id : any)
+ {
+  this.getRequests(id);
+  console.log(id)
+ }
 
 }

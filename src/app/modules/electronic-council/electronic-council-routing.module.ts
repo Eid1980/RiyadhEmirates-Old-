@@ -13,7 +13,7 @@ import { UserDashboradComponent } from './components/user-dashborad/user-dashbor
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
-  { path: 'create', component: CreateOrderComponent , canActivate: [AuthGuard]},
+  { path: 'create', component: CreateOrderComponent ,canActivate: [AuthGuard]},
   { path: 'my-orders', component: MyOrdersComponent , canActivate: [AuthGuard]},
   { path: 'inquiry', component: OrderInquiryComponent },
   { path: 'order-status', component: OrderStatusDetailsComponent , canActivate: [AuthGuard] },
