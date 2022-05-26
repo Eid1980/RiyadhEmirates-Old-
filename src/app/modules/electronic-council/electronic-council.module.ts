@@ -21,6 +21,7 @@ import { AppModule } from 'src/app/app.module';
 import {FileUploadModule} from 'primeng/fileupload';
 import { IncomingOrdersComponent } from './components/incoming-orders/incoming-orders.component';
 import { TableComponent } from './components/table/table.component';
+import { DraftRequestsComponent } from './components/draft-requests/draft-requests.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TableComponent } from './components/table/table.component';
     OrderInquiryComponent,
     RateServiceComponent,
     IncomingOrdersComponent,
-    TableComponent
+    TableComponent,
+    DraftRequestsComponent
   ],
   imports: [
     ElectronicCouncilRoutingModule,

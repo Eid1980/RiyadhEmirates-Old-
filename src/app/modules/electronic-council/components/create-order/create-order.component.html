@@ -31,11 +31,11 @@
             <div class="row mx-0">
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">اسم مقدم الطلب</span>
-                <span class="form-val">محمد سالم أحمد عبد العزيز</span>
+                <span class="form-val">{{userModel?.displayName}}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
                 <span class="form-lbl lbl-33">تاريخ الميلاد</span>
-                <span class="form-val">24/03/1997</span>
+                <span class="form-val">{{userModel?.birthDate | date:'shortDate'}}</span>
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">الجنس</span>
@@ -43,15 +43,15 @@
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">البريد الإلكتروني</span>
-                <span class="form-val">bareed-electrony@gmail.com</span>
+                <span class="form-val">{{userModel?.email}}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
                 <span class="form-lbl lbl-33">رقم الهوية</span>
-                <span class="form-val">464867840383402</span>
+                <span class="form-val">{{userModel?.nationalId}}</span>
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">رقم الجوال</span>
-                <span class="form-val">055 2948394</span>
+                <span class="form-val">{{userModel?.phoneNumber}}</span>
               </div>
             </div>
           </div>
@@ -69,9 +69,9 @@
                 <div class="form-group col-md-10">
                   <label for="" class="form-lbl lbl-33">نوع الطلب</label>
                   <select class="form-control" name="" id="" formControlName="type">
-                    <option value="3">شكوى</option>
                     <option value="1" selected>طلب</option>
                     <option value="2">اقتراح</option>
+                    <option value="3">شكوى</option>
                   </select>
                 </div>
                 <div class="form-group col-md-10">
@@ -96,11 +96,11 @@
 
                 <div class="form-group col-md-10">
                   <label for="" class="form-lbl lbl-33">اسم المرفق</label>
-                  <input type="text" name="" id="" class="form-control" formControlName="attachmentName" required>
+                  <input type="text" name="" id="" class="form-control" formControlName="attachmentName" >
                 </div>
 
                 <div class="form-group col-md-10">
-                  <input type="file" #inputFile class="custom-file-input" id="validatedCustomFile" (change)="upload($any($event.target).files)" required multiple >
+                  <input type="file" #inputFile class="custom-file-input" id="validatedCustomFile" (change)="upload($any($event.target).files)"  multiple >
               </div>
 
               </div>
@@ -112,8 +112,8 @@
     <!-- form actions -->
     <div class="form-actions">
       <button type="submit" class="btn btn-save"  [disabled]="orderForm.status == 'INVALID'">إرسال الطلب</button>
-      <button type="submit" class="btn btn-draft">حفظ كمسودة</button>
-      <button type="submit" class="btn btn-cancel">إلغاء</button>
+      <button type="submit" class="btn btn-draft" (click)="saveAsDraft()">حفظ كمسودة</button>
+      <button type="submit" class="btn btn-cancel" (click)="cancel()">إلغاء</button>
     </div>
   </div>
 </form>

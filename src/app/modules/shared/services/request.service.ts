@@ -51,5 +51,9 @@ export class RequestService {
     updateRequestStatus(requestStatusModel : any){
       return this._httpClient.post(`${environment.apiUrl}/request/updateRequestStatus` , requestStatusModel , {headers : this.header});
     }
+
+    getDraftedRequests() : Observable<any>{
+      return this._httpClient.post<RequestModel>(`${environment.apiUrl}/request/getDraftStatus`  , {headers : this.header});
+    }
   
 }
