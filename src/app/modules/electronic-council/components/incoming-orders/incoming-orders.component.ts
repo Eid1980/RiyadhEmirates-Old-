@@ -60,7 +60,7 @@ export class IncomingOrdersComponent implements OnInit {
 }
 
  getRequests(requestTypeId : number){
-   debugger
+   
   this.searchCriteria.requestStatusId = requestTypeId
   this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
