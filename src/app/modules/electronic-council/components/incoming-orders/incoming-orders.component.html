@@ -8,7 +8,7 @@
   <a class="breadcrumb-item" href="#"> دليل الخدمات</a>
   <span class="breadcrumb-item active">المجلس الإلكتروني</span>
 </nav>
-<div class="page-wrapper">
+<div class="page-wrapper pl-0">
   <div class="row mx-0">
     <!-- user side menu -->
     <div class="col-md-3 col-12">
@@ -22,24 +22,19 @@
       </div>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#new" type="button"
-            role="tab" aria-controls="new" aria-selected="true" (click)="onNewTabClick(newRequest)">الطلبات
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#new" type="button" role="tab" aria-controls="new" aria-selected="true" (click)="onNewTabClick(newRequest)">الطلبات
             الجديدة</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button"
-            role="tab" aria-controls="pending" aria-selected="false" (click)="onPendingTabClick(pendingRequest)">الطلبات
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false" (click)="onPendingTabClick(pendingRequest)">الطلبات
             تحت الاجراء</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#accept" type="button"
-            role="tab" aria-controls="accept" aria-selected="false" (click)="onAcceptTabClick(acceptRequest)">الطلبات
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#accept" type="button" role="tab" aria-controls="accept" aria-selected="false" (click)="onAcceptTabClick(acceptRequest)">الطلبات
             المقبوله</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#reject" type="button"
-            role="tab" aria-controls="reject" aria-selected="false"
-            (click)="onRejectedTabClick(rejectedRequest)">الطلبات المرفوضه</button>
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#reject" type="button" role="tab" aria-controls="reject" aria-selected="false" (click)="onRejectedTabClick(rejectedRequest)">الطلبات المرفوضه</button>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -59,7 +54,7 @@
                 </th>
                 <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
                 </th>
-                <th>التفاصيل </th>
+                <th class="actions">التفاصيل </th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-request>
@@ -70,8 +65,7 @@
                 <td>{{request.header}}</td>
                 <td>{{request.content}}</td>
                 <td>{{request.statusMsgAr}}</td>
-                <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button>
-                </td>
+                <td class="actions"><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
               </tr>
             </ng-template>
           </p-table>
@@ -92,7 +86,7 @@
                 </th>
                 <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
                 </th>
-                <th>التفاصيل </th>
+                <th class="actions">التفاصيل </th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-request>
@@ -103,8 +97,7 @@
                 <td>{{request.header}}</td>
                 <td>{{request.content}}</td>
                 <td>{{request.statusMsgAr}}</td>
-                <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button>
-                </td>
+                <td class="actions"><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
               </tr>
             </ng-template>
           </p-table>
@@ -125,7 +118,7 @@
                 </th>
                 <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
                 </th>
-                <th>التفاصيل </th>
+                <th class="actions">التفاصيل </th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-request>
@@ -136,8 +129,7 @@
                 <td>{{request.header}}</td>
                 <td>{{request.content}}</td>
                 <td>{{request.statusMsgAr}}</td>
-                <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button>
-                </td>
+                <td class="actions"><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
               </tr>
             </ng-template>
           </p-table>
@@ -158,7 +150,7 @@
                 </th>
                 <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
                 </th>
-                <th>التفاصيل </th>
+                <th class="actions">التفاصيل </th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-request>
@@ -169,8 +161,7 @@
                 <td>{{request.header}}</td>
                 <td>{{request.content}}</td>
                 <td>{{request.statusMsgAr}}</td>
-                <td><button type="button" (click)="showDialog(request)" icon="pi pi-info-circle" label="Show"></button>
-                </td>
+                <td class="actions"><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
               </tr>
             </ng-template>
           </p-table>
