@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
-import { RequestModel } from '@shared/Models/request-model';
-import { UserModel } from '@shared/Models/user-model';
+import { RequestModel } from '@shared/models/request-model';
+import { UserModel } from '@shared/models/user-model';
 import { RequestService } from '@shared/services/request.service';
 import { SharedService } from '@shared/services/shared.service';
 import { UserService } from '@shared/services/user.service';
 import { MessageService } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-order-status-details',
@@ -25,11 +26,17 @@ export class OrderStatusDetailsComponent implements OnInit {
   messageReason : string = "";
   displayMessage : boolean = false
 
+  imagePath : string = environment.imagePathURL;
+
   constructor(
     private _requestService : RequestService,
     private _sharedService : SharedService,
     private _userService: UserService,
-    private _router: Router) { }
+    private _router: Router,
+    private messageService : MessageService,
+    ) { 
+
+    }
 
   ngOnInit(): void {
     this.userModel = this._userService.currentUser;
@@ -37,16 +44,14 @@ export class OrderStatusDetailsComponent implements OnInit {
   }
 
   acceptRequest(){
-    debugger
     var updateRequestStatus = {requestId : this.currentRequestInfo.id , status : RequestStatusEnum.Pending};
 
     this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
       (result : any) =>{
         if(result.code == 200){
-          this._router.navigate(['/e-council/incoming-orders']);
-        }
-
-      },
+          this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
+          setTimeout(() => {this._router.navigate(['/e-council/incoming-orders']);} , 3000);            
+        }},
       () => {}
     )
 
@@ -65,7 +70,6 @@ export class OrderStatusDetailsComponent implements OnInit {
               this._router.navigate(['/e-council/incoming-orders']);
               this.displayMessage = false
             }
-
           },
           () => {}
         )

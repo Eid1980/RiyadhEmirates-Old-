@@ -5,6 +5,7 @@ export class RequestModel {
     header : string;
     content : string;
     SerialNumber : string;
+    requestTypeId : number;
     statusMsgAr: string;
     requsetStatusEn: string
     requestTypeEn : string;

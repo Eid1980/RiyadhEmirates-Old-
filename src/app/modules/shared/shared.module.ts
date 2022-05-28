@@ -16,6 +16,7 @@ import {DialogModule} from 'primeng/dialog';
 import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicker';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {FileUploadModule} from 'primeng/fileupload';
+import { HigriDatePipe } from './pipes/higri-date.pipe';
 
 
 
@@ -28,6 +29,7 @@ import {FileUploadModule} from 'primeng/fileupload';
     NotAuthorizedComponent,
     FooterComponent,
     PageNotFoundComponent,
+    HigriDatePipe,
     
   ],
   imports: [

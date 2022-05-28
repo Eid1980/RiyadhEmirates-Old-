@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
-import { InquiryModel } from '@shared/Models/inquiry-model';
-import { RequestModel } from '@shared/Models/request-model';
+import { InquiryModel } from '@shared/models/inquiry-model';
+import { RequestModel } from '@shared/models/request-model';
 import { RequestService } from '@shared/services/request.service';
 import { SharedService } from '@shared/services/shared.service';
 import { MessageService } from 'primeng/api';
@@ -29,13 +29,24 @@ export class IncomingOrdersComponent implements OnInit {
   dreatedRequest : number = RequestStatusEnum.Drafted; 
 
 
+  first: number = 0;
+
+  types: any[];
+
+  loading: boolean = true;
 
   display: boolean = false;
   
   constructor( private requsetService : RequestService,
     private messageService: MessageService,
     private _sharedService : SharedService,
-    private _router: Router) { }
+    private _router: Router) {
+
+      this.types = [
+        {label: 'طلب', value: 'طلب'},
+        {label: 'إقتراح', value: 'إقتراح'},
+        {label: 'شكوي', value: 'شكوي'}    ]
+     }
 
   ngOnInit(): void {
 
@@ -53,7 +64,6 @@ export class IncomingOrdersComponent implements OnInit {
     this.selectedOrder = selectedOrder;
     this.display = true;
 
-    debugger
     this._sharedService.selectedRequest = selectedOrder;
 
     this._router.navigate(['/e-council/order-status']);
@@ -65,8 +75,10 @@ export class IncomingOrdersComponent implements OnInit {
   this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)
+      debugger
       if(result.code == 200){
         this.requests = result.data
+        this.loading = false 
       }else{
         this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
       }

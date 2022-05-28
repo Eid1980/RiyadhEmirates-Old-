@@ -38,14 +38,14 @@ export class RegisterComponent implements OnInit {
 
   registerationForm = this.fb.group({
     name: ['' , Validators.required ],
-    nationalID: ['' , Validators.required],
-    userName: ['' , [Validators.required , Validators.pattern('(1)|(2){1}[0-9]{9}\w+')]],
-    email: ['' , Validators.required],
-    confirmEmail: ['' , Validators.required],
-    phoneNumber:[ , Validators.required],
-    password: ['' , Validators.required],
-    confirmPassword: ['' , Validators.required],
-    address: [''],
+    nationalID: ['111' , Validators.required],
+    userName: ['' , [Validators.required , Validators.pattern('^(1|2){1}[0-9]{9}$')]],
+    email: ['' , [Validators.required , Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+    confirmEmail: ['abc' , Validators.required],
+    phoneNumber:[ , [Validators.required, Validators.pattern('^966{1}[0-9]{9}$')]],
+    password: ['' , [Validators.required]] //Validators.pattern('(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}')]],
+//    confirmPassword: ['' , Validators.required],
+//    address: [''],
   });
   
   constructor(private authService : AuthService,
@@ -59,8 +59,6 @@ export class RegisterComponent implements OnInit {
       this.date = this.dateFormatterService.GetTodayGregorian();
 
       this.minGreg = {day : 1,month : 1,  year : 1950 }
- 
-
 
     }
 

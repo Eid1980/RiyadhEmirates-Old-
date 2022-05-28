@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { InquiryModel } from '@shared/Models/inquiry-model';
-import { RequestModel } from '@shared/Models/request-model';
-import { TypeCountModel } from '@shared/Models/type-count-model';
+import { InquiryModel } from '@shared/models/inquiry-model';
+import { RequestModel } from '@shared/models/request-model';
+import { TypeCountModel } from '@shared/models/type-count-model';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserService } from './user.service';
@@ -17,8 +17,6 @@ export class RequestService {
   constructor(
     private _httpClient : HttpClient,
     private _userService :UserService) {
-
-      debugger
       let token = this._userService.currentUser?.token;
 
       this.header = new HttpHeaders({
@@ -33,7 +31,6 @@ export class RequestService {
   }
 
   inquire(inquiryModel : any){
-    debugger
     return this._httpClient.post(`${environment.apiUrl}/request/Inquire` , inquiryModel , {headers : this.header});
   }
 
@@ -41,7 +38,6 @@ export class RequestService {
   getRequests(searchCriteria : InquiryModel) : Observable<RequestModel>{
     return this._httpClient.post<RequestModel>(`${environment.apiUrl}/request/Inquire` , searchCriteria , {headers : this.header});
   }
-
 
     // get user request
     getRequestsTypeCount() : Observable<TypeCountModel>{
@@ -52,8 +48,8 @@ export class RequestService {
       return this._httpClient.post(`${environment.apiUrl}/request/updateRequestStatus` , requestStatusModel , {headers : this.header});
     }
 
-    getDraftedRequests() : Observable<any>{
-      return this._httpClient.post<RequestModel>(`${environment.apiUrl}/request/getDraftStatus`  , {headers : this.header});
+    getDraftedRequests() : Observable<RequestModel>{
+      return this._httpClient.post<RequestModel>(`${environment.apiUrl}/request/getDraftStatus`, {"" : ""},  {headers : this.header});
     }
   
 }

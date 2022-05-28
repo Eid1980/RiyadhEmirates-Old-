@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InquiryModel } from '@shared/Models/inquiry-model';
+import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestService } from '@shared/services/request.service';
 
 @Component({

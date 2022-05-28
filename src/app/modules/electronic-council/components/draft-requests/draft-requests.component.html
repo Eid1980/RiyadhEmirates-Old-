@@ -20,47 +20,10 @@
     <div class="col-md-9 col-12">
       <!-- page title -->
       <div class="page-title">
-        <h4>طلباتى</h4>
+        <h4>الطلبات المحفوظة</h4>
       </div>
 
-      <p-table [value]="requests" sortMode="multiple" [multiSortMeta]="multiSortMeta">
-        <ng-template pTemplate="header">
-          <tr>
-            <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
-            </th>
-            <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
-            </th>
-            <th pSortableColumn="requestTypeAr">نوع الطلب <p-sortIcon field="requestTypeAr"></p-sortIcon>
-            </th>
-            <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
-            </th>
-            <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
-            </th>
-            <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
-            </th>
-            <th>التفاصيل </th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-request>
-            <tr>
-              <td>{{request.creationDate | date}}</td>
-              <td>{{request.serialNumber}}</td>
-              <td>{{request.requestTypeAr}}</td>
-              <td>{{request.header}}</td>
-              <td>{{request.content}}</td>
-              <td>{{request.statusMsgAr}}</td>
-              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
-
-              
-            </tr>
-        </ng-template>
-      </p-table>
+      
     </div>
   </div>
-
 </div>
-
-
-<!--<p-dialog header="Title" [(visible)]="display">
-  <app-order-status-details [seletedOrder]="selectedOrder"></app-order-status-details>
-</p-dialog>-->

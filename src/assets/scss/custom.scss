@@ -1049,8 +1049,10 @@
 .nav-card {
   padding: 1rem;
   a {
+    cursor: pointer;
     color: $white;
     .desc {
+      color: $white;
       text-align: right;
       border-right: 5px solid $secondary-2;
       padding-right: 14px;

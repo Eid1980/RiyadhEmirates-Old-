@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '@shared/services/user.service';
 declare let $: any;
 @Component({
   selector: 'app-home',
@@ -6,7 +8,7 @@ declare let $: any;
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private _userService: UserService, private _router: Router) {}
 
   ngOnInit() {
     $('.news .owl-carousel').owlCarousel({
@@ -85,5 +87,12 @@ export class HomeComponent implements OnInit {
         },
       },
     });
+  }
+  navigateTo() {
+    if (this._userService.currentUser.role.toLocaleLowerCase() == 'admin') {
+      this._router.navigate(['/e-council/incoming-orders']);
+    } else {
+      this._router.navigate(['/e-council/create']);
+    }
   }
 }

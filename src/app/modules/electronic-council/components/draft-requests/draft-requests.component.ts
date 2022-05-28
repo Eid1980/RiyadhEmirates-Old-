@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { InquiryModel } from '@shared/Models/inquiry-model';
-import { RequestModel } from '@shared/Models/request-model';
+import { InquiryModel } from '@shared/models/inquiry-model';
+import { RequestModel } from '@shared/models/request-model';
 import { RequestService } from '@shared/services/request.service';
 import { SharedService } from '@shared/services/shared.service';
 import { MessageService } from 'primeng/api';

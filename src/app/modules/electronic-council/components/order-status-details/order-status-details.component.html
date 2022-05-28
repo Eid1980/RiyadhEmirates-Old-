@@ -19,20 +19,13 @@
     <div class="col-md-9 col-12">
       <!-- page title -->
       <div class="page-title">
-        <div class="d-flex text-nowrap">
-          <a routerLink="/e-council/my-orders">
-            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-          </a>
-          <h4>تفاصيل الطلب</h4>
-        </div>
-        <div *ngIf="userModel.role == 'admin' || userModel.role == 'Admin'" class="form-actions">
-          <button class="btn btn-save" (click)="acceptRequest()">موافق</button>
-          <button class="btn btn-reject" (click)="rejectRequest()">مرفوض</button>
-          <input type="text" *ngIf="displayMessage" [(ngModel)]="messageReason">
-        </div>
+        <!--<h4>استعلام عن طلب/معاملة</h4>-->
+        <h4> تفاصيل طلب/معاملة</h4>
+
       </div>
-      <!-- Inquiry box -->
-      <!--<div class="row mx-0 query-box">
+    </div>
+    <!-- Inquiry box -->
+    <!--<div class="row mx-0 query-box">
           <div class="col-md-8 col-12 mx-auto">
             <div class="form-group">
               <input type="text" name="" id="" class="form-control" placeholder="ادخل رقم المعاملة" aria-describedby="helpId" [(ngModel)]="inquiryModel.requestSerial">
@@ -42,134 +35,122 @@
             </div>
           </div>
         </div>-->
-      <!-- Inquery Results -->
-      <div class="query-result">
-        <!-- <h5>نتيجة البحث</h5> -->
-        <!-- status -->
-        <div class="alert alert-warning" role="alert">
-          <strong>حالة الطلب: الطلب ما زال قيد المراجعة والبحث</strong>
-        </div>
+    <!-- Inquery Results -->
+    <div class="query-result">
+      <!--<h5>نتيجة البحث</h5>-->
+      <!-- status -->
+      <div class="alert alert-warning" role="alert">
+        <strong>حالة الطلب: الطلب ما زال قيد المراجعة والبحث</strong>
       </div>
-      <!-- form card -->
-      <div class="form-card">
-        <div class="form-header">
-          <h5>بيانات مقدم الطلب</h5>
-        </div>
-        <div class="form-content">
-          <div class="row mx-0">
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">اسم مقدم الطلب</span>
-              <span class="form-val">{{currentRequestInfo?.user?.displayName}}</span>
-            </div>
-            <div class="info-col col-md-4 col-12 separator-af-be">
-              <span class="form-lbl lbl-33">تاريخ الميلاد</span>
-              <span class="form-val">{{currentRequestInfo?.user?.birthDate}}</span>
-            </div>
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">الجنس</span>
-              <span class="form-val">ذكر</span>
-            </div>
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">البريد الإلكتروني</span>
-              <span class="form-val">{{currentRequestInfo?.user?.email}}</span>
-            </div>
-            <div class="info-col col-md-4 col-12 separator-af-be">
-              <span class="form-lbl lbl-33">رقم الهوية</span>
-              <span class="form-val">{{currentRequestInfo?.user?.nationalId}}</span>
-            </div>
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">رقم الجوال</span>
-              <span class="form-val">{{currentRequestInfo?.user?.phoneNumber}}</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+  </div>
+  <!-- form card -->
+  <div class="form-card">
+    <div class="form-header">
+      <h5>بيانات مقدم الطلب</h5>
+    </div>
+    <div class="form-content">
       <div class="row mx-0">
-        <div class="col-md-6 col-12 pr-0">
-          <!-- form card -->
-          <div class="form-card h-95">
-            <div class="form-header">
-              <h5>بيانات الطلب</h5>
-            </div>
-            <div class="form-content">
+        <div class="info-col col-md-4 col-12">
+          <span class="form-lbl lbl-33">اسم مقدم الطلب</span>
+          <span class="form-val">{{currentRequestInfo?.user?.displayName}}</span>
+        </div>
+        <div class="info-col col-md-4 col-12 separator-af-be">
+          <span class="form-lbl lbl-33">تاريخ الميلاد</span>
+          <span class="form-val">{{currentRequestInfo?.user?.birthDate}}</span>
+        </div>
+        <div class="info-col col-md-4 col-12">
+          <span class="form-lbl lbl-33">الجنس</span>
+          <span class="form-val">ذكر</span>
+        </div>
+        <div class="info-col col-md-4 col-12">
+          <span class="form-lbl lbl-33">البريد الإلكتروني</span>
+          <span class="form-val">{{currentRequestInfo?.user?.email}}</span>
+        </div>
+        <div class="info-col col-md-4 col-12 separator-af-be">
+          <span class="form-lbl lbl-33">رقم الهوية</span>
+          <span class="form-val">{{currentRequestInfo?.user?.nationalId}}</span>
+        </div>
+        <div class="info-col col-md-4 col-12">
+          <span class="form-lbl lbl-33">رقم الجوال</span>
+          <span class="form-val">{{currentRequestInfo?.user?.phoneNumber}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row mx-0">
+      <div class="col-md-6 col-12 pr-0">
+        <!-- form card -->
+        <div class="form-card h-95">
+          <div class="form-header">
+            <h5>بيانات الطلب</h5>
+          </div>
+          <div class="form-content">
 
-              <div class="row mx-0 position-relative">
-                <div class="info-col">
-                  <span class="form-lbl lbl-18"> رقم الطلب</span>
-                  <span class="form-val ltr">{{currentRequestInfo?.SerialNumber}}</span>
-                </div>
-                <div class="info-col">
-                  <span class="form-lbl lbl-18"> نوع الطلب</span>
-                  <span class="form-val ltr">{{currentRequestInfo?.requestTypeAr}}</span>
-                </div>
-                <div class="info-col">
-                  <span class="form-lbl lbl-18">عنوان الطلب</span>
-                  <span class="form-val ltr">{{currentRequestInfo?.header}}</span>
-                </div>
-                <div class="info-col">
-                  <span class="form-lbl lbl-18">الوصف</span>
-                  <span class="form-val ltr">
-                    {{currentRequestInfo?.content}}
-                  </span>
-                </div>
-                <!-- Date -->
-                <div class="order-date">
-                  <img src="./assets/images/icons/order-date.svg" alt="">
-                  <span class="ltr">{{currentRequestInfo?.creationDate}}</span>
-                </div>
+            <div class="row mx-0 position-relative">
+              <div class="info-col">
+                <span class="form-lbl lbl-18"> رقم الطلب</span>
+                <span class="form-val ltr">{{currentRequestInfo?.SerialNumber}}</span>
               </div>
-
-
+              <div class="info-col">
+                <span class="form-lbl lbl-18"> نوع الطلب</span>
+                <span class="form-val ltr">{{currentRequestInfo?.requestTypeAr}}</span>
+              </div>
+              <div class="info-col">
+                <span class="form-lbl lbl-18">عنوان الطلب</span>
+                <span class="form-val ltr">{{currentRequestInfo?.header}}</span>
+              </div>
+              <div class="info-col">
+                <span class="form-lbl lbl-18">الوصف</span>
+                <span class="form-val ltr">
+                  {{currentRequestInfo?.content}}
+                </span>
+              </div>
+              <!-- Date -->
+              <div class="order-date">
+                <img src="./assets/images/icons/order-date.svg" alt="">
+                <span class="ltr">{{currentRequestInfo?.creationDate | date:"dd/MM/yyyy"}}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-6 col-12 pl-0">
-          <!-- form card -->
-          <div class="form-card h-95">
-            <div class="form-header">
-              <h5>المرفقات</h5>
-            </div>
-            <div class="form-content">
 
+
+        </div>
+      </div>
+      <div class="col-md-6 col-12 pl-0">
+        <!-- form card -->
+        <div class="form-card h-95">
+          <div class="form-header">
+            <h5>المرفقات</h5>
+          </div>
+          <div class="form-content">
+            <div *ngIf="currentRequestInfo == null || currentRequestInfo?.attachment1 == undefined">
+              لايوجد بيانات
+            </div>
+            <div *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment1 != undefined">
               <div class="row mx-0 px-2">
-                <div class="col-md-3 mb-3 px-1">
+                <div class="col-md-4 mb-4 px-1">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <p-image [src]='imagePath + currentRequestInfo.attachment1' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                   </div>
                 </div>
-                <div class="col-md-3 mb-3 px-1">
+                <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment2 != undefined">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <p-image [src]='imagePath + currentRequestInfo.attachment2' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                   </div>
                 </div>
-                <div class="col-md-3 mb-3 px-1">
+                <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment3 != undefined">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <p-image [src]='imagePath + currentRequestInfo.attachment3' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                   </div>
                 </div>
-                <div class="col-md-3 mb-3 px-1">
+                <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment4 != undefined">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <p-image [src]='imagePath + currentRequestInfo.attachment4' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                   </div>
                 </div>
-                <div class="col-md-3 mb-3 px-1">
+                <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment5 != undefined">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
-                  </div>
-                </div>
-                <div class="col-md-3 mb-3 px-1">
-                  <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
-                  </div>
-                </div>
-                <div class="col-md-3 mb-3 px-1">
-                  <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
-                  </div>
-                </div>
-                <div class="col-md-3 mb-3 px-1">
-                  <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <p-image [src]='imagePath + currentRequestInfo.attachment5' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                   </div>
                 </div>
               </div>
@@ -179,5 +160,4 @@
       </div>
     </div>
   </div>
-
 </div>
