@@ -23,9 +23,8 @@
           <h4> تفاصيل طلب/معاملة</h4>
 
         </div>
-      </div>
-      <!-- Inquiry box -->
-      <!--<div class="row mx-0 query-box">
+        <!-- Inquiry box -->
+        <!--<div class="row mx-0 query-box">
           <div class="col-md-8 col-12 mx-auto">
             <div class="form-group">
               <input type="text" name="" id="" class="form-control" placeholder="ادخل رقم المعاملة" aria-describedby="helpId" [(ngModel)]="inquiryModel.requestSerial">
@@ -43,37 +42,37 @@
             <strong>حالة الطلب: الطلب ما زال قيد المراجعة والبحث</strong>
           </div>
         </div>
-      </div>
-      <!-- form card -->
-      <div class="form-card">
-        <div class="form-header">
-          <h5>بيانات مقدم الطلب</h5>
-        </div>
-        <div class="form-content">
-          <div class="row mx-0">
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">اسم مقدم الطلب</span>
-              <span class="form-val">{{currentRequestInfo?.user?.displayName}}</span>
-            </div>
-            <div class="info-col col-md-4 col-12 separator-af-be">
-              <span class="form-lbl lbl-33">تاريخ الميلاد</span>
-              <span class="form-val">{{currentRequestInfo?.user?.birthDate}}</span>
-            </div>
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">الجنس</span>
-              <span class="form-val">ذكر</span>
-            </div>
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">البريد الإلكتروني</span>
-              <span class="form-val">{{currentRequestInfo?.user?.email}}</span>
-            </div>
-            <div class="info-col col-md-4 col-12 separator-af-be">
-              <span class="form-lbl lbl-33">رقم الهوية</span>
-              <span class="form-val">{{currentRequestInfo?.user?.nationalId}}</span>
-            </div>
-            <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">رقم الجوال</span>
-              <span class="form-val">{{currentRequestInfo?.user?.phoneNumber}}</span>
+        <!-- form card -->
+        <div class="form-card">
+          <div class="form-header">
+            <h5>بيانات مقدم الطلب</h5>
+          </div>
+          <div class="form-content">
+            <div class="row mx-0">
+              <div class="info-col col-md-4 col-12">
+                <span class="form-lbl lbl-33">اسم مقدم الطلب</span>
+                <span class="form-val">{{currentRequestInfo?.user?.displayName}}</span>
+              </div>
+              <div class="info-col col-md-4 col-12 separator-af-be">
+                <span class="form-lbl lbl-33">تاريخ الميلاد</span>
+                <span class="form-val">{{currentRequestInfo?.user?.birthDate}}</span>
+              </div>
+              <div class="info-col col-md-4 col-12">
+                <span class="form-lbl lbl-33">الجنس</span>
+                <span class="form-val">ذكر</span>
+              </div>
+              <div class="info-col col-md-4 col-12">
+                <span class="form-lbl lbl-33">البريد الإلكتروني</span>
+                <span class="form-val">{{currentRequestInfo?.user?.email}}</span>
+              </div>
+              <div class="info-col col-md-4 col-12 separator-af-be">
+                <span class="form-lbl lbl-33">رقم الهوية</span>
+                <span class="form-val">{{currentRequestInfo?.user?.nationalId}}</span>
+              </div>
+              <div class="info-col col-md-4 col-12">
+                <span class="form-lbl lbl-33">رقم الجوال</span>
+                <span class="form-val">{{currentRequestInfo?.user?.phoneNumber}}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -111,9 +110,9 @@
                     <span class="ltr">{{currentRequestInfo?.creationDate | date:"dd/MM/yyyy"}}</span>
                   </div>
                 </div>
+  
+  
               </div>
-
-
             </div>
           </div>
           <div class="col-md-6 col-12 pl-0">
@@ -161,6 +160,11 @@
         </div>
       </div>
     </div>
-  </div>
 
-</div>
+    <div *ngIf="userModel.role == 'admin' || userModel.role == 'Admin'">
+      <button class="btn btn-success" (click)="acceptRequest()">موافق</button>
+      <button class="btn btn-danger" (click)="rejectRequest()">مرفوض</button>
+
+      <input type="text" *ngIf="displayMessage" [(ngModel)]="messageReason">
+    </div>
+  </div>
