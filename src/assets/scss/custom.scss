@@ -984,3 +984,363 @@
 .p-datatable .p-sortable-column:focus {
   box-shadow: none;
 }
+
+// News
+.news {
+  .owl-carousel {
+    .owl-prev {
+      right: 8px;
+    }
+    .owl-next {
+      left: 8px;
+    }
+  }
+  .news-card {
+    position: relative;
+    .news-img {
+      width: 100%;
+      height: 365px;
+      border-radius: 6px;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 6px;
+    }
+    .news-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      display: block;
+      padding: 12px;
+      color: #fff;
+      h6 {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: right;
+      }
+      .date {
+        .date-icon {
+          width: 24px;
+          display: inline-block;
+          margin-left: 8px;
+          opacity: 0.7;
+        }
+        .date-desc {
+          font-size: 0.7rem;
+          opacity: 0.7;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+// Navigation Cards in home page
+.nav-card {
+  padding: 1rem;
+  a {
+    color: $white;
+    .desc {
+      text-align: right;
+      border-right: 5px solid $secondary-2;
+      padding-right: 14px;
+      margin-top: 1rem;
+      h6 {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      span {
+        font-size: 0.8rem;
+        font-weight: 400;
+        opacity: 0.8;
+      }
+    }
+    &:hover {
+      color: $white;
+      span {
+        opacity: 1;
+      }
+    }
+  }
+  &:nth-child(1) {
+    background-color: $primary-alt-2;
+  }
+  &:nth-child(2) {
+    background-color: $Primary-2;
+  }
+}
+
+// Related Websites in home page
+.related-web {
+  margin-top: 1.8rem;
+  .rel-web {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    a {
+      display: inline-block;
+      margin-left: 1rem;
+      max-width: 92%;
+      .rel-web-logos {
+        width: 100%;
+      }
+      &:last-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+// Any Section Title / Home Page sections' titles
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  .title {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: $text-color;
+    margin-bottom: 0;
+  }
+  .more {
+    a {
+      font-size: 0.8rem;
+      color: $text-color;
+      font-weight: 400;
+      i {
+        font-size: 1rem;
+        color: $Primary-2;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+      &:hover {
+        color: $Primary-2;
+      }
+    }
+  }
+}
+
+// Owl Carousel Styling
+.owl-carousel {
+  .owl-prev,
+  .owl-next {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px !important;
+    line-height: 30px !important;
+    background-color: $Primary-2 !important;
+    transform: scaleX(-1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto !important;
+    span {
+      display: none;
+    }
+    &:before {
+      color: $white;
+      padding: 4px;
+      font-family: "Font Awesome 6 Free";
+      font-size: 20px;
+      opacity: 1;
+      font-weight: 900;
+      transition: 0.4s all ease-in-out;
+    }
+    &:hover {
+      background: $primary-alt-2 !important;
+      color: $white !important;
+    }
+  }
+  .owl-prev {
+    right: -34px;
+    &:before {
+      content: "\f104";
+    }
+  }
+  .owl-next {
+    left: -34px;
+    &:before {
+      content: "\f105";
+    }
+  }
+  .owl-nav {
+    [class*="owl-"] {
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+  .owl-dots {
+    display: none;
+  }
+}
+
+// E-Services
+.e-services {
+  .owl-carousel {
+    .item {
+      height: 220px;
+      background: #fff;
+      border-radius: 12px;
+      border: 0.1px solid $light-dark;
+      box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+      margin: 8px 3px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      padding: 14px;
+      .ser-icon {
+        display: block;
+        margin: 0 auto 1rem;
+        width: 55px;
+      }
+      .ser-name {
+        font-size: 1rem;
+        color: $Primary-2;
+        text-align: center;
+        height: 48px;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .ser-desc {
+        font-size: 0.85rem;
+        color: $text-color;
+        text-align: center;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+// News & Repors Section
+.news-reports {
+  padding: 3rem 0;
+  background-color: #f5fbfe;
+  .gov-news {
+    .owl-carousel {
+      .item {
+        .card {
+          padding: 0;
+          margin-bottom: 1rem;
+          .card-img-top {
+            width: 100%;
+            height: 225px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+          }
+          .card-title {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            text-align: right;
+            height: 46px;
+            color: $dark;
+            margin-bottom: 8px;
+            line-height: 1.4;
+          }
+          .card-text {
+            font-weight: 400;
+            font-size: 0.7rem;
+            color: $text-color;
+            opacity: 0.8;
+            img {
+              width: 20px;
+              display: inline-block;
+              margin-left: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .advertise-report {
+    .owl-carousel {
+      .owl-nav {
+        display: none;
+      }
+      .owl-dots {
+        display: block;
+        position: absolute;
+        top: -35px;
+        left: -3px;
+        .owl-dot {
+          span {
+            margin: 5px;
+          }
+          &.active {
+            span {
+              background-color: $Primary-2;
+            }
+          }
+        }
+      }
+    }
+    .ad-card {
+      position: relative;
+      margin-bottom: 1rem;
+      .ad-card-img {
+        height: 335px;
+        width: 100%;
+        border-radius: 6px;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        border-radius: 6px;
+      }
+      .ad-card-content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        bottom: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.16);
+        .desc {
+          font-size: 1rem;
+          font-weight: 400;
+          color: $white;
+          text-align: right;
+          padding: 1rem;
+          width: 75%;
+        }
+        .ad-calendar {
+          background-color: $Primary-2;
+          padding: 8px;
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          color: $white;
+          justify-content: end;
+          font-size: 0.7rem;
+          font-weight: 400;
+          img {
+            margin-left: 6px;
+          }
+        }
+      }
+    }
+  }
+}
