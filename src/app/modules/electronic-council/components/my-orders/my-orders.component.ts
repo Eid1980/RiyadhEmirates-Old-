@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { InquiryModel } from '@shared/Models/inquiry-model';
-import { RequestModel } from '@shared/Models/request-model';
+import { InquiryModel } from '@shared/models/inquiry-model';
+import { RequestModel } from '@shared/models/request-model';
 import { RequestService } from '@shared/services/request.service';
 import { MessageService } from 'primeng/api';
-import {TableModule} from 'primeng/table';
-import {DialogModule} from 'primeng/dialog';
 import { SharedService } from '@shared/services/shared.service';
 import { Router } from '@angular/router';
-
 
 
 @Component({
@@ -26,6 +23,14 @@ export class MyOrdersComponent implements OnInit {
 
   display: boolean = false;
 
+  first: number = 0;
+
+  types: any[];
+
+  value : any
+
+  loading: boolean = true;
+
   constructor(
     private requsetService : RequestService,
     private messageService : MessageService,
@@ -34,6 +39,11 @@ export class MyOrdersComponent implements OnInit {
 
     ) { 
       this.searchCriteria = new InquiryModel();
+
+      this.types = [
+        {label: 'طلب', value: 'طلب'},
+        {label: 'إقتراح', value: 'إقتراح'},
+        {label: 'شكوي', value: 'شكوي'}    ]
     }
 
   ngOnInit(): void {
@@ -43,6 +53,7 @@ export class MyOrdersComponent implements OnInit {
       console.log(result)
       if(result.code == 200){
         this.requests = result.data
+        this.loading = false;
       }else{
         this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
       }
@@ -62,9 +73,16 @@ export class MyOrdersComponent implements OnInit {
     this._sharedService.selectedRequest = selectedOrder;
 
     this._router.navigate(['/e-council/order-status']);
-    
-   /* this.selectedOrder = selectedOrder;
-    this.display = true;*/
+  
 }
 
+reset() {
+  this.first = 0;
+}
+
+filter(value: any){
+
+  console.log('jjjjjjjjjjj')
+
+}
 }

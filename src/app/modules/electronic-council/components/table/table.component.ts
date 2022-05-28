@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
-import { RequestModel } from '@shared/Models/request-model';
-import { InquiryModel } from '@shared/Models/inquiry-model';
+import { RequestModel } from '@shared/models/request-model';
+import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestService } from '@shared/services/request.service';
 
 @Component({
@@ -29,7 +29,6 @@ export class TableComponent implements OnInit {
 
     this.searchCriteria = new InquiryModel();
     this.searchCriteria.requestTypeId = 1
-    debugger
     this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)

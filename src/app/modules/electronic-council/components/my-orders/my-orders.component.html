@@ -22,37 +22,64 @@
       <div class="page-title">
         <h4>طلباتى</h4>
       </div>
+      <div *ngIf="requests?.length == 0">لا يوجد بيانات</div>
 
-      <p-table [value]="requests" sortMode="multiple" [multiSortMeta]="multiSortMeta">
+      <p-table *ngIf="requests?.length != 0" [value]="requests"  [loading]="loading"
+               [paginator]="true" [rows]="10"  [(first)]="first"
+               [showCurrentPageReport]="true" responsiveLayout="scroll"
+               currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات" [rowsPerPageOptions]="[10,25,30]"
+               sortMode="multiple" [multiSortMeta]="multiSortMeta" 
+               [globalFilterFields]="['requestTypeAr','statusMsgAr' , 'creationDate']" >
         <ng-template pTemplate="header">
           <tr>
-            <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
-            </th>
-            <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
-            </th>
-            <th pSortableColumn="requestTypeAr">نوع الطلب <p-sortIcon field="requestTypeAr"></p-sortIcon>
-            </th>
             <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
+              <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
             </th>
             <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
             </th>
+            <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
+              <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
+                <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                    <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)" placeholder="Any">
+                        <ng-template let-option pTemplate="item">
+                            <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                        </ng-template>
+                    </p-dropdown>
+                </ng-template>
+            </p-columnFilter>
+            </th>
+            <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
+            </th>
             <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
+            </th>
+            <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
             </th>
             <th>التفاصيل </th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-request>
             <tr>
-              <td>{{request.creationDate | date}}</td>
-              <td>{{request.serialNumber}}</td>
-              <td>{{request.requestTypeAr}}</td>
               <td>{{request.header}}</td>
               <td>{{request.content}}</td>
+              <td>{{request.requestTypeAr}}</td>
+              <td>{{request.serialNumber}}</td>
               <td>{{request.statusMsgAr}}</td>
-              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
-
-              
+              <td>{{request.creationDate | date:"dd/MM/yyyy"}}</td>
+              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>              
             </tr>
+        </ng-template>
+        <!--<ng-template pTemplate="summary">
+          There are {{requests?.length}} cars
+        </ng-template>-->
+        <!--<ng-template pTemplate="paginatorleft" let-state>
+          {{state.first}}
+          <button type="button" pButton icon="pi-refresh"></button>
+        </ng-template>-->
+        <ng-template pTemplate="paginatorright">
+          <button type="button" pButton icon="pi-cloud-upload"></button>
+        </ng-template>
+        <ng-template let-item pTemplate="paginatordropdownitem">
+          {{item.value}} - per page
         </ng-template>
       </p-table>
     </div>

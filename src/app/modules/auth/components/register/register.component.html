@@ -24,10 +24,10 @@
               
                   <div *ngIf="registerationForm.controls['userName'].invalid && (registerationForm.controls['userName'].dirty || registerationForm.controls['userName'].touched)" class="text-danger">
                     <div *ngIf="registerationForm.controls['userName'].errors?.required">
-                      Name is required.
+                      رقم الهوية / الاقامة مطلوب
                     </div>
                     <div *ngIf="registerationForm.controls['userName'].errors?.['pattern']">
-                      Name
+                      رقم الهوية / الاقامة يبدأ ب 1 او 2 و يتكون من 10 ارقام 
                     </div>
                   </div>
               </div>
@@ -36,6 +36,11 @@
               <div class="form-group mb-lg-4">
                 <input type="email" name="" id="username" class="form-control" required formControlName="name">
                 <label for="username" class="label">الاسم </label>
+                <div *ngIf="registerationForm.controls['name'].invalid && (registerationForm.controls['name'].dirty || registerationForm.controls['name'].touched)" class="text-danger">
+                  <div *ngIf="registerationForm.controls['name'].errors?.required">
+                    الاسم مطلوب
+                  </div>
+                </div>
               </div>
 
               <!-- birthdate -->
@@ -59,6 +64,14 @@
               <div class="form-group mb-lg-4">
                 <input type="text" name="" id="phone" class="form-control" required formControlName="phoneNumber">
                 <label for="phone" class="label">رقم الجوال</label>
+                <div *ngIf="registerationForm.controls['phoneNumber'].invalid && (registerationForm.controls['phoneNumber'].dirty || registerationForm.controls['phoneNumber'].touched)" class="text-danger">
+                  <div *ngIf="registerationForm.controls['phoneNumber'].errors?.required">
+                    رقم الجوال مطلوب
+                  </div>
+                  <div *ngIf="registerationForm.controls['phoneNumber'].errors?.['pattern']">
+                    رقم الجوال يبدأ ب 966 و يتكون من 12 رقم 
+                  </div>
+                </div>
               </div>
 
 
@@ -66,17 +79,34 @@
           <div class="form-group mb-lg-4">
             <input type="text" name="" id="email" class="form-control" required formControlName="email">
             <label for="email" class="label">البريد الالكتروني</label>
+            <div *ngIf="registerationForm.controls['email'].invalid && (registerationForm.controls['email'].dirty || registerationForm.controls['email'].touched)" class="text-danger">
+              <div *ngIf="registerationForm.controls['email'].errors?.required">
+                البريد الالكتروني مطلوب
+              </div>
+              <div *ngIf="registerationForm.controls['email'].errors?.['pattern']">
+                يجب إدخال بريد الالكتروني بشكل صحيح
+              </div>
+            </div>
           </div>
 
           <!-- password -->
           <div class="form-group">
             <input type="password" name="" id="password" class="form-control" required formControlName="password">
             <label for="password" class="label">كلمة المرور</label>
+
+            <div *ngIf="registerationForm.controls['password'].invalid && (registerationForm.controls['password'].dirty || registerationForm.controls['password'].touched)" class="text-danger">
+              <div *ngIf="registerationForm.controls['email'].errors?.required">
+                كلمة المرور مطلوب
+              </div>
+              <div *ngIf="registerationForm.controls['password'].errors?.['pattern']">
+                كلمة المرور يجب ان تحتوي علي حروف كبيرة و حروف صغيرة وارقام و حروف خاصة               
+              </div>
+            </div>
           </div>
 
           <!-- Login Button -->
           <div class="">
-            <button type="submit" class="btn btn-primary submit">إنشاء حساب</button>
+            <button type="submit" class="btn btn-primary submit" [disabled]="registerationForm.status == 'INVALID'">إنشاء حساب</button>
           </div>
 
         </form>

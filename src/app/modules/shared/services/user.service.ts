@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserModel } from '@shared/Models/user-model';
+import { UserModel } from '@shared/models/user-model';
 import { SessionStorageService } from './session-storage.service';
 
 @Injectable({
@@ -11,7 +11,6 @@ export class UserService {
 
   constructor(private sessionService : SessionStorageService) { 
 
-    debugger
     this.currentUser = new UserModel();
     let userInfojson : UserModel = JSON.parse(this.sessionService.get('user'));
 

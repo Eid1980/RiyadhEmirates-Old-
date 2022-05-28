@@ -19,7 +19,9 @@
       <div class="col-md-9 col-12">
         <!-- page title -->
         <div class="page-title">
-          <h4>استعلام عن طلب/معاملة</h4>
+          <!--<h4>استعلام عن طلب/معاملة</h4>-->
+          <h4> تفاصيل طلب/معاملة</h4>
+
         </div>
         <!-- Inquiry box -->
         <!--<div class="row mx-0 query-box">
@@ -34,7 +36,7 @@
         </div>-->
         <!-- Inquery Results -->
         <div class="query-result">
-          <h5>نتيجة البحث</h5>
+          <!--<h5>نتيجة البحث</h5>-->
           <!-- status -->
           <div class="alert alert-warning" role="alert">
             <strong>حالة الطلب: الطلب ما زال قيد المراجعة والبحث</strong>
@@ -105,7 +107,7 @@
                   <!-- Date -->
                   <div class="order-date">
                     <img src="./assets/images/icons/order-date.svg" alt="">
-                    <span class="ltr">{{currentRequestInfo?.creationDate}}</span>
+                    <span class="ltr">{{currentRequestInfo?.creationDate | date:"dd/MM/yyyy"}}</span>
                   </div>
                 </div>
   
@@ -120,49 +122,38 @@
                 <h5>المرفقات</h5>
               </div>
               <div class="form-content">
-  
+                <div *ngIf="currentRequestInfo == null || currentRequestInfo?.attachment1 == undefined">
+              لايوجد بيانات              
+                </div>
+                <div *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment1 != undefined">
                 <div class="row mx-0 px-2">
-                  <div class="col-md-3 mb-3 px-1">
-                    <div class="attachments">
-                      <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                  <div class="col-md-4 mb-4 px-1">
+                    <div class="attachments" >
+                      <p-image [src]='imagePath + currentRequestInfo.attachment1' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                     </div>
                   </div>
-                  <div class="col-md-3 mb-3 px-1">
+                  <div class="col-md-4 mb-4 px-1"  *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment2 != undefined">
                     <div class="attachments">
-                      <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                      <p-image [src]='imagePath + currentRequestInfo.attachment2' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                     </div>
                   </div>
-                  <div class="col-md-3 mb-3 px-1">
+                  <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment3 != undefined">
                     <div class="attachments">
-                      <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                      <p-image [src]='imagePath + currentRequestInfo.attachment3' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                     </div>
                   </div>
-                  <div class="col-md-3 mb-3 px-1">
+                  <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment4 != undefined">
                     <div class="attachments">
-                      <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                      <p-image [src]='imagePath + currentRequestInfo.attachment4' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                     </div>
                   </div>
-                  <div class="col-md-3 mb-3 px-1">
+                  <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment5 != undefined">
                     <div class="attachments">
-                      <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3 px-1">
-                    <div class="attachments">
-                      <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3 px-1">
-                    <div class="attachments">
-                      <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3 px-1">
-                    <div class="attachments">
-                      <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                      <p-image [src]='imagePath + currentRequestInfo.attachment5' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                     </div>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>

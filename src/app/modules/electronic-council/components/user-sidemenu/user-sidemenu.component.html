@@ -29,31 +29,31 @@
       </a>
     </li>
     
-    <li>
+    <li *ngIf="userModel.role == 'user' || userModel.role == 'User'">
       <a routerLink="/e-council/create" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/new-order.svg" alt="">
         طلب جديد
       </a>
     </li>
-    <li>
+    <li *ngIf="userModel.role == 'admin' || userModel.role == 'Admin'">
       <a routerLink="/e-council/inquiry" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-search.svg" alt="">
         استعلام عن طلب
       </a>
     </li>
-    <li>
+    <li *ngIf="userModel.role == 'user' || userModel.role == 'User'">
       <a routerLink="/e-council/my-orders" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-orders.svg" alt="">
         طلباتي
       </a>
     </li>
-    <li>
+    <li *ngIf="userModel.role == 'user' || userModel.role == 'User'">
       <a routerLink="/e-council/saved" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-saved.svg" alt="">
         طلبات محفوظة
       </a>
     </li>
-    <li>
+    <li *ngIf="userModel.role == 'user' || userModel.role == 'User'">
       <a routerLink="/e-council/rate" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-rate.svg" alt="">
         تقييم خدمة

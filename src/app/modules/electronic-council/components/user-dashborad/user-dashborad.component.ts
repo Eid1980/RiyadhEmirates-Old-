@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TypeCountModel } from '@shared/Models/type-count-model';
+import { TypeCountModel } from '@shared/models/type-count-model';
 import { RequestService } from '@shared/services/request.service';
 
 @Component({
