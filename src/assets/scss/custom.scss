@@ -546,9 +546,21 @@
   height: 60px;
   position: relative;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  i {
+    color: $Primary-2;
+    margin-left: 10px;
+    font-size: 1.4rem;
+    &:hover {
+      color: $primary-alt-3;
+    }
+  }
   h4 {
     font-size: 1.1rem;
     font-weight: 400;
+    margin-bottom: 0;
   }
   &::before {
     content: "";
@@ -676,7 +688,8 @@
   padding: 1rem;
   .btn-save,
   .btn-draft,
-  .btn-cancel {
+  .btn-cancel,
+  .btn-reject {
     font-weight: 600;
     font-size: 0.8rem;
     width: 140px;
@@ -712,6 +725,14 @@
     border-color: $dimmed;
     &:hover {
       background-color: $highlight;
+    }
+  }
+  .btn-reject {
+    background-color: $danger;
+    color: $white;
+    border-color: $danger;
+    &:hover {
+      background-color: $danger-hover;
     }
   }
 }
@@ -801,4 +822,165 @@
       background: $dimmed;
     }
   }
+}
+
+// User Dashboard
+.dash-card {
+  .d-card {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 12px;
+    position: relative;
+    .card-num {
+      font-size: 3rem;
+    }
+    .card-desc {
+      font-size: 1rem;
+    }
+  }
+  &:nth-child(1) {
+    .d-card {
+      background: rgb(246, 244, 239);
+      background: radial-gradient(
+        circle,
+        rgba(246, 244, 239, 1) 0%,
+        rgba(255, 250, 230, 1) 100%
+      );
+      .card-img {
+        &::after {
+          content: url(../images/icons/contract.svg);
+          left: 9%;
+          position: absolute;
+          top: 22%;
+        }
+      }
+      .card-num {
+        color: $secondary-1;
+      }
+    }
+  }
+  &:nth-child(2) {
+    .d-card {
+      background: rgb(62, 208, 186);
+      background: radial-gradient(
+        circle,
+        rgba(62, 208, 186, 1) 0%,
+        rgba(0, 151, 128, 1) 100%
+      );
+      .card-img {
+        &::after {
+          content: url(../images/icons/auction.svg);
+          left: 9%;
+          position: absolute;
+          top: 22%;
+        }
+      }
+      .card-num {
+        color: $white;
+      }
+    }
+  }
+  &:nth-child(3) {
+    .d-card {
+      background: rgb(251, 242, 243);
+      background: radial-gradient(
+        circle,
+        rgba(251, 242, 243, 1) 0%,
+        rgba(255, 227, 230, 1) 100%
+      );
+      .card-img {
+        &::after {
+          content: url(../images/icons/refused.svg);
+          left: 9%;
+          position: absolute;
+          top: 22%;
+        }
+      }
+      .card-num {
+        color: $danger;
+      }
+    }
+  }
+  &:nth-child(4) {
+    .d-card {
+      background: rgb(224, 246, 255);
+      background: radial-gradient(
+        circle,
+        rgba(224, 246, 255, 1) 0%,
+        rgba(192, 237, 255, 1) 100%
+      );
+      .card-img {
+        &::after {
+          content: url(../images/icons/investigate.svg);
+          left: 9%;
+          position: absolute;
+          top: 22%;
+        }
+      }
+      .card-num {
+        color: $primary-alt-3;
+      }
+    }
+  }
+}
+
+// P-table / data-list / grid / table / primeng table
+.p-datatable .p-datatable-thead > tr > th {
+  text-align: right;
+  padding: 10px 10px;
+  border: 0;
+  background: #009780;
+  transition: box-shadow 0.2s;
+  font-family: "Almarai";
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.pi-sort-alt:before {
+  content: url("../images/icons/sort.svg");
+}
+.pi-sort-amount-up-alt:before {
+  content: url("../images/icons/sort-up.svg");
+  vertical-align: super;
+}
+.pi-sort-amount-down:before {
+  content: url("../images/icons/sort-down.svg");
+  vertical-align: super;
+}
+.p-datatable .p-sortable-column.p-highlight {
+  background: $Primary-1;
+  color: $white;
+  &:hover {
+    background: $Primary-1;
+    color: $white;
+  }
+}
+.p-datatable .p-sortable-column .p-sortable-column-badge {
+  display: none !important;
+}
+.p-datatable .p-sortable-column:not(.p-highlight):hover {
+  background: $Primary-1;
+  color: $white;
+}
+.p-datatable .p-datatable-tbody > tr > td {
+  text-align: right;
+  padding: 12px 10px;
+  font-size: 0.8rem;
+  font-family: "Almarai";
+}
+.p-datatable .actions {
+  text-align: center !important;
+  .fa-exclamation-circle {
+    cursor: pointer;
+    color: $primary-alt-3;
+    font-size: 1.2rem;
+    &:hover {
+      color: $primary-alt-2;
+    }
+  }
+}
+.p-datatable .p-sortable-column:focus {
+  box-shadow: none;
 }

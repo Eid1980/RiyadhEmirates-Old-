@@ -17,25 +17,17 @@
     <!-- user page content -->
     <div class="col-md-9 col-12">
       <div class="row mx-0">
-        <div class="col-md-3 my-2 px-1" *ngFor="let rType of requestTypeCount">
-          <div class="card" style="width:18rem;">
-            <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{rType?.requestTypeName}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted ">Card subtitle</h6>
-              <p class="card-text">{{rType?.requestTypeCount}}</p>
+        <div class="col-md-3 my-2 px-1 dash-card" *ngFor="let rType of requestTypeCount">
+          <div class="d-card">
+            <div>
+              <span class="d-block card-num">{{rType?.requestTypeCount}}</span>
+              <span class="d-block card-desc">{{rType?.requestTypeName}}</span>
+            </div>
+            <div class="card-img">
+              <!-- <img src="./assets/images/icons/contract.svg" alt=""> -->
             </div>
           </div>
         </div>
-        <!--<div class="col-md-3 my-2 px-1">
-          <img src="./assets/images/home/0002.svg" alt="" class="w-100">
-        </div>
-        <div class="col-md-3 my-2 px-1">
-          <img src="./assets/images/home/0003.svg" alt="" class="w-100">
-        </div>
-        <div class="col-md-3 my-2 px-1">
-          <img src="./assets/images/home/0004.svg" alt="" class="w-100">
-        </div>-->
       </div>
     </div>
   </div>
