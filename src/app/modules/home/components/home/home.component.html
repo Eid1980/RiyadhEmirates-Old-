@@ -3,7 +3,7 @@
   <!-- Poster, Flyer -->
   <div class="row mx-0 section-padding">
     <div class="col-md-12 mb-4">
-      <img src="./assets/images/home/Group 18079.svg" alt="" class="w-100">
+      <img [src]="posters[0]?.Base64File" alt="" class="w-100">
     </div>
   </div>
 
@@ -12,53 +12,22 @@
     <div class="col-md-6 news">
       <div class="owl-carousel owl-theme">
         <!-- Repeatable Item -->
-        <div class="item">
+        <div class="item" *ngFor="let news of latestNews">
           <div class="news-card">
-            <img src="./assets/images/news-poster.png" alt="" class="news-img">
+            <img [src]="news?.Image?.Base64File" alt="" class="news-img">
             <img src="./assets/images/news-overlay.png" alt="" class="overlay">
             <div class="news-caption">
-              <h6 class="h2">وزير الداخلية السعودي: التحديات الأمنية تتطلب جهوداً خليجية مشتركة لمواجهتها خلال اجتماع وزراء
-                الداخلية بدول مجلس التعاون الثامن والثلاثين
+              <h6 class="h2">
+                {{news?.TitleAr}}
               </h6>
               <span class="date">
                 <img src="./assets/images/icons/date-white.svg" class="date-icon" alt="">
-                <span class="date-desc">الأحد - 9 شهر ربيع الثاني 1443 هـ - 14 نوفمبر 2021 م</span>
+                <span class="date-desc">{{formatDate(news?.Date)}}</span>
               </span>
             </div>
           </div>
         </div>
         <!-- Repeatable Item -->
-        <div class="item">
-          <div class="news-card">
-            <img src="./assets/images/news-poster.png" alt="" class="news-img">
-            <img src="./assets/images/news-overlay.png" alt="" class="overlay">
-            <div class="news-caption">
-              <h6 class="h2">وزير الداخلية السعودي: التحديات الأمنية تتطلب جهوداً خليجية مشتركة لمواجهتها خلال اجتماع وزراء
-                الداخلية بدول مجلس التعاون الثامن والثلاثين
-              </h6>
-              <span class="date">
-                <img src="./assets/images/icons/date-white.svg" class="date-icon" alt="">
-                <span class="date-desc">الأحد - 9 شهر ربيع الثاني 1443 هـ - 14 نوفمبر 2021 م</span>
-              </span>
-            </div>
-          </div>
-        </div>
-        <!-- Repeatable Item -->
-        <div class="item">
-          <div class="news-card">
-            <img src="./assets/images/news-poster.png" alt="" class="news-img">
-            <img src="./assets/images/news-overlay.png" alt="" class="overlay">
-            <div class="news-caption">
-              <h6 class="h2">وزير الداخلية السعودي: التحديات الأمنية تتطلب جهوداً خليجية مشتركة لمواجهتها خلال اجتماع وزراء
-                الداخلية بدول مجلس التعاون الثامن والثلاثين
-              </h6>
-              <span class="date">
-                <img src="./assets/images/icons/date-white.svg" class="date-icon" alt="">
-                <span class="date-desc">الأحد - 9 شهر ربيع الثاني 1443 هـ - 14 نوفمبر 2021 م</span>
-              </span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -186,53 +155,14 @@
         <!-- news cards -->
         <div class="owl-carousel owl-theme">
           <!-- Repeatable Item -->
-          <div class="item">
+          <div class="item" *ngFor="let news of emiratesNews">
             <div class="card">
-              <img src="./assets/images/gov-news1.png" class="card-img-top" alt="...">
+              <img [src]="news?.Image?.Base64File" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title h-2">وزير الداخلية السعودي يتفقد مركز العمليات الأمنية الموحد بمكة</h5>
+                <h5 class="card-title h-2">{{news?.TitleAr}}</h5>
                 <p class="card-text">
                   <img src="./assets/images/icons/order-date.svg" alt="">
-                  الأحد - 9 شهر ربيع الثاني 1443 هـ - 14 نوفمبر 2021 م
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Repeatable Item -->
-          <div class="item">
-            <div class="card">
-              <img src="./assets/images/gov-news2.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title h-2">وزير الداخلية السعودي يتفقد مركز العمليات الأمنية الموحد بمكة</h5>
-                <p class="card-text">
-                  <img src="./assets/images/icons/order-date.svg" alt="">
-                  الأحد - 9 شهر ربيع الثاني 1443 هـ - 14 نوفمبر 2021 م
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Repeatable Item -->
-          <div class="item">
-            <div class="card">
-              <img src="./assets/images/gov-news1.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title h-2">وزير الداخلية السعودي يتفقد مركز العمليات الأمنية الموحد بمكة</h5>
-                <p class="card-text">
-                  <img src="./assets/images/icons/order-date.svg" alt="">
-                  الأحد - 9 شهر ربيع الثاني 1443 هـ - 14 نوفمبر 2021 م
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Repeatable Item -->
-          <div class="item">
-            <div class="card">
-              <img src="./assets/images/gov-news2.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title h-2">وزير الداخلية السعودي يتفقد مركز العمليات الأمنية الموحد بمكة</h5>
-                <p class="card-text">
-                  <img src="./assets/images/icons/order-date.svg" alt="">
-                  الأحد - 9 شهر ربيع الثاني 1443 هـ - 14 نوفمبر 2021 م
+                    {{formatDate(news?.Date)}}
                 </p>
               </div>
             </div>
@@ -247,33 +177,17 @@
         <!-- cards -->
         <div class="owl-carousel owl-theme">
           <!-- Repeatable Item -->
-          <div class="item">
+          <div class="item" *ngFor="let report of reports">
             <div class="ad-card">
-              <img src="./assets/images/add-report.png" alt="" class="ad-card-img">
+              <img [src]="report?.Image?.Base64File" alt="" class="ad-card-img">
               <img src="./assets/images/add-overlay.png" alt="" class="overlay">
               <div class="ad-card-content">
                 <span class="desc">
-                  تدابير إضافية في مواجهة كورونا.. تعليق العمل 16 يومًا في الجهات الحكومية
+                   {{report?.TitleAr}}
                 </span>
                 <span class="ad-calendar">
                   <img src="./assets/images/icons/add-calendar.svg" alt="">
-                  <span>17 شعبان 1443</span>
-                </span>
-              </div>
-            </div>
-          </div>
-          <!-- Repeatable Item -->
-          <div class="item">
-            <div class="ad-card">
-              <img src="./assets/images/add-report.png" alt="" class="ad-card-img">
-              <img src="./assets/images/add-overlay.png" alt="" class="overlay">
-              <div class="ad-card-content">
-                <span class="desc">
-                  تدابير إضافية في مواجهة كورونا.. تعليق العمل 16 يومًا في الجهات الحكومية
-                </span>
-                <span class="ad-calendar">
-                  <img src="./assets/images/icons/add-calendar.svg" alt="">
-                  <span>17 شعبان 1443</span>
+                  <span> {{getHijriDate(report?.Date)}}</span>
                 </span>
               </div>
             </div>
