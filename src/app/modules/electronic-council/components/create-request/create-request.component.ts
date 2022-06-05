@@ -130,14 +130,15 @@ saveRequest(requestStatusId : number){
       (result : any) =>{
         if(result.code == 200){
 
-      this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
       this.resetForm();
 
       setTimeout(() => {
         if(requestStatusId == RequestStatusEnum.New){
           this._router.navigate(['/e-council/my-orders']);
+          this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
         }else if(requestStatusId == RequestStatusEnum.Drafted){
           this._router.navigate(['/e-council/saved']);
+          this.messageService.add({severity:'success', summary: 'تم الحفظ', detail: 'تم حفظ طلبك بنجاح'});
         }} , 3000);          }
       },
       () => {}

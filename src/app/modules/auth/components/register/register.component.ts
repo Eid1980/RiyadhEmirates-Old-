@@ -25,11 +25,16 @@ export class RegisterComponent implements OnInit {
   date: NgbDateStruct;
   minHigriDate : NgbDateStruct;
   minGreg : NgbDateStruct;
+  maxHigriDate : NgbDateStruct;
+  maxGreg : NgbDateStruct;
   dateString: string;
-  selectedDateType = DateType.Gregorian;
+  selectedDateType = DateType.Hijri;
 
   isDisabled: boolean;
   isReadOnly: boolean;
+
+
+  nationalities : string[] = []
 
   @ViewChild('datePicker') startDatePicker: any;
 
@@ -56,9 +61,15 @@ export class RegisterComponent implements OnInit {
 
       this.registerationFormData = new FormData();
 
-      this.date = this.dateFormatterService.GetTodayGregorian();
+      //this.date = this.dateFormatterService.GetTodayGregorian();
 
-      this.minGreg = {day : 1,month : 1,  year : 1950 }
+      this.minHigriDate = {day : 1,month : 1,  year : 1360  }
+      this.maxHigriDate = {day : 1,month : 1,  year : 1425}
+      this.minGreg = {day : 1,month : 1,  year : 1950  }
+      this.maxGreg = {day : 1,month : 1,  year : 2004 }
+
+      this.nationalities.push('سعودي')
+      this.nationalities.push('مصري')
 
     }
 

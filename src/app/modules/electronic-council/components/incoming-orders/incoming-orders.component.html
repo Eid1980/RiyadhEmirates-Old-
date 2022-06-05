@@ -55,7 +55,7 @@
               <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
                 <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
               </th>
-              <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+              <th pSortableColumn="content">اسم مقدم الطلب <p-sortIcon field="content"></p-sortIcon>
               </th>
               <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
                 <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
@@ -80,7 +80,7 @@
           <ng-template pTemplate="body" let-request>
               <tr>
                 <td>{{request.header}}</td>
-                <td>{{request.content}}</td>
+                <td>{{request.user.displayName}}</td>
                 <td>{{request.requestTypeAr}}</td>
                 <td>{{request.serialNumber}}</td>
                 <td>{{request.statusMsgAr}}</td>
@@ -111,7 +111,7 @@
               <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
                 <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
               </th>
-              <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+              <th pSortableColumn="content">اسم مقدم الطلب <p-sortIcon field="content"></p-sortIcon>
               </th>
               <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
                 <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
@@ -136,7 +136,7 @@
           <ng-template pTemplate="body" let-request>
               <tr>
                 <td>{{request.header}}</td>
-                <td>{{request.content}}</td>
+                <td>{{request.user.displayName}}</td>
                 <td>{{request.requestTypeAr}}</td>
                 <td>{{request.serialNumber}}</td>
                 <td>{{request.statusMsgAr}}</td>
@@ -171,7 +171,7 @@
               <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
                 <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
               </th>
-              <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+              <th pSortableColumn="content">اسم مقدم الطلب <p-sortIcon field="content"></p-sortIcon>
               </th>
               <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
                 <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
@@ -196,7 +196,7 @@
           <ng-template pTemplate="body" let-request>
               <tr>
                 <td>{{request.header}}</td>
-                <td>{{request.content}}</td>
+                <td>{{request.user.displayName}}</td>
                 <td>{{request.requestTypeAr}}</td>
                 <td>{{request.serialNumber}}</td>
                 <td>{{request.statusMsgAr}}</td>
@@ -227,7 +227,7 @@
               <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
                 <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
               </th>
-              <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+              <th pSortableColumn="content">اسم مقدم الطلب <p-sortIcon field="content"></p-sortIcon>
               </th>
               <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
                 <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
@@ -252,7 +252,7 @@
           <ng-template pTemplate="body" let-request>
               <tr>
                 <td>{{request.header}}</td>
-                <td>{{request.content}}</td>
+                <td>{{request.user.displayName}}</td>
                 <td>{{request.requestTypeAr}}</td>
                 <td>{{request.serialNumber}}</td>
                 <td>{{request.statusMsgAr}}</td>
