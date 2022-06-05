@@ -19,6 +19,13 @@ const routes: Routes = [
             (x) => x.ElectronicCouncilModule
           ),
       },
+      {
+        path: 'data-management',
+        loadChildren: () =>
+          import('../data-management/data-management-routing.module').then(
+            (x) => x.DataManagementRoutingModule
+          ),
+      },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
     component: CoreLayoutComponent,

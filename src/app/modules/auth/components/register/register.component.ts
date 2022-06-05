@@ -93,7 +93,7 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(this.registerationFormData).subscribe(
       (result : any) => {
-        if(result.code == 200){
+        if(result.isSuccess == true){
           this.messageService.add({severity:'success', summary: 'نجاح', detail: 'تم التسجيل بنجاح'});
           setTimeout(() => {
             this.router.navigate(['/auth/login']);

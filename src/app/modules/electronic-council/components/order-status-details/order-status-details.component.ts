@@ -48,7 +48,7 @@ export class OrderStatusDetailsComponent implements OnInit {
 
     this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
       (result : any) =>{
-        if(result.code == 200){
+        if(result.isSuccess == true){
           this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
           setTimeout(() => {this._router.navigate(['/e-council/incoming-orders']);} , 3000);            
         }},
@@ -66,7 +66,7 @@ export class OrderStatusDetailsComponent implements OnInit {
 
         this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
           (result : any) =>{
-            if(result.code == 200){
+            if(result.isSuccess == true){
               this._router.navigate(['/e-council/incoming-orders']);
               this.displayMessage = false
             }

@@ -1,0 +1,98 @@
+
+    <!-- <div *ngFor="let user of dataListSetting?.formArray.controls">{{ user.value }}</div> -->
+<ng-container *ngIf="dataListSetting">
+  <form  [formGroup]="dataListSetting?.form">
+    <p-table [formArrayName]="dataListSetting?.formArray" [value]="dataListSetting?.formArray.controls"
+    [autoLayout]="true" [responsive]="true" [loading]="displayLoading" [columns]="dataListSetting?.cols"
+    class="w-100">
+    <ng-template pTemplate="header" let-cols>
+      <tr>
+        <th *ngFor="let col of cols" [pSortableColumn]="col.Field"
+          [hidden]="col.Hidden"
+          class="border-0 font-weight-light black-alt-text fs-14 no-outline text-nowrap"
+          [ngClass]="{'action-td-on-grid': col.Field==='actions'}">
+          {{col.Header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template  pTemplate="body" let-formGroup let-columns="columns"
+      let-rowIndex="rowIndex">
+      <tr [pSelectableRow]="formGroup" [formGroup]="dataListSetting?.formArray.controls[rowIndex]">
+        <td *ngFor="let column of columns | HiddenAuthorizeColumnFilter" class="border-0 font-weight-light text-nowrap py-1 px-1">
+              <!-- Handle checkbox fields -->
+              <ng-container *ngIf="column.Type === 'checkBox'">
+                <p-tableCheckbox [value]="formGroup.get(column.Field)"></p-tableCheckbox>
+              </ng-container>
+
+              <!-- Handle general data fields -->
+              <ng-container *ngIf="!column.Type || column.Type === 'data'">
+                {{ !column.Pipe ? formGroup.get(column.Field).value : column.Pipe === 'date' ? (formGroup.get(column.Field).value | date: column.PipeOptions.Format)
+                  : column.Pipe === 'currency' ? (formGroup.get(column.Field).value | currency: column.PipeOptions.CurrencyCode : column.PipeOptions.Display
+                  : column.PipeOptions.DigitsInfo : column.PipeOptions.Locale) : formGroup.get(column.Field).value }}
+              </ng-container>
+
+              <!-- Handle auto complete fields -->
+              <ng-container *ngIf="column.Type === 'autoComplete'">
+                  <p-autoComplete class="form-control select2 custom-select autocomplete-form-control" field="Name" [delay]="1500"
+                    [suggestions]="filteredArray" [forceSelection]="true" [formControlName]="column.Field" (onSelect)="column.FuncName($event,formGroup)"
+                    (completeMethod)="filterArray($event,column.ShortVM,'Name')" [size]="30" [minLength]="1" [dropdown]="true"
+                    [ngClass]="{'is-invalid': (formSubmitted || formGroup.get(column.Field).touched) && formGroup.get(column.Field).errors}">
+                    <ng-template let-element pTemplate="item">
+                      <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+                        <div>
+                          {{element.Name}}
+                        </div>
+                      </div>
+                    </ng-template>
+                  </p-autoComplete>
+                  <div class="invalid-feedback"
+                    *ngIf="formGroup.get(column.Field).errors?.required && (formSubmitted || formGroup.get(column.Field).touched)">
+                    هذا الحقل مطلوب
+                  </div>
+              </ng-container>
+
+               <!-- Handle number fields -->
+               <ng-container *ngIf="column.Type === 'number'">
+                  <input type="number" class="form-control" (input)="column.FuncName(formGroup)" [formControlName]="column.Field"
+                    [ngClass]="{'is-invalid': (formSubmitted || formGroup.get(column.Field).touched) && formGroup.get(column.Field).errors}">
+
+                  <div class="invalid-feedback"
+                    *ngIf="formGroup.get(column.Field).errors?.required && (formSubmitted || formGroup.get(column.Field).touched)">
+                    هذا الحقل مطلوب
+                  </div>
+              </ng-container>
+
+              <!-- Handle text box fields -->
+              <ng-container *ngIf="column.Type === 'textBox'">
+                  <input type="text" class="form-control" [formControlName]="column.Field" (input)="column.FuncName(formGroup)"
+                    [ngClass]="{'is-invalid': (formSubmitted || formGroup.get(column.Field).touched) && formGroup.get(column.Field).errors}">
+
+                  <div class="invalid-feedback"
+                    *ngIf="formGroup.get(column.Field).errors?.required && (formSubmitted || formGroup.get(column.Field).touched)">
+                    هذا الحقل مطلوب
+                  </div>
+              </ng-container>
+
+               <!-- Handle binary status data fields -->
+               <ng-container *ngIf="column.Type === 'status'">
+                <span class="m-badge status" [ngClass]="{
+                    'm-badge--success': !formGroup.get(column.Field).value,
+                    'm-badge--danger': formGroup.get(column.Field).value }">
+                  <p-inputSwitch (onChange)="column.FuncName(formGroup)" [formControlName]="column.Field"></p-inputSwitch>
+                </span>
+              </ng-container>
+
+              <!-- Handle action button fields -->
+              <ng-container *ngIf="column.Type === 'action'">
+                  <a class="cursor-pointer" (click)="column.FuncName(rowIndex,formGroup)">
+                      <i class="la la-trash-o la-2x black-alt-text" title="delete"></i>
+                  </a>
+              </ng-container>
+        </td>
+      </tr>
+    </ng-template>
+    </p-table>
+   </form>
+</ng-container>
+
+

@@ -21,7 +21,7 @@ export class OrderInquiryComponent implements OnInit {
   inquiry(){
     this.requestService.inquire(this.inquiryModel).subscribe(
       (result : any) => {
-        if(result.code == 200){
+        if(result.isSuccess == true){
           console.log(result);
 
         }

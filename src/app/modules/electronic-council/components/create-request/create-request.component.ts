@@ -64,7 +64,7 @@ export class CreateRequestComponent implements OnInit {
         
         this._requestService.getRequests(inquire).subscribe(
           (result : any) => {
-            if(result.code == 200){
+            if(result.isSuccess == true){
               debugger
               this.currentRequest = result.data[0];
               this.orderForm.setValue({

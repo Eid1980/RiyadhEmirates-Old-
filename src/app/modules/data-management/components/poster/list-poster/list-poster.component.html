@@ -1,0 +1,26 @@
+<a [routerLink]="['/data-management/poster-add']" class="btn btn-primary btn-save-cancel">جديد</a>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let poster of posters" class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" [src]="poster?.Base64File" alt="">
+        <div class="card-body">
+
+          <span class="m-badge status" [ngClass]="{
+              'm-badge--success': poster?.IsActive,
+              'm-badge--danger': !poster?.IsActive }">
+            <p-inputSwitch (onChange)="changeStatus(poster?.Id,$event)" [(ngModel)]="poster.IsActive"
+              [ngModelOptions]="{standalone: true}"></p-inputSwitch>
+            
+              <a href="javascript:;" (click)="onRemove(poster?.Id)" class="btn border-0 btn-danger mx-1 px-1 py-0"><i
+                class="la la-trash-o"></i></a>
+
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-confirmDialog header="" icon="pi pi-exclamation-triangle"></p-confirmDialog>

@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl : 'http://localhost:5162/api',
-  imagePathURL : 'http://localhost:5162/uploads/'
+  apiUrl : 'https://localhost:5001/api',
+  imagePathURL : 'https://localhost:5001/uploads/'
 
 };

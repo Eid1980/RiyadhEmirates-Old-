@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
   formSubmit(){
     this.authService.login(this.loginForm.value).subscribe(
       (result : any) => {
-        if(result.code == 200){
-          this.userService.saveUserInfo(result.data);
+        if(result.isSuccess == true){
+          this.userService.saveUserInfo(result.data.data);
           this.router.navigate(['home']);
         }else{
           this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});

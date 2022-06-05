@@ -1,0 +1,45 @@
+<div class="row mx-0 mt-5">
+    <div class="col-md-10 mx-auto">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-horizontal">
+  
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="card-title text-right mb-0">إضافة إعلان جديد</h4>
+            <a [routerLink]="['/data-management/poster-list']" class="btn btn-primary btn-save-cancel">عرض الكل</a>
+          </div>
+          <div class="card-body">
+  
+        
+
+            <div class="row mx-0">
+                <div class="col-lg-6 col-12">
+                    <div class="form-group row">
+                        <label for="Image" class="col-sm-2 text-right control-label col-form-label">الصورة
+                        <span class=danger>*</span>
+                        </label>
+                        <div class="col-sm-10">
+                         <p-fileUpload #uploader chooseLabel="تحميل الصورة"
+                          [auto]="true" [customUpload]="isCustomUpload" 
+                          (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)"
+                          [multiple]="isMultiple" mode="advanced"  accept="image/*"  [maxFileSize]="fileSize">
+                         </p-fileUpload>
+
+                         <small *ngIf="(isFormSubmitted || form.get('Image').touched) && form.get('Image').errors?.required" class="form-text danger text-right">هذاالحقل مطلوب</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="card-footer text-right">
+            <button type="submit" class="btn btn-primary btn-save-cancel">حفظ</button>
+            <a [routerLink]="['/data-management/poster-list']" class="btn btn-secondary mx-2 btn-save-cancel">إلغاء</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  
+  
+  
+  
