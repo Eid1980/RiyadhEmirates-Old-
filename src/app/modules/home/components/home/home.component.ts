@@ -122,7 +122,7 @@ export class HomeComponent implements OnInit {
 
   getEmiratesNews(){
     this._adminService.getALlEmiratesNews().subscribe((result:any)=>{
-      debugger;
+      
      this.emiratesNews = result.Data;
     })
    }
@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
    }
 
   navigateTo() {
-    if (this._userService.currentUser.Role.toLocaleLowerCase() == 'admin') {
+    if (this._userService.currentUser.IsAdmin) {
       this._router.navigate(['/e-council/incoming-orders']);
     } else {
       this._router.navigate(['/e-council/create']);

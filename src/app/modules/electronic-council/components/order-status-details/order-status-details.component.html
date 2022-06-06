@@ -163,7 +163,7 @@
 
     <!--<div *ngIf="userModel.IsAdmin == true">-->
 
-    <div *ngIf="userModel.Role == 'admin' || userModel.Role == 'Admin'">
+    <div *ngIf="userModel.IsAdmin">
       <button class="btn btn-success" (click)="acceptRequest()">موافق</button>
       <button class="btn btn-danger" (click)="rejectRequest()">مرفوض</button>
 

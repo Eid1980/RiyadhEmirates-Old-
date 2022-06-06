@@ -47,7 +47,7 @@ export class MyOrdersComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    debugger
+  
     this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)

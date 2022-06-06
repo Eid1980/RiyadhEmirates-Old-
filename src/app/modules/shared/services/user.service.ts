@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private sessionService : SessionStorageService) { 
 
-    debugger
+    
     this.currentUser = new UserModel();
     if(this.sessionService.get('user') != null &&  this.sessionService.get('user') != 'undefined'){
       let userInfojson : UserModel = JSON.parse( this.sessionService.get('user'));

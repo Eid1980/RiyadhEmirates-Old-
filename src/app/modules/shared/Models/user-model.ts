@@ -7,6 +7,8 @@ export class UserModel {
     PhoneNumber : string;
     BirthDate : Date;
     Role : string;
+    UserName : string;
+    IsAdmin : boolean;
 
 
     constructor ()

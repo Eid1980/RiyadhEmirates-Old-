@@ -61,7 +61,7 @@ export class OrderStatusDetailsComponent implements OnInit {
 
     if(this.displayMessage){
 
-        debugger
+      
         var updateRequestStatus = {requestId : this.currentRequestInfo.id , status : RequestStatusEnum.Rejected , rejectMsg : this.messageReason};
 
         this._requestService.updateRequestStatus(updateRequestStatus).subscribe(

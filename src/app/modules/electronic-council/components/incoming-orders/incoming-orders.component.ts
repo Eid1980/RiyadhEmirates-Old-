@@ -75,7 +75,7 @@ export class IncomingOrdersComponent implements OnInit {
   this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)
-      debugger
+      
       if(result.IsSuccess == true){
         this.requests = result.Data
         this.loading = false

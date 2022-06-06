@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   formSubmit(){
     this.authService.login(this.loginForm.value).subscribe(
       (result : any) => {
-        debugger
+        
         if(result.IsSuccess == true){
 
           // save token
