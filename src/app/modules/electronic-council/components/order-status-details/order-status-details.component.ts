@@ -34,7 +34,7 @@ export class OrderStatusDetailsComponent implements OnInit {
     private _userService: UserService,
     private _router: Router,
     private messageService : MessageService,
-    ) { 
+    ) {
 
     }
 
@@ -44,13 +44,13 @@ export class OrderStatusDetailsComponent implements OnInit {
   }
 
   acceptRequest(){
-    var updateRequestStatus = {requestId : this.currentRequestInfo.id , status : RequestStatusEnum.Pending};
+    var updateRequestStatus = {requestId : this.currentRequestInfo.id , requestStatusId : RequestStatusEnum.Pending};
 
     this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
       (result : any) =>{
-        if(result.code == 200){
+        if(result.IsSuccess == true){
           this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
-          setTimeout(() => {this._router.navigate(['/e-council/incoming-orders']);} , 3000);            
+          setTimeout(() => {this._router.navigate(['/e-council/incoming-orders']);} , 3000);
         }},
       () => {}
     )
@@ -59,14 +59,14 @@ export class OrderStatusDetailsComponent implements OnInit {
 
   rejectRequest(){
 
-    if(this.displayMessage){ 
+    if(this.displayMessage){
 
         debugger
         var updateRequestStatus = {requestId : this.currentRequestInfo.id , status : RequestStatusEnum.Rejected , rejectMsg : this.messageReason};
 
         this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
           (result : any) =>{
-            if(result.code == 200){
+            if(result.IsSuccess == true){
               this._router.navigate(['/e-council/incoming-orders']);
               this.displayMessage = false
             }

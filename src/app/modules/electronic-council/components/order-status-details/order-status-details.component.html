@@ -8,7 +8,7 @@
     <a class="breadcrumb-item" href="#"> دليل الخدمات</a>
     <span class="breadcrumb-item active">المجلس الإلكتروني</span>
   </nav>
-  
+
   <div class="page-wrapper">
     <div class="row mx-0">
       <!-- user side menu -->
@@ -51,11 +51,11 @@
             <div class="row mx-0">
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">اسم مقدم الطلب</span>
-                <span class="form-val">{{currentRequestInfo?.user?.displayName}}</span>
+                <span class="form-val">{{currentRequestInfo?.User?.Name}}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
                 <span class="form-lbl lbl-33">تاريخ الميلاد</span>
-                <span class="form-val">{{currentRequestInfo?.user?.birthDate}}</span>
+                <span class="form-val">{{currentRequestInfo?.User?.BirthDate}}</span>
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">الجنس</span>
@@ -63,15 +63,15 @@
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">البريد الإلكتروني</span>
-                <span class="form-val">{{currentRequestInfo?.user?.email}}</span>
+                <span class="form-val">{{currentRequestInfo?.User?.Email}}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
                 <span class="form-lbl lbl-33">رقم الهوية</span>
-                <span class="form-val">{{currentRequestInfo?.user?.nationalId}}</span>
+                <span class="form-val">{{currentRequestInfo?.User?.NationalId}}</span>
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">رقم الجوال</span>
-                <span class="form-val">{{currentRequestInfo?.user?.phoneNumber}}</span>
+                <span class="form-val">{{currentRequestInfo?.User?.PhoneNumber}}</span>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
                 <h5>بيانات الطلب</h5>
               </div>
               <div class="form-content">
-  
+
                 <div class="row mx-0 position-relative">
                   <div class="info-col">
                     <span class="form-lbl lbl-18"> رقم الطلب</span>
@@ -92,26 +92,26 @@
                   </div>
                   <div class="info-col">
                     <span class="form-lbl lbl-18"> نوع الطلب</span>
-                    <span class="form-val ltr">{{currentRequestInfo?.requestTypeAr}}</span>
+                    <span class="form-val ltr">{{currentRequestInfo?.RequestTypeAr}}</span>
                   </div>
                   <div class="info-col">
                     <span class="form-lbl lbl-18">عنوان الطلب</span>
-                    <span class="form-val ltr">{{currentRequestInfo?.header}}</span>
+                    <span class="form-val ltr">{{currentRequestInfo?.Header}}</span>
                   </div>
                   <div class="info-col">
                     <span class="form-lbl lbl-18">الوصف</span>
                     <span class="form-val ltr">
-                      {{currentRequestInfo?.content}}
+                      {{currentRequestInfo?.Content}}
                     </span>
                   </div>
                   <!-- Date -->
                   <div class="order-date">
                     <img src="./assets/images/icons/order-date.svg" alt="">
-                    <span class="ltr">{{currentRequestInfo?.creationDate | date:"dd/MM/yyyy"}}</span>
+                    <span class="ltr">{{currentRequestInfo?.CreationDate | date:"dd/MM/yyyy"}}</span>
                   </div>
                 </div>
-  
-  
+
+
               </div>
             </div>
           </div>
@@ -122,34 +122,34 @@
                 <h5>المرفقات</h5>
               </div>
               <div class="form-content">
-                <div *ngIf="currentRequestInfo == null || currentRequestInfo?.attachment1 == undefined">
-              لايوجد بيانات              
+                <div *ngIf="currentRequestInfo == null || currentRequestInfo?.Attachment1 == undefined">
+              لايوجد بيانات
                 </div>
-                <div *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment1 != undefined">
+                <div *ngIf="currentRequestInfo != null && currentRequestInfo?.Attachment1 != undefined">
                 <div class="row mx-0 px-2">
                   <div class="col-md-4 mb-4 px-1">
-                    <div class="attachments" >
-                      <p-image [src]='imagePath + currentRequestInfo.attachment1' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
+                    <div class="Attachments" >
+                      <p-image [src]='imagePath + currentRequestInfo.Attachment1' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                     </div>
                   </div>
-                  <div class="col-md-4 mb-4 px-1"  *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment2 != undefined">
-                    <div class="attachments">
-                      <p-image [src]='imagePath + currentRequestInfo.attachment2' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
+                  <div class="col-md-4 mb-4 px-1"  *ngIf="currentRequestInfo != null && currentRequestInfo?.Attachment2 != undefined">
+                    <div class="Attachments">
+                      <p-image [src]='imagePath + currentRequestInfo.Attachment2' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                     </div>
                   </div>
-                  <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment3 != undefined">
-                    <div class="attachments">
-                      <p-image [src]='imagePath + currentRequestInfo.attachment3' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
+                  <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.Attachment3 != undefined">
+                    <div class="Attachments">
+                      <p-image [src]='imagePath + currentRequestInfo.Attachment3' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                     </div>
                   </div>
-                  <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment4 != undefined">
-                    <div class="attachments">
-                      <p-image [src]='imagePath + currentRequestInfo.attachment4' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
+                  <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.Attachment4 != undefined">
+                    <div class="Attachments">
+                      <p-image [src]='imagePath + currentRequestInfo.Attachment4' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                     </div>
                   </div>
-                  <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.attachment5 != undefined">
-                    <div class="attachments">
-                      <p-image [src]='imagePath + currentRequestInfo.attachment5' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
+                  <div class="col-md-4 mb-4 px-1" *ngIf="currentRequestInfo != null && currentRequestInfo?.Attachment5 != undefined">
+                    <div class="Attachments">
+                      <p-image [src]='imagePath + currentRequestInfo.Attachment5' alt="Image" [preview]="true" width="100%" class="w-100 h-100 file"></p-image>
                     </div>
                   </div>
                 </div>
@@ -161,7 +161,9 @@
       </div>
     </div>
 
-    <div *ngIf="userModel.role == 'admin' || userModel.role == 'Admin'">
+    <!--<div *ngIf="userModel.IsAdmin == true">-->
+
+    <div *ngIf="userModel.Role == 'admin' || userModel.Role == 'Admin'">
       <button class="btn btn-success" (click)="acceptRequest()">موافق</button>
       <button class="btn btn-danger" (click)="rejectRequest()">مرفوض</button>
 

@@ -26,7 +26,7 @@ export class IncomingOrdersComponent implements OnInit {
   pendingRequest : number = RequestStatusEnum.Pending;
   acceptRequest : number = RequestStatusEnum.Accept;
   rejectedRequest : number = RequestStatusEnum.Rejected;
-  dreatedRequest : number = RequestStatusEnum.Drafted; 
+  dreatedRequest : number = RequestStatusEnum.Drafted;
 
 
   first: number = 0;
@@ -36,7 +36,7 @@ export class IncomingOrdersComponent implements OnInit {
   loading: boolean = true;
 
   display: boolean = false;
-  
+
   constructor( private requsetService : RequestService,
     private messageService: MessageService,
     private _sharedService : SharedService,
@@ -50,14 +50,14 @@ export class IncomingOrdersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.searchCriteria = new InquiryModel();  
+    this.searchCriteria = new InquiryModel();
     this.getRequests(this.newRequest);
 
 
     // sort critera
     this.multiSortMeta = [];
     this.multiSortMeta.push({field: 'year', order: 1});
-    this.multiSortMeta.push({field: 'brand', order: -1}); 
+    this.multiSortMeta.push({field: 'brand', order: -1});
   }
 
   showDialog(selectedOrder : RequestModel) {
@@ -70,15 +70,15 @@ export class IncomingOrdersComponent implements OnInit {
 }
 
  getRequests(requestTypeId : number){
-   
+
   this.searchCriteria.requestStatusId = requestTypeId
   this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)
       debugger
-      if(result.code == 200){
-        this.requests = result.data
-        this.loading = false 
+      if(result.IsSuccess == true){
+        this.requests = result.Data
+        this.loading = false
       }else{
         this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
       }

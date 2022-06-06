@@ -2,20 +2,20 @@ import { UserModel } from "./user-model";
 
 export class RequestModel {
     id : number;
-    header : string;
-    content : string;
+    Header : string;
+    Content : string;
     SerialNumber : string;
-    requestTypeId : number;
-    statusMsgAr: string;
-    requsetStatusEn: string
-    requestTypeEn : string;
-    requestTypeAr : string; 
-    attachment1 : string;
-    attachment2 : string;
-    attachment3 : string;
-    attachment4 : string;
-    attachment5 : string
-    creationDate : Date;
-    user : UserModel
+    RequestTypeId : number;
+    StatusMsgAr: string;
+    RequsetStatusEn: string
+    RequestTypeEn : string;
+    RequestTypeAr : string;
+    Attachment1 : string;
+    Attachment2 : string;
+    Attachment3 : string;
+    Attachment4 : string;
+    Attachment5 : string
+    CreationDate : Date;
+    User : UserModel
 
 }

@@ -89,7 +89,7 @@ export class RegisterComponent implements OnInit {
     
     // set default values for address and nationId
     this.registerationForm.value.address = 'Saudi Arabia'
-    this.registerationForm.value.nationalID = '29706055985889'
+    this.registerationForm.value.nationalID = this.registerationForm.value.userName
 
     this.registerationFormData.append('name'  , this.registerationForm.value.name); 
     this.registerationFormData.append('nationalID'  , this.registerationForm.value.nationalID); 
@@ -104,7 +104,7 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(this.registerationFormData).subscribe(
       (result : any) => {
-        if(result.code == 200){
+        if(result.IsSuccess == true){
           this.messageService.add({severity:'success', summary: 'نجاح', detail: 'تم التسجيل بنجاح'});
           setTimeout(() => {
             this.router.navigate(['/auth/login']);

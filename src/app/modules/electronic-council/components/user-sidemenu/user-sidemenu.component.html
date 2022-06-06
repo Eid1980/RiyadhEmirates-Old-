@@ -2,9 +2,9 @@
   <div class="d-flex justify-content-start align-items-center user">
     <img src="./assets/images/user-img.svg" alt="" class="user-img">
     <div>
-      <span class="d-block name">{{userModel?.displayName}}</span>
-      <span class="d-block mail">{{userModel?.email}}</span>
-      <span class="d-block phone">{{userModel?.phoneNumber}}</span>
+      <span class="d-block name">{{userModel?.Name}}</span>
+      <span class="d-block mail">{{userModel?.Email}}</span>
+      <span class="d-block phone">{{userModel?.PhoneNumber}}</span>
     </div>
   </div>
   <ul class="prof-menu">
@@ -22,38 +22,38 @@
         لوحة المتابعة
       </a>
     </li>
-    <li *ngIf="userModel.role == 'admin' || userModel.role == 'Admin'">
+    <li *ngIf="userModel.Role == 'admin' || userModel.Role == 'Admin'">
       <a routerLink="/e-council/incoming-orders" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-dash.svg" alt="">
         الطلبات الواردة
       </a>
     </li>
-    
-    <li *ngIf="userModel.role == 'user' || userModel.role == 'User'">
+
+    <li *ngIf="userModel.Role == 'user' || userModel.Role == 'User'">
       <a routerLink="/e-council/create" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/new-order.svg" alt="">
         طلب جديد
       </a>
     </li>
-    <li *ngIf="userModel.role == 'admin' || userModel.role == 'Admin'">
+    <li *ngIf="userModel.Role == 'admin' || userModel.Role == 'Admin'">
       <a routerLink="/e-council/inquiry" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-search.svg" alt="">
         استعلام عن طلب
       </a>
     </li>
-    <li *ngIf="userModel.role == 'user' || userModel.role == 'User'">
+    <li *ngIf="userModel.Role == 'user' || userModel.Role == 'User'">
       <a routerLink="/e-council/my-orders" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-orders.svg" alt="">
         طلباتي
       </a>
     </li>
-    <li *ngIf="userModel.role == 'user' || userModel.role == 'User'">
+    <li *ngIf="userModel.Role == 'user' || userModel.Role == 'User'">
       <a routerLink="/e-council/saved" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-saved.svg" alt="">
         طلبات محفوظة
       </a>
     </li>
-    <li *ngIf="userModel.role == 'user' || userModel.role == 'User'">
+    <li *ngIf="userModel.Role == 'user' || userModel.Role == 'User'">
       <a routerLink="/e-council/rate" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-rate.svg" alt="">
         تقييم خدمة

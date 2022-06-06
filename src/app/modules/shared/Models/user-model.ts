@@ -1,22 +1,21 @@
 export class UserModel {
     Id : string;
-    displayName : string;
-    nationalId : string;
-    email : string;
-    address : string;
-    phoneNumber : string;
-    birthDate : Date;
-    role : string;
-    token : string;
+    Name : string;
+    NationalId : string;
+    Email : string;
+    Address : string;
+    PhoneNumber : string;
+    BirthDate : Date;
+    Role : string;
+
 
     constructor ()
     {
         this.Id = "";
-        this.displayName = "";
-        this.email = "";
-        this.address = "";
-        this.phoneNumber = "";
-        this.token = "";
-        this.role = "";
+        this.Name = "";
+        this.Email = "";
+        this.Address = "";
+        this.PhoneNumber = "";
+        this.Role = "";
     }
 }

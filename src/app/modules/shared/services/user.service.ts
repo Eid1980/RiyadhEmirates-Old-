@@ -11,16 +11,19 @@ export class UserService {
 
   constructor(private sessionService : SessionStorageService) { 
 
+    debugger
     this.currentUser = new UserModel();
-    let userInfojson : UserModel = JSON.parse(this.sessionService.get('user'));
+    if(this.sessionService.get('user') != null &&  this.sessionService.get('user') != 'undefined'){
+      let userInfojson : UserModel = JSON.parse( this.sessionService.get('user'));
 
-    if( userInfojson != null && this.currentUser != null){
-      this.currentUser =  userInfojson;
-     }
+      if( userInfojson != null && this.currentUser != null){
+        this.currentUser =  userInfojson;
+       }
+    }
   }
 
   getAuthStatus() : boolean{
-    return this.currentUser.email == null || this.currentUser.email == undefined  || this.currentUser.email == "" ? false : true
+    return this.currentUser.Id == null || this.currentUser.Id == undefined  || this.currentUser.Id == "" ? false : true
   }
 
   saveUserInfo(userModel : UserModel){
