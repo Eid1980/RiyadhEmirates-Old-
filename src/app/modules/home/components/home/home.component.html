@@ -84,55 +84,14 @@
 
       <div class="owl-carousel owl-theme">
         <!-- Repeatable Item -->
-        <div class="item">
-          <a href="#">
-            <img src="./assets/images/icons/services/prisoner.svg" alt="" class="ser-icon">
-            <p class="ser-name h-2">خروج مؤقت لسجين للعلاج والتنويم</p>
-            <p class="ser-desc h-2">
-              تٌتيح لك الخدمات الإلكترونية إمكانية التقدم بطلب لإمارة منطقة الرياض وذلك في الزمان والمكان
-            </p>
+        <div class="item" *ngFor="let service of services">
+          <a [href]="service.Link">
+            <img *ngIf="service.Image" [src]="service.Image.Base64File" [alt]="service.TitleAr" class="ser-icon">
+            <p class="ser-name h-2">{{service.TitleAr}}</p>
+            <p class="ser-desc h-2">{{service.DescriptionAr}}</p>
           </a>
         </div>
-        <!-- Repeatable Item -->
-        <div class="item">
-          <a href="#">
-            <img src="./assets/images/icons/services/couple.svg" alt="" class="ser-icon">
-            <p class="ser-name h-2">زواج السعودي بغير سعودية مقيمة خارج المملكة</p>
-            <p class="ser-desc h-2">
-              تٌتيح لك الخدمات الإلكترونية إمكانية التقدم بطلب لإمارة منطقة الرياض وذلك في الزمان والمكان
-            </p>
-          </a>
-        </div>
-        <!-- Repeatable Item -->
-        <div class="item">
-          <a href="#">
-            <img src="./assets/images/icons/services/magnifying-glass.svg" alt="" class="ser-icon">
-            <p class="ser-name h-2">بلاغ عن التعديات على الأراضي الحكومية</p>
-            <p class="ser-desc h-2">
-              تٌتيح لك الخدمات الإلكترونية إمكانية التقدم بطلب لإمارة منطقة الرياض وذلك في الزمان والمكان
-            </p>
-          </a>
-        </div>
-        <!-- Repeatable Item -->
-        <div class="item">
-          <a href="#">
-            <img src="./assets/images/icons/services/contract.svg" alt="" class="ser-icon">
-            <p class="ser-name h-2">طلب علاج إدمان</p>
-            <p class="ser-desc h-2">
-              تٌتيح لك الخدمات الإلكترونية إمكانية التقدم بطلب لإمارة منطقة الرياض وذلك في الزمان والمكان
-            </p>
-          </a>
-        </div>
-        <!-- Repeatable Item -->
-        <div class="item">
-          <a href="#">
-            <img src="./assets/images/icons/services/prisoner.svg" alt="" class="ser-icon">
-            <p class="ser-name h-2">خروج مؤقت لسجين للعلاج والتنويم</p>
-            <p class="ser-desc h-2">
-              تٌتيح لك الخدمات الإلكترونية إمكانية التقدم بطلب لإمارة منطقة الرياض وذلك في الزمان والمكان
-            </p>
-          </a>
-        </div>
+        
       </div>
 
     </div>

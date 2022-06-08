@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   emiratesNews:any[]=[];
   latestNews:any[]=[];
   reports:any[]=[];
+  services:any[]=[];
 
   constructor(private _userService: UserService,
               private _router: Router,
@@ -110,7 +111,8 @@ export class HomeComponent implements OnInit {
     this.getPosters();
     this.getEmiratesNews();
     this.getLatestNews();
-    this.getReports()
+    this.getReports();
+    this.getServices();
   }
 
   getPosters(){
@@ -136,6 +138,12 @@ export class HomeComponent implements OnInit {
    getReports(){
     this._adminService.getALlReports().subscribe((result:any)=>{
      this.reports = result.Data;
+    })
+   }
+
+   getServices(){
+    this._adminService.getALlServices().subscribe((result:any)=>{
+     this.services = result.Data;
     })
    }
 

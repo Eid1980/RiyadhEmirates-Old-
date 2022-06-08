@@ -26,4 +26,8 @@ export class AdminService {
   getALlReports():Observable<any> {
     return this.httpClient.get<any>(`${environment.adminUrl}/api/Reports/GetAll`)
   }
+
+  getALlServices():Observable<any> {
+    return this.httpClient.get<any>(`${environment.adminUrl}/api/Services/GetAll`)
+  }
 }
