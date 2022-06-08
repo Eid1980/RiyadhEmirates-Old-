@@ -10,18 +10,20 @@ declare let $: any;
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  posters:any[]=[];
-  emiratesNews:any[]=[];
-  latestNews:any[]=[];
-  reports:any[]=[];
+  posters: any[] = [];
+  emiratesNews: any[] = [];
+  latestNews: any[] = [];
+  reports: any[] = [];
 
-  constructor(private _userService: UserService, 
-              private _router: Router,
-              private _adminService:AdminService,
-              private globalService:GlobalService) {}
+  constructor(
+    private _userService: UserService,
+    private _router: Router,
+    private _adminService: AdminService,
+    private globalService: GlobalService
+  ) {}
 
   ngOnInit() {
-    setTimeout(function(){
+    setTimeout(function () {
       $('.news .owl-carousel').owlCarousel({
         loop: true,
         margin: 10,
@@ -42,7 +44,7 @@ export class HomeComponent implements OnInit {
         },
       });
     }, 2000);
-    setTimeout(function(){
+    setTimeout(function () {
       $('.e-services .owl-carousel').owlCarousel({
         loop: true,
         margin: 10,
@@ -63,7 +65,7 @@ export class HomeComponent implements OnInit {
         },
       });
     }, 2000);
-      setTimeout(function(){
+    setTimeout(function () {
       $('.gov-news .owl-carousel').owlCarousel({
         loop: true,
         margin: 10,
@@ -84,7 +86,7 @@ export class HomeComponent implements OnInit {
         },
       });
     }, 2000);
-      setTimeout(function(){
+    setTimeout(function () {
       $('.advertise-report .owl-carousel').owlCarousel({
         loop: true,
         margin: 10,
@@ -105,39 +107,37 @@ export class HomeComponent implements OnInit {
         },
       });
     }, 2000);
-    
-  
+
     this.getPosters();
     this.getEmiratesNews();
     this.getLatestNews();
-    this.getReports()
+    this.getReports();
   }
 
-  getPosters(){
-   this._adminService.getALlPosters('Poster').subscribe((result:any[]) =>{
-    this.posters = result;
-   })
+  getPosters() {
+    this._adminService.getALlPosters('Poster').subscribe((result: any[]) => {
+      this.posters = result;
+    });
   }
 
-
-  getEmiratesNews(){
-    this._adminService.getALlEmiratesNews().subscribe((result:any)=>{
+  getEmiratesNews() {
+    this._adminService.getALlEmiratesNews().subscribe((result: any) => {
       debugger;
-     this.emiratesNews = result.Data;
-    })
-   }
+      this.emiratesNews = result.Data;
+    });
+  }
 
-   getLatestNews(){
-    this._adminService.getALlLatesNews().subscribe((result:any)=>{
-     this.latestNews = result.Data;
-    })
-   }
+  getLatestNews() {
+    this._adminService.getALlLatesNews().subscribe((result: any) => {
+      this.latestNews = result.Data;
+    });
+  }
 
-   getReports(){
-    this._adminService.getALlReports().subscribe((result:any)=>{
-     this.reports = result.Data;
-    })
-   }
+  getReports() {
+    this._adminService.getALlReports().subscribe((result: any) => {
+      this.reports = result.Data;
+    });
+  }
 
   navigateTo() {
     if (this._userService.currentUser.role.toLocaleLowerCase() == 'admin') {
@@ -147,19 +147,38 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  formatDate(date:any){
-    let newDate = new Date(date)
-    var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
-              "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
-     let hijriDate = this.globalService.convertToHijri(newDate,'ar');
-     return hijriDate.toString() +'     -     '+
-      newDate.getDay().toString() +' '+ months[newDate.getMonth()] +' '+ 
-      newDate.getFullYear().toString()+' م ';
+  formatDate(date: any) {
+    let newDate = new Date(date);
+    var months = [
+      'يناير',
+      'فبراير',
+      'مارس',
+      'إبريل',
+      'مايو',
+      'يونيو',
+      'يوليو',
+      'أغسطس',
+      'سبتمبر',
+      'أكتوبر',
+      'نوفمبر',
+      'ديسمبر',
+    ];
+    let hijriDate = this.globalService.convertToHijri(newDate, 'ar');
+    return (
+      hijriDate.toString() +
+      '     -     ' +
+      newDate.getDay().toString() +
+      ' ' +
+      months[newDate.getMonth()] +
+      ' ' +
+      newDate.getFullYear().toString() +
+      ' م '
+    );
   }
 
-  getHijriDate(date:any){
-    let newDate = new Date(date)
-     let hijriDate = this.globalService.convertToHijri(newDate,'ar');
-     return hijriDate.toString();
+  getHijriDate(date: any) {
+    let newDate = new Date(date);
+    let hijriDate = this.globalService.convertToHijri(newDate, 'ar');
+    return hijriDate.toString();
   }
 }
