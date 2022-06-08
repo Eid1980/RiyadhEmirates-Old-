@@ -13,7 +13,7 @@ import { MessageService } from 'primeng/api';
 })
 export class DraftRequestsComponent implements OnInit {
 
-  
+
   requests : RequestModel[];
   selectedOrder : RequestModel;
   searchCriteria: InquiryModel;
@@ -26,18 +26,18 @@ export class DraftRequestsComponent implements OnInit {
     private requsetService : RequestService,
     private messageService : MessageService,
     private _sharedService : SharedService,
-    private _router: Router, 
+    private _router: Router,
   ) {
     this.searchCriteria = new InquiryModel();
    }
 
   ngOnInit(): void {
- 
+
     this.requsetService.getDraftedRequests().subscribe(
       (result : any) => {
         console.log(result)
-        if(result.code == 200){
-          this.requests = result.data
+        if(result.IsSuccess == true){
+          this.requests = result.Data
         }else{
           this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
         }
@@ -46,11 +46,11 @@ export class DraftRequestsComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'خطأ', detail: error});
       }
       );
-  
+
       // sort critera
       this.multiSortMeta = [];
       this.multiSortMeta.push({field: 'year', order: 1});
-      this.multiSortMeta.push({field: 'brand', order: -1}); 
+      this.multiSortMeta.push({field: 'brand', order: -1});
   }
 
 
@@ -58,7 +58,7 @@ export class DraftRequestsComponent implements OnInit {
     this._sharedService.selectedRequest = selectedOrder;
 
     this._router.navigate(['/e-council/create']);
-    
+
    /* this.selectedOrder = selectedOrder;
     this.display = true;*/
 }

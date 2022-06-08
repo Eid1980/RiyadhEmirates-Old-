@@ -31,11 +31,11 @@
             <div class="row mx-0">
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">اسم مقدم الطلب</span>
-                <span class="form-val">{{userModel?.displayName}}</span>
+                <span class="form-val">{{userModel?.Name}}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
                 <span class="form-lbl lbl-33">تاريخ الميلاد</span>
-                <span class="form-val">{{userModel?.birthDate | date:'dd/MM/yyyy'}}</span>
+                <span class="form-val">{{userModel?.BirthDate | date:'dd/MM/yyyy'}}</span>
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">الجنس</span>
@@ -43,21 +43,21 @@
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">البريد الإلكتروني</span>
-                <span class="form-val">{{userModel?.email}}</span>
+                <span class="form-val">{{userModel?.Email}}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
                 <span class="form-lbl lbl-33">رقم الهوية</span>
-                <span class="form-val">{{userModel?.nationalId}}</span>
+                <span class="form-val">{{userModel?.UserName}}</span>
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">رقم الجوال</span>
-                <span class="form-val">{{userModel?.phoneNumber}}</span>
+                <span class="form-val">{{userModel?.PhoneNumber}}</span>
               </div>
             </div>
           </div>
         </div>
         <div class="row mx-0">
-          
+
           <div class="col-md-6 col-12 pr-0">
             <!-- form card -->
             <div class="form-card h-95">
@@ -100,15 +100,24 @@
                 </div>
 
                 <div class="form-group col-md-12">
-                  <p-fileUpload name="demo[]" #inputFile  [multiple]=true  [fileLimit]=5  (onSelect)="upload($event.currentFiles)" (onRemove)="remove($event.file)" 
-                  [maxFileSize] = 500000
-                    accept="image/*" >
-                    <ng-template pTemplate="content">
-                      <!--<ul *ngIf="uploadedFiles.length">
+                  <p-fileUpload name="demo[]" #inputFile  chooseLabel="تحميل مرفق"
+                  [auto]="true"
+                   (onSelect)="upload($event.currentFiles)" (onRemove)="remove($event.file)"
+                   [multiple]=true  [fileLimit]=5  mode="advanced" [maxFileSize] = 500000 accept="image/*" >
+                    <!--<ng-template pTemplate="content">
+                      <ul *ngIf="uploadedFiles.length">
                         <li *ngFor="let file of uploadedFiles">{{file?.name}} - {{file?.size}} bytes</li>
-                      </ul>-->
-                    </ng-template>
+                      </ul>
+                    </ng-template>-->
                  </p-fileUpload>
+
+
+                 <!--<p-fileUpload #uploader
+                          [auto]="true" [customUpload]="isCustomUpload"
+                          (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)"
+                          [multiple]="isMultiple" mode="advanced"  accept="image/*"  [maxFileSize]="fileSize">
+                         </p-fileUpload>-->
+
 
                   <!--<input type="file" #inputFile class="custom-file-input" id="validatedCustomFile" (change)="upload($any($event.target).files)"  multiple >-->
               </div>

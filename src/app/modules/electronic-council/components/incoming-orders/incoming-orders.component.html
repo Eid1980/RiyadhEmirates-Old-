@@ -8,7 +8,7 @@
   <a class="breadcrumb-item" href="#"> دليل الخدمات</a>
   <span class="breadcrumb-item active">المجلس الإلكتروني</span>
 </nav>
-<div class="page-wrapper pl-0">
+<div class="page-wrapper">
   <div class="row mx-0">
     <!-- user side menu -->
     <div class="col-md-3 col-12">
@@ -22,7 +22,8 @@
       </div>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#new" type="button" role="tab" aria-controls="new" aria-selected="true" (click)="onNewTabClick(newRequest)">الطلبات
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#new" type="button"
+            role="tab" aria-controls="new" aria-selected="true" (click)="onNewTabClick(newRequest)">الطلبات
             الجديدة</button>
         </li>
         <li class="nav-item" role="presentation">
@@ -46,7 +47,7 @@
           [paginator]="true" [rows]="10"  [(first)]="first"
           [showCurrentPageReport]="true" responsiveLayout="scroll"
           currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات" [rowsPerPageOptions]="[10,25,30]"
-          sortMode="multiple" [multiSortMeta]="multiSortMeta" 
+          sortMode="multiple" [multiSortMeta]="multiSortMeta"
           [globalFilterFields]="['requestTypeAr','statusMsgAr' , 'creationDate']" >
 
           <ng-template pTemplate="header">
@@ -54,7 +55,7 @@
               <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
                 <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
               </th>
-              <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+              <th pSortableColumn="content">اسم مقدم الطلب <p-sortIcon field="content"></p-sortIcon>
               </th>
               <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
                 <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
@@ -78,13 +79,13 @@
           </ng-template>
           <ng-template pTemplate="body" let-request>
               <tr>
-                <td>{{request.header}}</td>
-                <td>{{request.content}}</td>
-                <td>{{request.requestTypeAr}}</td>
-                <td>{{request.serialNumber}}</td>
-                <td>{{request.statusMsgAr}}</td>
-                <td>{{request.creationDate | date:"dd/MM/yyyy"}}</td>
-                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>              
+                <td>{{request.Header}}</td>
+                <td>{{request.User.Name}}</td>
+                <td>{{request.RequestTypeAr}}</td>
+                <td>{{request.SerialNumber}}</td>
+                <td>{{request.StatusMsgAr}}</td>
+                <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
+                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
               </tr>
           </ng-template>
 
@@ -102,7 +103,7 @@
           [paginator]="true" [rows]="10"  [(first)]="first"
           [showCurrentPageReport]="true" responsiveLayout="scroll"
           currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات" [rowsPerPageOptions]="[10,25,30]"
-          sortMode="multiple" [multiSortMeta]="multiSortMeta" 
+          sortMode="multiple" [multiSortMeta]="multiSortMeta"
           [globalFilterFields]="['requestTypeAr','statusMsgAr' , 'creationDate']" >
 
           <ng-template pTemplate="header">
@@ -110,7 +111,7 @@
               <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
                 <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
               </th>
-              <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+              <th pSortableColumn="content">اسم مقدم الطلب <p-sortIcon field="content"></p-sortIcon>
               </th>
               <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
                 <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
@@ -134,13 +135,13 @@
           </ng-template>
           <ng-template pTemplate="body" let-request>
               <tr>
-                <td>{{request.header}}</td>
-                <td>{{request.content}}</td>
-                <td>{{request.requestTypeAr}}</td>
-                <td>{{request.serialNumber}}</td>
-                <td>{{request.statusMsgAr}}</td>
-                <td>{{request.creationDate | date:"dd/MM/yyyy"}}</td>
-                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>              
+                <td>{{request.Header}}</td>
+                <td>{{request.User.Name}}</td>
+                <td>{{request.RequestTypeAr}}</td>
+                <td>{{request.SerialNumber}}</td>
+                <td>{{request.StatusMsgAr}}</td>
+                <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
+                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
               </tr>
           </ng-template>
 
@@ -154,7 +155,7 @@
         </div>
 
 
-        <div class="tab-pane fade show" id="accept"  role="tabpanel" aria-labelledby="new-tab" *ngIf="requests?.length == 0 || requests?.length == undefined" class="mt-2">No data found</div> 
+        <div class="tab-pane fade show" id="accept"  role="tabpanel" aria-labelledby="new-tab" *ngIf="requests?.length == 0 || requests?.length == undefined" class="mt-2">No data found</div>
 
 
          <div class="tab-pane fade show" id="accept" role="tabpanel" aria-labelledby="new-tab">
@@ -162,7 +163,7 @@
           [paginator]="true" [rows]="10"  [(first)]="first"
           [showCurrentPageReport]="true" responsiveLayout="scroll"
           currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات" [rowsPerPageOptions]="[10,25,30]"
-          sortMode="multiple" [multiSortMeta]="multiSortMeta" 
+          sortMode="multiple" [multiSortMeta]="multiSortMeta"
           [globalFilterFields]="['requestTypeAr','statusMsgAr' , 'creationDate']" >
 
           <ng-template pTemplate="header">
@@ -170,7 +171,7 @@
               <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
                 <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
               </th>
-              <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+              <th pSortableColumn="content">اسم مقدم الطلب <p-sortIcon field="content"></p-sortIcon>
               </th>
               <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
                 <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
@@ -194,13 +195,13 @@
           </ng-template>
           <ng-template pTemplate="body" let-request>
               <tr>
-                <td>{{request.header}}</td>
-                <td>{{request.content}}</td>
-                <td>{{request.requestTypeAr}}</td>
-                <td>{{request.serialNumber}}</td>
-                <td>{{request.statusMsgAr}}</td>
-                <td>{{request.creationDate | date:"dd/MM/yyyy"}}</td>
-                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>              
+                <td>{{request.Header}}</td>
+                <td>{{request.User.Name}}</td>
+                <td>{{request.RequestTypeAr}}</td>
+                <td>{{request.SerialNumber}}</td>
+                <td>{{request.StatusMsgAr}}</td>
+                <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
+                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
               </tr>
           </ng-template>
 
@@ -218,7 +219,7 @@
           [paginator]="true" [rows]="10"  [(first)]="first"
           [showCurrentPageReport]="true" responsiveLayout="scroll"
           currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات" [rowsPerPageOptions]="[10,25,30]"
-          sortMode="multiple" [multiSortMeta]="multiSortMeta" 
+          sortMode="multiple" [multiSortMeta]="multiSortMeta"
           [globalFilterFields]="['requestTypeAr','statusMsgAr' , 'creationDate']" >
 
           <ng-template pTemplate="header">
@@ -226,7 +227,7 @@
               <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
                 <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
               </th>
-              <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+              <th pSortableColumn="content">اسم مقدم الطلب <p-sortIcon field="content"></p-sortIcon>
               </th>
               <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
                 <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
@@ -250,13 +251,13 @@
           </ng-template>
           <ng-template pTemplate="body" let-request>
               <tr>
-                <td>{{request.header}}</td>
-                <td>{{request.content}}</td>
-                <td>{{request.requestTypeAr}}</td>
-                <td>{{request.serialNumber}}</td>
-                <td>{{request.statusMsgAr}}</td>
-                <td>{{request.creationDate | date:"dd/MM/yyyy"}}</td>
-                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>              
+                <td>{{request.Header}}</td>
+                <td>{{request.User.Name}}</td>
+                <td>{{request.RequestTypeAr}}</td>
+                <td>{{request.SerialNumber}}</td>
+                <td>{{request.StatusMsgAr}}</td>
+                <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
+                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
               </tr>
           </ng-template>
 

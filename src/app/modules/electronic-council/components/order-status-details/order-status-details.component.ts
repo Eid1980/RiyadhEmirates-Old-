@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { RequestModel } from '@shared/models/request-model';
 import { UserModel } from '@shared/models/user-model';
 import { RequestService } from '@shared/services/request.service';
-import { SharedService } from '@shared/services/shared.service';
 import { UserService } from '@shared/services/user.service';
 import { MessageService } from 'primeng/api';
 import { environment } from 'src/environments/environment';
@@ -28,29 +27,52 @@ export class OrderStatusDetailsComponent implements OnInit {
 
   imagePath : string = environment.imagePathURL;
 
+  requestStatus : string
+
   constructor(
     private _requestService : RequestService,
-    private _sharedService : SharedService,
     private _userService: UserService,
     private _router: Router,
+    private _route: ActivatedRoute,
     private messageService : MessageService,
-    ) { 
+    ) {
 
+      this._route.params.subscribe(params => {
+        let requestId : number = params['id'];
+
+        if(requestId != undefined){
+          this._requestService.getRequestById(requestId).subscribe(
+            (result : any) => {
+              if(result.IsSuccess == true){
+                this.currentRequestInfo = result.Data;
+                this.requestStatus = result.Data.StatusMsgAr
+
+                debugger
+                if(result.Data.RequestStatusId == RequestStatusEnum.Rejected)
+                  this.requestStatus = this.requestStatus + ' بسبب ' + result.Data.StatusMessage
+              }else{
+                this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
+              }
+             } ,
+            (err) =>{
+              this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
+            })
+        }
+      })
     }
 
   ngOnInit(): void {
     this.userModel = this._userService.currentUser;
-    this.currentRequestInfo = this._sharedService.selectedRequest;
   }
 
   acceptRequest(){
-    var updateRequestStatus = {requestId : this.currentRequestInfo.id , status : RequestStatusEnum.Pending};
+    var updateRequestStatus = {requestId : this.currentRequestInfo.Id , NewStatusId : RequestStatusEnum.Pending};
 
-    this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
+    this._requestService.updateRequest(updateRequestStatus).subscribe(
       (result : any) =>{
-        if(result.code == 200){
+        if(result.IsSuccess == true){
           this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
-          setTimeout(() => {this._router.navigate(['/e-council/incoming-orders']);} , 3000);            
+          setTimeout(() => {this._router.navigate(['/e-council/incoming-orders']);} , 3000);
         }},
       () => {}
     )
@@ -59,14 +81,11 @@ export class OrderStatusDetailsComponent implements OnInit {
 
   rejectRequest(){
 
-    if(this.displayMessage){ 
-
-        debugger
-        var updateRequestStatus = {requestId : this.currentRequestInfo.id , status : RequestStatusEnum.Rejected , rejectMsg : this.messageReason};
-
-        this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
+    if(this.displayMessage){
+        var updateRequestStatus = {requestId : this.currentRequestInfo.Id , NewStatusId : RequestStatusEnum.Rejected , rejectMsg : this.messageReason};
+        this._requestService.updateRequest(updateRequestStatus).subscribe(
           (result : any) =>{
-            if(result.code == 200){
+            if(result.IsSuccess == true){
               this._router.navigate(['/e-council/incoming-orders']);
               this.displayMessage = false
             }
@@ -76,6 +95,11 @@ export class OrderStatusDetailsComponent implements OnInit {
     }else{
       this.displayMessage = true;
     }
+  }
+
+  print(){
+    console.log('1111111111111')
+    window.print()
   }
 
 }
