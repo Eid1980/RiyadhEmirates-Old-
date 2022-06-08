@@ -52,12 +52,12 @@ export class RegisterComponent implements OnInit {
 //    confirmPassword: ['' , Validators.required],
 //    address: [''],
   });
-  
+
   constructor(private authService : AuthService,
     private messageService: MessageService,
     private router: Router,
     private fb: FormBuilder,
-    private dateFormatterService: DateFormatterService) { 
+    private dateFormatterService: DateFormatterService) {
 
       this.registerationFormData = new FormData();
 
@@ -86,20 +86,20 @@ export class RegisterComponent implements OnInit {
     this.registerationFormData = new FormData();
 
 
-    
+
     // set default values for address and nationId
     this.registerationForm.value.address = 'Saudi Arabia'
     this.registerationForm.value.nationalID = this.registerationForm.value.userName
 
-    this.registerationFormData.append('name'  , this.registerationForm.value.name); 
-    this.registerationFormData.append('nationalID'  , this.registerationForm.value.nationalID); 
-    this.registerationFormData.append('userName'  , this.registerationForm.value.userName); 
-    this.registerationFormData.append('email'  , this.registerationForm.value.email); 
-    this.registerationFormData.append('password'  , this.registerationForm.value.password); 
-    this.registerationFormData.append('confirmPassword'  , this.registerationForm.value.password); 
-    this.registerationFormData.append('phoneNumber'  , this.registerationForm.value.phoneNumber); 
-    this.registerationFormData.append('birthDate'  , birthDate); 
-    this.registerationFormData.append('address'  , this.registerationForm.value.address); 
+    this.registerationFormData.append('name'  , this.registerationForm.value.name);
+    this.registerationFormData.append('nationalId'  , this.registerationForm.value.nationalID);
+    this.registerationFormData.append('userName'  , this.registerationForm.value.userName);
+    this.registerationFormData.append('email'  , this.registerationForm.value.email);
+    this.registerationFormData.append('password'  , this.registerationForm.value.password);
+    this.registerationFormData.append('confirmPassword'  , this.registerationForm.value.password);
+    this.registerationFormData.append('phoneNumber'  , this.registerationForm.value.phoneNumber);
+    this.registerationFormData.append('birthDate'  , birthDate);
+    this.registerationFormData.append('address'  , this.registerationForm.value.address);
 
 
     this.authService.register(this.registerationFormData).subscribe(
@@ -123,7 +123,7 @@ export class RegisterComponent implements OnInit {
   resetForm(){
     this.registerationFormData = new FormData();
 
-    this.registerationForm.reset();  
+    this.registerationForm.reset();
    }
 
 

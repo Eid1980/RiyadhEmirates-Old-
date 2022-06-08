@@ -163,10 +163,11 @@
 
     <!--<div *ngIf="userModel.IsAdmin == true">-->
 
-    <div *ngIf="userModel.IsAdmin">
+    <div *ngIf="userModel.IsAdmin && currentRequestInfo.RequestStatusId ==  1">
       <button class="btn btn-success" (click)="acceptRequest()">موافق</button>
       <button class="btn btn-danger" (click)="rejectRequest()">مرفوض</button>
 
       <input type="text" *ngIf="displayMessage" [(ngModel)]="messageReason">
     </div>
+    <button class="" (click)="print()"><i class="fa-solid fa-print"></i></button>
   </div>

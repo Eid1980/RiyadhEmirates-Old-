@@ -59,11 +59,12 @@ export class CreateRequestComponent implements OnInit {
         let inquire = new InquiryModel();
         inquire.requestId = this.requestId
 
-        this._requestService.getRequests(inquire).subscribe(
+        this._requestService.getRequestById( this.requestId ).subscribe(
           (result : any) => {
             if(result.IsSuccess == true){
 
-              this.currentRequest = result.data[0];
+              debugger
+              this.currentRequest = result.Data;
               this.orderForm.setValue({
                 type : this.currentRequest.RequestTypeId,
                 header : this.currentRequest.Header,
@@ -121,7 +122,7 @@ saveRequest(requestStatusId : number){
   if(this.requestId != undefined){
     var updateRequestStatus = {requestId : this.requestId , status : requestStatusId };
 
-    this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
+    this._requestService.updateRequest(updateRequestStatus).subscribe(
       (result : any) =>{
         if(result.IsSuccess == true){
 

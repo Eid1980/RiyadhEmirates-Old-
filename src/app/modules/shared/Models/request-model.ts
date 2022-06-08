@@ -5,9 +5,10 @@ export class RequestModel {
     Header : string;
     Content : string;
     SerialNumber : string;
-    RequestTypeId : number;
+    RequestStatusId : number;
     StatusMsgAr: string;
     RequsetStatusEn: string
+    RequestTypeId : number;
     RequestTypeEn : string;
     RequestTypeAr : string;
     Attachment1 : string;

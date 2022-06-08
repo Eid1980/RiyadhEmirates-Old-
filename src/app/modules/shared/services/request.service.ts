@@ -61,11 +61,23 @@ export class RequestService {
 
     // get user request
   getRequestsTypeCount() : Observable<TypeCountModel>{
+    let token = this._sessionService.get('token');
+
+    this.header = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+
     return this._httpClient.post<TypeCountModel>(`${environment.apiUrl}/request/getRequestTypeCount` , null , {headers : this.header});
   }
 
-  updateRequestStatus(requestStatusModel : any){
-    return this._httpClient.post(`${environment.apiUrl}/request/updateRequestStatus` , requestStatusModel , {headers : this.header});
+  updateRequest(updatedRequestModel : any){
+    let token = this._sessionService.get('token');
+
+    this.header = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+
+    return this._httpClient.post(`${environment.apiUrl}/request/update` , updatedRequestModel , {headers : this.header});
   }
 
   getDraftedRequests() : Observable<RequestModel>{

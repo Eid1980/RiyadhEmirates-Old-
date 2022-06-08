@@ -1,5 +1,5 @@
 export class TypeCountModel {
-    requestTypeID : number
-    requestTypeName : string
-    requestTypeCount : number
+    RequestTypeID : number
+    RequestTypeName : string
+    RequestTypeCount : number
 }

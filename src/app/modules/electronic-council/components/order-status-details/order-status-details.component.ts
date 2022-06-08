@@ -4,7 +4,6 @@ import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { RequestModel } from '@shared/models/request-model';
 import { UserModel } from '@shared/models/user-model';
 import { RequestService } from '@shared/services/request.service';
-import { SharedService } from '@shared/services/shared.service';
 import { UserService } from '@shared/services/user.service';
 import { MessageService } from 'primeng/api';
 import { environment } from 'src/environments/environment';
@@ -67,9 +66,9 @@ export class OrderStatusDetailsComponent implements OnInit {
   }
 
   acceptRequest(){
-    var updateRequestStatus = {requestId : this.currentRequestInfo.Id , requestStatusId : RequestStatusEnum.Pending};
+    var updateRequestStatus = {requestId : this.currentRequestInfo.Id , NewStatusId : RequestStatusEnum.Pending};
 
-    this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
+    this._requestService.updateRequest(updateRequestStatus).subscribe(
       (result : any) =>{
         if(result.IsSuccess == true){
           this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
@@ -83,11 +82,8 @@ export class OrderStatusDetailsComponent implements OnInit {
   rejectRequest(){
 
     if(this.displayMessage){
-
-
-        var updateRequestStatus = {requestId : this.currentRequestInfo.Id , status : RequestStatusEnum.Rejected , rejectMsg : this.messageReason};
-
-        this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
+        var updateRequestStatus = {requestId : this.currentRequestInfo.Id , NewStatusId : RequestStatusEnum.Rejected , rejectMsg : this.messageReason};
+        this._requestService.updateRequest(updateRequestStatus).subscribe(
           (result : any) =>{
             if(result.IsSuccess == true){
               this._router.navigate(['/e-council/incoming-orders']);
@@ -99,6 +95,11 @@ export class OrderStatusDetailsComponent implements OnInit {
     }else{
       this.displayMessage = true;
     }
+  }
+
+  print(){
+    console.log('1111111111111')
+    window.print()
   }
 
 }
