@@ -143,7 +143,7 @@ saveRequest(requestStatusId : number){
      // add new request
 
   let currentHigriDate =
-  `${this.dateFormatterService.GetTodayHijri().year}/${this.dateFormatterService.GetTodayHijri().month}/${this.dateFormatterService.GetTodayHijri().day}` ;//new Date(this.date.year, this.date.month , this.date.day);
+  `${this.dateFormatterService.GetTodayHijri().year}-${this.dateFormatterService.GetTodayHijri().month}-${this.dateFormatterService.GetTodayHijri().day}` ;//new Date(this.date.year, this.date.month , this.date.day);
 
   this.orderFormData = new FormData();
 

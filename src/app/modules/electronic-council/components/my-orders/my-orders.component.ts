@@ -47,7 +47,7 @@ export class MyOrdersComponent implements OnInit {
     }
 
   ngOnInit(): void {
-  
+
     this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)
@@ -69,10 +69,8 @@ export class MyOrdersComponent implements OnInit {
     this.multiSortMeta.push({field: 'brand', order: -1});
   }
 
-  showDialog(selectedOrder : RequestModel) {
-    this._sharedService.selectedRequest = selectedOrder;
-
-    this._router.navigate(['/e-council/order-status']);
+  showDialog(selectedRequest : RequestModel) {
+    this._router.navigate(['/e-council/order-status/' + selectedRequest.Id]);
 
 }
 

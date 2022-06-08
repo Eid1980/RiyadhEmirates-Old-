@@ -25,7 +25,7 @@
                [paginator]="true" [rows]="10"  [(first)]="first"
                [showCurrentPageReport]="true" responsiveLayout="scroll"
                currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات" [rowsPerPageOptions]="[10,25,30]"
-               sortMode="multiple" [multiSortMeta]="multiSortMeta" 
+               sortMode="multiple" [multiSortMeta]="multiSortMeta"
                [globalFilterFields]="['requestTypeAr','statusMsgAr' , 'creationDate']" >
         <ng-template pTemplate="header">
           <tr>
@@ -56,13 +56,13 @@
         </ng-template>
         <ng-template pTemplate="body" let-request>
             <tr>
-              <td>{{request.header}}</td>
-              <td>{{request.content}}</td>
-              <td>{{request.requestTypeAr}}</td>
-              <td>{{request.serialNumber}}</td>
-              <td>{{request.statusMsgAr}}</td>
-              <td>{{request.creationDate | date:"dd/MM/yyyy"}}</td>
-              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>              
+              <td>{{request.Header}}</td>
+              <td>{{request.Content}}</td>
+              <td>{{request.RequestTypeAr}}</td>
+              <td>{{request.SerialNumber}}</td>
+              <td>{{request.StatusMsgAr}}</td>
+              <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
+              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
             </tr>
         </ng-template>
         <ng-template pTemplate="paginatorright">

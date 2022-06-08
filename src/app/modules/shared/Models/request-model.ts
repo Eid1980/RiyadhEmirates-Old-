@@ -1,7 +1,7 @@
 import { UserModel } from "./user-model";
 
 export class RequestModel {
-    id : number;
+    Id : number;
     Header : string;
     Content : string;
     SerialNumber : string;

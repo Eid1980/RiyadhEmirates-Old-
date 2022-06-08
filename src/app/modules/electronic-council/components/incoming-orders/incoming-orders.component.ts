@@ -60,13 +60,10 @@ export class IncomingOrdersComponent implements OnInit {
     this.multiSortMeta.push({field: 'brand', order: -1});
   }
 
-  showDialog(selectedOrder : RequestModel) {
-    this.selectedOrder = selectedOrder;
+  showDialog(selectedRequest : RequestModel) {
     this.display = true;
 
-    this._sharedService.selectedRequest = selectedOrder;
-
-    this._router.navigate(['/e-council/order-status']);
+    this._router.navigate(['/e-council/order-status/'+ selectedRequest.Id]);
 }
 
  getRequests(requestTypeId : number){
@@ -75,7 +72,7 @@ export class IncomingOrdersComponent implements OnInit {
   this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)
-      
+
       if(result.IsSuccess == true){
         this.requests = result.Data
         this.loading = false

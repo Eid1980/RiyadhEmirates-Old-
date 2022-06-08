@@ -25,16 +25,22 @@ export class RequestService {
 
   createRequest(requestModel : any){
     let token = this._sessionService.get('token');
+    this.header = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    return this._httpClient.post(`${environment.apiUrl}/request/create` , requestModel , {headers : this.header});
+  }
 
+  getRequestById(requestId : number){
+    let token = this._sessionService.get('token');
     this.header = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     })
 
-    return this._httpClient.post(`${environment.apiUrl}/request/create` , requestModel , {headers : this.header});
+    return this._httpClient.get(`${environment.apiUrl}/request/getById/${requestId}` , {headers : this.header});
   }
 
   inquire(inquiryModel : any){
-    debugger
     let token = this._sessionService.get('token');
 
     this.header = new HttpHeaders({

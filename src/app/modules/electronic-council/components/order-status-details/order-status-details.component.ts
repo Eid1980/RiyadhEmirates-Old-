@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { RequestModel } from '@shared/models/request-model';
 import { UserModel } from '@shared/models/user-model';
@@ -28,23 +28,46 @@ export class OrderStatusDetailsComponent implements OnInit {
 
   imagePath : string = environment.imagePathURL;
 
+  requestStatus : string
+
   constructor(
     private _requestService : RequestService,
-    private _sharedService : SharedService,
     private _userService: UserService,
     private _router: Router,
+    private _route: ActivatedRoute,
     private messageService : MessageService,
     ) {
 
+      this._route.params.subscribe(params => {
+        let requestId : number = params['id'];
+
+        if(requestId != undefined){
+          this._requestService.getRequestById(requestId).subscribe(
+            (result : any) => {
+              if(result.IsSuccess == true){
+                this.currentRequestInfo = result.Data;
+                this.requestStatus = result.Data.StatusMsgAr
+
+                debugger
+                if(result.Data.RequestStatusId == RequestStatusEnum.Rejected)
+                  this.requestStatus = this.requestStatus + ' بسبب ' + result.Data.StatusMessage
+              }else{
+                this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
+              }
+             } ,
+            (err) =>{
+              this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
+            })
+        }
+      })
     }
 
   ngOnInit(): void {
     this.userModel = this._userService.currentUser;
-    this.currentRequestInfo = this._sharedService.selectedRequest;
   }
 
   acceptRequest(){
-    var updateRequestStatus = {requestId : this.currentRequestInfo.id , requestStatusId : RequestStatusEnum.Pending};
+    var updateRequestStatus = {requestId : this.currentRequestInfo.Id , requestStatusId : RequestStatusEnum.Pending};
 
     this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
       (result : any) =>{
@@ -61,8 +84,8 @@ export class OrderStatusDetailsComponent implements OnInit {
 
     if(this.displayMessage){
 
-      
-        var updateRequestStatus = {requestId : this.currentRequestInfo.id , status : RequestStatusEnum.Rejected , rejectMsg : this.messageReason};
+
+        var updateRequestStatus = {requestId : this.currentRequestInfo.Id , status : RequestStatusEnum.Rejected , rejectMsg : this.messageReason};
 
         this._requestService.updateRequestStatus(updateRequestStatus).subscribe(
           (result : any) =>{

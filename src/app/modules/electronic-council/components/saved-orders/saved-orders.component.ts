@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestModel } from '@shared/models/request-model';
 import { RequestService } from '@shared/services/request.service';
@@ -44,10 +45,12 @@ export class SavedOrdersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.requsetService.getDraftedRequests().subscribe(
+    let inquire = {requestStatusId : RequestStatusEnum.Drafted};
+
+    this.requsetService.inquire(inquire).subscribe(
       (result : any) => {
         console.log(result)
-        if(result.code == 200){
+        if(result.IsSuccess == true){
           this.requests = result.Data
           this.loading = false
         }else{
@@ -68,7 +71,7 @@ export class SavedOrdersComponent implements OnInit {
   showDialog(selectedOrder : RequestModel) {
     this._sharedService.selectedRequest = selectedOrder;
 
-    this._router.navigate(['/e-council/create' , selectedOrder.id]);
+    this._router.navigate(['/e-council/create' , selectedOrder.Id]);
 }
 
 }
