@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   emiratesNews: any[] = [];
   latestNews: any[] = [];
   reports: any[] = [];
+  services: any[] = [];
 
   constructor(
     private _userService: UserService,
@@ -112,6 +113,7 @@ export class HomeComponent implements OnInit {
     this.getEmiratesNews();
     this.getLatestNews();
     this.getReports();
+    this.getServices();
   }
 
   getPosters() {
@@ -122,7 +124,6 @@ export class HomeComponent implements OnInit {
 
   getEmiratesNews() {
     this._adminService.getALlEmiratesNews().subscribe((result: any) => {
-      debugger;
       this.emiratesNews = result.Data;
     });
   }
@@ -139,8 +140,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getServices() {
+    this._adminService.getALlServices().subscribe((result: any) => {
+      this.services = result.Data;
+    });
+  }
+
   navigateTo() {
-    if (this._userService.currentUser.role.toLocaleLowerCase() == 'admin') {
+    if (this._userService.currentUser.IsAdmin) {
       this._router.navigate(['/e-council/incoming-orders']);
     } else {
       this._router.navigate(['/e-council/create']);

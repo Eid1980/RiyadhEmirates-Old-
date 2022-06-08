@@ -12,94 +12,112 @@ import { environment } from 'src/environments/environment';
   selector: 'app-order-status-details',
   templateUrl: './order-status-details.component.html',
   styleUrls: ['./order-status-details.component.scss'],
-  providers: [MessageService]
-
+  providers: [MessageService],
 })
 export class OrderStatusDetailsComponent implements OnInit {
-
-  @Input() seletedOrder : RequestModel; // decorate the property with @Input()
+  @Input() seletedOrder: RequestModel; // decorate the property with @Input()
 
   userModel: UserModel;
-  currentRequestInfo : RequestModel
+  currentRequestInfo: RequestModel;
 
-  messageReason : string = "";
-  displayMessage : boolean = false
+  messageReason: string = '';
+  displayMessage: boolean = false;
 
-  imagePath : string = environment.imagePathURL;
+  imagePath: string = environment.imagePathURL;
 
-  requestStatus : string
+  requestStatus: string;
 
   constructor(
-    private _requestService : RequestService,
+    private _requestService: RequestService,
     private _userService: UserService,
     private _router: Router,
     private _route: ActivatedRoute,
-    private messageService : MessageService,
-    ) {
+    private messageService: MessageService
+  ) {
+    this._route.params.subscribe((params) => {
+      let requestId: number = params['id'];
 
-      this._route.params.subscribe(params => {
-        let requestId : number = params['id'];
+      if (requestId != undefined) {
+        this._requestService.getRequestById(requestId).subscribe(
+          (result: any) => {
+            if (result.IsSuccess == true) {
+              this.currentRequestInfo = result.Data;
+              this.requestStatus = result.Data.StatusMsgAr;
 
-        if(requestId != undefined){
-          this._requestService.getRequestById(requestId).subscribe(
-            (result : any) => {
-              if(result.IsSuccess == true){
-                this.currentRequestInfo = result.Data;
-                this.requestStatus = result.Data.StatusMsgAr
-
-                debugger
-                if(result.Data.RequestStatusId == RequestStatusEnum.Rejected)
-                  this.requestStatus = this.requestStatus + ' بسبب ' + result.Data.StatusMessage
-              }else{
-                this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
-              }
-             } ,
-            (err) =>{
-              this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
-            })
-        }
-      })
-    }
+              debugger;
+              if (result.Data.RequestStatusId == RequestStatusEnum.Rejected)
+                this.requestStatus =
+                  this.requestStatus + ' بسبب ' + result.Data.StatusMessage;
+            } else {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'خطأ',
+                detail: 'خطأ',
+              });
+            }
+          },
+          (err) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'خطأ',
+              detail: 'خطأ',
+            });
+          }
+        );
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.userModel = this._userService.currentUser;
   }
 
-  acceptRequest(){
-    var updateRequestStatus = {requestId : this.currentRequestInfo.Id , NewStatusId : RequestStatusEnum.Pending};
+  acceptRequest() {
+    var updateRequestStatus = {
+      requestId: this.currentRequestInfo.Id,
+      NewStatusId: RequestStatusEnum.Pending,
+    };
 
     this._requestService.updateRequest(updateRequestStatus).subscribe(
-      (result : any) =>{
-        if(result.IsSuccess == true){
-          this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
-          setTimeout(() => {this._router.navigate(['/e-council/incoming-orders']);} , 3000);
-        }},
+      (result: any) => {
+        if (result.IsSuccess == true) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'تم الارسال',
+            detail: 'تم إرسال طلبك بنجاح',
+          });
+          setTimeout(() => {
+            this._router.navigate(['/e-council/incoming-orders']);
+          }, 3000);
+        }
+      },
       () => {}
-    )
-
+    );
   }
 
-  rejectRequest(){
-
-    if(this.displayMessage){
-        var updateRequestStatus = {requestId : this.currentRequestInfo.Id , NewStatusId : RequestStatusEnum.Rejected , rejectMsg : this.messageReason};
-        this._requestService.updateRequest(updateRequestStatus).subscribe(
-          (result : any) =>{
-            if(result.IsSuccess == true){
-              this._router.navigate(['/e-council/incoming-orders']);
-              this.displayMessage = false
-            }
-          },
-          () => {}
-        )
-    }else{
+  rejectRequest() {
+    if (this.displayMessage) {
+      var updateRequestStatus = {
+        requestId: this.currentRequestInfo.Id,
+        NewStatusId: RequestStatusEnum.Rejected,
+        rejectMsg: this.messageReason,
+      };
+      this._requestService.updateRequest(updateRequestStatus).subscribe(
+        (result: any) => {
+          if (result.IsSuccess == true) {
+            this._router.navigate(['/e-council/incoming-orders']);
+            this.displayMessage = false;
+          }
+        },
+        () => {}
+      );
+    } else {
       this.displayMessage = true;
     }
   }
 
-  print(){
-    console.log('1111111111111')
-    window.print()
+  print() {
+    console.log('1111111111111');
+    window.print();
   }
-
 }
