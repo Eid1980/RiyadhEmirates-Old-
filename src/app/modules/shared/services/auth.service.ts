@@ -11,7 +11,7 @@ export class AuthService {
   header : HttpHeaders
 
   constructor(private httpClient : HttpClient,
-    private sessionService : SessionStorageService) { 
+    private sessionService : SessionStorageService) {
   }
 
   login(loginModel : any){
@@ -20,16 +20,26 @@ export class AuthService {
 
   register(registerModel : any){
     return this.httpClient.post(`${environment.apiUrl}/auth/register` , registerModel);
-  } 
+  }
 
   getAuthUser(){
-
     let token = this.sessionService.get('token');
 
     this.header = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     })
-    
     return this.httpClient.get(`${environment.apiUrl}/auth/getAuthUser` , {headers :this.header} );
+  }
+
+  forgetPassword(foregetPassword : any ){
+    return this.httpClient.post(`${environment.apiUrl}/auth/forgetPassword` , foregetPassword );
+  }
+
+  validateOTP(validateOTP : any){
+    return this.httpClient.post(`${environment.apiUrl}/auth/validateOTP` , validateOTP );
+  }
+
+  resetPassword(resetPassword : any){
+    return this.httpClient.post(`${environment.apiUrl}/auth/resetPassword` , resetPassword );
   }
 }
