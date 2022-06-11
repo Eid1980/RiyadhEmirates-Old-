@@ -23,7 +23,7 @@
         <i class="fa-brands fa-youtube fa-2x"></i>
       </a>
     </div> -->
-    <div class="dropdown topnav-user">
+    <div class="dropdown topnav-user" *ngIf="isAuthenticate">
       <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="./assets/images/user-img.svg" alt="">
         مرحباً: <span>{{userModel?.Name}}</span>
@@ -33,13 +33,31 @@
           <i class="fa fa-user"></i>
           الملف الشخصي
         </a>
-        <a class="dropdown-item" [routerLink]="['/auth/login']">
+        <a class="dropdown-item" (click)="logout()">
           <i class="fa fa-arrow-right-from-bracket"></i>
           تسجيل الخروج
         </a>
       </div>
-    </div>
+</div>
+<div class="dropdown topnav-user" *ngIf="!isAuthenticate">
+  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    <img src="./assets/images/user-img.svg" alt="">
+    تسجيل الدخول
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <a routerLink="/e-council/profile" class="dropdown-item" [routerLink]="['/auth/login']">
+      <!--<i class="fa fa-user"></i>-->
+      تسجيل الدخول
+    </a>
+    <a class="dropdown-item" [routerLink]="['/auth/register']">
+      <!--<i class="fa fa-arrow-right-from-bracket"></i>-->
+      تسجيل جديد
+    </a>
   </div>
+</div>
+
+    </div>
+
 </div>
 
 <header class="header" id="navabr">

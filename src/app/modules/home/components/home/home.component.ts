@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
     private _router: Router,
     private _adminService: AdminService,
     private globalService: GlobalService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     setTimeout(function () {

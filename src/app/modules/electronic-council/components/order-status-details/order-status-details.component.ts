@@ -117,7 +117,6 @@ export class OrderStatusDetailsComponent implements OnInit {
   }
 
   print() {
-    console.log('1111111111111');
     window.print();
   }
 }

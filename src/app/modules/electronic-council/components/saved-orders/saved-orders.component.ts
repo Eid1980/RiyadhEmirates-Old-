@@ -33,6 +33,7 @@ export class SavedOrdersComponent implements OnInit {
     private requsetService : RequestService,
     private messageService : MessageService,
     private _sharedService : SharedService,
+    private _requestService : RequestService,
     private _router: Router,
   ) {
     this.searchCriteria = new InquiryModel();
@@ -68,10 +69,31 @@ export class SavedOrdersComponent implements OnInit {
       this.multiSortMeta.push({field: 'brand', order: -1});
   }
 
-  showDialog(selectedOrder : RequestModel) {
+  showReuestInfo(selectedOrder : RequestModel) {
     this._sharedService.selectedRequest = selectedOrder;
 
     this._router.navigate(['/e-council/create' , selectedOrder.Id]);
+}
+
+sendRequest(selectedOrder : RequestModel){
+  var updateRequestStatus = {requestId : selectedOrder.Id , NewStatusId : RequestStatusEnum.New };
+
+  this._requestService.updateRequest(updateRequestStatus).subscribe(
+    (result : any) =>{
+      debugger
+      if(result.IsSuccess == true){
+
+      this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
+
+      this.requests =  this.requests.filter(r =>r.Id != selectedOrder.Id);
+
+     /* setTimeout(() => {
+        this._router.navigate(['/e-council/my-orders']);
+        } , 3000);*/
+    }
+  },
+  (err) => {}
+  )
 }
 
 }

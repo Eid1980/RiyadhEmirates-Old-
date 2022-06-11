@@ -30,9 +30,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   formSubmit(){
+    console.log('formSubmit')
+    debugger
     this.authService.login(this.loginForm.value).subscribe(
       (result : any) => {
-        
+
         if(result.IsSuccess == true){
 
           // save token
@@ -43,16 +45,19 @@ export class LoginComponent implements OnInit {
             (result : any) => {
               if(result.IsSuccess == true){
                 this.userService.saveUserInfo(result.Data);
+                this.router.navigate(['home']);
               }
             },
             () => {}
           )
-          this.router.navigate(['home']);
         }else{
-          this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
+          this.messageService.add({severity:'error', summary: 'خطأ', detail: result.Message});
         }
       },
-      (err) => {}
+      (err) => {
+      debugger
+        this.messageService.add({severity:'error', summary: 'خطأ', detail: 'اسم المستخدم او كلمة المرور غير صحيحة'});
+      }
     )
   }
 }
