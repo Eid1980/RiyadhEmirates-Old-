@@ -34,7 +34,6 @@ export class MyOrdersComponent implements OnInit {
   constructor(
     private requsetService : RequestService,
     private messageService : MessageService,
-    private _sharedService : SharedService,
     private _router: Router,
 
     ) {
@@ -65,8 +64,8 @@ export class MyOrdersComponent implements OnInit {
 
     // sort critera
     this.multiSortMeta = [];
-    this.multiSortMeta.push({field: 'year', order: 1});
-    this.multiSortMeta.push({field: 'brand', order: -1});
+    this.multiSortMeta.push({field: 'requestTypeAr', order: 1});
+    this.multiSortMeta.push({field: 'statusMsgAr', order: -1});
   }
 
   showDialog(selectedRequest : RequestModel) {

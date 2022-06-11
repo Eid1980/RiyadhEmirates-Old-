@@ -29,7 +29,7 @@
                [showCurrentPageReport]="true" responsiveLayout="scroll"
                currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات" [rowsPerPageOptions]="[10,25,30]"
                sortMode="multiple" [multiSortMeta]="multiSortMeta"
-               [globalFilterFields]="['requestTypeAr','statusMsgAr' , 'creationDate']" >
+               [globalFilterFields]="['RequestTypeAr','statusMsgAr' , 'creationDate']" >
         <ng-template pTemplate="header">
           <tr>
             <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
@@ -37,8 +37,8 @@
             </th>
             <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
             </th>
-            <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
-              <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
+            <th pSortableColumn="RequestTypeAr"> نوع الطلب  <p-sortIcon field="RequestTypeAr"></p-sortIcon>
+              <p-columnFilter field="RequestTypeAr" matchMode="equals" display="menu">
                 <ng-template pTemplate="filter" let-value let-filter="filterCallback">
                     <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)" placeholder="Any">
                         <ng-template let-option pTemplate="item">
@@ -50,9 +50,9 @@
             </th>
             <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
             </th>
-            <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
+            <th pSortableColumn="StatusMsgAr">الحالة <p-sortIcon field="StatusMsgAr"></p-sortIcon>
             </th>
-            <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
+            <th pSortableColumn="CreationDate">تاريخ الطلب <p-sortIcon field="CreationDate"></p-sortIcon>
             </th>
             <th>التفاصيل </th>
           </tr>
@@ -75,9 +75,9 @@
           {{state.first}}
           <button type="button" pButton icon="pi-refresh"></button>
         </ng-template>-->
-        <ng-template pTemplate="paginatorright">
+        <!--<ng-template pTemplate="paginatorright">
           <button type="button" pButton icon="pi-cloud-upload"></button>
-        </ng-template>
+        </ng-template>-->
         <ng-template let-item pTemplate="paginatordropdownitem">
           {{item.value}} - per page
         </ng-template>

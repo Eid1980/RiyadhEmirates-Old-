@@ -114,7 +114,7 @@ export class RegisterComponent implements OnInit {
         }
       },
       (err) => {
-        this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
+        this.messageService.add({severity:'error', summary: 'خطأ', detail: err.error.Message});
       }
     )
 

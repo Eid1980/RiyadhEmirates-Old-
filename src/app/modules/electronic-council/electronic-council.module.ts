@@ -18,6 +18,7 @@ import { TableComponent } from './components/table/table.component';
 import { DraftRequestsComponent } from './components/draft-requests/draft-requests.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {ImageModule} from 'primeng/image';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -45,7 +46,8 @@ import {ImageModule} from 'primeng/image';
     FormsModule,
     ReactiveFormsModule,
     DropdownModule,
-    ImageModule
+    ImageModule,
+    DialogModule
 
   ]
 })
