@@ -103,7 +103,7 @@
                   <p-fileUpload name="demo[]" #inputFile  chooseLabel="تحميل مرفق"
                   [auto]="true"
                    (onSelect)="upload($event.currentFiles)" (onRemove)="remove($event.file)"
-                   [multiple]=true  [fileLimit]=5  mode="advanced" [maxFileSize] = 5242880 accept="image/*" >
+                   [multiple]=true  [fileLimit]=5  mode="advanced" [maxFileSize] = 5242880 accept="image/*,.pdf,.doc" >
                     <!--<ng-template pTemplate="content">
                       <ul *ngIf="uploadedFiles.length">
                         <li *ngFor="let file of uploadedFiles">{{file?.name}} - {{file?.size}} bytes</li>
