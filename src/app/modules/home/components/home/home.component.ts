@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
           },
         },
       });
-    }, 2000);
+    }, 8000);
     setTimeout(function () {
       $('.e-services .owl-carousel').owlCarousel({
         loop: true,
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
           },
         },
       });
-    }, 2000);
+    }, 8000);
     setTimeout(function () {
       $('.gov-news .owl-carousel').owlCarousel({
         loop: true,
@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
           },
         },
       });
-    }, 2000);
+    }, 8000);
     setTimeout(function () {
       $('.advertise-report .owl-carousel').owlCarousel({
         loop: true,
@@ -107,7 +107,7 @@ export class HomeComponent implements OnInit {
           },
         },
       });
-    }, 2000);
+    }, 8000);
 
     this.getPosters();
     this.getEmiratesNews();
