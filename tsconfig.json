@@ -9,6 +9,7 @@
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
     "strict": true,
     "strictPropertyInitialization" : false,
     "noImplicitOverride": true,
