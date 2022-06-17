@@ -46,7 +46,7 @@
               <!-- nationality -->
               <div class="form-group mb-lg-4">
                 <select  id="nationalities" class="form-control" required>
-                  <option *ngFor="let item of nationalities" [value]="item">{{item}}</option>
+                  <option *ngFor="let item of nationalities" [value]="item.Id">{{item.NationalityAr}}</option>
                 </select> 
                 <label for="nationalities" class="label">الجنسية </label>
                 <div *ngIf="registerationForm.controls['name'].invalid && (registerationForm.controls['name'].dirty || registerationForm.controls['name'].touched)" class="text-danger">
