@@ -22,23 +22,42 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService : AuthService,
     private userService : UserService,
-    private messageService: MessageService,
+    private sessionService : SessionStorageService,
     private router: Router,
-    private fb: FormBuilder) {}
+    private fb: FormBuilder,
+    private messageService: MessageService) {}
 
   ngOnInit() {}
 
   formSubmit(){
+    console.log('formSubmit')
+    debugger
     this.authService.login(this.loginForm.value).subscribe(
       (result : any) => {
-        if(result.code == 200){
-          this.userService.saveUserInfo(result.data);
-          this.router.navigate(['home']);
+
+        if(result.IsSuccess == true){
+
+          // save token
+          this.sessionService.set('token' , result.Data)
+          // call getAuthUser
+
+          this.authService.getAuthUser().subscribe(
+            (result : any) => {
+              if(result.IsSuccess == true){
+                this.userService.saveUserInfo(result.Data);
+                this.router.navigate(['home']);
+              }
+            },
+            () => {}
+          )
         }else{
-          this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
+          this.messageService.add({severity:'error', summary: 'خطأ', detail: result.Message});
         }
       },
-      (err) => {}
+      (err) => {
+      debugger
+        this.messageService.add({severity:'error', summary: 'خطأ', detail: 'اسم المستخدم او كلمة المرور غير صحيحة'});
+      }
     )
   }
 }

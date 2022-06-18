@@ -4,9 +4,11 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5162/api',
-  imagePathURL: 'http://localhost:5162/uploads/',
+  apiUrl : 'http://localhost:5000/api',
+  imagePathURL: 'http://localhost:5000/uploads/',
   adminUrl: 'http://localhost:5000',
+
+  
 };
 
 /*

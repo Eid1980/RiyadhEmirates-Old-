@@ -9,7 +9,7 @@ import { RequestService } from '@shared/services/request.service';
 })
 export class OrderInquiryComponent implements OnInit {
 
-  inquiryModel :  InquiryModel 
+  inquiryModel :  InquiryModel
 
   constructor(private requestService : RequestService) {
     this.inquiryModel = new InquiryModel()
@@ -21,7 +21,7 @@ export class OrderInquiryComponent implements OnInit {
   inquiry(){
     this.requestService.inquire(this.inquiryModel).subscribe(
       (result : any) => {
-        if(result.code == 200){
+        if(result.IsSuccess == true){
           console.log(result);
 
         }

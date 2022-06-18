@@ -12,13 +12,14 @@ export class UserSidemenuComponent implements OnInit {
 
   constructor(private userService: UserService) {
     this.userModel = new UserModel();
+
     
-    debugger
-    this.userModel.displayName = this.userService.currentUser?.displayName
-    this.userModel.email = this.userService.currentUser?.email
-    this.userModel.address = this.userService.currentUser?.address
-    this.userModel.phoneNumber = this.userService.currentUser?.phoneNumber
-    this.userModel.role = this.userService.currentUser?.role;
+    this.userModel.Name = this.userService.currentUser?.Name
+    this.userModel.Email = this.userService.currentUser?.Email
+    this.userModel.Address = this.userService.currentUser?.Address
+    this.userModel.PhoneNumber = this.userService.currentUser?.PhoneNumber
+    this.userModel.Role = this.userService.currentUser?.Role;
+    this.userModel.IsAdmin = this.userService.currentUser?.IsAdmin;
 
     console.log(typeof(this.userService.currentUser))
   }

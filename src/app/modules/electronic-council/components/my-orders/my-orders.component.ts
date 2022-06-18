@@ -34,10 +34,9 @@ export class MyOrdersComponent implements OnInit {
   constructor(
     private requsetService : RequestService,
     private messageService : MessageService,
-    private _sharedService : SharedService,
-    private _router: Router, 
+    private _router: Router,
 
-    ) { 
+    ) {
       this.searchCriteria = new InquiryModel();
 
       this.types = [
@@ -47,12 +46,12 @@ export class MyOrdersComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    debugger
+
     this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)
-      if(result.code == 200){
-        this.requests = result.data
+      if(result.IsSuccess == true){
+        this.requests = result.Data
         this.loading = false;
       }else{
         this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
@@ -65,15 +64,13 @@ export class MyOrdersComponent implements OnInit {
 
     // sort critera
     this.multiSortMeta = [];
-    this.multiSortMeta.push({field: 'year', order: 1});
-    this.multiSortMeta.push({field: 'brand', order: -1}); 
+    this.multiSortMeta.push({field: 'requestTypeAr', order: 1});
+    this.multiSortMeta.push({field: 'statusMsgAr', order: -1});
   }
 
-  showDialog(selectedOrder : RequestModel) {
-    this._sharedService.selectedRequest = selectedOrder;
+  showDialog(selectedRequest : RequestModel) {
+    this._router.navigate(['/e-council/order-status/' + selectedRequest.Id]);
 
-    this._router.navigate(['/e-council/order-status']);
-  
 }
 
 reset() {
@@ -81,8 +78,5 @@ reset() {
 }
 
 filter(value: any){
-
-  console.log('jjjjjjjjjjj')
-
 }
 }

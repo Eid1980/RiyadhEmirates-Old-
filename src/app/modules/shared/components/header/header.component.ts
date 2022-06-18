@@ -10,17 +10,23 @@ import { UserService } from '@shared/services/user.service';
 export class HeaderComponent implements OnInit {
 
   userModel : UserModel
+  isAuthenticate =true;
+
   constructor(
-    private userService : UserService,
+    private _userService : UserService,
     private router: Router
-    ) {}
+    ) {
+      debugger
+      if(_userService.currentUser.Id == undefined || _userService.currentUser.Id == "")
+      this.isAuthenticate = false;
+    }
 
   ngOnInit() {
-    this.userModel = this.userService.currentUser;
+    this.userModel = this._userService.currentUser;
   }
 
   logout(){
-    this.userService.logout();
+    this._userService.logout();
 
     this.router.navigate(['/auth/login']);
   }

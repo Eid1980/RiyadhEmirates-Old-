@@ -28,8 +28,8 @@
                [paginator]="true" [rows]="10"  [(first)]="first"
                [showCurrentPageReport]="true" responsiveLayout="scroll"
                currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات" [rowsPerPageOptions]="[10,25,30]"
-               sortMode="multiple" [multiSortMeta]="multiSortMeta" 
-               [globalFilterFields]="['requestTypeAr','statusMsgAr' , 'creationDate']" >
+               sortMode="multiple" [multiSortMeta]="multiSortMeta"
+               [globalFilterFields]="['RequestTypeAr','statusMsgAr' , 'creationDate']" >
         <ng-template pTemplate="header">
           <tr>
             <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
@@ -37,8 +37,8 @@
             </th>
             <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
             </th>
-            <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
-              <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
+            <th pSortableColumn="RequestTypeAr"> نوع الطلب  <p-sortIcon field="RequestTypeAr"></p-sortIcon>
+              <p-columnFilter field="RequestTypeAr" matchMode="equals" display="menu">
                 <ng-template pTemplate="filter" let-value let-filter="filterCallback">
                     <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)" placeholder="Any">
                         <ng-template let-option pTemplate="item">
@@ -50,22 +50,22 @@
             </th>
             <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
             </th>
-            <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
+            <th pSortableColumn="StatusMsgAr">الحالة <p-sortIcon field="StatusMsgAr"></p-sortIcon>
             </th>
-            <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
+            <th pSortableColumn="CreationDate">تاريخ الطلب <p-sortIcon field="CreationDate"></p-sortIcon>
             </th>
             <th>التفاصيل </th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-request>
             <tr>
-              <td>{{request.header}}</td>
-              <td>{{request.content}}</td>
-              <td>{{request.requestTypeAr}}</td>
-              <td>{{request.serialNumber}}</td>
-              <td>{{request.statusMsgAr}}</td>
-              <td>{{request.creationDate | date:"dd/MM/yyyy"}}</td>
-              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>              
+              <td>{{request.Header}}</td>
+              <td>{{request.Content}}</td>
+              <td>{{request.RequestTypeAr}}</td>
+              <td>{{request.SerialNumber}}</td>
+              <td>{{request.StatusMsgAr}}</td>
+              <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
+              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
             </tr>
         </ng-template>
         <!--<ng-template pTemplate="summary">
@@ -75,9 +75,9 @@
           {{state.first}}
           <button type="button" pButton icon="pi-refresh"></button>
         </ng-template>-->
-        <ng-template pTemplate="paginatorright">
+        <!--<ng-template pTemplate="paginatorright">
           <button type="button" pButton icon="pi-cloud-upload"></button>
-        </ng-template>
+        </ng-template>-->
         <ng-template let-item pTemplate="paginatordropdownitem">
           {{item.value}} - per page
         </ng-template>

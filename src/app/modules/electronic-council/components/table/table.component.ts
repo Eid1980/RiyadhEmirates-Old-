@@ -19,7 +19,7 @@ export class TableComponent implements OnInit {
   multiSortMeta : any[]
 
   display: boolean = false;
-  
+
   constructor( private requsetService : RequestService,
     private messageService: MessageService,) { }
 
@@ -32,8 +32,8 @@ export class TableComponent implements OnInit {
     this.requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)
-      if(result.code == 200){
-        this.requests = result.data
+      if(result.IsSuccess == true){
+        this.requests = result.Data
       }else{
         this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
       }
@@ -46,7 +46,7 @@ export class TableComponent implements OnInit {
     // sort critera
     this.multiSortMeta = [];
     this.multiSortMeta.push({field: 'year', order: 1});
-    this.multiSortMeta.push({field: 'brand', order: -1}); 
+    this.multiSortMeta.push({field: 'brand', order: -1});
   }
 
   showDialog(selectedOrder : RequestModel) {

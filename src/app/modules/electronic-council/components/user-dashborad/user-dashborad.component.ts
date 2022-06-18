@@ -9,14 +9,14 @@ import { RequestService } from '@shared/services/request.service';
 })
 export class UserDashboradComponent implements OnInit {
 
-  requestTypeCount : TypeCountModel[] 
+  requestTypeCount : TypeCountModel[]
 
   constructor(private _requestService : RequestService) { }
 
   ngOnInit(): void {
     this._requestService.getRequestsTypeCount().subscribe(
       (result : any) => {
-        this.requestTypeCount = result.data
+        this.requestTypeCount = result.Data
       },
       () => {}
     )

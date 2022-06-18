@@ -14,13 +14,15 @@ export class HomeComponent implements OnInit {
   emiratesNews: any[] = [];
   latestNews: any[] = [];
   reports: any[] = [];
+  services: any[] = [];
 
   constructor(
     private _userService: UserService,
     private _router: Router,
     private _adminService: AdminService,
     private globalService: GlobalService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     setTimeout(function () {
@@ -43,7 +45,7 @@ export class HomeComponent implements OnInit {
           },
         },
       });
-    }, 2000);
+    }, 8000);
     setTimeout(function () {
       $('.e-services .owl-carousel').owlCarousel({
         loop: true,
@@ -64,7 +66,7 @@ export class HomeComponent implements OnInit {
           },
         },
       });
-    }, 2000);
+    }, 8000);
     setTimeout(function () {
       $('.gov-news .owl-carousel').owlCarousel({
         loop: true,
@@ -85,7 +87,7 @@ export class HomeComponent implements OnInit {
           },
         },
       });
-    }, 2000);
+    }, 8000);
     setTimeout(function () {
       $('.advertise-report .owl-carousel').owlCarousel({
         loop: true,
@@ -106,12 +108,13 @@ export class HomeComponent implements OnInit {
           },
         },
       });
-    }, 2000);
+    }, 8000);
 
     this.getPosters();
     this.getEmiratesNews();
     this.getLatestNews();
     this.getReports();
+    this.getServices();
   }
 
   getPosters() {
@@ -122,7 +125,6 @@ export class HomeComponent implements OnInit {
 
   getEmiratesNews() {
     this._adminService.getALlEmiratesNews().subscribe((result: any) => {
-      debugger;
       this.emiratesNews = result.Data;
     });
   }
@@ -139,8 +141,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getServices() {
+    this._adminService.getALlServices().subscribe((result: any) => {
+      this.services = result.Data;
+    });
+  }
+
   navigateTo() {
-    if (this._userService.currentUser.role.toLocaleLowerCase() == 'admin') {
+    if (this._userService.currentUser.IsAdmin) {
       this._router.navigate(['/e-council/incoming-orders']);
     } else {
       this._router.navigate(['/e-council/create']);

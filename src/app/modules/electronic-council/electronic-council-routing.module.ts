@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'create', component: CreateRequestComponent ,canActivate: [AuthGuard]},
   { path: 'my-orders', component: MyOrdersComponent , canActivate: [AuthGuard]},
   { path: 'inquiry', component: OrderInquiryComponent },
-  { path: 'order-status', component: OrderStatusDetailsComponent , canActivate: [AuthGuard] },
+  { path: 'order-status/:id', component: OrderStatusDetailsComponent , canActivate: [AuthGuard] },
   { path: 'rate', component: RateServiceComponent },
   { path: 'saved', component: SavedOrdersComponent },
   { path: 'service-details', component: ServiceDetailsComponent },

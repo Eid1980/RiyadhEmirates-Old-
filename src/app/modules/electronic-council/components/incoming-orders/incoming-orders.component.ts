@@ -4,9 +4,7 @@ import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestModel } from '@shared/models/request-model';
 import { RequestService } from '@shared/services/request.service';
-import { SharedService } from '@shared/services/shared.service';
 import { MessageService } from 'primeng/api';
-import {MenuItem} from 'primeng/api';
 
 
 @Component({
@@ -26,7 +24,7 @@ export class IncomingOrdersComponent implements OnInit {
   pendingRequest : number = RequestStatusEnum.Pending;
   acceptRequest : number = RequestStatusEnum.Accept;
   rejectedRequest : number = RequestStatusEnum.Rejected;
-  dreatedRequest : number = RequestStatusEnum.Drafted; 
+  dreatedRequest : number = RequestStatusEnum.Drafted;
 
 
   first: number = 0;
@@ -36,55 +34,60 @@ export class IncomingOrdersComponent implements OnInit {
   loading: boolean = true;
 
   display: boolean = false;
-  
-  constructor( private requsetService : RequestService,
-    private messageService: MessageService,
-    private _sharedService : SharedService,
+
+  messageReason : string = ""
+
+  constructor( private _requsetService : RequestService,
+    private _messageService: MessageService,
     private _router: Router) {
 
       this.types = [
         {label: 'طلب', value: 'طلب'},
         {label: 'إقتراح', value: 'إقتراح'},
         {label: 'شكوي', value: 'شكوي'}    ]
+
+
+        // sort critera
+    this.multiSortMeta = [];
+    this.multiSortMeta.push({field: 'requestTypeAr', order: 1});
+    this.multiSortMeta.push({field: 'statusMsgAr', order: -1});
+
      }
 
   ngOnInit(): void {
 
-    this.searchCriteria = new InquiryModel();  
+    this.searchCriteria = new InquiryModel();
     this.getRequests(this.newRequest);
 
 
     // sort critera
     this.multiSortMeta = [];
     this.multiSortMeta.push({field: 'year', order: 1});
-    this.multiSortMeta.push({field: 'brand', order: -1}); 
+    this.multiSortMeta.push({field: 'brand', order: -1});
   }
 
-  showDialog(selectedOrder : RequestModel) {
-    this.selectedOrder = selectedOrder;
-    this.display = true;
+  showDialog(selectedRequest : RequestModel) {
+    //this.display = true;
 
-    this._sharedService.selectedRequest = selectedOrder;
-
-    this._router.navigate(['/e-council/order-status']);
+    this._router.navigate(['/e-council/order-status/'+ selectedRequest.Id]);
 }
 
  getRequests(requestTypeId : number){
-   
+
   this.searchCriteria.requestStatusId = requestTypeId
-  this.requsetService.getRequests(this.searchCriteria).subscribe(
+  this._requsetService.getRequests(this.searchCriteria).subscribe(
     (result : any) => {
       console.log(result)
-      debugger
-      if(result.code == 200){
-        this.requests = result.data
-        this.loading = false 
+
+      if(result.IsSuccess == true){
+        this.requests = result.Data
+        this.loading = false
       }else{
-        this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
+        this._messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
       }
     },
     (error) => {
-      this.messageService.add({severity:'error', summary: 'خطأ', detail: error});
+      this._messageService.add({severity:'error', summary: 'خطأ', detail: error});
     }
     );
  }
@@ -112,5 +115,35 @@ export class IncomingOrdersComponent implements OnInit {
   this.getRequests(id);
   console.log(id)
  }
+
+ showConfirmDialog(request : RequestModel){
+   this.selectedOrder = request;
+  if(this.display == false)
+  {
+    this.display = true;
+  }
+ }
+
+ updateRequestStatus(request : RequestModel , newRequestStatus : number){
+
+  var updateRequestStatus = {requestId : request.Id , NewStatusId : newRequestStatus  , RejectMsg : this.messageReason};
+   this._requsetService.updateRequest(updateRequestStatus).subscribe(
+     (result : any) => {
+       if(result.IsSuccess == true){
+
+        if(newRequestStatus == RequestStatusEnum.Pending){
+          this._messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
+        }
+        else if(newRequestStatus == RequestStatusEnum.Rejected){
+          this._messageService.add({severity:'success', summary: 'تم التخديث', detail: 'تم الاعتذار عن الطلب'});
+          this.display = false
+       }
+
+       this.requests = this.requests.filter(r=>r.Id != request.Id)
+
+     }
+    },
+    () => {}
+    )}
 
 }

@@ -1,9 +1,8 @@
 <div class="pt-4">
-
   <!-- Poster, Flyer -->
   <div class="row mx-0 section-padding">
     <div class="col-md-12 mb-4">
-      <img [src]="posters[0]?.Base64File" alt="" class="w-100">
+      <img [src]="posters[0]?.Base64File" alt="" class="w-100" />
     </div>
   </div>
 
@@ -14,15 +13,23 @@
         <!-- Repeatable Item -->
         <div class="item" *ngFor="let news of latestNews">
           <div class="news-card">
-            <img [src]="news?.Image?.Base64File" alt="" class="news-img">
-            <img src="./assets/images/news-overlay.png" alt="" class="overlay">
+            <img [src]="news?.Image?.Base64File" alt="" class="news-img" />
+            <img
+              src="./assets/images/news-overlay.png"
+              alt=""
+              class="overlay"
+            />
             <div class="news-caption">
               <h6 class="h2">
-                {{news?.TitleAr}}
+                {{ news?.TitleAr }}
               </h6>
               <span class="date">
-                <img src="./assets/images/icons/date-white.svg" class="date-icon" alt="">
-                <span class="date-desc">{{formatDate(news?.Date)}}</span>
+                <img
+                  src="./assets/images/icons/date-white.svg"
+                  class="date-icon"
+                  alt=""
+                />
+                <span class="date-desc">{{ formatDate(news?.Date) }}</span>
               </span>
             </div>
           </div>
@@ -37,16 +44,26 @@
       <div class="row mx-0">
         <div class="col-md-6 nav-card">
           <a (click)="navigateTo()">
-            <img src="./assets/images/icons/electronic-council-icon.svg" alt="" class="d-block mx-auto">
+            <img
+              src="./assets/images/icons/electronic-council-icon.svg"
+              alt=""
+              class="d-block mx-auto"
+            />
             <div class="desc">
               <h6>المجلس الإلكتروني</h6>
-              <span>تقديم شكوي أو مقترح أو متابعة طلب لسمو أمير منطقة الرياض</span>
+              <span
+                >تقديم شكوي أو مقترح أو متابعة طلب لسمو أمير منطقة الرياض</span
+              >
             </div>
           </a>
         </div>
         <div class="col-md-6 nav-card">
           <a routerLink="/e-council/dashboard">
-            <img src="./assets/images/icons/search-service.svg" alt="" class="d-block mx-auto">
+            <img
+              src="./assets/images/icons/search-service.svg"
+              alt=""
+              class="d-block mx-auto"
+            />
             <div class="desc">
               <h6>استعلام عن خدمة أو معاملة</h6>
               <span>استعلام عن خدمة برقم المعاملة أو رقم الطلب</span>
@@ -60,10 +77,30 @@
           <h3 class="title">منصات ذات صلة</h3>
         </div>
         <div class="rel-web">
-          <a href="#"><img src="./assets/images/icons/gov.svg" alt="" class="rel-web-logos"></a>
-          <a href="#"><img src="./assets/images/icons/absher.svg" alt="" class="rel-web-logos"></a>
-          <a href="#"><img src="./assets/images/icons/najiz.svg" alt="" class="rel-web-logos"></a>
-          <a href="#"><img src="./assets/images/icons/riyadh-amanat.svg" alt="" class="rel-web-logos"></a>
+          <a href="#"
+            ><img
+              src="./assets/images/icons/gov.svg"
+              alt=""
+              class="rel-web-logos"
+          /></a>
+          <a href="#"
+            ><img
+              src="./assets/images/icons/absher.svg"
+              alt=""
+              class="rel-web-logos"
+          /></a>
+          <a href="#"
+            ><img
+              src="./assets/images/icons/najiz.svg"
+              alt=""
+              class="rel-web-logos"
+          /></a>
+          <a href="#"
+            ><img
+              src="./assets/images/icons/riyadh-amanat.svg"
+              alt=""
+              class="rel-web-logos"
+          /></a>
         </div>
       </div>
     </div>
@@ -84,57 +121,19 @@
 
       <div class="owl-carousel owl-theme">
         <!-- Repeatable Item -->
-        <div class="item">
-          <a href="#">
-            <img src="./assets/images/icons/services/prisoner.svg" alt="" class="ser-icon">
-            <p class="ser-name h-2">خروج مؤقت لسجين للعلاج والتنويم</p>
-            <p class="ser-desc h-2">
-              تٌتيح لك الخدمات الإلكترونية إمكانية التقدم بطلب لإمارة منطقة الرياض وذلك في الزمان والمكان
-            </p>
-          </a>
-        </div>
-        <!-- Repeatable Item -->
-        <div class="item">
-          <a href="#">
-            <img src="./assets/images/icons/services/couple.svg" alt="" class="ser-icon">
-            <p class="ser-name h-2">زواج السعودي بغير سعودية مقيمة خارج المملكة</p>
-            <p class="ser-desc h-2">
-              تٌتيح لك الخدمات الإلكترونية إمكانية التقدم بطلب لإمارة منطقة الرياض وذلك في الزمان والمكان
-            </p>
-          </a>
-        </div>
-        <!-- Repeatable Item -->
-        <div class="item">
-          <a href="#">
-            <img src="./assets/images/icons/services/magnifying-glass.svg" alt="" class="ser-icon">
-            <p class="ser-name h-2">بلاغ عن التعديات على الأراضي الحكومية</p>
-            <p class="ser-desc h-2">
-              تٌتيح لك الخدمات الإلكترونية إمكانية التقدم بطلب لإمارة منطقة الرياض وذلك في الزمان والمكان
-            </p>
-          </a>
-        </div>
-        <!-- Repeatable Item -->
-        <div class="item">
-          <a href="#">
-            <img src="./assets/images/icons/services/contract.svg" alt="" class="ser-icon">
-            <p class="ser-name h-2">طلب علاج إدمان</p>
-            <p class="ser-desc h-2">
-              تٌتيح لك الخدمات الإلكترونية إمكانية التقدم بطلب لإمارة منطقة الرياض وذلك في الزمان والمكان
-            </p>
-          </a>
-        </div>
-        <!-- Repeatable Item -->
-        <div class="item">
-          <a href="#">
-            <img src="./assets/images/icons/services/prisoner.svg" alt="" class="ser-icon">
-            <p class="ser-name h-2">خروج مؤقت لسجين للعلاج والتنويم</p>
-            <p class="ser-desc h-2">
-              تٌتيح لك الخدمات الإلكترونية إمكانية التقدم بطلب لإمارة منطقة الرياض وذلك في الزمان والمكان
-            </p>
+        <div class="item" *ngFor="let service of services">
+          <a [href]="service.Link">
+            <img
+              *ngIf="service.Image"
+              [src]="service.Image.Base64File"
+              [alt]="service.TitleAr"
+              class="ser-icon"
+            />
+            <p class="ser-name h-2">{{ service.TitleAr }}</p>
+            <p class="ser-desc h-2">{{ service.DescriptionAr }}</p>
           </a>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -157,12 +156,16 @@
           <!-- Repeatable Item -->
           <div class="item" *ngFor="let news of emiratesNews">
             <div class="card">
-              <img [src]="news?.Image?.Base64File" class="card-img-top" alt="...">
+              <img
+                [src]="news?.Image?.Base64File"
+                class="card-img-top"
+                alt="..."
+              />
               <div class="card-body">
-                <h5 class="card-title h-2">{{news?.TitleAr}}</h5>
+                <h5 class="card-title h-2">{{ news?.TitleAr }}</h5>
                 <p class="card-text">
-                  <img src="./assets/images/icons/order-date.svg" alt="">
-                    {{formatDate(news?.Date)}}
+                  <img src="./assets/images/icons/order-date.svg" alt="" />
+                  {{ formatDate(news?.Date) }}
                 </p>
               </div>
             </div>
@@ -179,30 +182,36 @@
           <!-- Repeatable Item -->
           <div class="item" *ngFor="let report of reports">
             <div class="ad-card">
-              <img [src]="report?.Image?.Base64File" alt="" class="ad-card-img">
-              <img src="./assets/images/add-overlay.png" alt="" class="overlay">
+              <img
+                [src]="report?.Image?.Base64File"
+                alt=""
+                class="ad-card-img"
+              />
+              <img
+                src="./assets/images/add-overlay.png"
+                alt=""
+                class="overlay"
+              />
               <div class="ad-card-content">
                 <span class="desc">
-                   {{report?.TitleAr}}
+                  {{ report?.TitleAr }}
                 </span>
                 <span class="ad-calendar">
-                  <img src="./assets/images/icons/add-calendar.svg" alt="">
-                  <span> {{getHijriDate(report?.Date)}}</span>
+                  <img src="./assets/images/icons/add-calendar.svg" alt="" />
+                  <span> {{ getHijriDate(report?.Date) }}</span>
                 </span>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
   <!-- Important Numbers -->
   <div class="row mx-0 section-padding">
     <div class="col-md-12 my-5">
-      <img src="./assets/images/home/Group 18093.svg" alt="" class="w-100">
+      <img src="./assets/images/home/Group 18093.svg" alt="" class="w-100" />
     </div>
   </div>
-
 </div>

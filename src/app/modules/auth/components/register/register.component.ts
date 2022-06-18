@@ -25,11 +25,16 @@ export class RegisterComponent implements OnInit {
   date: NgbDateStruct;
   minHigriDate : NgbDateStruct;
   minGreg : NgbDateStruct;
+  maxHigriDate : NgbDateStruct;
+  maxGreg : NgbDateStruct;
   dateString: string;
-  selectedDateType = DateType.Gregorian;
+  selectedDateType = DateType.Hijri;
 
   isDisabled: boolean;
   isReadOnly: boolean;
+
+
+  nationalities : string[] = []
 
   @ViewChild('datePicker') startDatePicker: any;
 
@@ -47,18 +52,24 @@ export class RegisterComponent implements OnInit {
 //    confirmPassword: ['' , Validators.required],
 //    address: [''],
   });
-  
+
   constructor(private authService : AuthService,
     private messageService: MessageService,
     private router: Router,
     private fb: FormBuilder,
-    private dateFormatterService: DateFormatterService) { 
+    private dateFormatterService: DateFormatterService) {
 
       this.registerationFormData = new FormData();
 
-      this.date = this.dateFormatterService.GetTodayGregorian();
+      //this.date = this.dateFormatterService.GetTodayGregorian();
 
-      this.minGreg = {day : 1,month : 1,  year : 1950 }
+      this.minHigriDate = {day : 1,month : 1,  year : 1360  }
+      this.maxHigriDate = {day : 1,month : 1,  year : 1425}
+      this.minGreg = {day : 1,month : 1,  year : 1950  }
+      this.maxGreg = {day : 1,month : 1,  year : 2004 }
+
+      this.nationalities.push('سعودي')
+      this.nationalities.push('مصري')
 
     }
 
@@ -75,25 +86,25 @@ export class RegisterComponent implements OnInit {
     this.registerationFormData = new FormData();
 
 
-    
+
     // set default values for address and nationId
     this.registerationForm.value.address = 'Saudi Arabia'
-    this.registerationForm.value.nationalID = '29706055985889'
+    this.registerationForm.value.nationalID = this.registerationForm.value.userName
 
-    this.registerationFormData.append('name'  , this.registerationForm.value.name); 
-    this.registerationFormData.append('nationalID'  , this.registerationForm.value.nationalID); 
-    this.registerationFormData.append('userName'  , this.registerationForm.value.userName); 
-    this.registerationFormData.append('email'  , this.registerationForm.value.email); 
-    this.registerationFormData.append('password'  , this.registerationForm.value.password); 
-    this.registerationFormData.append('confirmPassword'  , this.registerationForm.value.password); 
-    this.registerationFormData.append('phoneNumber'  , this.registerationForm.value.phoneNumber); 
-    this.registerationFormData.append('birthDate'  , birthDate); 
-    this.registerationFormData.append('address'  , this.registerationForm.value.address); 
+    this.registerationFormData.append('name'  , this.registerationForm.value.name);
+    this.registerationFormData.append('nationalId'  , this.registerationForm.value.nationalID);
+    this.registerationFormData.append('userName'  , this.registerationForm.value.userName);
+    this.registerationFormData.append('email'  , this.registerationForm.value.email);
+    this.registerationFormData.append('password'  , this.registerationForm.value.password);
+    this.registerationFormData.append('confirmPassword'  , this.registerationForm.value.password);
+    this.registerationFormData.append('phoneNumber'  , this.registerationForm.value.phoneNumber);
+    this.registerationFormData.append('birthDate'  , birthDate);
+    this.registerationFormData.append('address'  , this.registerationForm.value.address);
 
 
     this.authService.register(this.registerationFormData).subscribe(
       (result : any) => {
-        if(result.code == 200){
+        if(result.IsSuccess == true){
           this.messageService.add({severity:'success', summary: 'نجاح', detail: 'تم التسجيل بنجاح'});
           setTimeout(() => {
             this.router.navigate(['/auth/login']);
@@ -103,7 +114,7 @@ export class RegisterComponent implements OnInit {
         }
       },
       (err) => {
-        this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
+        this.messageService.add({severity:'error', summary: 'خطأ', detail: err.error.Message});
       }
     )
 
@@ -112,7 +123,7 @@ export class RegisterComponent implements OnInit {
   resetForm(){
     this.registerationFormData = new FormData();
 
-    this.registerationForm.reset();  
+    this.registerationForm.reset();
    }
 
 

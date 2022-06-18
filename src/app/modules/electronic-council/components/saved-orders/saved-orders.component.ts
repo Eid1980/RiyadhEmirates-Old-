@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestModel } from '@shared/models/request-model';
 import { RequestService } from '@shared/services/request.service';
@@ -22,7 +23,7 @@ export class SavedOrdersComponent implements OnInit {
 
   display: boolean = false;
 
-  loading : boolean = true;  
+  loading : boolean = true;
 
   types: any[];
 
@@ -32,7 +33,8 @@ export class SavedOrdersComponent implements OnInit {
     private requsetService : RequestService,
     private messageService : MessageService,
     private _sharedService : SharedService,
-    private _router: Router, 
+    private _requestService : RequestService,
+    private _router: Router,
   ) {
     this.searchCriteria = new InquiryModel();
 
@@ -44,11 +46,13 @@ export class SavedOrdersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.requsetService.getDraftedRequests().subscribe(
+    let inquire = {requestStatusId : RequestStatusEnum.Drafted};
+
+    this.requsetService.inquire(inquire).subscribe(
       (result : any) => {
         console.log(result)
-        if(result.code == 200){
-          this.requests = result.data
+        if(result.IsSuccess == true){
+          this.requests = result.Data
           this.loading = false
         }else{
           this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
@@ -58,17 +62,38 @@ export class SavedOrdersComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'خطأ', detail: error});
       }
       );
-  
+
       // sort critera
       this.multiSortMeta = [];
       this.multiSortMeta.push({field: 'year', order: 1});
-      this.multiSortMeta.push({field: 'brand', order: -1}); 
+      this.multiSortMeta.push({field: 'brand', order: -1});
   }
 
-  showDialog(selectedOrder : RequestModel) {
+  showReuestInfo(selectedOrder : RequestModel) {
     this._sharedService.selectedRequest = selectedOrder;
 
-    this._router.navigate(['/e-council/create' , selectedOrder.id]);
+    this._router.navigate(['/e-council/create' , selectedOrder.Id]);
+}
+
+sendRequest(selectedOrder : RequestModel){
+  var updateRequestStatus = {requestId : selectedOrder.Id , NewStatusId : RequestStatusEnum.New };
+
+  this._requestService.updateRequest(updateRequestStatus).subscribe(
+    (result : any) =>{
+      debugger
+      if(result.IsSuccess == true){
+
+      this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
+
+      this.requests =  this.requests.filter(r =>r.Id != selectedOrder.Id);
+
+     /* setTimeout(() => {
+        this._router.navigate(['/e-council/my-orders']);
+        } , 3000);*/
+    }
+  },
+  (err) => {}
+  )
 }
 
 }
