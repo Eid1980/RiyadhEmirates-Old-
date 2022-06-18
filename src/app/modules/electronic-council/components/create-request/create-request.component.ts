@@ -61,6 +61,7 @@ export class CreateRequestComponent implements OnInit {
 
         this._requestService.getRequestById( this.requestId ).subscribe(
           (result : any) => {
+            debugger;
             if(result.IsSuccess == true){
 
               
@@ -69,7 +70,8 @@ export class CreateRequestComponent implements OnInit {
                 type : this.currentRequest.RequestTypeId,
                 header : this.currentRequest.Header,
                 content :  this.currentRequest.Content,
-                attachmentName : ''});
+                attahments : this.fb.array([]),
+                });
             }else{
               this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
             }
