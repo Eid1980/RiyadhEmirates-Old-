@@ -26,6 +26,8 @@ export class OrderStatusDetailsComponent implements OnInit {
   imagePath: string = environment.imagePathURL;
 
   requestStatus: string;
+  requestStatusStyle : string ;
+  
 
   constructor(
     private _requestService: RequestService,
@@ -43,8 +45,9 @@ export class OrderStatusDetailsComponent implements OnInit {
             if (result.IsSuccess == true) {
               this.currentRequestInfo = result.Data;
               this.requestStatus = result.Data.StatusMsgAr;
-
-              debugger;
+              
+              this.setStatusColor(result.Data.RequestStatusId);
+            
               if (result.Data.RequestStatusId == RequestStatusEnum.Rejected)
                 this.requestStatus =
                   this.requestStatus + ' بسبب ' + result.Data.StatusMessage;
@@ -119,4 +122,20 @@ export class OrderStatusDetailsComponent implements OnInit {
   print() {
     window.print();
   }
+
+  setStatusColor(requestStatusId : number){
+    if(requestStatusId == RequestStatusEnum.New){
+      this.requestStatusStyle = "alert alert-warning"
+    }else if (requestStatusId == RequestStatusEnum.Accept){
+      this.requestStatusStyle = "alert alert-primary"
+    } else if (requestStatusId == RequestStatusEnum.Pending){
+      this.requestStatusStyle = "alert alert-info"
+    }else if (requestStatusId == RequestStatusEnum.Rejected){
+      this.requestStatusStyle = "alert alert-danger"
+    }else{
+      this.requestStatusStyle = "alert alert-light"
+    }
+
+  }
+
 }
