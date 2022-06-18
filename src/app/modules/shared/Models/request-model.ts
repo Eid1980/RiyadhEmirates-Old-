@@ -15,7 +15,12 @@ export class RequestModel {
     Attachment2 : string;
     Attachment3 : string;
     Attachment4 : string;
-    Attachment5 : string
+    Attachment5 : string;
+    AttachmentHeader1 : string;
+    AttachmentHeader2 : string;
+    AttachmentHeader3 : string;
+    AttachmentHeader4 : string;
+    AttachmentHeader5 : string;
     CreationDate : Date;
     User : UserModel
 

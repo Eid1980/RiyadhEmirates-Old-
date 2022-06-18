@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { UserModel } from '@shared/models/user-model';
@@ -37,7 +37,7 @@ export class CreateRequestComponent implements OnInit {
     header: ['' , Validators.required],
     content: ['' , Validators.required],
     type: ['1' , Validators.required],
-    attachmentName: ['' ,  Validators.required]
+    attahments: this.fb.array([])
   });
 
   constructor(private _requestService : RequestService,
@@ -61,15 +61,17 @@ export class CreateRequestComponent implements OnInit {
 
         this._requestService.getRequestById( this.requestId ).subscribe(
           (result : any) => {
+            debugger;
             if(result.IsSuccess == true){
 
-              debugger
+              
               this.currentRequest = result.Data;
               this.orderForm.setValue({
                 type : this.currentRequest.RequestTypeId,
                 header : this.currentRequest.Header,
                 content :  this.currentRequest.Content,
-                attachmentName : ''});
+                attahments : this.fb.array([]),
+                });
             }else{
               this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
             }
@@ -87,6 +89,24 @@ export class CreateRequestComponent implements OnInit {
   ngOnInit(): void {
     this.userModel = this._userService.currentUser;
 
+  }
+  get attahments(){
+    return this.orderForm.get('attahments') as FormArray ;
+  }
+
+  addAttachment(){
+ 
+    if( this.orderForm.value.attahments.length < 5 ){
+    this.attahments.push(this.fb.control(''));
+    
+    console.log("added")
+    }
+  }
+
+  removeAttachments(index : any){
+
+    this.attahments.removeAt(index);
+    console.log("removed");
   }
 
   upload(files: FileList) {
@@ -158,6 +178,21 @@ saveRequest(requestStatusId : number){
     for(let file of this.uploadedFiles)
       this.orderFormData.append('attachments'  , file , file.name);
   }
+
+ 
+  var attahmentsNames = this.orderForm.value.attahments as []
+  if(attahmentsNames.length > 0){
+
+    for(let name of attahmentsNames){
+      
+      var index = attahmentsNames.indexOf(name) + 1 ;
+      var key = `attachmentHeader${index}`
+      console.log(key + ':' +name)
+      this.orderFormData.append(key , name)
+    }
+  } 
+   
+
   this.orderFormData.append('header' , this.orderForm.value.header)
   this.orderFormData.append('content' , this.orderForm.value.content)
   this.orderFormData.append('requestTypeId' , this.orderForm.value.type)

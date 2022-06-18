@@ -42,4 +42,10 @@ export class AuthService {
   resetPassword(resetPassword : any){
     return this.httpClient.post(`${environment.apiUrl}/auth/resetPassword` , resetPassword );
   }
+
+  getNtationalities(){
+    return this.httpClient.get(`${environment.apiUrl}/Nationalities/get/all`);
+  }
+
+
 }

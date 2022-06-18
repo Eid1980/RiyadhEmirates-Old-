@@ -676,6 +676,14 @@
         border-color: $Primary-2;
       }
     }
+    &.form-inline {
+      display: flex;
+      align-items: center;
+      .form-lbl {
+        white-space: nowrap;
+        margin-left: 6px;
+      }
+    }
   }
 }
 
@@ -1345,4 +1353,28 @@
       }
     }
   }
+}
+
+// File Upload Create Request
+.repeated-row {
+  border: 1px dashed $Primary-2;
+}
+
+.p-fileupload .p-fileupload-buttonbar {
+  padding: 6px;
+}
+
+.p-fileupload .p-fileupload-buttonbar .p-button {
+  margin-right: 0;
+  font-size: 12px;
+  font-family: "Almarai";
+}
+
+.p-button .p-button-icon-left {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+.p-fileupload .p-fileupload-content {
+  padding: 1rem;
 }

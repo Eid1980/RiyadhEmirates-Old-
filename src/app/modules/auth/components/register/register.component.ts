@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
   isReadOnly: boolean;
 
 
-  nationalities : string[] = []
+  nationalities : any ;
 
   @ViewChild('datePicker') startDatePicker: any;
 
@@ -68,12 +68,15 @@ export class RegisterComponent implements OnInit {
       this.minGreg = {day : 1,month : 1,  year : 1950  }
       this.maxGreg = {day : 1,month : 1,  year : 2004 }
 
-      this.nationalities.push('سعودي')
-      this.nationalities.push('مصري')
+      // this.nationalities.push('سعودي')
+      // this.nationalities.push('مصري')
+      
+
 
     }
 
   ngOnInit() {
+    this._getNationalities();
   }
 
   formSubmit(){
@@ -155,6 +158,20 @@ export class RegisterComponent implements OnInit {
   setHijri() {
     this.selectedDateType = DateType.Hijri;
     this.date = this.dateFormatterService.GetTodayHijri();
+  }
+
+  _getNationalities(){
+    
+    this.authService.getNtationalities().subscribe(
+    
+      (result : any) => {
+        debugger;
+       this.nationalities = result.Data ;
+      },
+      (err) => {
+        this.messageService.add({severity:'error', summary: 'خطأ', detail: err.error.Message});
+      }
+    )
   }
 
 }

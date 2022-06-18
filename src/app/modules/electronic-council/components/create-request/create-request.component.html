@@ -9,7 +9,7 @@
   <span class="breadcrumb-item active">المجلس الإلكتروني</span>
 </nav>
 
-<form  [formGroup]="orderForm"  class="fs-13px">
+<form [formGroup]="orderForm" class="fs-13px">
   <div class="page-wrapper">
     <div class="row mx-0">
       <!-- user side menu -->
@@ -58,7 +58,7 @@
         </div>
         <div class="row mx-0">
 
-          <div class="col-md-6 col-12 pr-0">
+          <div class="col-md-5 col-12 pr-0">
             <!-- form card -->
             <div class="form-card h-95">
               <div class="form-header">
@@ -66,7 +66,7 @@
               </div>
               <div class="form-content">
 
-                <div class="form-group col-md-10">
+                <div class="form-group">
                   <label for="" class="form-lbl lbl-33">نوع الطلب</label>
                   <select class="form-control" name="" id="" formControlName="type">
                     <option value="1" selected>طلب</option>
@@ -74,11 +74,11 @@
                     <option value="3">شكوى</option>
                   </select>
                 </div>
-                <div class="form-group col-md-10">
+                <div class="form-group">
                   <label for="" class="form-lbl lbl-33">عنوان الطلب</label>
                   <input type="text" name="" id="" class="form-control" formControlName="header">
                 </div>
-                <div class="form-group col-md-10">
+                <div class="form-group">
                   <label for="" class="form-lbl lbl-33">الوصف</label>
                   <textarea rows="4" name="" id="" class="form-control" formControlName="content"></textarea>
                 </div>
@@ -86,7 +86,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-12 pl-0">
+          <div class="col-md-7 col-12 pl-0">
             <!-- form card -->
             <div class="form-card h-95">
               <div class="form-header">
@@ -94,7 +94,34 @@
               </div>
               <div class="form-content">
 
-                <div class="form-group col-md-12">
+                <div class="px-3">
+                  <button class="btn btn-sm btn-primary" (click)="addAttachment()">اضافه مرفق</button>
+                </div>
+
+                <div formArrayName="attahments" *ngFor="let attachment of attahments.controls; let i = index">
+
+                  <div class="row mx-0 mt-3 pt-3 mx-3 repeated-row">
+                    <div class="form-group col-sm-11 form-inline">
+                      <label for="" class="form-lbl lbl-33">اسم المرفق</label>
+                      <input type="text" name="" id="" class="form-control" [formControlName]="i">
+                    </div>
+
+                    <div class="form-group col-sm-11">
+                      <p-fileUpload name="demo[]" #inputFile chooseLabel="تحميل مرفق" [auto]="true" (onSelect)="upload($event.currentFiles)" (onRemove)="remove($event.file)" [multiple]=true [fileLimit]=1 mode="advanced" [maxFileSize]=5242880 accept="image/*,.pdf,.doc">
+                      </p-fileUpload>
+                    </div>
+
+                    <div class="col-sm-1 d-flex align-items-center">
+                      <button class="btn btn-danger btn-sm" type="button" (click)="removeAttachments(i)">
+                        <i class="fa fa-close"></i>
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <!-- <div class="form-group col-md-12">
                   <label for="" class="form-lbl lbl-33">اسم المرفق</label>
                   <input type="text" name="" id="" class="form-control" formControlName="attachmentName" >
                 </div>
@@ -104,23 +131,8 @@
                   [auto]="true"
                    (onSelect)="upload($event.currentFiles)" (onRemove)="remove($event.file)"
                    [multiple]=true  [fileLimit]=5  mode="advanced" [maxFileSize] = 5242880 accept="image/*,.pdf,.doc" >
-                    <!--<ng-template pTemplate="content">
-                      <ul *ngIf="uploadedFiles.length">
-                        <li *ngFor="let file of uploadedFiles">{{file?.name}} - {{file?.size}} bytes</li>
-                      </ul>
-                    </ng-template>-->
                  </p-fileUpload>
-
-
-                 <!--<p-fileUpload #uploader
-                          [auto]="true" [customUpload]="isCustomUpload"
-                          (uploadHandler)="onUpload($event)" (onRemove)="onRemove($event)"
-                          [multiple]="isMultiple" mode="advanced"  accept="image/*"  [maxFileSize]="fileSize">
-                         </p-fileUpload>-->
-
-
-                  <!--<input type="file" #inputFile class="custom-file-input" id="validatedCustomFile" (change)="upload($any($event.target).files)"  multiple >-->
-              </div>
+              </div> -->
 
               </div>
             </div>
@@ -130,7 +142,7 @@
     </div>
     <!-- form actions -->
     <div class="form-actions">
-      <button type="submit" class="btn btn-save"  (click)="formSubmit()" [disabled]="orderForm.status == 'INVALID'">إرسال الطلب</button>
+      <button type="submit" class="btn btn-save" (click)="formSubmit()" [disabled]="orderForm.status == 'INVALID'">إرسال الطلب</button>
       <button type="submit" class="btn btn-draft" (click)="saveAsDraft()">حفظ كمسودة</button>
       <button type="submit" class="btn btn-cancel" (click)="cancel()">إلغاء</button>
     </div>

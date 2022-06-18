@@ -70,6 +70,7 @@ export class SavedOrdersComponent implements OnInit {
   }
 
   showReuestInfo(selectedOrder : RequestModel) {
+    debugger;
     this._sharedService.selectedRequest = selectedOrder;
 
     this._router.navigate(['/e-council/create' , selectedOrder.Id]);
