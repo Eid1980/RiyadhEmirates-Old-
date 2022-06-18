@@ -38,7 +38,7 @@
         <div class="query-result">
           <!--<h5>نتيجة البحث</h5>-->
           <!-- status -->
-          <div class="alert alert-warning" role="alert">
+          <div [class]="requestStatusStyle" role="alert">
             <strong>حالة الطلب: {{requestStatus}}</strong>
           </div>
         </div>
@@ -171,3 +171,4 @@
     </div>
     <button class="" (click)="print()"><i class="fa-solid fa-print"></i></button>
   </div>
+  
