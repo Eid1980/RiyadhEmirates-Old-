@@ -54,10 +54,20 @@
       </a>
     </li>
     <li *ngIf="!userModel.IsAdmin">
-      <a routerLink="/e-council/rate" routerLinkActive="active" class="link">
+    <!--<a routerLink="/e-council/rate" routerLinkActive="active" class="link">
+            <img src="./assets/images/icons/prof-rate.svg" alt="">
+            تقييم خدمة
+     </a>-->
+
+      <a (click)="showRateServiceModal = true" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-rate.svg" alt="">
         تقييم خدمة
       </a>
     </li>
   </ul>
 </div>
+
+
+<p-dialog  [(visible)]="showRateServiceModal" [closeOnEscape]=false [style]="{width: '50vw'}" (onHide)="close($event)">
+  <app-rate-service (OnClose)="closeModal()" (OnSubmit)="submitModal($event)"></app-rate-service>
+</p-dialog>

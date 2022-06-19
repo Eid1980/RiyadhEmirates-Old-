@@ -1,26 +1,29 @@
-<!-- Breadcrumb -->
-<nav class="breadcrumb">
-  <a class="breadcrumb-item" href="#">
-    <img src="./assets/images/icons/home.svg" alt="" class="ml-2">
-    الرئيسية
-  </a>
-  <a class="breadcrumb-item" href="#"> دليل الخدمات</a>
-  <span class="breadcrumb-item active">المجلس الإلكتروني</span>
-</nav>
+<div  id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+  <div class="">
+    <div class="">
+      <div>
+        <h5  id="staticBackdropLabel">تقييم الخدمة</h5>
+      </div>
+      <div class="modal-body">
+        <span class="fa fa-star" (click)="rateService(1)"  [ngClass]="{'checked' : rate >= 1}"></span>
+        <span class="fa fa-star" (click)="rateService(2)"  [ngClass]="{'checked' : rate >= 2}"></span>
+        <span class="fa fa-star" (click)="rateService(3)"  [ngClass]="{'checked' : rate >= 3}"></span>
+        <span class="fa fa-star" (click)="rateService(4)"  [ngClass]="{'checked' : rate >= 4}"></span>
+        <span class="fa fa-star" (click)="rateService(5)"  [ngClass]="{'checked' : rate >= 5}"></span>
 
-<div class="page-wrapper">
-  <div class="row mx-0">
-    <!-- user side menu -->
-    <div class="col-md-3 col-12">
-      <app-user-sidemenu></app-user-sidemenu>
-    </div>
-    <!-- user page content -->
-    <div class="col-md-9 col-12">
-      <!-- page title -->
-      <div class="page-title">
-        <h4>تقييم خمة</h4>
+       <!-- <div>
+          <p>rateStatusText</p>
+        </div>-->
+        <div>
+          <textarea *ngIf="rate == 1"></textarea>
+        </div>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onnModalClose()" >إغلاق</button>
+        <button type="button" class="btn btn-primary" (click)="onnModalSubmit()" [disabled]="rate == 0">ارسال</button>
       </div>
     </div>
   </div>
-
 </div>
