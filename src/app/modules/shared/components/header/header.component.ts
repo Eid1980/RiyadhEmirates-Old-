@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
     private _userService : UserService,
     private router: Router
     ) {
-      debugger
       if(_userService.currentUser.Id == undefined || _userService.currentUser.Id == "")
       this.isAuthenticate = false;
     }

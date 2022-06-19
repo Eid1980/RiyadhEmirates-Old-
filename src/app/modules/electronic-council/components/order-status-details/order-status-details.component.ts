@@ -7,6 +7,8 @@ import { RequestService } from '@shared/services/request.service';
 import { UserService } from '@shared/services/user.service';
 import { MessageService } from 'primeng/api';
 import { environment } from 'src/environments/environment';
+import * as html2pdf from 'html2pdf.js'
+
 
 @Component({
   selector: 'app-order-status-details',
@@ -120,7 +122,19 @@ export class OrderStatusDetailsComponent implements OnInit {
   }
 
   print() {
-    window.print();
+    var element = document.getElementById('requestInfo');
+    var opt = {
+      margin:       1,
+      filename:     'output.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 3},
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+    };
+
+    // New Promise-based usage:
+    html2pdf().from(element).set(opt).save();
+
+    //window.print();
   }
 
   setStatusColor(requestStatusId : number){

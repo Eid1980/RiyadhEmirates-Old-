@@ -81,7 +81,6 @@ sendRequest(selectedOrder : RequestModel){
 
   this._requestService.updateRequest(updateRequestStatus).subscribe(
     (result : any) =>{
-      debugger
       if(result.IsSuccess == true){
 
       this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});

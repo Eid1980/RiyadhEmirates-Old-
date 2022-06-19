@@ -36,7 +36,6 @@ export class ForgotPasswordComponent implements OnInit {
       let forgetPassword : any = {UserName  : this.userName};
       this._authService.forgetPassword(forgetPassword).subscribe(
         (result : any) => {
-          debugger
           if(result.IsSuccess == true){
             this._messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم ارسال الرقم التاكيدي الي البريد الالكتروني'});
             this.updatePlaceHolder(++this.state);
