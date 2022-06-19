@@ -33,6 +33,10 @@ export class CreateRequestComponent implements OnInit {
 
   requestId : number
 
+  isRateService : boolean
+
+  requestStatusId : number
+
   orderForm = this.fb.group({
     header: ['' , Validators.required],
     content: ['' , Validators.required],
@@ -49,6 +53,7 @@ export class CreateRequestComponent implements OnInit {
     private dateFormatterService: DateFormatterService) {
 
     this.orderFormData = new FormData()
+    this.isRateService = false;
 
     this.route.params.subscribe(params => {
       this.requestId = params['id'];
@@ -62,8 +67,6 @@ export class CreateRequestComponent implements OnInit {
         this._requestService.getRequestById( this.requestId ).subscribe(
           (result : any) => {
             if(result.IsSuccess == true){
-
-              debugger
               this.currentRequest = result.Data;
               this.orderForm.setValue({
                 type : this.currentRequest.RequestTypeId,
@@ -117,7 +120,7 @@ export class CreateRequestComponent implements OnInit {
 
 saveRequest(requestStatusId : number){
 
-
+  this.requestStatusId = requestStatusId;
   // update request
   if(this.requestId != undefined){
     var updateRequestStatus = {requestId : this.requestId , NewStatusId : requestStatusId };
@@ -128,19 +131,8 @@ saveRequest(requestStatusId : number){
 
       this.resetForm();
 
-      if(requestStatusId == RequestStatusEnum.New){
-        this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
-        setTimeout(() => {
-          this._router.navigate(['/e-council/my-orders']);
-          } , 3000);
-      }
+      this.isRateService = true;
 
-      else if(requestStatusId == RequestStatusEnum.Drafted){
-        this.messageService.add({severity:'success', summary: 'تم الحفظ', detail: 'تم حفظ طلبك بنجاح'});
-        setTimeout(() => {
-            this._router.navigate(['/e-council/saved']);
-          } , 3000);
-      }
     }},
 
       () => {}
@@ -165,24 +157,14 @@ saveRequest(requestStatusId : number){
   this.orderFormData.append('currentHigriDate' , currentHigriDate)
 
 
+  this.requestStatusId = requestStatusId;
+
   this._requestService.createRequest(this.orderFormData).subscribe(
     (result : any) =>{
       if(result.IsSuccess == true){
         this.resetForm();
 
-        if(requestStatusId == RequestStatusEnum.New){
-          this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
-          setTimeout(() => {
-            this._router.navigate(['/e-council/my-orders']);
-            } , 3000);
-        }
-
-        else if(requestStatusId == RequestStatusEnum.Drafted){
-          this.messageService.add({severity:'success', summary: 'تم الحفظ', detail: 'تم حفظ طلبك بنجاح'});
-          setTimeout(() => {
-              this._router.navigate(['/e-council/saved']);
-            } , 3000);
-        }
+        this.isRateService = true
 
       }else {
         this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
@@ -209,5 +191,47 @@ onUpload(event : any) {
     this.uploadedFiles.push(file);
   }
   this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+}
+
+
+closeModal(){
+
+  console.log('close Modal')
+
+  if(this.requestStatusId == RequestStatusEnum.New){
+    this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
+    setTimeout(() => {
+      this._router.navigate(['/e-council/my-orders']);
+      } , 3000);
+  }
+
+  else if(this.requestStatusId == RequestStatusEnum.Drafted){
+    this.messageService.add({severity:'success', summary: 'تم الحفظ', detail: 'تم حفظ طلبك بنجاح'});
+    setTimeout(() => {
+        this._router.navigate(['/e-council/saved']);
+      } , 3000);
+  }
+
+}
+
+submitModal(){
+
+
+  // _userServiceRate.sendServiceRate().subscribe(()=>{} , ()=>{})
+  console.log('submit Modal')
+  if(this.requestStatusId == RequestStatusEnum.New){
+    this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
+    setTimeout(() => {
+      this._router.navigate(['/e-council/my-orders']);
+      } , 3000);
+  }
+
+  else if(this.requestStatusId == RequestStatusEnum.Drafted){
+    this.messageService.add({severity:'success', summary: 'تم الحفظ', detail: 'تم حفظ طلبك بنجاح'});
+    setTimeout(() => {
+        this._router.navigate(['/e-council/saved']);
+      } , 3000);
+  }
+
 }
 }
