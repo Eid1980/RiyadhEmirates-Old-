@@ -29,7 +29,7 @@ export class OrderStatusDetailsComponent implements OnInit {
 
   requestStatus: string;
   requestStatusStyle : string ;
-  
+
 
   constructor(
     private _requestService: RequestService,
@@ -45,12 +45,13 @@ export class OrderStatusDetailsComponent implements OnInit {
         this._requestService.getRequestById(requestId).subscribe(
           (result: any) => {
             if (result.IsSuccess == true) {
+              console.log(result.Data)
               this.currentRequestInfo = result.Data;
               this.requestStatus = result.Data.StatusMsgAr;
-              
+
               this.setStatusColor(result.Data.RequestStatusId);
-            
-              if (result.Data.RequestStatusId == RequestStatusEnum.Rejected)
+
+              if (result.Data.RequestStatusId == RequestStatusEnum.Rejected || result.Data.RequestStatusId == RequestStatusEnum.Edit)
                 this.requestStatus =
                   this.requestStatus + ' بسبب ' + result.Data.StatusMessage;
             } else {
@@ -121,6 +122,27 @@ export class OrderStatusDetailsComponent implements OnInit {
     }
   }
 
+  editRequest() {
+    if (this.displayMessage) {
+      var updateRequestStatus = {
+        requestId: this.currentRequestInfo.Id,
+        NewStatusId: RequestStatusEnum.Edit,
+        rejectMsg: this.messageReason,
+      };
+      this._requestService.updateRequest(updateRequestStatus).subscribe(
+        (result: any) => {
+          if (result.IsSuccess == true) {
+            this._router.navigate(['/e-council/incoming-orders']);
+            this.displayMessage = false;
+          }
+        },
+        () => {}
+      );
+    } else {
+      this.displayMessage = true;
+    }
+  }
+
   print() {
     var element = document.getElementById('requestInfo');
     var opt = {
@@ -146,8 +168,10 @@ export class OrderStatusDetailsComponent implements OnInit {
       this.requestStatusStyle = "alert alert-info"
     }else if (requestStatusId == RequestStatusEnum.Rejected){
       this.requestStatusStyle = "alert alert-danger"
-    }else{
+    }else if (requestStatusId == RequestStatusEnum.Drafted){
       this.requestStatusStyle = "alert alert-light"
+    }else {
+      this.requestStatusStyle = "alert alert-primary"
     }
 
   }

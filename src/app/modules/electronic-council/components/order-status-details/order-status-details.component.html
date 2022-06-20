@@ -163,9 +163,11 @@
 
     <!--<div *ngIf="userModel.IsAdmin == true">-->
 
-    <div *ngIf="userModel.IsAdmin && currentRequestInfo.RequestStatusId ==  1">
+    <div *ngIf="(userModel.IsAdmin && currentRequestInfo?.RequestStatusId ==  1)">
       <button class="btn btn-success" (click)="acceptRequest()">موافق</button>
+      <button class="btn btn-warning" (click)="editRequest()">إرجاع الطلب</button>
       <button class="btn btn-danger" (click)="rejectRequest()">مرفوض</button>
+
 
       <input type="text" *ngIf="displayMessage" [(ngModel)]="messageReason">
     </div>

@@ -9,6 +9,8 @@ import { MessageService } from 'primeng/api';
   selector: 'app-user-sidemenu',
   templateUrl: './user-sidemenu.component.html',
   styleUrls: ['./user-sidemenu.component.scss'],
+  providers: [MessageService],
+
 })
 export class UserSidemenuComponent implements OnInit {
   userModel: UserModel;

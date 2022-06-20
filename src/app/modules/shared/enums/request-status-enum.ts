@@ -1,8 +1,9 @@
 export enum RequestStatusEnum {
-    New = 1, 
+    New = 1,
     Accept = 2,
-    Rejected = 3 , 
+    Rejected = 3 ,
     Pending = 4,
     Drafted = 5 ,
+    Edit = 6
 
 }

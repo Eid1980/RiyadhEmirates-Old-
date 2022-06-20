@@ -5,6 +5,7 @@ import { RequestService } from '@shared/services/request.service';
 import { MessageService } from 'primeng/api';
 import { SharedService } from '@shared/services/shared.service';
 import { Router } from '@angular/router';
+import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 
 
 @Component({
@@ -69,7 +70,14 @@ export class MyOrdersComponent implements OnInit {
   }
 
   showDialog(selectedRequest : RequestModel) {
+    if(selectedRequest.RequestStatusId == RequestStatusEnum.Edit){
+      this._router.navigate(['/e-council/create' , selectedRequest.Id]);
+    }
+
+    else{
+
     this._router.navigate(['/e-council/order-status/' + selectedRequest.Id]);
+    }
 
 }
 

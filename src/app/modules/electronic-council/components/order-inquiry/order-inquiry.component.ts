@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestService } from '@shared/services/request.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-order-inquiry',
   templateUrl: './order-inquiry.component.html',
-  styleUrls: ['./order-inquiry.component.scss']
+  styleUrls: ['./order-inquiry.component.scss'],
+  providers: [MessageService],
+
 })
 export class OrderInquiryComponent implements OnInit {
 
