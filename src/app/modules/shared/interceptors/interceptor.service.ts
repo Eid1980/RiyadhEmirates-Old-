@@ -30,17 +30,6 @@ export class InterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     this.progressSpinner.show();
-    debugger
-
-    /*const token = this.localStorage.get("EmiratesToken");
-
-    if (token) {
-      req = req.clone({
-        headers: req.headers.set("Authorization", "Bearer " + token),
-      });
-    }*/
-
-    /*req = req.clone({ headers: req.headers.set("Accept", "application/json") });*/
 
     return next.handle(req).pipe(
       finalize(() => {
@@ -53,20 +42,6 @@ export class InterceptorService implements HttpInterceptor {
   }
 
   errorHandler(error: HttpErrorResponse) {
-    // if (error.url.includes("IsAuthorizedComponent")) {
-    //   this.globalService.messageAlert(
-    //     MessageType.Error,
-    //     "ليس لديك صلاحية لدخول هذة الصفحة"
-    //   );
-    //   setTimeout(() => {
-    //     document.location.href = "/auth/login";
-    //   }, 3000);
-    // } else {
-    /*this.globalService.messageAlert(
-      MessageType.Error,
-      "حدث خطأ ما من قبل الخادم (server)"
-    );*/
-    // }
     return throwError(error);
   }
 }

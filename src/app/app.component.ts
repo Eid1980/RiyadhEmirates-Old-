@@ -26,10 +26,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {}
 
   ngAfterViewChecked() {
-    debugger
     this.isActive = this.progressSpinner.isLoading;
-    this.progressSpinner.isLoading.subscribe((result)=>{ console.log(result); debugger},
-    (err)=>{console.log(err)})
     this.cdRef.detectChanges();
   }
 }
