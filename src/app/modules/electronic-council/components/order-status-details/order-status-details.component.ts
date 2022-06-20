@@ -29,7 +29,7 @@ export class OrderStatusDetailsComponent implements OnInit {
 
   requestStatus: string;
   requestStatusStyle : string ;
-
+  loading : boolean;
 
   constructor(
     private _requestService: RequestService,
@@ -42,15 +42,14 @@ export class OrderStatusDetailsComponent implements OnInit {
       let requestId: number = params['id'];
 
       if (requestId != undefined) {
+        this.loading = true;
         this._requestService.getRequestById(requestId).subscribe(
           (result: any) => {
             if (result.IsSuccess == true) {
               console.log(result.Data)
               this.currentRequestInfo = result.Data;
               this.requestStatus = result.Data.StatusMsgAr;
-
               this.setStatusColor(result.Data.RequestStatusId);
-
               if (result.Data.RequestStatusId == RequestStatusEnum.Rejected || result.Data.RequestStatusId == RequestStatusEnum.Edit)
                 this.requestStatus =
                   this.requestStatus + ' بسبب ' + result.Data.StatusMessage;

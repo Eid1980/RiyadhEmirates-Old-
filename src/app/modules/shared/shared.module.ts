@@ -17,6 +17,10 @@ import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicke
 import {TabMenuModule} from 'primeng/tabmenu';
 import {FileUploadModule} from 'primeng/fileupload';
 import { HigriDatePipe } from './pipes/higri-date.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
+
+import { ProgressSpinnerModule } from "primeng/progressspinner";
+
 
 
 
@@ -30,12 +34,14 @@ import { HigriDatePipe } from './pipes/higri-date.pipe';
     FooterComponent,
     PageNotFoundComponent,
     HigriDatePipe,
-    
+    LoaderComponent,
+
   ],
   imports: [
     CommonModule,
     FormsModule,
     SharedRoutingModule,
+    ProgressSpinnerModule,
     MessageModule,
     ButtonModule,
     ToastModule,
@@ -60,8 +66,7 @@ import { HigriDatePipe } from './pipes/higri-date.pipe';
     NgxHijriGregorianDatepickerModule,
     TabMenuModule,
     FileUploadModule,
-
-
+    ProgressSpinnerModule,
   ],
 })
 export class SharedModule {}

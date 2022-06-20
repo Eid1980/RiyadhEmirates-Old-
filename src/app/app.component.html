@@ -1,0 +1,6 @@
+<div class="body-layout">
+  <router-outlet></router-outlet>
+  <!-- [async] used to subscribe and unsubscribe with primitive types -->
+  <p-progressSpinner *ngIf="isActive | async" class="spinner-icon">
+  </p-progressSpinner>
+</div>
