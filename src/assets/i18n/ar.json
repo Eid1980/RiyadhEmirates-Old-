@@ -9,6 +9,41 @@
     "mediaReports" : "التقارير الاعلامية"
   },
 
+  "auth" : {
+    "signIn" : {
+      "signIn" : "تسجيل الدخول",
+      "nationalIdOrResidentNumber" : "رقم الهوية/الإقامة",
+      "password" : "كلمة المرور",
+      "forgetPassword" : "نسيت كلمة المرور؟" ,
+      "dontHaveAccount" : "ليس لديك حساب؟",
+      "createNewAccount" : "إنشاء حساب جديد",
+      "nafazSingIn" : "عن طريق حسابك في منصة النفاذ الوطني الموحد",
+      "or" : "أو"
+    },
+
+    "singUp" : {
+      "singUp" : "حساب جديد",
+      "nationalIdOrResidentNumber" : "رقم الهوية/الإقامة",
+      "name" : "الاسم",
+      "nationality" : "الجنسية",
+      "birthDate" : " تاريخ الميلاد ",
+      "dateComponent" : "سنة/شهر/يوم",
+      "higri" : "هجري",
+      "greg" : "ميلادي",
+      "phoneNumber" : "رقم الجوال",
+      "e_mail" : "البريد الالكتروني",
+      "password" : "كلمة المرور",
+      "createNewAccount" : "إنشاء حساب جديد",
+      "haveAnAccount" : "لديك حساب سابق؟",
+      "backToLogin" : "العودة إلي تسجل الدخول"
+    }
+  },
+
+  "supportedLanguages" : {
+    "arabic" : "اللغة العربية",
+    "english" : "اللغة الانجليزية"
+  },
+
   "electronic_council" : {
 
     "shared":{
@@ -17,6 +52,7 @@
       "electronic_council" : "المجلس الالكتروني",
       "noData" : "لا يوجد بيانات",
       "title" : "المجلس الإلكتروني لسمو أمير منطقة الرياض" ,
+
       "serviceType" : "إنشاء طلب جديد",
       "applicantsInfo" : "بيانات مقدم الطلب",
       "applicantsName" : " : اسم مقدم الطلب" ,
@@ -81,6 +117,5 @@
 
   "rateService" : {
   }
-
   }
 }

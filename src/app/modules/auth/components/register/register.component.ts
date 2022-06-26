@@ -10,6 +10,7 @@ import * as momentjs from 'moment';
 const moment = momentjs;
 
 import * as moment_ from 'moment-hijri';
+import { Base } from '@shared/core/base';
 const momentHijri = moment_;
 
 
@@ -20,7 +21,9 @@ const momentHijri = moment_;
   providers: [MessageService]
 
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent extends Base implements OnInit {
+
+  defaultLang : string;
 
   date: NgbDateStruct;
   minHigriDate : NgbDateStruct;
@@ -48,9 +51,8 @@ export class RegisterComponent implements OnInit {
     email: ['' , [Validators.required , Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     confirmEmail: ['abc' , Validators.required],
     phoneNumber:[ , [Validators.required, Validators.pattern('^966{1}[0-9]{9}$')]],
-    password: ['' , [Validators.required]] //Validators.pattern('(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}')]],
-//    confirmPassword: ['' , Validators.required],
-//    address: [''],
+    password: ['' , [Validators.required]]
+
   });
 
   constructor(private authService : AuthService,
@@ -59,19 +61,20 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private dateFormatterService: DateFormatterService) {
 
+      super();
       this.registerationFormData = new FormData();
-
-      //this.date = this.dateFormatterService.GetTodayGregorian();
 
       this.minHigriDate = {day : 1,month : 1,  year : 1360  }
       this.maxHigriDate = {day : 1,month : 1,  year : 1425}
       this.minGreg = {day : 1,month : 1,  year : 1950  }
       this.maxGreg = {day : 1,month : 1,  year : 2004 }
 
-      // this.nationalities.push('سعودي')
-      // this.nationalities.push('مصري')
-
-
+      if(this.translate.currentLang == 'ar') {
+        this.defaultLang = 'عربي'
+      }
+      else {
+        this.defaultLang = 'ُEnglish'
+      }
 
     }
 
@@ -129,7 +132,6 @@ export class RegisterComponent implements OnInit {
     this.registerationForm.reset();
    }
 
-
    makeReadonly() {
     if (this.isReadOnly) {
       this.isReadOnly = false;
@@ -161,7 +163,6 @@ export class RegisterComponent implements OnInit {
   }
 
   _getNationalities(){
-
     this.authService.getNtationalities().subscribe(
 
       (result : any) => {
@@ -171,6 +172,18 @@ export class RegisterComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'خطأ', detail: err.error.Message});
       }
     )
+  }
+
+  changeLanguge(){
+    if(this.translate.currentLang == 'ar') {
+      this.translate.use('en')
+      this.defaultLang = 'عربي'
+    }
+    else {
+      this.translate.use('ar')
+      this.defaultLang = 'ُEnglish'
+    }
+
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Base } from '@shared/core/base';
 import { AuthService } from '@shared/services/auth.service';
 import { SessionStorageService } from '@shared/services/session-storage.service';
 import { UserService } from '@shared/services/user.service';
@@ -12,7 +13,7 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends Base implements OnInit {
 
   loginForm = this.fb.group({
     userName: ['', Validators.required],
@@ -25,12 +26,13 @@ export class LoginComponent implements OnInit {
     private sessionService : SessionStorageService,
     private router: Router,
     private fb: FormBuilder,
-    private messageService: MessageService) {}
+    private messageService: MessageService) {
+      super();
+    }
 
   ngOnInit() {}
 
   formSubmit(){
-    console.log('formSubmit')
     this.authService.login(this.loginForm.value).subscribe(
       (result : any) => {
 

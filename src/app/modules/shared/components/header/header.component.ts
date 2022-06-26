@@ -19,6 +19,8 @@ export class HeaderComponent extends Base implements  OnInit {
     ) {
 
       super();
+      console.log('currentLang')
+      console.log(this.translate.currentLang);
       if(_userService.currentUser.Id == undefined || _userService.currentUser.Id == "")
       this.isAuthenticate = false;
     }

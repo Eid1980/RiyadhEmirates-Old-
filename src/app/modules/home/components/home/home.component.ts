@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Base } from '@shared/core/base';
 import { AdminService } from '@shared/services/admin.service';
 import { GlobalService } from '@shared/services/global.service';
 import { UserService } from '@shared/services/user.service';
@@ -9,7 +10,8 @@ declare let $: any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+
+export class HomeComponent extends Base implements OnInit {
   posters: any[] = [];
   emiratesNews: any[] = [];
   latestNews: any[] = [];
@@ -22,6 +24,7 @@ export class HomeComponent implements OnInit {
     private _adminService: AdminService,
     private globalService: GlobalService
   ) {
+    super();
   }
 
   ngOnInit() {

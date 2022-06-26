@@ -9,6 +9,43 @@
     "mediaReports" : "Media Reports"
   },
 
+  "auth" : {
+    "signIn" : {
+      "signIn" : "Sign In",
+      "nationalIdOrResidentNumber" : "National identifier or resident number",
+      "password" : "Password",
+      "forgetPassword" : "Forget password" ,
+      "dontHaveAccount" : "Do not have account",
+      "createNewAccount" : "Create new account",
+      "nafazSingIn" : "Sign in by Nafaz",
+      "or" : "Or"
+    },
+
+    "singUp" : {
+      "singUp" : "Sign up",
+      "nationalIdOrResidentNumber" : "National identifier or resident number",
+      "name" : "Name",
+      "nationality" : "Nationality",
+      "birthDate" : "Birth Date",
+      "dateComponent" : "year/month/day",
+      "higri" : "Higri",
+      "greg" : "Gregorian",
+      "phoneNumber" : "Phone Number",
+      "e_mail" : "E-mail",
+      "password" : "Password",
+      "createNewAccount" : "Create new account",
+      "haveAnAccount" : "Do you have an account ?",
+      "backToLogin" : "Back to Login"
+
+
+    }
+  },
+
+  "supportedLanguages" : {
+    "arabic" : "arabic",
+    "english" : "English"
+  },
+
   "electronic_council" : {
 
     "shared":{
