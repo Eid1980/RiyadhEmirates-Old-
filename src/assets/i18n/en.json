@@ -1,0 +1,86 @@
+
+{
+  "home" : {
+    "aboutEmirate" : "About Emirate",
+    "princesRegion" : "Princes Region" ,
+    "provinces" : "Provinces",
+    "electronicServices" : "Electronic Services",
+    "news" : "News",
+    "mediaReports" : "Media Reports"
+  },
+
+  "electronic_council" : {
+
+    "shared":{
+      "main" : "Main",
+      "serviceGuide" : "Service guide",
+      "electronic_council" : "Electronic_council",
+      "noData" : "No Data",
+      "title" : "The electronic council for prince of emirate" ,
+      "serviceType" : "Add New Request",
+      "applicantsInfo" : "Applicant's Information",
+      "applicantsName" : "Applicant's name : " ,
+      "birthDate" : "Birth date" ,
+      "gender" : "Gender",
+      "e_mail" : "E-mail : ",
+      "nationalId" : "National Identifier : ",
+      "phoneNumber" : "Phone Number : ",
+
+      "requestType" : "Rquest Type",
+      "requestAddress" : "Rquest Address",
+      "description" : "Description",
+      "requestSerialNumber" : "Serial Number",
+      "requestStatus" : "Request Status",
+      "requestDate" : "Request Date",
+      "requestDetails" : "Request Details"
+  },
+
+  "menus" : {
+    "profile" : "Profile",
+    "dashboard" : "Dashboard",
+    "newRequest" : "Add new request",
+    "myOrders" : "My orders",
+    "incommingOrders" : "Incomming Orders",
+    "savedRequest" : "Saved orders",
+    "inquiry" : "Request inquiry",
+    "rateService" : "rate Service"
+  },
+
+  "profile" : {
+  },
+
+  "dashboard" : {
+  },
+
+  "createRequest" : {
+    "rquestInfo" : "Request Information",
+    "attachments" : "Attachments",
+    "addAttachment" : "Add Attachments",
+    "sendRequest" : "Send Request",
+    "saveAsDraft" : "Save As Draft",
+    "cancel" : "Cancel"
+  },
+
+  "myOrders" : {
+    "myOrders" : "My orders"
+  },
+
+  "incommingOrders" : {
+    "newOrders" : "New Requests",
+    "pendingRequests" : "Pending Requests",
+    "acceptedRequests" : "Accepted Requests",
+    "rejecteRequests" : "Rejected Requests"
+  },
+
+  "savedRequests" : {
+    "savedRequests" : "Saved requests"
+  },
+
+  "inquiry" : {
+  },
+
+  "rateService" : {
+  }
+
+  }
+}

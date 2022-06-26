@@ -74,47 +74,47 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            عن الإمارة
+            {{translationData.home.aboutEmirate | translate}}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            أمراء المنطقة
+            {{translationData.home.princesRegion | translate}}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            المحافظات
+            {{translationData.home.provinces | translate}}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            الخدمات الإلكترونية
+            {{translationData.home.electronicServices | translate}}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            الأخبار
+            {{translationData.home.news | translate}}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            التقارير الإعلامية
+            {{translationData.home.mediaReports | translate}}
           </a>
         </li>
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link" href="javascript:;">
             <img src="./assets/images/icons/open-data.svg" alt="" class="ic-open-data">
             البيانات المفتوحة
           </a>
-        </li>
+        </li>-->
         <li class="nav-item search">
           <a class="nav-link" href="javascript:;">
             <img src="./assets/images/icons/header-search.svg" alt="" class="ic-search">
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link settings" href="javascript:;">
+          <a class="nav-link settings" (click)="changeLanguage()">
             <img src="./assets/images/icons/settings.svg" alt="" class="ic-settings">
           </a>
         </li>

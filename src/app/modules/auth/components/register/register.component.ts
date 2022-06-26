@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
 
       // this.nationalities.push('سعودي')
       // this.nationalities.push('مصري')
-      
+
 
 
     }
@@ -161,11 +161,10 @@ export class RegisterComponent implements OnInit {
   }
 
   _getNationalities(){
-    
+
     this.authService.getNtationalities().subscribe(
-    
+
       (result : any) => {
-        debugger;
        this.nationalities = result.Data ;
       },
       (err) => {

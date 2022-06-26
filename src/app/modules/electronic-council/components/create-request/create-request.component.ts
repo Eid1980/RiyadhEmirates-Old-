@@ -9,6 +9,7 @@ import {MessageService} from 'primeng/api';
 import { DateFormatterService } from 'ngx-hijri-gregorian-datepicker';
 import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestModel } from '@shared/models/request-model';
+import { Base } from '@shared/core/base';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { RequestModel } from '@shared/models/request-model';
 })
 
 
-export class CreateRequestComponent implements OnInit {
+export class CreateRequestComponent extends Base implements OnInit  {
 
   @ViewChild('inputFile') inputFile: ElementRef;
 
@@ -48,9 +49,11 @@ export class CreateRequestComponent implements OnInit {
     private messageService: MessageService,
     private dateFormatterService: DateFormatterService) {
 
-    this.orderFormData = new FormData()
+      super();
 
-    this.route.params.subscribe(params => {
+      this.orderFormData = new FormData()
+
+      this.route.params.subscribe(params => {
       this.requestId = params['id'];
 
       if(this.requestId != undefined){
@@ -61,10 +64,7 @@ export class CreateRequestComponent implements OnInit {
 
         this._requestService.getRequestById( this.requestId ).subscribe(
           (result : any) => {
-            debugger;
             if(result.IsSuccess == true){
-
-              
               this.currentRequest = result.Data;
               this.orderForm.setValue({
                 type : this.currentRequest.RequestTypeId,
@@ -95,10 +95,10 @@ export class CreateRequestComponent implements OnInit {
   }
 
   addAttachment(){
- 
+
     if( this.orderForm.value.attahments.length < 5 ){
     this.attahments.push(this.fb.control(''));
-    
+
     console.log("added")
     }
   }
@@ -179,19 +179,19 @@ saveRequest(requestStatusId : number){
       this.orderFormData.append('attachments'  , file , file.name);
   }
 
- 
+
   var attahmentsNames = this.orderForm.value.attahments as []
   if(attahmentsNames.length > 0){
 
     for(let name of attahmentsNames){
-      
+
       var index = attahmentsNames.indexOf(name) + 1 ;
       var key = `attachmentHeader${index}`
       console.log(key + ':' +name)
       this.orderFormData.append(key , name)
     }
-  } 
-   
+  }
+
 
   this.orderFormData.append('header' , this.orderForm.value.header)
   this.orderFormData.append('content' , this.orderForm.value.content)

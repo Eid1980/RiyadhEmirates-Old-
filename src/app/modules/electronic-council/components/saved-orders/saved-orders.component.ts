@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Base } from '@shared/core/base';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestModel } from '@shared/models/request-model';
@@ -14,7 +15,7 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 
 })
-export class SavedOrdersComponent implements OnInit {
+export class SavedOrdersComponent  extends Base implements OnInit {
 
   requests : RequestModel[];
   selectedOrder : RequestModel;
@@ -36,6 +37,8 @@ export class SavedOrdersComponent implements OnInit {
     private _requestService : RequestService,
     private _router: Router,
   ) {
+    super();
+
     this.searchCriteria = new InquiryModel();
 
     this.types = [
@@ -50,7 +53,6 @@ export class SavedOrdersComponent implements OnInit {
 
     this.requsetService.inquire(inquire).subscribe(
       (result : any) => {
-        console.log(result)
         if(result.IsSuccess == true){
           this.requests = result.Data
           this.loading = false
@@ -70,7 +72,6 @@ export class SavedOrdersComponent implements OnInit {
   }
 
   showReuestInfo(selectedOrder : RequestModel) {
-    debugger;
     this._sharedService.selectedRequest = selectedOrder;
 
     this._router.navigate(['/e-council/create' , selectedOrder.Id]);
@@ -86,10 +87,6 @@ sendRequest(selectedOrder : RequestModel){
       this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
 
       this.requests =  this.requests.filter(r =>r.Id != selectedOrder.Id);
-
-     /* setTimeout(() => {
-        this._router.navigate(['/e-council/my-orders']);
-        } , 3000);*/
     }
   },
   (err) => {}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Base } from '@shared/core/base';
 import { RateService } from '@shared/models/rate-service';
 import { UserModel } from '@shared/models/user-model';
 import { RateServiceServiceService } from '@shared/services/rate-service-service.service';
@@ -12,7 +13,7 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 
 })
-export class UserSidemenuComponent implements OnInit {
+export class UserSidemenuComponent extends Base implements OnInit {
   userModel: UserModel;
 
   showRateServiceModal : boolean = false
@@ -21,15 +22,18 @@ export class UserSidemenuComponent implements OnInit {
     private _rateService : RateServiceServiceService,
     private messageService: MessageService,
     ) {
-    this.userModel = new UserModel();
+
+      super();
+
+      this.userModel = new UserModel();
 
 
-    this.userModel.Name = this._userService.currentUser?.Name
-    this.userModel.Email = this._userService.currentUser?.Email
-    this.userModel.Address = this._userService.currentUser?.Address
-    this.userModel.PhoneNumber = this._userService.currentUser?.PhoneNumber
-    this.userModel.Role = this._userService.currentUser?.Role;
-    this.userModel.IsAdmin = this._userService.currentUser?.IsAdmin;
+      this.userModel.Name = this._userService.currentUser?.Name
+      this.userModel.Email = this._userService.currentUser?.Email
+      this.userModel.Address = this._userService.currentUser?.Address
+      this.userModel.PhoneNumber = this._userService.currentUser?.PhoneNumber
+      this.userModel.Role = this._userService.currentUser?.Role;
+      this.userModel.IsAdmin = this._userService.currentUser?.IsAdmin;
 
     console.log(typeof(this._userService.currentUser))
   }

@@ -3,10 +3,15 @@
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
     <img src="./assets/images/icons/home.svg" alt="" class="ml-2">
-    الرئيسية
+    {{translationData.electronic_council.shared.main | translate}}
   </a>
-  <a class="breadcrumb-item" href="#"> دليل الخدمات</a>
-  <span class="breadcrumb-item active">المجلس الإلكتروني</span>
+  <a class="breadcrumb-item" href="#">
+    {{translationData.electronic_council.shared.serviceGuide | translate}}
+  </a>
+  <span class="breadcrumb-item active">
+    {{translationData.electronic_council.shared.electronic_council | translate}}
+
+  </span>
 </nav>
 
 <form [formGroup]="orderForm" class="fs-13px">
@@ -20,37 +25,43 @@
       <div class="col-md-9 col-12">
         <!-- page title -->
         <div class="page-title">
-          <h4>المجلس الإلكتروني لسمو أمير منطقة الرياض - إنشاء طلب جديد</h4>
+          <h4>
+            {{translationData.electronic_council.shared.title | translate}}
+            -
+            {{translationData.electronic_council.shared.serviceType | translate}}
+          </h4>
         </div>
         <!-- form card -->
         <div class="form-card">
           <div class="form-header">
-            <h5>بيانات مقدم الطلب</h5>
+            <h5>
+              {{translationData.electronic_council.shared.applicantsInfo | translate}}
+            </h5>
           </div>
           <div class="form-content">
             <div class="row mx-0">
               <div class="info-col col-md-4 col-12">
-                <span class="form-lbl lbl-33">اسم مقدم الطلب</span>
+                <span class="form-lbl lbl-33">{{translationData.electronic_council.shared.applicantsName | translate}}</span>
                 <span class="form-val">{{userModel?.Name}}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
-                <span class="form-lbl lbl-33">تاريخ الميلاد</span>
+                <span class="form-lbl lbl-33">{{translationData.electronic_council.shared.birthDate | translate}}</span>
                 <span class="form-val">{{userModel?.BirthDate | date:'dd/MM/yyyy'}}</span>
               </div>
               <div class="info-col col-md-4 col-12">
-                <span class="form-lbl lbl-33">الجنس</span>
+                <span class="form-lbl lbl-33">{{translationData.electronic_council.shared.gender | translate}}</span>
                 <span class="form-val">ذكر</span>
               </div>
               <div class="info-col col-md-4 col-12">
-                <span class="form-lbl lbl-33">البريد الإلكتروني</span>
+                <span class="form-lbl lbl-33">{{translationData.electronic_council.shared.e_mail | translate}}</span>
                 <span class="form-val">{{userModel?.Email}}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
-                <span class="form-lbl lbl-33">رقم الهوية</span>
+                <span class="form-lbl lbl-33">{{translationData.electronic_council.shared.nationalId | translate}}</span>
                 <span class="form-val">{{userModel?.UserName}}</span>
               </div>
               <div class="info-col col-md-4 col-12">
-                <span class="form-lbl lbl-33">رقم الجوال</span>
+                <span class="form-lbl lbl-33">{{translationData.electronic_council.shared.phoneNumber | translate}}</span>
                 <span class="form-val">{{userModel?.PhoneNumber}}</span>
               </div>
             </div>
@@ -62,12 +73,14 @@
             <!-- form card -->
             <div class="form-card h-95">
               <div class="form-header">
-                <h5>بيانات الطلب</h5>
+                <h5>{{translationData.electronic_council.createRequest.rquestInfo | translate}}</h5>
               </div>
               <div class="form-content">
 
                 <div class="form-group">
-                  <label for="" class="form-lbl lbl-33">نوع الطلب</label>
+                  <label for="" class="form-lbl lbl-33">
+                    {{translationData.electronic_council.shared.rquestType | translate}}
+                  </label>
                   <select class="form-control" name="" id="" formControlName="type">
                     <option value="1" selected>طلب</option>
                     <option value="2">اقتراح</option>
@@ -75,11 +88,15 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="" class="form-lbl lbl-33">عنوان الطلب</label>
+                  <label for="" class="form-lbl lbl-33">
+                    {{translationData.electronic_council.shared.requestAddress | translate}}
+                  </label>
                   <input type="text" name="" id="" class="form-control" formControlName="header">
                 </div>
                 <div class="form-group">
-                  <label for="" class="form-lbl lbl-33">الوصف</label>
+                  <label for="" class="form-lbl lbl-33">
+                    {{translationData.electronic_council.shared.description | translate}}
+                  </label>
                   <textarea rows="4" name="" id="" class="form-control" formControlName="content"></textarea>
                 </div>
 
@@ -90,12 +107,16 @@
             <!-- form card -->
             <div class="form-card h-95">
               <div class="form-header">
-                <h5>المرفقات</h5>
+                <h5>
+                  {{translationData.electronic_council.createRequest.attachments | translate}}
+                </h5>
               </div>
               <div class="form-content">
 
                 <div class="px-3">
-                  <button class="btn btn-sm btn-primary" (click)="addAttachment()">اضافه مرفق</button>
+                  <button class="btn btn-sm btn-primary" (click)="addAttachment()">
+                    {{translationData.electronic_council.createRequest.addAttachment | translate}}
+                  </button>
                 </div>
 
                 <div formArrayName="attahments" *ngFor="let attachment of attahments.controls; let i = index">
@@ -142,9 +163,15 @@
     </div>
     <!-- form actions -->
     <div class="form-actions">
-      <button type="submit" class="btn btn-save" (click)="formSubmit()" [disabled]="orderForm.status == 'INVALID'">إرسال الطلب</button>
-      <button type="submit" class="btn btn-draft" (click)="saveAsDraft()">حفظ كمسودة</button>
-      <button type="submit" class="btn btn-cancel" (click)="cancel()">إلغاء</button>
+      <button type="submit" class="btn btn-save" (click)="formSubmit()" [disabled]="orderForm.status == 'INVALID'">
+        {{translationData.electronic_council.createRequest.sendRequest | translate}}
+      </button>
+      <button type="submit" class="btn btn-draft" (click)="saveAsDraft()">
+        {{translationData.electronic_council.createRequest.saveAsDraft | translate}}
+      </button>
+      <button type="submit" class="btn btn-cancel" (click)="cancel()">
+        {{translationData.electronic_council.createRequest.cancel | translate}}
+      </button>
     </div>
   </div>
 </form>

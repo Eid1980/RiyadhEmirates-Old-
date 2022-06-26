@@ -1,13 +1,16 @@
 <p-toast></p-toast>
 
-<!-- Breadcrumb -->
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
     <img src="./assets/images/icons/home.svg" alt="" class="ml-2">
-    الرئيسية
+    {{translationData.electronic_council.shared.main | translate}}
   </a>
-  <a class="breadcrumb-item" href="#"> دليل الخدمات</a>
-  <span class="breadcrumb-item active">المجلس الإلكتروني</span>
+  <a class="breadcrumb-item" href="#">
+    {{translationData.electronic_council.shared.serviceGuide | translate}}
+  </a>
+  <span class="breadcrumb-item active">
+    {{translationData.electronic_council.shared.electronic_council | translate}}
+  </span>
 </nav>
 
 <div class="page-wrapper">
@@ -20,7 +23,9 @@
     <div class="col-md-9 col-12">
       <!-- page title -->
       <div class="page-title">
-        <h4>الطلبات المحفوظة</h4>
+        <h4>
+          {{translationData.electronic_council.savedRequests.savedRequests | translate}}
+        </h4>
       </div>
 
       <p-table  [value]="requests"  [loading]="loading"
@@ -31,12 +36,18 @@
                [globalFilterFields]="['Header' ,'RequestTypeAr','StatusMsgAr' , 'CreationDate']" >
         <ng-template pTemplate="header">
           <tr>
-            <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="Header"></p-sortIcon>
+            <th pSortableColumn="header">
+              {{translationData.electronic_council.shared.requestAddress | translate}}
+             <p-sortIcon field="Header"></p-sortIcon>
               <p-columnFilter type="text" field="Header" display="menu"></p-columnFilter>
             </th>
-            <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+            <th pSortableColumn="content">
+              {{translationData.electronic_council.shared.description | translate}}
+               <p-sortIcon field="content"></p-sortIcon>
             </th>
-            <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
+            <th pSortableColumn="requestTypeAr">
+              {{translationData.electronic_council.shared.requestType | translate}}
+               <p-sortIcon field="requestTypeAr"></p-sortIcon>
               <p-columnFilter field="RequestTypeAr" matchMode="equals" display="menu">
                 <ng-template pTemplate="filter" let-value let-filter="filterCallback">
                     <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)" placeholder="Any">
@@ -47,13 +58,21 @@
                 </ng-template>
             </p-columnFilter>
             </th>
-            <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
+            <th pSortableColumn="SerialNumber">
+              {{translationData.electronic_council.shared.requestSerialNumber | translate}}
+               <p-sortIcon field="SerialNumber"></p-sortIcon>
             </th>
-            <th pSortableColumn="StatusMsgAr">الحالة <p-sortIcon field="StatusMsgAr"></p-sortIcon>
+            <th pSortableColumn="StatusMsgAr">
+              {{translationData.electronic_council.shared.requestStatus | translate}}
+               <p-sortIcon field="StatusMsgAr"></p-sortIcon>
             </th>
-            <th pSortableColumn="CreationDate">تاريخ الطلب <p-sortIcon field="CreationDate"></p-sortIcon>
+            <th pSortableColumn="CreationDate">
+              {{translationData.electronic_council.shared.requestDate | translate}}
+               <p-sortIcon field="CreationDate"></p-sortIcon>
             </th>
-            <th>التفاصيل </th>
+            <th>
+              {{translationData.electronic_council.shared.requestDetails | translate}}
+            </th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-request>
@@ -69,45 +88,10 @@
                 <i class="fa-solid fa-paper-plane"  aria-hidden="true" (click)="sendRequest(request)"></i></td>
             </tr>
         </ng-template>
-       <!--<ng-template pTemplate="paginatorright">
-          <button type="button" pButton icon="pi-cloud-upload"></button>
-        </ng-template>-->
         <ng-template let-item pTemplate="paginatordropdownitem">
           {{item.value}} - per page
         </ng-template>
       </p-table>
-
-      <!--<p-table [value]="requests" [loading]= "loading" sortMode="multiple" [multiSortMeta]="multiSortMeta">
-        <ng-template pTemplate="header">
-          <tr>
-            <th pSortableColumn="creationDate">تاريخ الطلب <p-sortIcon field="creationDate"></p-sortIcon>
-            </th>
-            <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
-            </th>
-            <th pSortableColumn="requestTypeAr">نوع الطلب <p-sortIcon field="requestTypeAr"></p-sortIcon>
-            </th>
-            <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
-            </th>
-            <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
-            </th>
-            <th pSortableColumn="statusMsgAr">الحالة <p-sortIcon field="statusMsgAr"></p-sortIcon>
-            </th>
-            <th>التفاصيل </th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-request>
-            <tr>
-              <td>{{request.creationDate | date}}</td>
-              <td>{{request.serialNumber}}</td>
-              <td>{{request.requestTypeAr}}</td>
-              <td>{{request.header}}</td>
-              <td>{{request.content}}</td>
-              <td>{{request.statusMsgAr}}</td>
-              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
-            </tr>
-        </ng-template>
-      </p-table>-->
     </div>
   </div>
-
 </div>

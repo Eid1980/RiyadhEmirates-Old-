@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { SharedService } from '@shared/services/shared.service';
 import { Router } from '@angular/router';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
+import { Base } from '@shared/core/base';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { RequestStatusEnum } from '@shared/enums/request-status-enum';
   providers: [MessageService]
 
 })
-export class MyOrdersComponent implements OnInit {
+export class MyOrdersComponent extends Base implements OnInit {
 
   requests : RequestModel[];
   selectedOrder : RequestModel;
@@ -38,6 +39,7 @@ export class MyOrdersComponent implements OnInit {
     private _router: Router,
 
     ) {
+      super();
       this.searchCriteria = new InquiryModel();
 
       this.types = [

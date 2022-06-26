@@ -1,0 +1,86 @@
+{
+
+  "home" : {
+    "aboutEmirate" : "عن الامارة",
+    "princesRegion" : "امراء المنطقة" ,
+    "provinces" : "المحافظات",
+    "electronicServices" : "الخدمات الالكترونية",
+    "news" : "الاخبار",
+    "mediaReports" : "التقارير الاعلامية"
+  },
+
+  "electronic_council" : {
+
+    "shared":{
+      "main" : "الرئيسية",
+      "serviceGuide" : "دليل الخدمات",
+      "electronic_council" : "المجلس الالكتروني",
+      "noData" : "لا يوجد بيانات",
+      "title" : "المجلس الإلكتروني لسمو أمير منطقة الرياض" ,
+      "serviceType" : "إنشاء طلب جديد",
+      "applicantsInfo" : "بيانات مقدم الطلب",
+      "applicantsName" : " : اسم مقدم الطلب" ,
+      "birthDate" : " : تاريخ الميلاد" ,
+      "gender" : " : الجنس",
+      "e_mail" : " : البريد الالكتروني",
+      "nationalId" : " : رقم الهوية ",
+      "phoneNumber" : " : رقم الموبايل",
+
+      "requestType" : "نوع الطلب",
+      "requestAddress" : "عنوان الطلب",
+      "description" : "الوصف",
+      "requestStatus" : "حالة الطلب",
+      "requestDate" : "تاريخ الطلب",
+      "requestDetails" : "تفاصيل الطلب",
+      "requestSerialNumber" : "رقم الطلب"
+  },
+
+  "menus" : {
+    "profile" : "الملف الشخصي",
+    "dashboard" : "لوحة المتابعة",
+    "newRequest" : "طلب جديد",
+    "myOrders" : "طلباتي",
+    "incommingOrders" : "الطلبات الواردة",
+    "savedRequest" : "الطلبات المحفوظة",
+    "inquiry" : "إستعلام عن طلب",
+    "rateService" : "تقييم الخدمة"
+  },
+
+  "profile" : {
+  },
+
+  "dashboard" : {
+  },
+
+  "createRequest" : {
+    "rquestInfo" : "بيانات الطلب",
+    "attachments" : "المرفقات",
+    "addAttachment" : "إضافة مرفق",
+    "sendRequest" : "إرسال الطلب",
+    "saveAsDraft" : "حفظ كمسودة",
+    "cancel" : "إلغاء"
+  },
+
+  "myOrders" : {
+    "myOrders" : "طلباتي"
+  },
+
+  "incommingOrders" : {
+    "newOrders" : "الطلبات الجديدة",
+    "pendingOrders" : "طلبات تحت الاجراء",
+    "acceptedOrders" : "الطلبات المقبولة",
+    "rejectedOrders" : "طلبات تم الاعتذار"
+  },
+
+  "savedRequests" : {
+    "savedRequests" : "الطلبات المحفوظة"
+  },
+
+  "inquiry" : {
+  },
+
+  "rateService" : {
+  }
+
+  }
+}

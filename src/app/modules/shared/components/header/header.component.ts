@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Base } from '@shared/core/base';
 import { UserModel } from '@shared/models/user-model';
 import { UserService } from '@shared/services/user.service';
 @Component({
@@ -7,7 +8,7 @@ import { UserService } from '@shared/services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent extends Base implements  OnInit {
 
   userModel : UserModel
   isAuthenticate =true;
@@ -16,6 +17,8 @@ export class HeaderComponent implements OnInit {
     private _userService : UserService,
     private router: Router
     ) {
+
+      super();
       if(_userService.currentUser.Id == undefined || _userService.currentUser.Id == "")
       this.isAuthenticate = false;
     }
@@ -28,5 +31,9 @@ export class HeaderComponent implements OnInit {
     this._userService.logout();
 
     this.router.navigate(['/auth/login']);
+  }
+
+  changeLanguage(){
+    this.translate.use('ar')
   }
 }

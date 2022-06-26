@@ -11,7 +11,7 @@
     <li>
       <a routerLink="/e-council/profile" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/profile.svg" alt="">
-        الملف الشخصي
+        {{translationData.electronic_council.menus.profile | translate}}
       </a>
 
     </li>
@@ -19,38 +19,38 @@
     <li>
       <a routerLink="/e-council/dashboard" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-dash.svg" alt="">
-        لوحة المتابعة
+        {{translationData.electronic_council.menus.dashboard | translate}}
       </a>
     </li>
     <li *ngIf="userModel.IsAdmin">
       <a routerLink="/e-council/incoming-orders" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-dash.svg" alt="">
-        الطلبات الواردة
+        {{translationData.electronic_council.menus.incommingOrders | translate}}
       </a>
     </li>
 
     <li *ngIf="!userModel.IsAdmin">
       <a routerLink="/e-council/create" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/new-order.svg" alt="">
-        طلب جديد
+        {{translationData.electronic_council.menus.newRequest | translate}}
       </a>
     </li>
     <li *ngIf="userModel.IsAdmin">
       <a routerLink="/e-council/inquiry" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-search.svg" alt="">
-        استعلام عن طلب
+        {{translationData.electronic_council.menus.inquiry | translate}}
       </a>
     </li>
     <li *ngIf="!userModel.IsAdmin">
       <a routerLink="/e-council/my-orders" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-orders.svg" alt="">
-        طلباتي
+        {{translationData.electronic_council.menus.myOrders | translate}}
       </a>
     </li>
     <li *ngIf="!userModel.IsAdmin">
       <a routerLink="/e-council/saved" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-saved.svg" alt="">
-        طلبات محفوظة
+        {{translationData.electronic_council.menus.savedRequest | translate}}
       </a>
     </li>
     <li *ngIf="!userModel.IsAdmin">
@@ -61,7 +61,7 @@
 
       <a (click)="showRateServiceModal = true" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-rate.svg" alt="">
-        تقييم خدمة
+        {{translationData.electronic_council.menus.rateService | translate}}
       </a>
     </li>
   </ul>
