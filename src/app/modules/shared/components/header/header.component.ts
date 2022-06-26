@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserModel } from '@shared/models/user-model';
+import { TranslationService } from '@shared/services/translation.service';
 import { UserService } from '@shared/services/user.service';
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private _userService : UserService,
-    private router: Router
+    private router: Router,
+    private translationService: TranslationService
     ) {
       if(_userService.currentUser.Id == undefined || _userService.currentUser.Id == "")
       this.isAuthenticate = false;
@@ -28,5 +30,13 @@ export class HeaderComponent implements OnInit {
     this._userService.logout();
 
     this.router.navigate(['/auth/login']);
+  }
+
+  get currentLang() {
+    return this.translationService.getCurrentLanguage().Name;
+  }
+
+  onChangeLang() {
+    this.translationService.switchLanguage();
   }
 }

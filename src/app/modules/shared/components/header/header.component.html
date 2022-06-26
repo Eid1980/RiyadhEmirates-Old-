@@ -55,7 +55,18 @@
     </a>
   </div>
 </div>
-
+<span (click)="onChangeLang()">
+  <p-button
+    pRipple
+    label="ع"
+    *ngIf="currentLang == 'en'"
+  ></p-button>
+  <p-button
+    pRipple
+    label="en"
+    *ngIf="currentLang == 'ar'"
+  ></p-button>
+</span>
     </div>
 
 </div>
