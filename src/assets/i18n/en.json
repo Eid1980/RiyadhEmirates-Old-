@@ -1,4 +1,8 @@
 {
-    "login":{},
+    "login":{
+        "text":{
+            "loginTitle": "Login"
+        }
+    },
     "register": {}
 }

@@ -77,7 +77,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TabMenuModule,
     FileUploadModule,
     ProgressSpinnerModule,
-    //TranslateModule
+    TranslateModule
   ],
 })
 export class SharedModule {}
