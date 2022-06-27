@@ -3,7 +3,7 @@
 <!-- Breadcrumb -->
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
-    <img src="./assets/images/icons/home.svg" alt="" class="ml-2">
+    <img src="./assets/images/icons/home.svg" alt="" class="ml-2" />
     الرئيسية
   </a>
   <a class="breadcrumb-item" href="#"> دليل الخدمات</a>
@@ -24,49 +24,95 @@
       </div>
       <div *ngIf="requests?.length == 0">لا يوجد بيانات</div>
 
-      <p-table *ngIf="requests?.length != 0" [value]="requests"  [loading]="loading"
-               [paginator]="true" [rows]="10"  [(first)]="first"
-               [showCurrentPageReport]="true" responsiveLayout="scroll"
-               currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات" [rowsPerPageOptions]="[10,25,30]"
-               sortMode="multiple" [multiSortMeta]="multiSortMeta"
-               [globalFilterFields]="['RequestTypeAr','statusMsgAr' , 'creationDate']" >
+      <p-table
+        [value]="requests"
+        [loading]="loading"
+        [paginator]="true"
+        [rows]="10"
+        [(first)]="first"
+        [showCurrentPageReport]="true"
+        responsiveLayout="scroll"
+        currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات"
+        [rowsPerPageOptions]="[10, 25, 30]"
+        sortMode="multiple"
+        [multiSortMeta]="multiSortMeta"
+        [globalFilterFields]="['RequestTypeAr', 'statusMsgAr', 'creationDate']"
+      >
         <ng-template pTemplate="header">
           <tr>
-            <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
-              <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
+            <th pSortableColumn="header">
+              عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="header"
+                display="menu"
+              ></p-columnFilter>
             </th>
-            <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+            <th pSortableColumn="content">
+              الوصف <p-sortIcon field="content"></p-sortIcon>
             </th>
-            <th pSortableColumn="RequestTypeAr"> نوع الطلب  <p-sortIcon field="RequestTypeAr"></p-sortIcon>
-              <p-columnFilter field="RequestTypeAr" matchMode="equals" display="menu">
-                <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                    <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)" placeholder="Any">
-                        <ng-template let-option pTemplate="item">
-                            <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
-                        </ng-template>
-                    </p-dropdown>
+            <th pSortableColumn="RequestTypeAr">
+              نوع الطلب <p-sortIcon field="RequestTypeAr"></p-sortIcon>
+              <p-columnFilter
+                field="RequestTypeAr"
+                matchMode="equals"
+                display="menu"
+              >
+                <ng-template
+                  pTemplate="filter"
+                  let-value
+                  let-filter="filterCallback"
+                >
+                  <p-dropdown
+                    [ngModel]="value"
+                    [options]="types"
+                    (onChange)="filter($event.value)"
+                    placeholder="Any"
+                  >
+                    <ng-template let-option pTemplate="item">
+                      <span [class]="'customer-badge status-' + option.value">{{
+                        option.label
+                      }}</span>
+                    </ng-template>
+                  </p-dropdown>
                 </ng-template>
-            </p-columnFilter>
+              </p-columnFilter>
             </th>
-            <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
+            <th pSortableColumn="SerialNumber">
+              رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
             </th>
-            <th pSortableColumn="StatusMsgAr">الحالة <p-sortIcon field="StatusMsgAr"></p-sortIcon>
+            <th pSortableColumn="StatusMsgAr">
+              الحالة <p-sortIcon field="StatusMsgAr"></p-sortIcon>
             </th>
-            <th pSortableColumn="CreationDate">تاريخ الطلب <p-sortIcon field="CreationDate"></p-sortIcon>
+            <th pSortableColumn="CreationDate">
+              تاريخ الطلب <p-sortIcon field="CreationDate"></p-sortIcon>
             </th>
-            <th>التفاصيل </th>
+            <th>التفاصيل</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-request>
-            <tr>
-              <td>{{request.Header}}</td>
-              <td>{{request.Content}}</td>
-              <td>{{request.RequestTypeAr}}</td>
-              <td>{{request.SerialNumber}}</td>
-              <td>{{request.StatusMsgAr}}</td>
-              <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
-              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
-            </tr>
+          <tr>
+            <td>{{ request.Header }}</td>
+            <td>{{ request.Content }}</td>
+            <td>{{ request.RequestTypeAr }}</td>
+            <td>{{ request.SerialNumber }}</td>
+            <td>
+              <div
+                [class]="getStatusColor(request.RequestStatusId)"
+                role="alert"
+              >
+                <strong>{{ request.StatusMsgAr }}</strong>
+              </div>
+            </td>
+            <td>{{ request.CreationDate | date: "dd/MM/yyyy" }}</td>
+            <td>
+              <i
+                class="fa fa-exclamation-circle"
+                aria-hidden="true"
+                (click)="showDialog(request)"
+              ></i>
+            </td>
+          </tr>
         </ng-template>
         <!--<ng-template pTemplate="summary">
           There are {{requests?.length}} cars
@@ -79,14 +125,12 @@
           <button type="button" pButton icon="pi-cloud-upload"></button>
         </ng-template>-->
         <ng-template let-item pTemplate="paginatordropdownitem">
-          {{item.value}} - per page
+          {{ item.value }} - per page
         </ng-template>
       </p-table>
     </div>
   </div>
-
 </div>
-
 
 <!--<p-dialog header="Title" [(visible)]="display">
   <app-order-status-details [seletedOrder]="selectedOrder"></app-order-status-details>
