@@ -4,10 +4,10 @@
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
     <img src="./assets/images/icons/home.svg" alt="" class="ml-2">
-    الرئيسية
+    {{ 'electronicCouncil.shared.main' | translate}}
   </a>
-  <a class="breadcrumb-item" href="#"> دليل الخدمات</a>
-  <span class="breadcrumb-item active">المجلس الإلكتروني</span>
+  <a class="breadcrumb-item" href="#">{{ 'electronicCouncil.shared.serviceGuide' | translate}}</a>
+  <span class="breadcrumb-item active">{{ 'electronicCouncil.shared.electronicCouncil' | translate}}</span>
 </nav>
 
 <div class="page-wrapper">
@@ -20,7 +20,7 @@
     <div class="col-md-9 col-12">
       <!-- page title -->
       <div class="page-title">
-        <h4>الطلبات المحفوظة</h4>
+        <h4>{{ 'electronicCouncil.menus.savedRequest' | translate}}</h4>
       </div>
 
       <p-table  [value]="requests"  [loading]="loading"
@@ -31,12 +31,12 @@
                [globalFilterFields]="['Header' ,'RequestTypeAr','StatusMsgAr' , 'CreationDate']" >
         <ng-template pTemplate="header">
           <tr>
-            <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="Header"></p-sortIcon>
+            <th pSortableColumn="header">{{ 'electronicCouncil.shared.requestAddress' | translate}} <p-sortIcon field="Header"></p-sortIcon>
               <p-columnFilter type="text" field="Header" display="menu"></p-columnFilter>
             </th>
-            <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+            <th pSortableColumn="content">{{ 'electronicCouncil.shared.description' | translate}} <p-sortIcon field="content"></p-sortIcon>
             </th>
-            <th pSortableColumn="requestTypeAr"> نوع الطلب  <p-sortIcon field="requestTypeAr"></p-sortIcon>
+            <th pSortableColumn="requestTypeAr">{{ 'electronicCouncil.shared.requestType' | translate}}  <p-sortIcon field="requestTypeAr"></p-sortIcon>
               <p-columnFilter field="RequestTypeAr" matchMode="equals" display="menu">
                 <ng-template pTemplate="filter" let-value let-filter="filterCallback">
                     <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)" placeholder="Any">
@@ -47,13 +47,13 @@
                 </ng-template>
             </p-columnFilter>
             </th>
-            <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
+            <th pSortableColumn="SerialNumber">{{ 'electronicCouncil.incommingOrders.serialNumber' | translate}} <p-sortIcon field="SerialNumber"></p-sortIcon>
             </th>
-            <th pSortableColumn="StatusMsgAr">الحالة <p-sortIcon field="StatusMsgAr"></p-sortIcon>
+            <th pSortableColumn="StatusMsgAr">{{ 'electronicCouncil.incommingOrders.statusMsg' | translate}} <p-sortIcon field="StatusMsgAr"></p-sortIcon>
             </th>
-            <th pSortableColumn="CreationDate">تاريخ الطلب <p-sortIcon field="CreationDate"></p-sortIcon>
+            <th pSortableColumn="CreationDate">{{ 'electronicCouncil.incommingOrders.creationDate' | translate}} <p-sortIcon field="CreationDate"></p-sortIcon>
             </th>
-            <th>التفاصيل </th>
+            <th>{{ 'electronicCouncil.shared.details' | translate}} </th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-request>

@@ -21,7 +21,7 @@
             />
             <div class="news-caption">
               <h6 class="h2">
-                {{ news?.TitleAr }}
+                {{ news?.Title }}
               </h6>
               <span class="date">
                 <img
@@ -50,10 +50,8 @@
               class="d-block mx-auto"
             />
             <div class="desc">
-              <h6>المجلس الإلكتروني</h6>
-              <span
-                >تقديم شكوي أو مقترح أو متابعة طلب لسمو أمير منطقة الرياض</span
-              >
+              <h6>{{'home.electronicCouncil' | translate}}</h6>
+              <span>{{'home.electronicCouncilTitle' | translate}}</span>
             </div>
           </a>
         </div>
@@ -65,8 +63,8 @@
               class="d-block mx-auto"
             />
             <div class="desc">
-              <h6>استعلام عن خدمة أو معاملة</h6>
-              <span>استعلام عن خدمة برقم المعاملة أو رقم الطلب</span>
+              <h6>{{'home.inquireyService' | translate}}</h6>
+              <span>{{'home.inquireyServiceTitle' | translate}}</span>
             </div>
           </a>
         </div>
@@ -74,7 +72,7 @@
       <!-- Related Websites -->
       <div class="related-web">
         <div class="section-title">
-          <h3 class="title">منصات ذات صلة</h3>
+          <h3 class="title">{{'home.relatedplatforms' | translate}}</h3>
         </div>
         <div class="rel-web">
           <a href="#"
@@ -110,10 +108,10 @@
   <div class="row mx-0 section-padding">
     <div class="col-md-12 my-5 e-services">
       <div class="section-title">
-        <h3 class="title">الخدمات الإلكترونية</h3>
+        <h3 class="title">{{'home.electronicServices' | translate}}</h3>
         <div class="more">
           <a href="#">
-            تصفح جميع الخدمات
+            {{'home.browseAllServices' | translate}}
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
           </a>
         </div>
@@ -126,11 +124,11 @@
             <img
               *ngIf="service.Image"
               [src]="service.Image.Base64File"
-              [alt]="service.TitleAr"
+              [alt]="service.Title"
               class="ser-icon"
             />
-            <p class="ser-name h-2">{{ service.TitleAr }}</p>
-            <p class="ser-desc h-2">{{ service.DescriptionAr }}</p>
+            <p class="ser-name h-2">{{ service.Title }}</p>
+            <p class="ser-desc h-2">{{ service.Description }}</p>
           </a>
         </div>
       </div>
@@ -143,10 +141,10 @@
       <!-- Gov News -->
       <div class="col-md-6 offset-md-1 gov-news">
         <div class="section-title">
-          <h3 class="title">أخبار المحافظات</h3>
+          <h3 class="title">{{'home.provincialNews' | translate}}</h3>
           <div class="more">
             <a href="#">
-              تصفح جميع الأخبار
+              {{'home.browseAllNews' | translate}}
               <i class="fa fa-arrow-left" aria-hidden="true"></i>
             </a>
           </div>
@@ -162,7 +160,7 @@
                 alt="..."
               />
               <div class="card-body">
-                <h5 class="card-title h-2">{{ news?.TitleAr }}</h5>
+                <h5 class="card-title h-2">{{ news?.Title }}</h5>
                 <p class="card-text">
                   <img src="./assets/images/icons/order-date.svg" alt="" />
                   {{ formatDate(news?.Date) }}
@@ -194,7 +192,7 @@
               />
               <div class="ad-card-content">
                 <span class="desc">
-                  {{ report?.TitleAr }}
+                  {{ report?.Title }}
                 </span>
                 <span class="ad-calendar">
                   <img src="./assets/images/icons/add-calendar.svg" alt="" />

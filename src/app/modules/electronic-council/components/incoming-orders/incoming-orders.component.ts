@@ -1,8 +1,10 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestModel } from '@shared/models/request-model';
+import { TypeCountModel } from '@shared/models/type-count-model';
 import { RequestService } from '@shared/services/request.service';
 import { MessageService } from 'primeng/api';
 
@@ -26,6 +28,7 @@ export class IncomingOrdersComponent implements OnInit {
   rejectedRequest : number = RequestStatusEnum.Rejected;
   dreatedRequest : number = RequestStatusEnum.Drafted;
 
+  requestTypeCount : TypeCountModel[]
 
   first: number = 0;
 
@@ -57,6 +60,14 @@ export class IncomingOrdersComponent implements OnInit {
   ngOnInit(): void {
 
     this.searchCriteria = new InquiryModel();
+
+    this._requsetService.getRequestsTypeCount().subscribe(
+      (result : any) => {
+        this.requestTypeCount = result.Data
+      },
+      () => {}
+    )
+
     this.getRequests(this.newRequest);
 
 

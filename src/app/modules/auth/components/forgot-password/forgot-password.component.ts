@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@shared/services/auth.service';
 import { MessageService } from 'primeng/api';
@@ -14,23 +15,31 @@ export class ForgotPasswordComponent implements OnInit {
 
   state : number  = 1 // 1 => eneter userName, 2 => eneter otp, 3 => eneter new password
 
-  placeHolderText : string = "ادخل اسم المستخدم"
+  placeHolderText : string = "ادخل اسم المستخدم او البريد الالكتروني"
 
   inputText : string = ""
 
   userName : string = ""
 
+  forgetPasswordForm = this.fb.group({
+    userName: ['' , Validators.required ],
+
+  });
+
   constructor(private _authService : AuthService,
     private _messageService: MessageService,
+    private fb: FormBuilder,
     private _router: Router,
-    ) { }
+    ) {
+    }
 
   ngOnInit() {
   }
 
-  btnClick(){
+  btnClick(status : number = 0){
 
-    if(this.state == 1 )
+    debugger
+    if(this.state == 1  || status != 0)
     {
       this.userName = this.inputText;
       let forgetPassword : any = {UserName  : this.userName};
@@ -38,14 +47,16 @@ export class ForgotPasswordComponent implements OnInit {
         (result : any) => {
           if(result.IsSuccess == true){
             this._messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم ارسال الرقم التاكيدي الي البريد الالكتروني'});
+            if(status == 0){
             this.updatePlaceHolder(++this.state);
+            }
           }
         } ,
         () => {}
       )
     }
 
-    if(this.state == 2 )
+    else if(this.state == 2 )
     {
       let validateOTP : any = {UserName  : this.userName  , OTP : this.inputText};
       this._authService.validateOTP(validateOTP).subscribe(
@@ -61,7 +72,7 @@ export class ForgotPasswordComponent implements OnInit {
       )
     }
 
-    if(this.state == 3 )
+    else if(this.state == 3 )
     {
       let resetPassword : any = {UserName  : this.userName , NewPassword : this.inputText};
       this._authService.resetPassword(resetPassword).subscribe(

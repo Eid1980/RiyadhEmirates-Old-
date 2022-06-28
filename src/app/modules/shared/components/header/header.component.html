@@ -9,53 +9,50 @@
   </div>
   <div>
     <span class="date">الخميس، 23 ربيع أول 1443 هـ، 22 مايو 2022</span>
-    <!-- <div>
-      <a href="#" class="mx-2">
-        <i class="fa-brands fa-twitter fa-2x"></i>
-      </a>
-      <a href="#" class="mx-2">
-        <i class="fa-brands fa-facebook fa-2x"></i>
-      </a>
-      <a href="#" class="mx-2">
-        <i class="fa-brands fa-instagram fa-2x"></i>
-      </a>
-      <a href="#" class="mx-2">
-        <i class="fa-brands fa-youtube fa-2x"></i>
-      </a>
-    </div> -->
     <div class="dropdown topnav-user" *ngIf="isAuthenticate">
       <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="./assets/images/user-img.svg" alt="">
-        مرحباً: <span>{{userModel?.Name}}</span>
+        {{ 'header.hello' | translate }} <span>{{userModel?.Name}}</span>
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <a routerLink="/e-council/profile" class="dropdown-item">
           <i class="fa fa-user"></i>
-          الملف الشخصي
+          {{ 'header.profilePersonly' | translate }}
         </a>
         <a class="dropdown-item" (click)="logout()">
           <i class="fa fa-arrow-right-from-bracket"></i>
-          تسجيل الخروج
+          {{ 'header.signOut' | translate }}
         </a>
       </div>
 </div>
 <div class="dropdown topnav-user" *ngIf="!isAuthenticate">
   <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     <img src="./assets/images/user-img.svg" alt="">
-    تسجيل الدخول
+    {{ 'header.signIn' | translate }}
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <a routerLink="/e-council/profile" class="dropdown-item" [routerLink]="['/auth/login']">
       <!--<i class="fa fa-user"></i>-->
-      تسجيل الدخول
+      {{ 'header.signIn' | translate }}
     </a>
     <a class="dropdown-item" [routerLink]="['/auth/register']">
       <!--<i class="fa fa-arrow-right-from-bracket"></i>-->
-      تسجيل جديد
+      {{ 'header.newRegistration' | translate }}
     </a>
   </div>
 </div>
-
+<span (click)="onChangeLang()">
+  <p-button
+    pRipple
+    label="ع"
+    *ngIf="currentLang == 'en'"
+  ></p-button>
+  <p-button
+    pRipple
+    label="en"
+    *ngIf="currentLang == 'ar'"
+  ></p-button>
+</span>
     </div>
 
 </div>
@@ -74,38 +71,38 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            عن الإمارة
+            {{ 'header.aboutTheEmirate' | translate }}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            أمراء المنطقة
+            {{ 'header.lordsOfTheRegion' | translate }}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            المحافظات
+            {{ 'header.provinces' | translate }}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            الخدمات الإلكترونية
+            {{ 'header.electronicServices' | translate }}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            الأخبار
+            {{ 'header.news' | translate }}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
-            التقارير الإعلامية
+            {{ 'header.mediaReports' | translate }}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="javascript:;">
             <img src="./assets/images/icons/open-data.svg" alt="" class="ic-open-data">
-            البيانات المفتوحة
+            {{ 'header.openData' | translate }}
           </a>
         </li>
         <li class="nav-item search">

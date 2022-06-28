@@ -6,11 +6,24 @@
       <a href="#">
         <img src="assets/images/logo.svg" alt="" class="log-logo" width="180">
       </a>
-      <button class="btn btn-sm btn-primary lang-btn">English</button>
+      <span (click)="onChangeLang()">
+        <p-button
+          pRipple
+          label="ع"
+          *ngIf="currentLang == 'en'"
+        ></p-button>
+        <p-button
+          pRipple
+          label="en"
+          *ngIf="currentLang == 'ar'"
+        ></p-button>
+      </span>
     </div>
   </div>
   <div class="w-100">
-    <h4 class="title">تسجيل الدخول</h4>
+    <h4 class="title">
+      {{ "login.text.signIn" | translate }}
+    </h4>
 
     <!-- Form -->
     <div class="row mx-0">
@@ -20,42 +33,42 @@
               <!-- ID -->
               <div class="form-group mb-lg-4">
                 <input type="text" name="" id="national_ID" class="form-control" formControlName="userName">
-                <label for="national_ID" class="label">رقم الهوية/الإقامة</label>
+                <label for="national_ID" class="label">{{ "login.text.nationalIdOrResidentNumber" | translate }}</label>
               </div>
               <!-- password -->
               <div class="form-group">
                 <input type="password" name="" id="password" class="form-control" formControlName="password">
-                <label for="password" class="label">كلمة المرور</label>
+                <label for="password" class="label">{{ "login.text.password" | translate }}</label>
               </div>
               <!-- Forget Password -->
               <div class="">
                 <a [routerLink]="['/auth/forgot-password']" routerLinkActive="router-link-active" >
-                  <span class="forget-pass" >نسيت كلمة المرور؟</span>
+                  <span class="forget-pass" >{{ "login.text.forgetPassword" | translate }}</span>
                 </a>
               </div>
 
               <!-- Login Button -->
               <div class="">
-                <button type="submit" class="btn btn-primary submit">تسجيل دخول</button>
+                <button type="submit" class="btn btn-primary submit">{{ "login.text.signIn" | translate }}</button>
               </div>
         </form>
 
         <!-- Have Account -->
         <div class="mt-4">
-          <span class=""> ليس لديك حساب؟</span>
+          <span class="">{{ "login.text.dontHaveAccount" | translate }}</span>
           <a [routerLink]="['/auth/register']">
-            <span class="primary-text"> إنشاء حساب جديد </span>
+            <span class="primary-text">{{ "login.text.createNewAccount" | translate }}</span>
           </a>
         </div>
 
         <div class="or">
-          <span class="">أو</span>
+          <span class="">{{ "login.text.or" | translate }}</span>
         </div>
 
         <a href="#">
           <div class="unifyied-login">
             <img src="./assets/images/NIC_logo.png" alt="" width="200">
-            <span>عن طريق حسابك في منصة النفاذ الوطني الموحد</span>
+            <span>{{ "login.text.nafazSingIn" | translate }}</span>
           </div>
         </a>
 

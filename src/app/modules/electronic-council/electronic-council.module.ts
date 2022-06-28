@@ -16,12 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IncomingOrdersComponent } from './components/incoming-orders/incoming-orders.component';
 import { TableComponent } from './components/table/table.component';
 import { DraftRequestsComponent } from './components/draft-requests/draft-requests.component';
-import {DropdownModule} from 'primeng/dropdown';
-import {ImageModule} from 'primeng/image';
+import { DropdownModule } from 'primeng/dropdown';
+import { ImageModule } from 'primeng/image';
 import { DialogModule } from 'primeng/dialog';
-
-
-
 
 @NgModule({
   declarations: [
@@ -38,7 +35,6 @@ import { DialogModule } from 'primeng/dialog';
     IncomingOrdersComponent,
     TableComponent,
     DraftRequestsComponent,
-
   ],
   imports: [
     ElectronicCouncilRoutingModule,
@@ -47,8 +43,7 @@ import { DialogModule } from 'primeng/dialog';
     ReactiveFormsModule,
     DropdownModule,
     ImageModule,
-    DialogModule
-
-  ]
+    DialogModule,
+  ],
 })
-export class ElectronicCouncilModule { }
+export class ElectronicCouncilModule {}
