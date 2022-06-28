@@ -207,8 +207,8 @@ export class RegisterComponent implements OnInit {
           if (result.IsSuccess == true) {
             this.messageService.add({
               severity: 'success',
-              summary: 'نجاح',
-              detail: 'تم التسجيل بنجاح',
+              summary: this.translationService.instant('electronicCouncil.shared.success'),
+              detail: this.translationService.instant('electronicCouncil.shared.registeredSuccessfully'),
             });
             setTimeout(() => {
               this.router.navigate(['/auth/login']);
@@ -216,7 +216,7 @@ export class RegisterComponent implements OnInit {
           } else {
             this.messageService.add({
               severity: 'error',
-              summary: 'خطأ',
+              summary: this.translationService.instant('electronicCouncil.shared.error'),
               detail: result.errorMessageAr,
             });
           }
@@ -224,7 +224,7 @@ export class RegisterComponent implements OnInit {
         (err) => {
           this.messageService.add({
             severity: 'error',
-            summary: 'خطأ',
+            summary: this.translationService.instant('electronicCouncil.shared.error'),
             detail: err.error.Message,
           });
         }

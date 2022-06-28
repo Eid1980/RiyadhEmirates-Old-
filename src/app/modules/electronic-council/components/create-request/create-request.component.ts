@@ -8,6 +8,7 @@ import { UserService } from '@shared/services/user.service';
 import {MessageService} from 'primeng/api';
 import { DateFormatterService } from 'ngx-hijri-gregorian-datepicker';
 import { RequestModel } from '@shared/models/request-model';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -48,7 +49,8 @@ export class CreateRequestComponent implements OnInit {
     private fb: FormBuilder,
     private _router: Router,
     private messageService: MessageService,
-    private dateFormatterService: DateFormatterService) {
+    private dateFormatterService: DateFormatterService,
+    private _translate : TranslateService) {
 
     this.orderFormData = new FormData()
     this.isRateService = false;
@@ -116,7 +118,11 @@ saveRequest(requestStatusId : number){
 
       this.resetForm();
 
-      this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
+      this.messageService.add({
+        severity:'success',
+        summary: this._translate.instant('electronicCouncil.text.alreadySaved'),
+        detail: this._translate.instant('electronicCouncil.text.saveduccessfully'),
+      });
       setTimeout(() => {
       this._router.navigate(['/e-council/my-orders']);
       } , 3000);
@@ -167,16 +173,28 @@ saveRequest(requestStatusId : number){
       if(result.IsSuccess == true){
         this.resetForm();
 
-        this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
+        this.messageService.add({
+          severity:'success',
+          summary: this._translate.instant('electronicCouncil.shared.alreadySent'),
+          detail: this._translate.instant('electronicCouncil.shared.sentSuccessfully'),
+        });
         setTimeout(() => {
           this._router.navigate(['/e-council/my-orders']);
           } , 3000);
       }else {
-        this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
+        this.messageService.add({
+          severity:'error',
+          summary: 'خطأ',
+          detail: result.errorMessageAr
+        });
       }
     },
     (err) =>{
-      this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ في إرسال الطلب'});
+      this.messageService.add({
+        severity:'error',
+        summary: this._translate.instant('electronicCouncil.shared.error'),
+        detail:this._translate.instant('electronicCouncil.shared.errorWhileSaving')
+      });
     }
   )
    }

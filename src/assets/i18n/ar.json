@@ -30,7 +30,9 @@
             "dontHaveAccount": "ليس لديك حساب؟",
             "createNewAccount": "إنشاء حساب جديد",
             "nafazSingIn": "عن طريق حسابك في منصة النفاذ الوطني الموحد",
-            "or": "أو"
+            "or": "أو",
+            "error" : "خطأ",
+            "invalidUsernameOrPassword" : "اسم المستخدم او كلمة المرور غير صحيحة"
         }
     },
     "register": {
@@ -101,8 +103,16 @@
             "saveAsDraft": "حفظ كمسودة",
             "cancel": "إلغاء",
             "details": "التفاصيل",
-            "send": "إرسل"
-        },
+            "send": "إرسل",
+            "success" : "نجاح",
+            "registeredSuccessfully" : "تم التسجيل بنجاح",
+            "error" : "خطأ",
+            "errorWhileSaving" : "خطأ  في البيانات",
+            "alreadySent" : "تم الارسال",
+            "sentSuccessfully" : "تم الارسال بنجاح",
+            "alreadySaved" : "تم الارسال",
+            "savedSuccessfully" : "تم الارسال بنجاح"
+         },
         "menus": {
             "profile": "الملف الشخصي",
             "dashboard": "لوحة المتابعة",

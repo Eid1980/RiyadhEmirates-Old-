@@ -56,7 +56,10 @@ export class LoginComponent implements OnInit {
         }
       },
       (err) => {
-        this.messageService.add({severity:'error', summary: 'خطأ', detail: 'اسم المستخدم او كلمة المرور غير صحيحة'});
+        this.messageService.add({
+          severity:'error',
+          summary: this.translationService.instant('login.text.error'),
+          detail:  this.translationService.instant('login.text.invalidUsernameOrPassword')});
       }
     )
   }

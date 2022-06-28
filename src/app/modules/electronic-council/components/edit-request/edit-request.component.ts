@@ -9,6 +9,7 @@ import {MessageService} from 'primeng/api';
 import { DateFormatterService } from 'ngx-hijri-gregorian-datepicker';
 import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestModel } from '@shared/models/request-model';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -50,7 +51,8 @@ export class EditRequestComponent implements OnInit {
     private fb: FormBuilder,
     private _router: Router,
     private messageService: MessageService,
-    private dateFormatterService: DateFormatterService) {
+    private dateFormatterService: DateFormatterService,
+    private _translate : TranslateService) {
 
     this.orderFormData = new FormData()
     this.isRateService = false;
@@ -76,11 +78,19 @@ export class EditRequestComponent implements OnInit {
                 attahments : this.fb.array([]),
                 });
             }else{
-              this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
+              this.messageService.add({
+                severity:'error',
+                summary: 'خطأ',
+                detail: 'خطأ'
+              });
             }
           },
           () => {
-            this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ'});
+            this.messageService.add({
+              severity:'error',
+              summary: this._translate.instant('login.text.error'),
+               detail: this._translate.instant('login.text.error'),
+              });
 
           }
         )
@@ -153,8 +163,8 @@ saveRequest(requestStatusId : number){
 
       this.messageService.add({
         severity: 'success',
-        summary: 'تم الحفظ',
-        detail: 'تم إرسال طلبك بنجاح',
+        summary: this._translate.instant('electronicCouncil.shared.alreadySent'),
+          detail: this._translate.instant('electronicCouncil.shared.sentSuccessfully'),
       });
       setTimeout(() => {
         this._router.navigate(['/e-council/my-orders']);
@@ -209,11 +219,18 @@ saveRequest(requestStatusId : number){
         this.isRateService = true
 
       }else {
-        this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
+        this.messageService.add({
+          severity:'error',
+          summary: this._translate.instant('login.shared.error'),
+           detail: result.errorMessageAr
+          });
       }
     },
     (err) =>{
-      this.messageService.add({severity:'error', summary: 'خطأ', detail: 'خطأ في إرسال الطلب'});
+      this.messageService.add({
+        severity:'error',
+        summary: this._translate.instant('login.shared.error') ,
+        detail: this._translate.instant('login.shared.error')});
     }
   )
    }
@@ -236,44 +253,4 @@ onUpload(event : any) {
 }
 
 
-closeModal(){
-
-  console.log('close Modal')
-
-  if(this.requestStatusId == RequestStatusEnum.New){
-    this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
-    setTimeout(() => {
-      this._router.navigate(['/e-council/my-orders']);
-      } , 3000);
-  }
-
-  else if(this.requestStatusId == RequestStatusEnum.Drafted){
-    this.messageService.add({severity:'success', summary: 'تم الحفظ', detail: 'تم حفظ طلبك بنجاح'});
-    setTimeout(() => {
-        this._router.navigate(['/e-council/saved']);
-      } , 3000);
-  }
-
-}
-
-submitModal(){
-
-
-  // _userServiceRate.sendServiceRate().subscribe(()=>{} , ()=>{})
-  console.log('submit Modal')
-  if(this.requestStatusId == RequestStatusEnum.New){
-    this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
-    setTimeout(() => {
-      this._router.navigate(['/e-council/my-orders']);
-      } , 3000);
-  }
-
-  else if(this.requestStatusId == RequestStatusEnum.Drafted){
-    this.messageService.add({severity:'success', summary: 'تم الحفظ', detail: 'تم حفظ طلبك بنجاح'});
-    setTimeout(() => {
-        this._router.navigate(['/e-council/saved']);
-      } , 3000);
-  }
-
-}
 }

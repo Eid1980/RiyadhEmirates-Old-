@@ -13,7 +13,10 @@
             "dontHaveAccount": "Do not have account?",
             "createNewAccount": "Create new account",
             "nafazSingIn": "Sign in by Nafaz",
-            "or": "Or"
+            "or": "Or",
+            "error" : "Error",
+            "invalidUsernameOrPassword" : "Invalid username or password"
+
         }
     },
     "register": {
@@ -101,7 +104,16 @@
             "attachmentName": "Attachment Name",
             "downloadAttachment": "Download Attachment",
             "details": "Details",
-            "send": "Send"
+            "send": "Send",
+            "success" : "Success",
+            "registeredSuccessfully" : "Registered successfully",
+            "error" : "Error",
+            "errorWhileSaving" : "Error in data",
+            "alreadySent" : "Already sent",
+            "sentSuccessfully" : "Sent successfully",
+            "alreadySaved" : "Already saved",
+            "savedSuccessfully" : "Saved successfully"
+
         },
         "menus": {
             "profile": "Profile",
