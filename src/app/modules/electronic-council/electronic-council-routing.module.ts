@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@shared/services/auth.guard';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
 import { DraftRequestsComponent } from './components/draft-requests/draft-requests.component';
+import { EditRequestComponent } from './components/edit-request/edit-request.component';
 import { IncomingOrdersComponent } from './components/incoming-orders/incoming-orders.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { OrderInquiryComponent } from './components/order-inquiry/order-inquiry.component';
@@ -14,7 +15,7 @@ import { UserDashboradComponent } from './components/user-dashborad/user-dashbor
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
-  { path: 'create/:id', component: CreateRequestComponent ,canActivate: [AuthGuard]},
+  { path: 'request/edit/:id', component: EditRequestComponent ,canActivate: [AuthGuard]},
   { path: 'create', component: CreateRequestComponent ,canActivate: [AuthGuard]},
   { path: 'my-orders', component: MyOrdersComponent , canActivate: [AuthGuard]},
   { path: 'inquiry', component: OrderInquiryComponent },
@@ -24,8 +25,8 @@ const routes: Routes = [
   { path: 'service-details', component: ServiceDetailsComponent },
   { path: 'dashboard', component: UserDashboradComponent },
   { path: 'profile', component: UserProfileComponent },
-  {path : 'incoming-orders' , component : IncomingOrdersComponent , canActivate: [AuthGuard]},
-  {path : 'draft-requests' , component : DraftRequestsComponent , canActivate: [AuthGuard]},
+  { path : 'incoming-orders' , component : IncomingOrdersComponent , canActivate: [AuthGuard]},
+  { path : 'draft-requests' , component : DraftRequestsComponent , canActivate: [AuthGuard]},
   { path: '', redirectTo: 'service-details', pathMatch: 'full' },
 ];
 

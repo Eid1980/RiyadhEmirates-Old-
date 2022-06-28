@@ -41,15 +41,22 @@ export class ForgotPasswordComponent implements OnInit {
     debugger
     if(this.state == 1  || status != 0)
     {
-      this.userName = this.inputText;
+      if(this.state == 1)
+      {
+        this.userName = this.inputText;
+      }
+
       let forgetPassword : any = {UserName  : this.userName};
       this._authService.forgetPassword(forgetPassword).subscribe(
         (result : any) => {
           if(result.IsSuccess == true){
+            debugger
             this._messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم ارسال الرقم التاكيدي الي البريد الالكتروني'});
             if(status == 0){
             this.updatePlaceHolder(++this.state);
             }
+          }else{
+            this._messageService.add({severity:'error', summary: 'حدث خطأ ', detail: 'حدث خطأ اثناء الارسال'});
           }
         } ,
         () => {}

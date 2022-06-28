@@ -19,6 +19,7 @@ import { DraftRequestsComponent } from './components/draft-requests/draft-reques
 import { DropdownModule } from 'primeng/dropdown';
 import { ImageModule } from 'primeng/image';
 import { DialogModule } from 'primeng/dialog';
+import { EditRequestComponent } from './components/edit-request/edit-request.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DialogModule } from 'primeng/dialog';
     IncomingOrdersComponent,
     TableComponent,
     DraftRequestsComponent,
+    EditRequestComponent,
   ],
   imports: [
     ElectronicCouncilRoutingModule,

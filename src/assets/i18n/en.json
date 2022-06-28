@@ -70,6 +70,7 @@
             "noData": "No Data",
             "title": "The electronic council for prince of emirate",
             "serviceType": "Add New Request",
+            "editRequest" : "Edit request" ,
             "applicantsInfo": "Applicant's Information",
             "applicantsName": "Applicant's name : ",
             "birthDate": "Birth date",
