@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@shared/services/auth.service';
 import { SessionStorageService } from '@shared/services/session-storage.service';
+import { TranslationService } from '@shared/services/translation.service';
 import { UserService } from '@shared/services/user.service';
 import { MessageService } from 'primeng/api';
 
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
     private sessionService : SessionStorageService,
     private router: Router,
     private fb: FormBuilder,
-    private messageService: MessageService) {}
+    private messageService: MessageService,
+    private translationService: TranslationService) {}
 
   ngOnInit() {}
 
@@ -57,5 +59,13 @@ export class LoginComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'خطأ', detail: 'اسم المستخدم او كلمة المرور غير صحيحة'});
       }
     )
+  }
+
+  get currentLang() {
+    return this.translationService.getCurrentLanguage().Name;
+  }
+
+  onChangeLang() {
+    this.translationService.switchLanguage();
   }
 }

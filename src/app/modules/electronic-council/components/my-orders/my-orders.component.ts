@@ -7,20 +7,17 @@ import { SharedService } from '@shared/services/shared.service';
 import { Router } from '@angular/router';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 
-
 @Component({
   selector: 'app-my-orders',
   templateUrl: './my-orders.component.html',
   styleUrls: ['./my-orders.component.scss'],
-  providers: [MessageService]
-
+  providers: [MessageService],
 })
 export class MyOrdersComponent implements OnInit {
-
-  requests : RequestModel[];
-  selectedOrder : RequestModel;
+  requests: RequestModel[];
+  selectedOrder: RequestModel;
   searchCriteria: InquiryModel;
-  multiSortMeta : any[]
+  multiSortMeta: any[];
 
   display: boolean = false;
 
@@ -28,63 +25,81 @@ export class MyOrdersComponent implements OnInit {
 
   types: any[];
 
-  value : any
+  value: any;
 
   loading: boolean = true;
 
   constructor(
-    private requsetService : RequestService,
-    private messageService : MessageService,
-    private _router: Router,
+    private requsetService: RequestService,
+    private messageService: MessageService,
+    private _router: Router
+  ) {
+    this.searchCriteria = new InquiryModel();
 
-    ) {
-      this.searchCriteria = new InquiryModel();
-
-      this.types = [
-        {label: 'طلب', value: 'طلب'},
-        {label: 'إقتراح', value: 'إقتراح'},
-        {label: 'شكوي', value: 'شكوي'}    ]
-    }
+    this.types = [
+      { label: 'طلب', value: 'طلب' },
+      { label: 'إقتراح', value: 'إقتراح' },
+      { label: 'شكوي', value: 'شكوي' },
+    ];
+  }
 
   ngOnInit(): void {
-
     this.requsetService.getRequests(this.searchCriteria).subscribe(
-    (result : any) => {
-      console.log(result)
-      if(result.IsSuccess == true){
-        this.requests = result.Data
-        this.loading = false;
-      }else{
-        this.messageService.add({severity:'error', summary: 'خطأ', detail: result.errorMessageAr});
+      (result: any) => {
+        console.log(result);
+        if (result.IsSuccess == true) {
+          this.requests = result.Data;
+          this.loading = false;
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'خطأ',
+            detail: result.errorMessageAr,
+          });
+        }
+      },
+      (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'خطأ',
+          detail: error,
+        });
       }
-    },
-    (error) => {
-      this.messageService.add({severity:'error', summary: 'خطأ', detail: error});
-    }
     );
 
     // sort critera
     this.multiSortMeta = [];
-    this.multiSortMeta.push({field: 'requestTypeAr', order: 1});
-    this.multiSortMeta.push({field: 'statusMsgAr', order: -1});
+    this.multiSortMeta.push({ field: 'requestTypeAr', order: 1 });
+    this.multiSortMeta.push({ field: 'statusMsgAr', order: -1 });
   }
 
-  showDialog(selectedRequest : RequestModel) {
-    if(selectedRequest.RequestStatusId == RequestStatusEnum.Edit){
-      this._router.navigate(['/e-council/create' , selectedRequest.Id]);
+  showDialog(selectedRequest: RequestModel) {
+    if (selectedRequest.RequestStatusId == RequestStatusEnum.Edit) {
+      this._router.navigate(['/e-council/create', selectedRequest.Id]);
+    } else {
+      this._router.navigate(['/e-council/order-status/' + selectedRequest.Id]);
     }
+  }
 
-    else{
+  reset() {
+    this.first = 0;
+  }
 
-    this._router.navigate(['/e-council/order-status/' + selectedRequest.Id]);
+  filter(value: any) {}
+
+  getStatusColor(requestStatusId: number) {
+    if (requestStatusId == RequestStatusEnum.New) {
+      return 'alert alert-warning';
+    } else if (requestStatusId == RequestStatusEnum.Accept) {
+      return 'alert alert-primary';
+    } else if (requestStatusId == RequestStatusEnum.Pending) {
+      return 'alert alert-info';
+    } else if (requestStatusId == RequestStatusEnum.Rejected) {
+      return 'alert alert-danger';
+    } else if (requestStatusId == RequestStatusEnum.Drafted) {
+      return 'alert alert-light';
+    } else {
+      return 'alert alert-primary';
     }
-
-}
-
-reset() {
-  this.first = 0;
-}
-
-filter(value: any){
-}
+  }
 }

@@ -3,11 +3,11 @@
 <!-- Breadcrumb -->
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
-    <img src="./assets/images/icons/home.svg" alt="" class="ml-2">
-    الرئيسية
+    <img src="./assets/images/icons/home.svg" alt="" class="ml-2"/>
+    {{ 'electronicCouncil.shared.main' | translate}}
   </a>
-  <a class="breadcrumb-item" href="#"> دليل الخدمات</a>
-  <span class="breadcrumb-item active">المجلس الإلكتروني</span>
+  <a class="breadcrumb-item" href="#">{{ 'electronicCouncil.shared.serviceGuide' | translate}}</a>
+  <span class="breadcrumb-item active">{{ 'electronicCouncil.shared.electronicCouncil' | translate}}</span>
 </nav>
 
 <div class="page-wrapper pl-0">
@@ -20,24 +20,32 @@
     <div class="col-md-9 col-12">
       <!-- page title -->
       <div class="page-title">
-        <h4>طلباتى</h4>
+        <h4>{{ 'electronicCouncil.myOrders.myOrders' | translate}}</h4>
       </div>
-      <div *ngIf="requests?.length == 0">لا يوجد بيانات</div>
+      <div *ngIf="requests?.length == 0">{{ 'electronicCouncil.shared.noData' | translate}}</div>
 
-      <p-table *ngIf="requests?.length != 0" [value]="requests"  [loading]="loading"
-               [paginator]="true" [rows]="10"  [(first)]="first"
-               [showCurrentPageReport]="true" responsiveLayout="scroll"
-               currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات" [rowsPerPageOptions]="[10,25,30]"
-               sortMode="multiple" [multiSortMeta]="multiSortMeta"
-               [globalFilterFields]="['RequestTypeAr','statusMsgAr' , 'creationDate']" >
+      <p-table
+        [value]="requests"
+        [loading]="loading"
+        [paginator]="true"
+        [rows]="10"
+        [(first)]="first"
+        [showCurrentPageReport]="true"
+        responsiveLayout="scroll"
+        currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات"
+        [rowsPerPageOptions]="[10, 25, 30]"
+        sortMode="multiple"
+        [multiSortMeta]="multiSortMeta"
+        [globalFilterFields]="['RequestTypeAr', 'statusMsgAr', 'creationDate']"
+      >
         <ng-template pTemplate="header">
           <tr>
-            <th pSortableColumn="header">عنوان الطلب <p-sortIcon field="header"></p-sortIcon>
+            <th pSortableColumn="header">{{ 'electronicCouncil.myOrders.requestAddress' | translate}} <p-sortIcon field="header"></p-sortIcon>
               <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
             </th>
-            <th pSortableColumn="content">الوصف <p-sortIcon field="content"></p-sortIcon>
+            <th pSortableColumn="content">{{ 'electronicCouncil.myOrders.description' | translate}} <p-sortIcon field="content"></p-sortIcon>
             </th>
-            <th pSortableColumn="RequestTypeAr"> نوع الطلب  <p-sortIcon field="RequestTypeAr"></p-sortIcon>
+            <th pSortableColumn="RequestTypeAr">{{ 'electronicCouncil.myOrders.requestType' | translate}}  <p-sortIcon field="RequestTypeAr"></p-sortIcon>
               <p-columnFilter field="RequestTypeAr" matchMode="equals" display="menu">
                 <ng-template pTemplate="filter" let-value let-filter="filterCallback">
                     <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)" placeholder="Any">
@@ -46,47 +54,48 @@
                         </ng-template>
                     </p-dropdown>
                 </ng-template>
-            </p-columnFilter>
+              </p-columnFilter>
             </th>
-            <th pSortableColumn="SerialNumber">رقم الطلب <p-sortIcon field="SerialNumber"></p-sortIcon>
+            <th pSortableColumn="SerialNumber">{{ 'electronicCouncil.myOrders.serialNumber' | translate}} <p-sortIcon field="SerialNumber"></p-sortIcon>
             </th>
-            <th pSortableColumn="StatusMsgAr">الحالة <p-sortIcon field="StatusMsgAr"></p-sortIcon>
+            <th pSortableColumn="StatusMsgAr">{{ 'electronicCouncil.myOrders.statusMsg' | translate}} <p-sortIcon field="StatusMsgAr"></p-sortIcon>
             </th>
-            <th pSortableColumn="CreationDate">تاريخ الطلب <p-sortIcon field="CreationDate"></p-sortIcon>
+            <th pSortableColumn="CreationDate">{{ 'electronicCouncil.myOrders.creationDate' | translate}} <p-sortIcon field="CreationDate"></p-sortIcon>
             </th>
-            <th>التفاصيل </th>
+            <th>{{ 'electronicCouncil.myOrders.details' | translate}} </th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-request>
-            <tr>
-              <td>{{request.Header}}</td>
-              <td>{{request.Content}}</td>
-              <td>{{request.RequestTypeAr}}</td>
-              <td>{{request.SerialNumber}}</td>
-              <td>{{request.StatusMsgAr}}</td>
-              <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
-              <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
-            </tr>
+          <tr>
+            <td>{{ request.Header }}</td>
+            <td>{{ request.Content }}</td>
+            <td>{{ request.RequestTypeAr }}</td>
+            <td>{{ request.SerialNumber }}</td>
+            <td>
+              <div
+                [class]="getStatusColor(request.RequestStatusId)"
+                role="alert"
+              >
+                <strong>{{ request.StatusMsgAr }}</strong>
+              </div>
+            </td>
+            <td>{{ request.CreationDate | date: "dd/MM/yyyy" }}</td>
+            <td>
+              <i
+                class="fa fa-exclamation-circle"
+                aria-hidden="true"
+                (click)="showDialog(request)"
+              ></i>
+            </td>
+          </tr>
         </ng-template>
-        <!--<ng-template pTemplate="summary">
-          There are {{requests?.length}} cars
-        </ng-template>-->
-        <!--<ng-template pTemplate="paginatorleft" let-state>
-          {{state.first}}
-          <button type="button" pButton icon="pi-refresh"></button>
-        </ng-template>-->
-        <!--<ng-template pTemplate="paginatorright">
-          <button type="button" pButton icon="pi-cloud-upload"></button>
-        </ng-template>-->
         <ng-template let-item pTemplate="paginatordropdownitem">
-          {{item.value}} - per page
+          {{ item.value }} - per page
         </ng-template>
       </p-table>
     </div>
   </div>
-
 </div>
-
 
 <!--<p-dialog header="Title" [(visible)]="display">
   <app-order-status-details [seletedOrder]="selectedOrder"></app-order-status-details>

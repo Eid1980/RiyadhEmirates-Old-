@@ -1,0 +1,165 @@
+{
+  "global": {
+    "message": {
+      "reqiuredField": "هذا الحقل مطلوب"
+    }
+  },
+  "home": {
+    "aboutEmirate": "عن الامارة",
+    "princesRegion": "امراء المنطقة",
+    "provinces": "المحافظات",
+    "electronicServices": "الخدمات الالكترونية",
+    "browseAllServices": "تصفح جميع الخدمات",
+    "electronicCouncil": "المجلس الإلكتروني",
+    "electronicCouncilTitle": "تقديم شكوي أو مقترح أو متابعة طلب لسمو أمير منطقة الرياض",
+    "inquireyService": "استعلام عن خدمة أو معاملة",
+    "inquireyServiceTitle": "استعلام عن خدمة برقم المعاملة أو رقم الطلب",
+    "news": "الاخبار",
+    "relatedplatforms": "منصات ذات صلة",
+    "mediaReports": "التقارير الاعلامية",
+    "provincialNews": "أخبار المحافظات",
+    "browseAllNews": "تصفح جميع الأخبار",
+    "advertisingReports": "تقارير إعلانية"
+  },
+  "login": {
+    "text": {
+      "signIn": "تسجيل الدخول",
+      "nationalIdOrResidentNumber": "رقم الهوية/الإقامة",
+      "password": "كلمة المرور",
+      "forgetPassword": "نسيت كلمة المرور؟",
+      "dontHaveAccount": "ليس لديك حساب؟",
+      "createNewAccount": "إنشاء حساب جديد",
+      "nafazSingIn": "عن طريق حسابك في منصة النفاذ الوطني الموحد",
+      "or": "أو"
+    }
+  },
+  "register": {
+    "text": {
+      "singUp": "حساب جديد",
+      "nationalIdOrResidentNumber": "رقم الهوية/الإقامة",
+      "name": "الاسم",
+      "nationality": "الجنسية",
+      "birthDate": " تاريخ الميلاد ",
+      "dateComponent": "سنة/شهر/يوم",
+      "higri": "هجري",
+      "greg": "ميلادي",
+      "phoneNumber": "رقم الجوال",
+      "email": "البريد الالكتروني",
+      "password": "كلمة المرور",
+      "createNewAccount": "إنشاء حساب جديد",
+      "haveAnAccount": "لديك حساب سابق؟",
+      "createAccount": "إنشاء حساب",
+      "passwordPattern": "كلمة المرور يجب ان تحتوي علي حروف كبيرة و حروف صغيرة وارقام و حروف خاصة",
+      "backToLogin": "العودة إلي تسجل الدخول",
+      "invalidNationalId": "رقم الهوية / الاقامة يبدأ ب 1 او 2 و يتكون من 10 ارقام",
+      "dateFormate": "سنة/شهر/يوم",
+      "invalidPhoneNumber": "رقم الجوال يبدأ ب 966 و يتكون من 12 رقم",
+      "invalidEmail": "يجب إدخال بريد الالكتروني بشكل صحيح"
+    }
+  },
+  "forgetPassword": {
+    "text": {
+      "forgetPassword": "نسيت كلمة المرور"
+    }
+  },
+  "electronicCouncil": {
+    "shared": {
+      "main": "الرئيسية",
+      "serviceGuide": "دليل الخدمات",
+      "electronicCouncil": "المجلس الالكتروني",
+      "noData": "لا يوجد بيانات",
+      "title": "المجلس الإلكتروني لسمو أمير منطقة الرياض",
+      "serviceType": "إنشاء طلب جديد",
+      "applicantsInfo": "بيانات مقدم الطلب",
+      "applicantsName": " : اسم مقدم الطلب",
+      "birthDate": " : تاريخ الميلاد",
+      "gender": " : الجنس",
+      "male": " : ذكر",
+      "email": " : البريد الالكتروني",
+      "nationalId": " : رقم الهوية ",
+      "phoneNumber": " : رقم الموبايل",
+      "requestType": "نوع الطلب",
+      "requestAddress": "عنوان الطلب",
+      "description": "الوصف",
+      "requestStatus": "حالة الطلب",
+      "requestDate": "تاريخ الطلب",
+      "requestDetails": "تفاصيل الطلب",
+      "requestSerialNumber": "رقم الطلب",
+      "order": "طلب",
+      "suggestion": "اقتراح",
+      "complaint": "شكوى",
+      "rquestInfo": "بيانات الطلب",
+      "attachments": "المرفقات",
+      "addAttachment": "إضافة مرفق",
+      "attachmentName": "اسم المرفق",
+      "downloadAttachment": "تحميل مرفق",
+      "sendRequest": "إرسال الطلب",
+      "saveAsDraft": "حفظ كمسودة",
+      "cancel": "إلغاء",
+      "details": "التفاصيل",
+      "send": "إرسل"
+    },
+    "menus": {
+      "profile": "الملف الشخصي",
+      "dashboard": "لوحة المتابعة",
+      "newRequest": "طلب جديد",
+      "myOrders": "طلباتي",
+      "incommingOrders": "الطلبات الواردة",
+      "savedRequest": "الطلبات المحفوظة",
+      "inquiry": "إستعلام عن طلب",
+      "rateService": "تقييم الخدمة"
+    },
+    "profile": {},
+    "dashboard": {},
+    "myOrders": {
+      "myOrders": "طلباتي",
+      "details": "التفاصيل",
+      "creationDate": "تاريخ الطلب",
+      "statusMsg": "الحالة",
+      "serialNumber": "رقم الطلب",
+      "requestType": "نوع الطلب",
+      "requesterName": "اسم مقدم الطلب",
+      "description": "الوصف",
+      "requestAddress": "عنوان الطلب"
+    },
+    "incommingOrders": {
+      "newOrders": "الطلبات الجديدة",
+      "pendingOrders": "طلبات تحت الاجراء",
+      "acceptedOrders": "الطلبات المقبولة",
+      "rejectedOrders": "طلبات تم الاعتذار",
+      "confirm": "تأكيد",
+      "cancle": "الغاء",
+      "details": "التفاصيل",
+      "creationDate": "تاريخ الطلب",
+      "statusMsg": "الحالة",
+      "serialNumber": "رقم الطلب",
+      "requestType": "نوع الطلب",
+      "requesterName": "اسم مقدم الطلب",
+      "requestAddress": "عنوان الطلب"
+    },
+    "savedRequests": {
+      "savedRequests": "الطلبات المحفوظة"
+    },
+    "inquiry": {
+      "enterOrderId": "ادخل رقم المعاملة",
+      "aboutInquiry": "استعلام عن طلب/معاملة",
+      "searchResult": "نتيجة البحث",
+      "requestStatus": "حالة الطلب: ",
+      "requestorInfo": "بيانات مقدم الطلب"
+    }
+  },
+  "header": {
+    "hello": "مرحباً:",
+    "profilePersonly": "الملف الشخصي",
+    "signOut": "تسجيل الخروج",
+    "signIn": "تسجيل الدخول",
+    "newRegistration": "تسجيل جديد",
+    "aboutTheEmirate": " الإمارة",
+    "lordsOfTheRegion": "أمراء المنطقة",
+    "provinces": "المحافظات",
+    "electronicServices": "الخدمات الإلكترونية",
+    "news": "الأخبار",
+    "mediaReports": "التقارير الإعلامية",
+    "openData": "البيانات المفتوحة"
+  }
+}

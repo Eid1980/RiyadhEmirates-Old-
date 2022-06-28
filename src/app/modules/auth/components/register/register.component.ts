@@ -10,6 +10,7 @@ import * as momentjs from 'moment';
 const moment = momentjs;
 
 import * as moment_ from 'moment-hijri';
+import { TranslationService } from '@shared/services/translation.service';
 const momentHijri = moment_;
 
 
@@ -57,7 +58,8 @@ export class RegisterComponent implements OnInit {
     private messageService: MessageService,
     private router: Router,
     private fb: FormBuilder,
-    private dateFormatterService: DateFormatterService) {
+    private dateFormatterService: DateFormatterService,
+    private translationService: TranslationService) {
 
       this.registerationFormData = new FormData();
 
@@ -172,6 +174,14 @@ export class RegisterComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'خطأ', detail: err.error.Message});
       }
     )
+  }
+
+  get currentLang() {
+    return this.translationService.getCurrentLanguage().Name;
+  }
+
+  onChangeLang() {
+    this.translationService.switchLanguage();
   }
 
 }

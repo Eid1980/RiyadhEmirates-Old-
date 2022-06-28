@@ -7,6 +7,7 @@ import {
 import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 import { LoaderService } from "@shared/services/loader.service";
+import { TranslationService } from "@shared/services/translation.service";
 
 @Component({
   selector: 'app-root',
@@ -20,10 +21,14 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private progressSpinner: LoaderService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private transalationService: TranslationService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.transalationService.initializeLanguage();
+    document.body.style.direction = this.transalationService.getCurrentLanguage().Direction;
+  }
 
   ngAfterViewChecked() {
     this.isActive = this.progressSpinner.isLoading;

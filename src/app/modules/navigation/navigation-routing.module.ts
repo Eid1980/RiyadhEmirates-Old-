@@ -19,6 +19,13 @@ const routes: Routes = [
             (x) => x.ElectronicCouncilModule
           ),
       },
+      {
+        path: 'services',
+        loadChildren: () =>
+          import('../services/services.module').then(
+            (x) => x.ServicesModule
+          ),
+      },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
     component: CoreLayoutComponent,

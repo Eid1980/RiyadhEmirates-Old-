@@ -1,0 +1,165 @@
+{
+    "global": {
+        "message": {
+            "reqiuredField": "This field is required"
+        }
+    },
+    "login": {
+        "text": {
+            "signIn": "Sign In",
+            "nationalIdOrResidentNumber": "National identifier or resident number",
+            "password": "Password",
+            "forgetPassword": "Forget password",
+            "dontHaveAccount": "Do not have account?",
+            "createNewAccount": "Create new account",
+            "nafazSingIn": "Sign in by Nafaz",
+            "or": "Or"
+        }
+    },
+    "register": {
+        "text": {
+            "singUp": "Sign up",
+            "nationalIdOrResidentNumber": "National identifier or resident number",
+            "name": "Name",
+            "nationality": "Nationality",
+            "birthDate": "Birth Date",
+            "dateComponent": "year/month/day",
+            "higri": "Higri",
+            "greg": "Gregorian",
+            "phoneNumber": "Phone Number",
+            "email": "E-mail",
+            "password": "Password",
+            "createNewAccount": "Create new account",
+            "haveAnAccount": "Do you have an account ?",
+            "createAccount": "Create Account",
+            "passwordPattern": "The password contains uppercase letters, lowercase letters, and letter-specific numbers",
+            "backToLogin": "Back to Login",
+            "invalidNationalId": "رقم الهوية / الاقامة يبدأ ب 1 او 2 و يتكون من 10 ارقام",
+            "dateFormate": "dd/MM/yyyy",
+            "invalidPhoneNumber": "رقم الجوال يبدأ ب 966 و يتكون من 12 رقم",
+            "invalidEmail": "يجب إدخال بريد الالكتروني بشكل صحيح"
+        }
+    },
+    "forgetPassword": {
+        "text": {
+            "forgetPassword": "Forget password"
+        }
+    },
+    "home": {
+        "aboutEmirate": "About Emirate",
+        "princesRegion": "Princes Region",
+        "provinces": "Provinces",
+        "electronicServices": "Electronic Services",
+        "news": "News",
+        "mediaReports": "Media Reports",
+        "browseAllServices": "Browse All Services",
+        "electronicCouncil": "Electronic Council",
+        "electronicCouncilTitle": "Submit a complaint, a proposal, or a follow-up request to His Highness, the Governor of the Riyadh region",
+        "inquireyService": "Inquire about a service or transaction",
+        "inquireyServiceTitle": "Inquire about a service with the transaction number or the order number",
+        "relatedplatforms": "Related platforms",
+        "provincialNews": "Provincial news",
+        "browseAllNews": "Browse all news",
+        "advertisingReports": "Advertising Reports"
+    },
+    "electronicCouncil": {
+        "shared": {
+            "main": "Main",
+            "serviceGuide": "Service guide",
+            "electronicCouncil": "Electronic council",
+            "noData": "No Data",
+            "title": "The electronic council for prince of emirate",
+            "serviceType": "Add New Request",
+            "applicantsInfo": "Applicant's Information",
+            "applicantsName": "Applicant's name : ",
+            "birthDate": "Birth date",
+            "gender": "Gender: ",
+            "email": "E-mail : ",
+            "nationalId": "National Identifier : ",
+            "phoneNumber": "Phone Number : ",
+            "requestType": "Rquest Type",
+            "requestAddress": "Rquest Address",
+            "description": "Description",
+            "requestSerialNumber": "Serial Number",
+            "requestStatus": "Request Status",
+            "requestDate": "Request Date",
+            "requestDetails": "Request Details",
+            "rquestInfo": "Request Information",
+            "attachments": "Attachments",
+            "addAttachment": "Add Attachments",
+            "sendRequest": "Send Request",
+            "saveAsDraft": "Save As Draft",
+            "cancel": "Cancel",
+            "male": "Male",
+            "order": "Order",
+            "suggestion": "Suggestion",
+            "complaint": "Complaint",
+            "attachmentName": "Attachment Name",
+            "downloadAttachment": "Download Attachment",
+            "details": "Details",
+            "send": "Send"
+        },
+        "menus": {
+            "profile": "Profile",
+            "dashboard": "Dashboard",
+            "newRequest": "Add new request",
+            "myOrders": "My orders",
+            "incommingOrders": "Incomming Orders",
+            "savedRequest": "Saved orders",
+            "inquiry": "Request inquiry",
+            "rateService": "Rate Service"
+        },
+        "profile": {},
+        "dashboard": {},
+        "myOrders": {
+            "myOrders": "My orders",
+            "details": "Details",
+            "creationDate": "Creation Date",
+            "statusMsg": "Status message",
+            "serialNumber": "Serial Number",
+            "requestType": "Request Type",
+            "requesterName": "Requester Name",
+            "description": "Description",
+            "requestAddress": "Request Address"
+        },
+        "incommingOrders": {
+            "newOrders": "New Requests",
+            "pendingOrders": "Pending Requests",
+            "acceptedOrders": "Accepted Requests",
+            "rejectedOrders": "Rejected Requests",
+            "confirm": "Confirm",
+            "cancle": "Cancle",
+            "details": "Details",
+            "creationDate": "Creation Date",
+            "statusMsg": "Status message",
+            "serialNumber": "Serial Number",
+            "requestType": "Request Type",
+            "requesterName": "Requester Name",
+            "requestAddress": "Request Address"
+        },
+        "savedRequests": {
+            "savedRequests": "Saved requests"
+        },
+        "inquiry": {
+            "enterOrderId":"Enter the transaction number",
+            "aboutInquiry": "Inquiry about a request / transaction",
+            "searchResult": "Search Result",
+            "requestStatus": "Request status: ",
+            "requestorInfo": "Applicant's Information"
+        }
+    },
+    "header": {
+        "hello": "Hello:",
+        "profilePersonly": "Profile personly",
+        "signOut": "Sign out",
+        "signIn": "Sign in",
+        "newRegistration": "New registration",
+        "aboutTheEmirate": "About The Emirate",
+        "lordsOfTheRegion": "Lords Of The Region",
+        "provinces": "Provinces",
+        "electronicServices": "Electronic Services",
+        "news": "News",
+        "mediaReports": "Media Reports",
+        "openData": "Open Data"
+    }
+}

@@ -2,7 +2,7 @@
   <div class="">
     <div class="">
       <div>
-        <h5  id="staticBackdropLabel">تقييم الخدمة</h5>
+        <h5  id="staticBackdropLabel">{{ 'electronicCouncil.menus.rateService' | translate}}</h5>
       </div>
       <div class="modal-body">
         <span class="fa fa-star" (click)="rateService(1)"  [ngClass]="{'checked' : rate >= 1}"></span>
@@ -21,8 +21,8 @@
 
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="onnModalClose()" >إغلاق</button>
-        <button type="button" class="btn btn-primary" (click)="onnModalSubmit()" [disabled]="rate == 0">ارسال</button>
+        <button type="button" class="btn btn-secondary" (click)="onnModalClose()" >{{ 'electronicCouncil.shared.cancel' | translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="onnModalSubmit()" [disabled]="rate == 0">{{ 'electronicCouncil.shared.send' | translate}}</button>
       </div>
     </div>
   </div>

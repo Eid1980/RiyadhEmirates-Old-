@@ -7,8 +7,8 @@ import { RequestService } from '@shared/services/request.service';
 import { UserService } from '@shared/services/user.service';
 import { MessageService } from 'primeng/api';
 import { environment } from 'src/environments/environment';
-import * as html2pdf from 'html2pdf.js'
-
+import * as html2pdf from 'html2pdf.js';
+declare let $: any;
 
 @Component({
   selector: 'app-order-status-details',
@@ -21,15 +21,14 @@ export class OrderStatusDetailsComponent implements OnInit {
 
   userModel: UserModel;
   currentRequestInfo: RequestModel;
-
   messageReason: string = '';
   displayMessage: boolean = false;
-
   imagePath: string = environment.imagePathURL;
-
   requestStatus: string;
-  requestStatusStyle : string ;
-  loading : boolean;
+  requestStatusStyle: string;
+  loading: boolean;
+  reportUrl: string;
+  display: boolean = false;
 
   constructor(
     private _requestService: RequestService,
@@ -46,11 +45,14 @@ export class OrderStatusDetailsComponent implements OnInit {
         this._requestService.getRequestById(requestId).subscribe(
           (result: any) => {
             if (result.IsSuccess == true) {
-              console.log(result.Data)
+              console.log(result.Data);
               this.currentRequestInfo = result.Data;
               this.requestStatus = result.Data.StatusMsgAr;
               this.setStatusColor(result.Data.RequestStatusId);
-              if (result.Data.RequestStatusId == RequestStatusEnum.Rejected || result.Data.RequestStatusId == RequestStatusEnum.Edit)
+              if (
+                result.Data.RequestStatusId == RequestStatusEnum.Rejected ||
+                result.Data.RequestStatusId == RequestStatusEnum.Edit
+              )
                 this.requestStatus =
                   this.requestStatus + ' بسبب ' + result.Data.StatusMessage;
             } else {
@@ -142,37 +144,42 @@ export class OrderStatusDetailsComponent implements OnInit {
     }
   }
 
+  setStatusColor(requestStatusId: number) {
+    if (requestStatusId == RequestStatusEnum.New) {
+      this.requestStatusStyle = 'alert alert-warning';
+    } else if (requestStatusId == RequestStatusEnum.Accept) {
+      this.requestStatusStyle = 'alert alert-primary';
+    } else if (requestStatusId == RequestStatusEnum.Pending) {
+      this.requestStatusStyle = 'alert alert-info';
+    } else if (requestStatusId == RequestStatusEnum.Rejected) {
+      this.requestStatusStyle = 'alert alert-danger';
+    } else if (requestStatusId == RequestStatusEnum.Drafted) {
+      this.requestStatusStyle = 'alert alert-light';
+    } else {
+      this.requestStatusStyle = 'alert alert-primary';
+    }
+  }
+
   print() {
+    this.display = true;
     var element = document.getElementById('requestInfo');
     var opt = {
-      margin:       1,
-      filename:     'output.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 3},
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+      margin: 1,
+      filename: 'output.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 3 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' },
     };
 
-    // New Promise-based usage:
-    html2pdf().from(element).set(opt).save();
-
-    //window.print();
+    html2pdf()
+      .set(opt)
+      .from(element)
+      .toPdf()
+      .output('blob')
+      .then((data: Blob) => {
+        debugger;
+        this.reportUrl = URL.createObjectURL(data);
+        $('#report').attr('src', this.reportUrl);
+      });
   }
-
-  setStatusColor(requestStatusId : number){
-    if(requestStatusId == RequestStatusEnum.New){
-      this.requestStatusStyle = "alert alert-warning"
-    }else if (requestStatusId == RequestStatusEnum.Accept){
-      this.requestStatusStyle = "alert alert-primary"
-    } else if (requestStatusId == RequestStatusEnum.Pending){
-      this.requestStatusStyle = "alert alert-info"
-    }else if (requestStatusId == RequestStatusEnum.Rejected){
-      this.requestStatusStyle = "alert alert-danger"
-    }else if (requestStatusId == RequestStatusEnum.Drafted){
-      this.requestStatusStyle = "alert alert-light"
-    }else {
-      this.requestStatusStyle = "alert alert-primary"
-    }
-
-  }
-
 }

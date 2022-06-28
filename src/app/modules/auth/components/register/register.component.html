@@ -6,11 +6,22 @@
       <a href="#">
         <img src="assets/images/logo.svg" alt="" class="log-logo" width="180">
       </a>
-      <button class="btn btn-sm btn-primary lang-btn">English</button>
+      <span (click)="onChangeLang()">
+        <p-button
+          pRipple
+          label="ع"
+          *ngIf="currentLang == 'en'"
+        ></p-button>
+        <p-button
+          pRipple
+          label="en"
+          *ngIf="currentLang == 'ar'"
+        ></p-button>
+      </span>
     </div>
   </div>
   <div class="w-100">
-    <h4 class="title">حساب جديد</h4>
+    <h4 class="title">{{ "register.text.singUp" | translate}}</h4>
 
     <!-- Form -->
     <div class="row mx-0">
@@ -20,14 +31,14 @@
               <!-- ID -->
               <div class="form-group mb-lg-4">
                 <input type="text" name="" id="national_ID" class="form-control" required  formControlName="userName">
-                <label for="national_ID" class="label">رقم الهوية/الإقامة</label>
+                <label for="national_ID" class="label">{{ "register.text.nationalIdOrResidentNumber" | translate}}</label>
               
                   <div *ngIf="registerationForm.controls['userName'].invalid && (registerationForm.controls['userName'].dirty || registerationForm.controls['userName'].touched)" class="text-danger">
                     <div *ngIf="registerationForm.controls['userName'].errors?.required">
-                      رقم الهوية / الاقامة مطلوب
+                      {{ "global.message.reqiuredField" | translate}}
                     </div>
                     <div *ngIf="registerationForm.controls['userName'].errors?.['pattern']">
-                      رقم الهوية / الاقامة يبدأ ب 1 او 2 و يتكون من 10 ارقام 
+                      {{ "register.text.invalidNationalId" | translate}}
                     </div>
                   </div>
               </div>
@@ -35,10 +46,10 @@
               <!-- username -->
               <div class="form-group mb-lg-4">
                 <input type="text" name="" id="username" class="form-control" required formControlName="name">
-                <label for="username" class="label">الاسم </label>
+                <label for="username" class="label">{{ "register.text.name" | translate}}</label>
                 <div *ngIf="registerationForm.controls['name'].invalid && (registerationForm.controls['name'].dirty || registerationForm.controls['name'].touched)" class="text-danger">
                   <div *ngIf="registerationForm.controls['name'].errors?.required">
-                    الاسم مطلوب
+                    {{ "global.message.reqiuredField" | translate}}
                   </div>
                 </div>
               </div>
@@ -46,23 +57,23 @@
               <!-- nationality -->
               <div class="form-group mb-lg-4">
                 <select  id="nationalities" class="form-control" required>
-                  <option *ngFor="let item of nationalities" [value]="item.Id">{{item.NationalityAr}}</option>
+                  <option *ngFor="let item of nationalities" [value]="item.Id">{{item.Nationality}}</option>
                 </select> 
-                <label for="nationalities" class="label">الجنسية </label>
+                <label for="nationalities" class="label">{{ "register.text.nationality" | translate}}</label>
                 <div *ngIf="registerationForm.controls['name'].invalid && (registerationForm.controls['name'].dirty || registerationForm.controls['name'].touched)" class="text-danger">
                   <div *ngIf="registerationForm.controls['name'].errors?.required">
-                    الاسم مطلوب
+                    {{ "global.message.reqiuredField" | translate}}
                   </div>
                 </div>
               </div>
 
               <!-- birthdate -->
               <div class="form-group mb-lg-4">
-                <hijri-gregorian-datepicker id="birthdate" [placeHolder]="'سنة/شهر/يوم'"
+                <hijri-gregorian-datepicker id="birthdate" [placeHolder]="'register.text.dateFormate' | translate"
                     [(selectedDate)]="date"
                     [isRequired]="true"
-                    [GregLabel]="'ميلادي'"
-                    [hijriLabel] ="'هجري'"
+                    [GregLabel]="'register.text.greg' | translate"
+                    [hijriLabel] ="'register.text.higri' | translate"
                     [minGreg] = 'minGreg'
                     [maxGreg] = 'maxGreg'
                     [minHijri] = 'minHigriDate'
@@ -72,20 +83,20 @@
                     [readonly]="isReadOnly"
                     #datePicker>
                 </hijri-gregorian-datepicker>
-              <label for="birthdate" class="label">تاريخ الميلاد </label>
+              <label for="birthdate" class="label">{{ "register.text.birthDate" | translate}}</label>
 
             </div>
 
               <!-- phone -->
               <div class="form-group mb-lg-4">
                 <input type="text" name="" id="phone" class="form-control" required formControlName="phoneNumber">
-                <label for="phone" class="label">رقم الجوال</label>
+                <label for="phone" class="label">{{ "register.text.phoneNumber" | translate}}</label>
                 <div *ngIf="registerationForm.controls['phoneNumber'].invalid && (registerationForm.controls['phoneNumber'].dirty || registerationForm.controls['phoneNumber'].touched)" class="text-danger">
                   <div *ngIf="registerationForm.controls['phoneNumber'].errors?.required">
-                    رقم الجوال مطلوب
+                    {{ "global.message.reqiuredField" | translate}}
                   </div>
                   <div *ngIf="registerationForm.controls['phoneNumber'].errors?.['pattern']">
-                    رقم الجوال يبدأ ب 966 و يتكون من 12 رقم 
+                    {{ "register.text.invalidPhoneNumber" | translate}} 
                   </div>
                 </div>
               </div>
@@ -94,13 +105,13 @@
           <!-- Email -->
           <div class="form-group mb-lg-4">
             <input type="text" name="" id="email" class="form-control" required formControlName="email">
-            <label for="email" class="label">البريد الالكتروني</label>
+            <label for="email" class="label">{{ "register.text.email" | translate}}</label>
             <div *ngIf="registerationForm.controls['email'].invalid && (registerationForm.controls['email'].dirty || registerationForm.controls['email'].touched)" class="text-danger">
               <div *ngIf="registerationForm.controls['email'].errors?.required">
-                البريد الالكتروني مطلوب
+                {{ "global.message.reqiuredField" | translate}}
               </div>
               <div *ngIf="registerationForm.controls['email'].errors?.['pattern']">
-                يجب إدخال بريد الالكتروني بشكل صحيح
+                {{ "register.text.invalidEmail" | translate}}
               </div>
             </div>
           </div>
@@ -108,36 +119,32 @@
           <!-- password -->
           <div class="form-group">
             <input type="password" name="" id="password" class="form-control" required formControlName="password">
-            <label for="password" class="label">كلمة المرور</label>
+            <label for="password" class="label">{{ "register.text.password" | translate}}</label>
 
             <div *ngIf="registerationForm.controls['password'].invalid && (registerationForm.controls['password'].dirty || registerationForm.controls['password'].touched)" class="text-danger">
               <div *ngIf="registerationForm.controls['email'].errors?.required">
-                كلمة المرور مطلوب
+                {{ "global.message.reqiuredField" | translate}}
               </div>
               <div *ngIf="registerationForm.controls['password'].errors?.['pattern']">
-                كلمة المرور يجب ان تحتوي علي حروف كبيرة و حروف صغيرة وارقام و حروف خاصة               
+                {{ "register.text.passwordPattern" | translate}}               
               </div>
             </div>
           </div>
 
           <!-- Login Button -->
           <div class="">
-            <button type="submit" class="btn btn-primary submit" [disabled]="registerationForm.status == 'INVALID'">إنشاء حساب</button>
+            <button type="submit" class="btn btn-primary submit" [disabled]="registerationForm.status == 'INVALID'">{{ "register.text.createAccount" | translate}}</button>
           </div>
 
         </form>
 
         <!-- Have Account -->
         <div class="mt-4">
-          <span class=""> لديك حساب سابق؟</span>
+          <span class="">{{ "register.text.haveAnAccount" | translate}}</span>
           <a [routerLink]="['/auth/login']">
-            <span class="primary-text"> العودة إلي تسجل الدخول </span>
+            <span class="primary-text">{{ "register.text.backToLogin" | translate}}</span>
           </a>
         </div>
-
-        
-        <!--<p>Form Values : {{ registerationForm.value | json }}</p>
-        <p>Form Status: {{ registerationForm.status }}</p>-->
 
       </div>
     </div>
