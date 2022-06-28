@@ -1356,27 +1356,50 @@
 }
 
 // File Upload Create Request
-.repeated-row {
-  border: 1px dashed $Primary-2;
+.attach {
+  .repeated-row {
+    border: 1px dashed $Primary-2;
+  }
+  .p-fileupload {
+    .p-fileupload-buttonbar {
+      padding: 6px;
+    }
+    .p-fileupload-buttonbar .p-button {
+      margin-right: 0;
+      font-size: 12px;
+      font-family: "Almarai";
+    }
+    .p-button .p-button-icon-left {
+      margin-left: 0.5rem;
+      margin-right: 0;
+    }
+    .p-fileupload .p-fileupload-content {
+      padding: 1rem;
+    }
+    .p-fileupload-row > div {
+      padding: 0.5rem 0.4rem;
+    }
+    .p-fileupload-content {
+      padding: 1rem 0.5rem;
+    }
+  }
+  .form-content {
+    height: 320px;
+    overflow: auto;
+    margin-bottom: 24px;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: $light-dark;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $Primary-2;
+      border-radius: 1em;
+    }
+  }
 }
 
-.p-fileupload .p-fileupload-buttonbar {
-  padding: 6px;
-}
-
-.p-fileupload .p-fileupload-buttonbar .p-button {
-  margin-right: 0;
-  font-size: 12px;
-  font-family: "Almarai";
-}
-
-.p-button .p-button-icon-left {
-  margin-left: 0.5rem;
-  margin-right: 0;
-}
-
-.p-fileupload .p-fileupload-content {
-  padding: 1rem;
 .ui-progress-spinner {
   position: fixed;
   top: 0;
@@ -1392,7 +1415,6 @@
   .ui-progress-spinner-svg {
     width: 50px;
   }
-}
 }
 
 .spinner-icon {
