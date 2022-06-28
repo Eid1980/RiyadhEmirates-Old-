@@ -53,13 +53,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgxHijriGregorianDatepickerModule,
     TabMenuModule,
     FileUploadModule,
-    // TranslateModule.forChild({
-    //   loader: {
-    //     provide: TranslateLoader,
-    //     useFactory: HttpLoaderFactory,
-    //     deps: [HttpClient],
-    //   },
-    // }),
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   exports: [
     CommonModule,

@@ -27,10 +27,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     this.transalationService.initializeLanguage();
-    console.log(this.transalationService.getCurrentLanguage().Direction);
     document.body.style.direction = this.transalationService.getCurrentLanguage().Direction;
-    console.log(document.body);
-
   }
 
   ngAfterViewChecked() {

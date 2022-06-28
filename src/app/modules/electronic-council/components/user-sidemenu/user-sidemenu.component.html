@@ -11,7 +11,7 @@
     <li>
       <a routerLink="/e-council/profile" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/profile.svg" alt="">
-        الملف الشخصي
+        {{ 'electronicCouncil.menus.profile' | translate}}
       </a>
 
     </li>
@@ -19,49 +19,44 @@
     <li>
       <a routerLink="/e-council/dashboard" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-dash.svg" alt="">
-        لوحة المتابعة
+        {{ 'electronicCouncil.menus.dashboard' | translate}}
       </a>
     </li>
     <li *ngIf="userModel.IsAdmin">
       <a routerLink="/e-council/incoming-orders" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-dash.svg" alt="">
-        الطلبات الواردة
+        {{ 'electronicCouncil.menus.incommingOrders' | translate}}
       </a>
     </li>
 
-    <li *ngIf="!userModel.IsAdmin">
+    <li >
       <a routerLink="/e-council/create" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/new-order.svg" alt="">
-        طلب جديد
+        {{ 'electronicCouncil.menus.newRequest' | translate}}
       </a>
     </li>
     <li *ngIf="userModel.IsAdmin">
       <a routerLink="/e-council/inquiry" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-search.svg" alt="">
-        استعلام عن طلب
+        {{ 'electronicCouncil.menus.inquiry' | translate}}
       </a>
     </li>
-    <li *ngIf="!userModel.IsAdmin">
+    <li >
       <a routerLink="/e-council/my-orders" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-orders.svg" alt="">
-        طلباتي
+        {{ 'electronicCouncil.menus.myOrders' | translate}}
       </a>
     </li>
-    <li *ngIf="!userModel.IsAdmin">
+    <li >
       <a routerLink="/e-council/saved" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-saved.svg" alt="">
-        طلبات محفوظة
+        {{ 'electronicCouncil.menus.savedRequest' | translate}}
       </a>
     </li>
-    <li *ngIf="!userModel.IsAdmin">
-    <!--<a routerLink="/e-council/rate" routerLinkActive="active" class="link">
-            <img src="./assets/images/icons/prof-rate.svg" alt="">
-            تقييم خدمة
-     </a>-->
-
+    <li >
       <a (click)="showRateServiceModal = true" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-rate.svg" alt="">
-        تقييم خدمة
+        {{ 'electronicCouncil.menus.rateService' | translate}}
       </a>
     </li>
   </ul>
