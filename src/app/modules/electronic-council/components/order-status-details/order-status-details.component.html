@@ -2,11 +2,15 @@
 <!-- Breadcrumb -->
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
-    <img src="./assets/images/icons/home.svg" alt="" class="ml-2">
-    {{ 'electronicCouncil.shared.main' | translate}}
+    <img src="./assets/images/icons/home.svg" alt="" class="ml-2" />
+    {{ "electronicCouncil.shared.main" | translate }}
   </a>
-  <a class="breadcrumb-item" href="#">{{ 'electronicCouncil.shared.serviceGuide' | translate}}</a>
-  <span class="breadcrumb-item active">{{ 'electronicCouncil.shared.electronicCouncil' | translate}}</span>
+  <a class="breadcrumb-item" href="#">{{
+    "electronicCouncil.shared.serviceGuide" | translate
+  }}</a>
+  <span class="breadcrumb-item active">{{
+    "electronicCouncil.shared.electronicCouncil" | translate
+  }}</span>
 </nav>
 
 <div class="page-wrapper">
@@ -20,7 +24,7 @@
       <!-- page title -->
       <div class="page-title">
         <!--<h4>استعلام عن طلب/معاملة</h4>-->
-        <h4>{{ 'electronicCouncil.shared.requestDetails' | translate}}</h4>
+        <h4>{{ "electronicCouncil.shared.requestDetails" | translate }}</h4>
       </div>
       <!-- Inquiry box -->
       <!--<div class="row mx-0 query-box">
@@ -38,44 +42,57 @@
         <!--<h5>نتيجة البحث</h5>-->
         <!-- status -->
         <div [class]="requestStatusStyle" role="alert">
-          <strong>{{ 'electronicCouncil.shared.requestStatus' | translate}}: {{ requestStatus }}</strong>
+          <strong
+            >{{ "electronicCouncil.shared.requestStatus" | translate }}:
+            {{ requestStatus }}</strong
+          >
         </div>
       </div>
       <!-- form card -->
       <div class="form-card">
         <div class="form-header">
-          <h5>{{ 'electronicCouncil.shared.applicantsInfo' | translate}}</h5>
+          <h5>{{ "electronicCouncil.shared.applicantsInfo" | translate }}</h5>
         </div>
         <div class="form-content">
           <div class="row mx-0">
             <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">{{ 'electronicCouncil.shared.applicantsName' | translate}}</span>
+              <span class="form-lbl lbl-33">{{
+                "electronicCouncil.shared.applicantsName" | translate
+              }}</span>
               <span class="form-val">{{ currentRequestInfo?.User?.Name }}</span>
             </div>
             <div class="info-col col-md-4 col-12 separator-af-be">
-              <span class="form-lbl lbl-33">{{ 'electronicCouncil.shared.birthDate' | translate}}</span>
+              <span class="form-lbl lbl-33">{{
+                "electronicCouncil.shared.birthDate" | translate
+              }}</span>
               <span class="form-val">{{
                 currentRequestInfo?.User?.BirthDate | date: "dd/MM/yyyy"
               }}</span>
             </div>
-            <div class="info-col col-md-4 col-12">
+            <!-- <div class="info-col col-md-4 col-12">
               <span class="form-lbl lbl-33">{{ 'electronicCouncil.shared.gender' | translate}}</span>
               <span class="form-val">ذكر</span>
-            </div>
+            </div> -->
             <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">{{ 'register.text.email' | translate}}</span>
+              <span class="form-lbl lbl-33">{{
+                "register.text.email" | translate
+              }}</span>
               <span class="form-val">{{
                 currentRequestInfo?.User?.Email
               }}</span>
             </div>
             <div class="info-col col-md-4 col-12 separator-af-be">
-              <span class="form-lbl lbl-33">{{ 'register.text.nationalIdOrResidentNumber' | translate}}</span>
+              <span class="form-lbl lbl-33">{{
+                "register.text.nationalIdOrResidentNumber" | translate
+              }}</span>
               <span class="form-val">{{
                 currentRequestInfo?.User?.NationalId
               }}</span>
             </div>
             <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">{{ 'register.text.phoneNumber' | translate}}</span>
+              <span class="form-lbl lbl-33">{{
+                "register.text.phoneNumber" | translate
+              }}</span>
               <span class="form-val">{{
                 currentRequestInfo?.User?.PhoneNumber
               }}</span>
@@ -88,30 +105,38 @@
           <!-- form card -->
           <div class="form-card h-95">
             <div class="form-header">
-              <h5>{{ 'electronicCouncil.shared.rquestInfo' | translate}}</h5>
+              <h5>{{ "electronicCouncil.shared.rquestInfo" | translate }}</h5>
             </div>
             <div class="form-content">
               <div class="row mx-0 position-relative">
                 <div class="info-col">
-                  <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.requestSerialNumber' | translate}}</span>
+                  <span class="form-lbl lbl-18">{{
+                    "electronicCouncil.shared.requestSerialNumber" | translate
+                  }}</span>
                   <span class="form-val ltr">{{
                     currentRequestInfo?.SerialNumber
                   }}</span>
                 </div>
                 <div class="info-col">
-                  <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.requestType' | translate}}</span>
+                  <span class="form-lbl lbl-18">{{
+                    "electronicCouncil.shared.requestType" | translate
+                  }}</span>
                   <span class="form-val ltr">{{
                     currentRequestInfo?.RequestTypeAr
                   }}</span>
                 </div>
                 <div class="info-col">
-                  <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.requestAddress' | translate}}</span>
+                  <span class="form-lbl lbl-18">{{
+                    "electronicCouncil.shared.requestAddress" | translate
+                  }}</span>
                   <span class="form-val ltr">{{
                     currentRequestInfo?.Header
                   }}</span>
                 </div>
                 <div class="info-col">
-                  <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.description' | translate}}</span>
+                  <span class="form-lbl lbl-18">{{
+                    "electronicCouncil.shared.description" | translate
+                  }}</span>
                   <span class="form-val ltr">
                     {{ currentRequestInfo?.Content }}
                   </span>
@@ -131,7 +156,7 @@
           <!-- form card -->
           <div class="form-card h-95">
             <div class="form-header">
-              <h5>{{ 'electronicCouncil.shared.attachments' | translate}}</h5>
+              <h5>{{ "electronicCouncil.shared.attachments" | translate }}</h5>
             </div>
             <div class="form-content">
               <div
@@ -140,7 +165,7 @@
                   currentRequestInfo?.Attachment1 == undefined
                 "
               >
-                {{ 'electronicCouncil.shared.noData' | translate}}
+                {{ "electronicCouncil.shared.noData" | translate }}
               </div>
               <div
                 *ngIf="
@@ -240,9 +265,15 @@
   <!--<div *ngIf="userModel.IsAdmin == true">-->
 
   <div *ngIf="userModel.IsAdmin && currentRequestInfo?.RequestStatusId == 1">
-    <button class="btn btn-success" (click)="acceptRequest()">موافق{{ 'electronicCouncil.shared.main' | translate}}</button>
-    <button class="btn btn-warning" (click)="editRequest()">إرجاع الطلب{{ 'electronicCouncil.shared.main' | translate}}</button>
-    <button class="btn btn-danger" (click)="rejectRequest()">مرفوض{{ 'electronicCouncil.shared.main' | translate}}</button>
+    <button class="btn btn-success" (click)="acceptRequest()">
+      موافق{{ "electronicCouncil.shared.main" | translate }}
+    </button>
+    <button class="btn btn-warning" (click)="editRequest()">
+      إرجاع الطلب{{ "electronicCouncil.shared.main" | translate }}
+    </button>
+    <button class="btn btn-danger" (click)="rejectRequest()">
+      مرفوض{{ "electronicCouncil.shared.main" | translate }}
+    </button>
 
     <input type="text" *ngIf="displayMessage" [(ngModel)]="messageReason" />
   </div>
@@ -252,46 +283,59 @@
 <div style="display: none">
   <div class="col-md-12 col-12" id="requestInfo">
     <div class="page-title">
-      <h4>{{ 'electronicCouncil.shared.requestDetails' | translate}}</h4>
+      <h4>{{ "electronicCouncil.shared.requestDetails" | translate }}</h4>
     </div>
 
     <div class="query-result">
       <div class="alert alert-warning" role="alert">
-        <strong>{{ 'electronicCouncil.shared.requestStatus' | translate}}: {{ requestStatus }}</strong>
+        <strong
+          >{{ "electronicCouncil.shared.requestStatus" | translate }}:
+          {{ requestStatus }}</strong
+        >
       </div>
     </div>
     <div class="form-card">
       <div class="form-header">
-        <h5>{{ 'electronicCouncil.shared.applicantsInfo' | translate}}</h5>
+        <h5>{{ "electronicCouncil.shared.applicantsInfo" | translate }}</h5>
       </div>
       <div class="form-content">
         <div class="row mx-0">
           <div class="info-col col-md-4 col-12">
-            <span class="form-lbl lbl-33">{{ 'electronicCouncil.shared.applicantsName' | translate}}</span>
+            <span class="form-lbl lbl-33">{{
+              "electronicCouncil.shared.applicantsName" | translate
+            }}</span>
             <span class="form-val">{{ currentRequestInfo?.User?.Name }}</span>
           </div>
           <div class="info-col col-md-4 col-12 separator-af-be">
-            <span class="form-lbl lbl-33">{{ 'electronicCouncil.shared.birthDate' | translate}}</span>
+            <span class="form-lbl lbl-33">{{
+              "electronicCouncil.shared.birthDate" | translate
+            }}</span>
             <span class="form-val">{{
               currentRequestInfo?.User?.BirthDate | date: "dd/MM/yyyy"
             }}</span>
           </div>
-          <div class="info-col col-md-4 col-12">
+          <!-- <div class="info-col col-md-4 col-12">
             <span class="form-lbl lbl-33">{{ 'electronicCouncil.shared.gender' | translate}}</span>
             <span class="form-val">ذكر</span>
-          </div>
+          </div> -->
           <div class="info-col col-md-4 col-12">
-            <span class="form-lbl lbl-33">{{ 'register.text.email' | translate}}</span>
+            <span class="form-lbl lbl-33">{{
+              "register.text.email" | translate
+            }}</span>
             <span class="form-val">{{ currentRequestInfo?.User?.Email }}</span>
           </div>
           <div class="info-col col-md-4 col-12 separator-af-be">
-            <span class="form-lbl lbl-33">{{ 'register.text.nationalIdOrResidentNumber' | translate}}</span>
+            <span class="form-lbl lbl-33">{{
+              "register.text.nationalIdOrResidentNumber" | translate
+            }}</span>
             <span class="form-val">{{
               currentRequestInfo?.User?.NationalId
             }}</span>
           </div>
           <div class="info-col col-md-4 col-12">
-            <span class="form-lbl lbl-33">{{ 'register.text.phoneNumber' | translate}}</span>
+            <span class="form-lbl lbl-33">{{
+              "register.text.phoneNumber" | translate
+            }}</span>
             <span class="form-val">{{
               currentRequestInfo?.User?.PhoneNumber
             }}</span>
@@ -303,30 +347,38 @@
       <div class="col-md-6 col-12 pr-0">
         <div class="form-card h-95">
           <div class="form-header">
-            <h5>{{ 'electronicCouncil.shared.rquestInfo' | translate}}</h5>
+            <h5>{{ "electronicCouncil.shared.rquestInfo" | translate }}</h5>
           </div>
           <div class="form-content">
             <div class="row mx-0 position-relative">
               <div class="info-col">
-                <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.requestSerialNumber' | translate}}</span>
+                <span class="form-lbl lbl-18">{{
+                  "electronicCouncil.shared.requestSerialNumber" | translate
+                }}</span>
                 <span class="form-val ltr">{{
                   currentRequestInfo?.SerialNumber
                 }}</span>
               </div>
               <div class="info-col">
-                <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.requestType' | translate}}</span>
+                <span class="form-lbl lbl-18">{{
+                  "electronicCouncil.shared.requestType" | translate
+                }}</span>
                 <span class="form-val ltr">{{
                   currentRequestInfo?.RequestTypeAr
                 }}</span>
               </div>
               <div class="info-col">
-                <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.requestAddress' | translate}}</span>
+                <span class="form-lbl lbl-18">{{
+                  "electronicCouncil.shared.requestAddress" | translate
+                }}</span>
                 <span class="form-val ltr">{{
                   currentRequestInfo?.Header
                 }}</span>
               </div>
               <div class="info-col">
-                <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.description' | translate}}</span>
+                <span class="form-lbl lbl-18">{{
+                  "electronicCouncil.shared.description" | translate
+                }}</span>
                 <span class="form-val ltr">
                   {{ currentRequestInfo?.Content }}
                 </span>
@@ -344,7 +396,7 @@
       <div class="col-md-6 col-12 pl-0">
         <div class="form-card h-95">
           <div class="form-header">
-            <h5>{{ 'electronicCouncil.shared.attachments' | translate}}</h5>
+            <h5>{{ "electronicCouncil.shared.attachments" | translate }}</h5>
           </div>
           <div class="form-content">
             <div
@@ -353,7 +405,7 @@
                 currentRequestInfo?.Attachment1 == undefined
               "
             >
-              {{ 'electronicCouncil.shared.noData' | translate}}
+              {{ "electronicCouncil.shared.noData" | translate }}
             </div>
             <div
               *ngIf="

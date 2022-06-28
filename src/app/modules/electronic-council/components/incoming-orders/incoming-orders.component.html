@@ -2,11 +2,15 @@
 <!-- Breadcrumb -->
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
-    <img src="./assets/images/icons/home.svg" alt="" class="ml-2">
-    {{ 'electronicCouncil.shared.main' | translate}}
+    <img src="./assets/images/icons/home.svg" alt="" class="ml-2" />
+    {{ "electronicCouncil.shared.main" | translate }}
   </a>
-  <a class="breadcrumb-item" href="#">{{ 'electronicCouncil.shared.serviceGuide' | translate}}</a>
-  <span class="breadcrumb-item active">{{ 'electronicCouncil.shared.electronicCouncil' | translate}}</span>
+  <a class="breadcrumb-item" href="#">{{
+    "electronicCouncil.shared.serviceGuide" | translate
+  }}</a>
+  <span class="breadcrumb-item active">{{
+    "electronicCouncil.shared.electronicCouncil" | translate
+  }}</span>
 </nav>
 <div class="page-wrapper">
   <div class="row mx-0">
@@ -18,95 +22,187 @@
     <div class="col-md-9 col-12">
       <!-- page title -->
       <div class="page-title">
-        <h4>{{ 'electronicCouncil.menus.incommingOrders' | translate}}</h4>
+        <h4>{{ "electronicCouncil.menus.incommingOrders" | translate }}</h4>
       </div>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#new" type="button"
-            role="tab" aria-controls="new" aria-selected="true" (click)="onNewTabClick(newRequest)">
-            {{ 'electronicCouncil.incommingOrders.newOrders' | translate}}<span class="badge">{{requestTypeCount[0].RequestTypeCount}}</span>
+          <button
+            class="nav-link active"
+            id="home-tab"
+            type="button"
+            (click)="onNewTabClick(newRequest)"
+          >
+            {{ "electronicCouncil.incommingOrders.newOrders" | translate
+            }}<span class="badge">{{
+              requestTypeCount[0].RequestTypeCount
+            }}</span>
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button"
-            role="tab" aria-controls="pending" aria-selected="false" (click)="onPendingTabClick(pendingRequest)">
-            {{ 'electronicCouncil.incommingOrders.pendingOrders' | translate}}<span class="badge">{{requestTypeCount[3].RequestTypeCount}}</span>
+          <button
+            class="nav-link"
+            id="profile-tab"
+            type="button"
+            (click)="onPendingTabClick(pendingRequest)"
+          >
+            {{ "electronicCouncil.incommingOrders.pendingOrders" | translate
+            }}<span class="badge">{{
+              requestTypeCount[3].RequestTypeCount
+            }}</span>
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#accept" type="button"
-            role="tab" aria-controls="accept" aria-selected="false" (click)="onAcceptTabClick(acceptRequest)">
-            {{ 'electronicCouncil.incommingOrders.acceptedOrders' | translate}}<span class="badge">{{requestTypeCount[1].RequestTypeCount}}</span>
+          <button
+            class="nav-link"
+            id="contact-tab"
+            type="button"
+            (click)="onAcceptTabClick(acceptRequest)"
+          >
+            {{ "electronicCouncil.incommingOrders.acceptedOrders" | translate
+            }}<span class="badge">{{
+              requestTypeCount[1].RequestTypeCount
+            }}</span>
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#reject" type="button"
-            role="tab" aria-controls="reject" aria-selected="false" (click)="onRejectedTabClick(rejectedRequest)">
-            {{ 'electronicCouncil.incommingOrders.rejectedOrders' | translate}}<span class="badge">{{requestTypeCount[2].RequestTypeCount}}</span>
+          <button
+            class="nav-link"
+            id="contact-tab"
+            type="button"
+            role="tab"
+            (click)="onRejectedTabClick(rejectedRequest)"
+          >
+            {{ "electronicCouncil.incommingOrders.rejectedOrders" | translate
+            }}<span class="badge">{{
+              requestTypeCount[2].RequestTypeCount
+            }}</span>
           </button>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="new" role="tabpanel" aria-labelledby="new-tab">
-          <p-table *ngIf="requests?.length != 0" [value]="requests" [loading]="loading" [paginator]="true" [rows]="10"
-            [(first)]="first" [showCurrentPageReport]="true" responsiveLayout="scroll"
+        <div
+          class="tab-pane fade show active"
+          id="new"
+          role="tabpanel"
+          aria-labelledby="new-tab"
+        >
+          <p-table
+            *ngIf="requests?.length != 0"
+            [value]="requests"
+            [loading]="loading"
+            [paginator]="true"
+            [rows]="10"
+            [(first)]="first"
+            [showCurrentPageReport]="true"
+            responsiveLayout="scroll"
             currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات"
-            [rowsPerPageOptions]="[10,25,30]" sortMode="multiple" [multiSortMeta]="multiSortMeta"
-            [globalFilterFields]="['Header','RequestTypeAr','statusMsgAr' , 'creationDate']">
-
+            [rowsPerPageOptions]="[10, 25, 30]"
+            sortMode="multiple"
+            [multiSortMeta]="multiSortMeta"
+            [globalFilterFields]="[
+              'Header',
+              'RequestTypeAr',
+              'statusMsgAr',
+              'creationDate'
+            ]"
+          >
             <ng-template pTemplate="header">
               <tr>
                 <th pSortableColumn="Header">
-                  {{ 'electronicCouncil.incommingOrders.requestAddress' | translate}}
+                  {{
+                    "electronicCouncil.incommingOrders.requestAddress"
+                      | translate
+                  }}
                   <p-sortIcon field="Header"></p-sortIcon>
-                  <p-columnFilter type="text" field="Header" display="menu"></p-columnFilter>
+                  <p-columnFilter
+                    type="text"
+                    field="Header"
+                    display="menu"
+                  ></p-columnFilter>
                 </th>
                 <th pSortableColumn="content">
-                  {{ 'electronicCouncil.incommingOrders.requesterName' | translate}}
+                  {{
+                    "electronicCouncil.incommingOrders.requesterName"
+                      | translate
+                  }}
                   <p-sortIcon field="content"></p-sortIcon>
                 </th>
                 <th pSortableColumn="RequestTypeAr">
-                  {{ 'electronicCouncil.incommingOrders.requestType' | translate}}
+                  {{
+                    "electronicCouncil.incommingOrders.requestType" | translate
+                  }}
                   <p-sortIcon field="RequestTypeAr"></p-sortIcon>
-                  <p-columnFilter field="RequestTypeAr" matchMode="equals" display="menu">
-                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                      <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)"
-                        placeholder="Any">
+                  <p-columnFilter
+                    field="RequestTypeAr"
+                    matchMode="equals"
+                    display="menu"
+                  >
+                    <ng-template
+                      pTemplate="filter"
+                      let-value
+                      let-filter="filterCallback"
+                    >
+                      <p-dropdown
+                        [ngModel]="value"
+                        [options]="types"
+                        (onChange)="filter($event.value)"
+                        placeholder="Any"
+                      >
                         <ng-template let-option pTemplate="item">
-                          <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                          <span
+                            [class]="'customer-badge status-' + option.value"
+                            >{{ option.label }}</span
+                          >
                         </ng-template>
                       </p-dropdown>
                     </ng-template>
                   </p-columnFilter>
                 </th>
                 <th pSortableColumn="SerialNumber">
-                  {{ 'electronicCouncil.incommingOrders.serialNumber' | translate}}
+                  {{
+                    "electronicCouncil.incommingOrders.serialNumber" | translate
+                  }}
                   <p-sortIcon field="SerialNumber"></p-sortIcon>
                 </th>
                 <th pSortableColumn="StatusMsgAr">
-                  {{ 'electronicCouncil.incommingOrders.statusMsg' | translate}}
+                  {{
+                    "electronicCouncil.incommingOrders.statusMsg" | translate
+                  }}
                   <p-sortIcon field="statusMsgAr"></p-sortIcon>
                 </th>
                 <th pSortableColumn="CreationDate">
-                  {{ 'electronicCouncil.incommingOrders.creationDate' | translate}}
+                  {{
+                    "electronicCouncil.incommingOrders.creationDate" | translate
+                  }}
                   <p-sortIcon field="creationDate"></p-sortIcon>
                 </th>
                 <th>
-                  {{ 'electronicCouncil.incommingOrders.details' | translate}}
+                  {{ "electronicCouncil.incommingOrders.details" | translate }}
                 </th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-request>
               <tr>
-                <td>{{request.Header}}</td>
-                <td>{{request.User.Name}}</td>
-                <td>{{request.RequestTypeAr}}</td>
-                <td>{{request.SerialNumber}}</td>
-                <td>{{request.StatusMsgAr}}</td>
-                <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
+                <td>{{ request.Header }}</td>
+                <td>{{ request.User.Name }}</td>
+                <td>{{ request.RequestTypeAr }}</td>
+                <td>{{ request.SerialNumber }}</td>
                 <td>
-                  <i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i>
-                 <!--<i class="fa-solid fa-circle-check" (click)="updateRequestStatus(request , 4)"></i>
+                  <div
+                    [class]="getStatusColor(request.RequestStatusId)"
+                    role="alert"
+                  >
+                    <strong>{{ request.StatusMsgAr }}</strong>
+                  </div>
+                </td>
+                <td>{{ request.CreationDate | date: "dd/MM/yyyy" }}</td>
+                <td>
+                  <i
+                    class="fa fa-exclamation-circle"
+                    aria-hidden="true"
+                    (click)="showDialog(request)"
+                  ></i>
+                  <!--<i class="fa-solid fa-circle-check" (click)="updateRequestStatus(request , 4)"></i>
                   <i class="fa-solid fa-xmark" (click)="showConfirmDialog(request)"></i>-->
                 </td>
               </tr>
@@ -116,222 +212,7 @@
             <button type="button" pButton icon="pi-cloud-upload"></button>
           </ng-template>-->
             <ng-template let-item pTemplate="paginatordropdownitem">
-              {{item.value}} - per page
-            </ng-template>
-          </p-table>
-        </div>
-
-        <div class="tab-pane fade show" id="pending" role="tabpanel" aria-labelledby="new-tab">
-          <p-table [value]="requests" [loading]="loading" [paginator]="true" [rows]="10" [(first)]="first"
-            [showCurrentPageReport]="true" responsiveLayout="scroll"
-            currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات"
-            [rowsPerPageOptions]="[10,25,30]" sortMode="multiple" [multiSortMeta]="multiSortMeta"
-            [globalFilterFields]="['Header','RequestTypeAr','StatusMsgAr' , 'CreationDate']">
-
-            <ng-template pTemplate="header">
-              <tr>
-                <th pSortableColumn="header">
-                  {{ 'electronicCouncil.incommingOrders.requestAddress' | translate}}
-                  <p-sortIcon field="header"></p-sortIcon>
-                  <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
-                </th>
-                <th pSortableColumn="content">
-                  {{ 'electronicCouncil.incommingOrders.requesterName' | translate}}
-                  <p-sortIcon field="content"></p-sortIcon>
-                </th>
-                <th pSortableColumn="RequestTypeAr">
-                  {{ 'electronicCouncil.incommingOrders.requestType' | translate}}
-                  <p-sortIcon field="RequestTypeAr"></p-sortIcon>
-                  <p-columnFilter field="RequestTypeAr" matchMode="equals" display="menu">
-                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                      <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)"
-                        placeholder="Any">
-                        <ng-template let-option pTemplate="item">
-                          <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
-                        </ng-template>
-                      </p-dropdown>
-                    </ng-template>
-                  </p-columnFilter>
-                </th>
-                <th pSortableColumn="SerialNumber">
-                  {{ 'electronicCouncil.incommingOrders.serialNumber' | translate}}
-                  <p-sortIcon field="SerialNumber"></p-sortIcon>
-                </th>
-                <th pSortableColumn="StatusMsgAr">
-                  {{ 'electronicCouncil.incommingOrders.statusMsg' | translate}}
-                  <p-sortIcon field="StatusMsgAr"></p-sortIcon>
-                </th>
-                <th pSortableColumn="CreationDate">
-                  {{ 'electronicCouncil.incommingOrders.creationDate' | translate}}
-                  <p-sortIcon field="CreationDate"></p-sortIcon>
-                </th>
-                <th>
-                  {{ 'electronicCouncil.incommingOrders.details' | translate}}
-                </th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-request>
-              <tr>
-                <td>{{request.Header}}</td>
-                <td>{{request.User.Name}}</td>
-                <td>{{request.RequestTypeAr}}</td>
-                <td>{{request.SerialNumber}}</td>
-                <td>{{request.StatusMsgAr}}</td>
-                <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
-                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
-              </tr>
-            </ng-template>
-
-            <!--<ng-template pTemplate="paginatorright">
-            <button type="button" pButton icon="pi-cloud-upload"></button>
-          </ng-template>-->
-            <ng-template let-item pTemplate="paginatordropdownitem">
-              {{item.value}} - per page
-            </ng-template>
-          </p-table>
-        </div>
-
-
-        <div class="tab-pane fade show" id="accept" role="tabpanel" aria-labelledby="new-tab"
-          *ngIf="requests?.length == 0 || requests?.length == undefined" class="mt-2">No data found</div>
-
-
-        <div class="tab-pane fade show" id="accept" role="tabpanel" aria-labelledby="new-tab">
-          <p-table *ngIf="requests?.length != 0" [value]="requests" [loading]="loading" [paginator]="true" [rows]="10"
-            [(first)]="first" [showCurrentPageReport]="true" responsiveLayout="scroll"
-            currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات"
-            [rowsPerPageOptions]="[10,25,30]" sortMode="multiple" [multiSortMeta]="multiSortMeta"
-            [globalFilterFields]="['requestTypeAr','statusMsgAr' , 'creationDate']">
-
-            <ng-template pTemplate="header">
-              <tr>
-                <th pSortableColumn="header">
-                  {{ 'electronicCouncil.incommingOrders.requestAddress' | translate}}
-                  <p-sortIcon field="header"></p-sortIcon>
-                  <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
-                </th>
-                <th pSortableColumn="content">
-                  {{ 'electronicCouncil.incommingOrders.requesterName' | translate}}
-                  <p-sortIcon field="content"></p-sortIcon>
-                </th>
-                <th pSortableColumn="requestTypeAr">
-                  {{ 'electronicCouncil.incommingOrders.requestType' | translate}}
-                  <p-sortIcon field="requestTypeAr"></p-sortIcon>
-                  <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
-                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                      <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)"
-                        placeholder="Any">
-                        <ng-template let-option pTemplate="item">
-                          <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
-                        </ng-template>
-                      </p-dropdown>
-                    </ng-template>
-                  </p-columnFilter>
-                </th>
-                <th pSortableColumn="SerialNumber">
-                  {{ 'electronicCouncil.incommingOrders.serialNumber' | translate}}
-                  <p-sortIcon field="SerialNumber"></p-sortIcon>
-                </th>
-                <th pSortableColumn="statusMsgAr">
-                  {{ 'electronicCouncil.incommingOrders.statusMsg' | translate}}
-                  <p-sortIcon field="statusMsgAr"></p-sortIcon>
-                </th>
-                <th pSortableColumn="creationDate">
-                  {{ 'electronicCouncil.incommingOrders.creationDate' | translate}}
-                  <p-sortIcon field="creationDate"></p-sortIcon>
-                </th>
-                <th>
-                  {{ 'electronicCouncil.incommingOrders.details' | translate}}
-                </th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-request>
-              <tr>
-                <td>{{request.Header}}</td>
-                <td>{{request.User.Name}}</td>
-                <td>{{request.RequestTypeAr}}</td>
-                <td>{{request.SerialNumber}}</td>
-                <td>{{request.StatusMsgAr}}</td>
-                <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
-                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
-              </tr>
-            </ng-template>
-
-            <!--<ng-template pTemplate="paginatorright">
-            <button type="button" pButton icon="pi-cloud-upload"></button>
-          </ng-template>-->
-            <ng-template let-item pTemplate="paginatordropdownitem">
-              {{item.value}} - per page
-            </ng-template>
-          </p-table>
-        </div>
-
-        <div class="tab-pane fade" id="reject" role="tabpanel" aria-labelledby="new-tab">
-          <p-table *ngIf="requests?.length != 0" [value]="requests" [loading]="loading" [paginator]="true" [rows]="10"
-            [(first)]="first" [showCurrentPageReport]="true" responsiveLayout="scroll"
-            currentPageReportTemplate="ظهور {first} إلي {last} من {totalRecords} إدخالات"
-            [rowsPerPageOptions]="[10,25,30]" sortMode="multiple" [multiSortMeta]="multiSortMeta"
-            [globalFilterFields]="['requestTypeAr','statusMsgAr' , 'creationDate']">
-
-            <ng-template pTemplate="header">
-              <tr>
-                <th pSortableColumn="header">
-                  {{ 'electronicCouncil.incommingOrders.requestAddress' | translate}}
-                  <p-sortIcon field="header"></p-sortIcon>
-                  <p-columnFilter type="text" field="header" display="menu"></p-columnFilter>
-                </th>
-                <th pSortableColumn="content">
-                  {{ 'electronicCouncil.incommingOrders.requesterName' | translate}}
-                  <p-sortIcon field="content"></p-sortIcon>
-                </th>
-                <th pSortableColumn="requestTypeAr">
-                  {{ 'electronicCouncil.incommingOrders.requestType' | translate}}
-                  <p-sortIcon field="requestTypeAr"></p-sortIcon>
-                  <p-columnFilter field="requestTypeAr" matchMode="equals" display="menu">
-                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                      <p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)"
-                        placeholder="Any">
-                        <ng-template let-option pTemplate="item">
-                          <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
-                        </ng-template>
-                      </p-dropdown>
-                    </ng-template>
-                  </p-columnFilter>
-                </th>
-                <th pSortableColumn="SerialNumber">
-                  {{ 'electronicCouncil.incommingOrders.serialNumber' | translate}}
-                  <p-sortIcon field="SerialNumber"></p-sortIcon>
-                </th>
-                <th pSortableColumn="statusMsgAr">
-                  {{ 'electronicCouncil.incommingOrders.statusMsg' | translate}}
-                  <p-sortIcon field="statusMsgAr"></p-sortIcon>
-                </th>
-                <th pSortableColumn="creationDate">
-                  {{ 'electronicCouncil.incommingOrders.creationDate' | translate}}
-                  <p-sortIcon field="creationDate"></p-sortIcon>
-                </th>
-                <th>
-                  {{ 'electronicCouncil.incommingOrders.details' | translate}}
-                </th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-request>
-              <tr>
-                <td>{{request.Header}}</td>
-                <td>{{request.User.Name}}</td>
-                <td>{{request.RequestTypeAr}}</td>
-                <td>{{request.SerialNumber}}</td>
-                <td>{{request.StatusMsgAr}}</td>
-                <td>{{request.CreationDate | date:"dd/MM/yyyy"}}</td>
-                <td><i class="fa fa-exclamation-circle" aria-hidden="true" (click)="showDialog(request)"></i></td>
-              </tr>
-            </ng-template>
-
-            <!--<ng-template pTemplate="paginatorright">
-            <button type="button" pButton icon="pi-cloud-upload"></button>
-          </ng-template>-->
-            <ng-template let-item pTemplate="paginatordropdownitem">
-              {{item.value}} - per page
+              {{ item.value }} - per page
             </ng-template>
           </p-table>
         </div>
@@ -343,18 +224,22 @@
     </p-dialog>-->
 
     <p-dialog header="Title" [(visible)]="display">
-      <ng-template pTemplate="header">
-
-      </ng-template>
+      <ng-template pTemplate="header"> </ng-template>
       <textarea [(ngModel)]="messageReason"></textarea>
 
       <!--<input type="text" [(ngModel)]="messageReason" required [ngModelOptions]="{standalone: true}">-->
       <ng-template pTemplate="footer">
-        <button type="submit" [disabled]="messageReason == ''" (click)="updateRequestStatus(selectedOrder , 3)">
-          {{ 'electronicCouncil.incommingOrders.confirm' | translate}}
+        <button
+          type="submit"
+          [disabled]="messageReason == ''"
+          (click)="updateRequestStatus(selectedOrder, 3)"
+        >
+          {{ "electronicCouncil.incommingOrders.confirm" | translate }}
         </button>
         <button>
-          {{ 'electronicCouncil.incommingOrders.cancle' | translate}}
+          {{ "electronicCouncil.incommingOrders.cancle" | translate }}
         </button>
       </ng-template>
     </p-dialog>
+  </div>
+</div>

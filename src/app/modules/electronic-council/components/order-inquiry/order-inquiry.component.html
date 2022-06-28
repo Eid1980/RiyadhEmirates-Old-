@@ -1,11 +1,15 @@
 <!-- Breadcrumb -->
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="#">
-    <img src="./assets/images/icons/home.svg" alt="" class="ml-2">
-    {{ 'electronicCouncil.shared.main' | translate}}
+    <img src="./assets/images/icons/home.svg" alt="" class="ml-2" />
+    {{ "electronicCouncil.shared.main" | translate }}
   </a>
-  <a class="breadcrumb-item" href="#">{{ 'electronicCouncil.shared.serviceGuide' | translate}}</a>
-  <span class="breadcrumb-item active">{{ 'electronicCouncil.shared.electronicCouncil' | translate}}</span>
+  <a class="breadcrumb-item" href="#">{{
+    "electronicCouncil.shared.serviceGuide" | translate
+  }}</a>
+  <span class="breadcrumb-item active">{{
+    "electronicCouncil.shared.electronicCouncil" | translate
+  }}</span>
 </nav>
 
 <div class="page-wrapper">
@@ -18,56 +22,80 @@
     <div class="col-md-9 col-12">
       <!-- page title -->
       <div class="page-title">
-        <h4>{{ 'electronicCouncil.inquiry.aboutInquiry' | translate}}</h4>
+        <h4>{{ "electronicCouncil.inquiry.aboutInquiry" | translate }}</h4>
       </div>
       <!-- Inquiry box -->
       <div class="row mx-0 query-box">
         <div class="col-md-8 col-12 mx-auto">
           <div class="form-group">
-            <input type="text" name="" id="" class="form-control" placeholder="{{ 'electronicCouncil.inquiry.enterOrderId' | translate}}" aria-describedby="helpId" [(ngModel)]="inquiryModel.requestSerial">
+            <input
+              type="text"
+              name=""
+              id=""
+              class="form-control"
+              placeholder="{{
+                'electronicCouncil.inquiry.enterOrderId' | translate
+              }}"
+              aria-describedby="helpId"
+              [(ngModel)]="inquiryModel.requestSerial"
+            />
             <button type="submit" class="query-search-btn" (click)="inquiry()">
-              <img src="./assets/images/icons/query-search.svg" alt="" >
+              <img src="./assets/images/icons/query-search.svg" alt="" />
             </button>
           </div>
         </div>
       </div>
       <!-- Inquery Results -->
       <div class="query-result">
-        <h5>{{ 'electronicCouncil.inquiry.searchResult' | translate}}</h5>
+        <h5>{{ "electronicCouncil.inquiry.searchResult" | translate }}</h5>
         <!-- status -->
         <div class="alert alert-warning" role="alert">
-          <strong> الطلب ما زال قيد المراجعة والبحث{{ 'electronicCouncil.inquiry.requestStatus' | translate}}</strong>
+          <strong>
+            الطلب ما زال قيد المراجعة والبحث{{
+              "electronicCouncil.inquiry.requestStatus" | translate
+            }}</strong
+          >
         </div>
       </div>
       <!-- form card -->
       <div class="form-card">
         <div class="form-header">
-          <h5>{{ 'electronicCouncil.inquiry.requestorInfo' | translate}}</h5>
+          <h5>{{ "electronicCouncil.inquiry.requestorInfo" | translate }}</h5>
         </div>
         <div class="form-content">
           <div class="row mx-0">
             <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">{{ 'electronicCouncil.shared.applicantsName' | translate}}</span>
+              <span class="form-lbl lbl-33">{{
+                "electronicCouncil.shared.applicantsName" | translate
+              }}</span>
               <span class="form-val">محمد سالم أحمد عبد العزيز</span>
             </div>
             <div class="info-col col-md-4 col-12 separator-af-be">
-              <span class="form-lbl lbl-33">{{ 'electronicCouncil.shared.birthDate' | translate}}</span>
+              <span class="form-lbl lbl-33">{{
+                "electronicCouncil.shared.birthDate" | translate
+              }}</span>
               <span class="form-val">24/03/1997</span>
             </div>
-            <div class="info-col col-md-4 col-12">
+            <!-- <div class="info-col col-md-4 col-12">
               <span class="form-lbl lbl-33">{{ 'electronicCouncil.shared.gender' | translate}}</span>
               <span class="form-val">ذكر</span>
-            </div>
+            </div> -->
             <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">{{ 'register.text.email' | translate}}</span>
+              <span class="form-lbl lbl-33">{{
+                "register.text.email" | translate
+              }}</span>
               <span class="form-val">bareed-electrony@gmail.com</span>
             </div>
             <div class="info-col col-md-4 col-12 separator-af-be">
-              <span class="form-lbl lbl-33">{{ 'register.text.nationalIdOrResidentNumber' | translate}}</span>
+              <span class="form-lbl lbl-33">{{
+                "register.text.nationalIdOrResidentNumber" | translate
+              }}</span>
               <span class="form-val">464867840383402</span>
             </div>
             <div class="info-col col-md-4 col-12">
-              <span class="form-lbl lbl-33">{{ 'register.text.phoneNumber' | translate}}</span>
+              <span class="form-lbl lbl-33">{{
+                "register.text.phoneNumber" | translate
+              }}</span>
               <span class="form-val">055 2948394</span>
             </div>
           </div>
@@ -78,39 +106,47 @@
           <!-- form card -->
           <div class="form-card h-95">
             <div class="form-header">
-              <h5>{{ 'electronicCouncil.shared.rquestInfo' | translate}}</h5>
+              <h5>{{ "electronicCouncil.shared.rquestInfo" | translate }}</h5>
             </div>
             <div class="form-content">
-
               <div class="row mx-0 position-relative">
                 <div class="info-col">
-                  <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.requestSerialNumber' | translate}}</span>
+                  <span class="form-lbl lbl-18">{{
+                    "electronicCouncil.shared.requestSerialNumber" | translate
+                  }}</span>
                   <span class="form-val ltr">#123456789</span>
                 </div>
                 <div class="info-col">
-                  <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.requestType' | translate}}</span>
+                  <span class="form-lbl lbl-18">{{
+                    "electronicCouncil.shared.requestType" | translate
+                  }}</span>
                   <span class="form-val ltr">شكوى</span>
                 </div>
                 <div class="info-col">
-                  <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.requestAddress' | translate}}</span>
-                  <span class="form-val ltr">الرياض - المملكة العربية السعودية</span>
+                  <span class="form-lbl lbl-18">{{
+                    "electronicCouncil.shared.requestAddress" | translate
+                  }}</span>
+                  <span class="form-val ltr"
+                    >الرياض - المملكة العربية السعودية</span
+                  >
                 </div>
                 <div class="info-col">
-                  <span class="form-lbl lbl-18">{{ 'electronicCouncil.shared.description' | translate}}</span>
+                  <span class="form-lbl lbl-18">{{
+                    "electronicCouncil.shared.description" | translate
+                  }}</span>
                   <span class="form-val ltr">
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد
-                    هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو
-                    العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم
+                    توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل
+                    هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد
+                    الحروف التى يولدها التطبيق.
                   </span>
                 </div>
                 <!-- Date -->
                 <div class="order-date">
-                  <img src="./assets/images/icons/order-date.svg" alt="">
+                  <img src="./assets/images/icons/order-date.svg" alt="" />
                   <span class="ltr">24/03/1997</span>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>
@@ -118,57 +154,87 @@
           <!-- form card -->
           <div class="form-card h-95">
             <div class="form-header">
-              <h5>{{ 'electronicCouncil.shared.attachments' | translate}}</h5>
+              <h5>{{ "electronicCouncil.shared.attachments" | translate }}</h5>
             </div>
             <div class="form-content">
-
               <div class="row mx-0 px-2">
                 <div class="col-md-3 mb-3 px-1">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <img
+                      src="./assets/images/attach.png"
+                      alt=""
+                      class="w-100 h-100 file"
+                    />
                   </div>
                 </div>
                 <div class="col-md-3 mb-3 px-1">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <img
+                      src="./assets/images/attach.png"
+                      alt=""
+                      class="w-100 h-100 file"
+                    />
                   </div>
                 </div>
                 <div class="col-md-3 mb-3 px-1">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <img
+                      src="./assets/images/attach.png"
+                      alt=""
+                      class="w-100 h-100 file"
+                    />
                   </div>
                 </div>
                 <div class="col-md-3 mb-3 px-1">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <img
+                      src="./assets/images/attach.png"
+                      alt=""
+                      class="w-100 h-100 file"
+                    />
                   </div>
                 </div>
                 <div class="col-md-3 mb-3 px-1">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <img
+                      src="./assets/images/attach.png"
+                      alt=""
+                      class="w-100 h-100 file"
+                    />
                   </div>
                 </div>
                 <div class="col-md-3 mb-3 px-1">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <img
+                      src="./assets/images/attach.png"
+                      alt=""
+                      class="w-100 h-100 file"
+                    />
                   </div>
                 </div>
                 <div class="col-md-3 mb-3 px-1">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <img
+                      src="./assets/images/attach.png"
+                      alt=""
+                      class="w-100 h-100 file"
+                    />
                   </div>
                 </div>
                 <div class="col-md-3 mb-3 px-1">
                   <div class="attachments">
-                    <img src="./assets/images/attach.png" alt="" class="w-100 h-100 file">
+                    <img
+                      src="./assets/images/attach.png"
+                      alt=""
+                      class="w-100 h-100 file"
+                    />
                   </div>
                 </div>
-
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
