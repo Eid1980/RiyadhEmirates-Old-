@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '@shared/services/auth.service';
+import { TranslationService } from '@shared/services/translation.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -26,7 +28,12 @@ export class ForgotPasswordComponent implements OnInit {
 
   });
 
+  get currentLang() {
+    return this._translate.getCurrentLanguage().Name;
+  }
+
   constructor(private _authService : AuthService,
+    private _translate : TranslationService,
     private _messageService: MessageService,
     private fb: FormBuilder,
     private _router: Router,
@@ -113,6 +120,10 @@ export class ForgotPasswordComponent implements OnInit {
         break;
 
     }
+  }
+
+  onChangeLang() {
+    this._translate.switchLanguage();
   }
 
 }

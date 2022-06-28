@@ -59,7 +59,10 @@
     },
     "forgetPassword": {
         "text": {
-            "forgetPassword": "نسيت كلمة المرور"
+            "forgetPassword": "نسيت كلمة المرور",
+            "sendConfirmOTP"  : "تم إرسال الرمز التاكيدي . برجاء التاكد من بريدك الالكتروني",
+            "send" : "إرسال",
+            "resendOTP" : "إعادة إرسال"
         }
     },
     "electronicCouncil": {
