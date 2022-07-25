@@ -7,10 +7,10 @@
   </a>
   <a class="breadcrumb-item" href="#">{{
     "electronicCouncil.shared.serviceGuide" | translate
-    }}</a>
+  }}</a>
   <span class="breadcrumb-item active">{{
     "electronicCouncil.shared.electronicCouncil" | translate
-    }}</span>
+  }}</span>
 </nav>
 
 <form [formGroup]="orderForm" class="fs-13px">
@@ -24,7 +24,7 @@
       <div class="col-md-9 col-12">
         <!-- page title -->
         <div class="page-title">
-          <h4>{{ "electronicCouncil.shared.title" | translate }} - {{ "electronicCouncil.shared.serviceType" | translate }}</h4>
+          <h4>{{ "electronicCouncil.shared.title" | translate }} - {{ "electronicCouncil.shared.editRequest" | translate }}</h4>
         </div>
         <!-- form card -->
         <div class="form-card">
@@ -36,16 +36,16 @@
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">{{
                   "electronicCouncil.shared.applicantsName" | translate
-                  }}</span>
+                }}</span>
                 <span class="form-val">{{ userModel?.Name }}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
                 <span class="form-lbl lbl-33">{{
                   "electronicCouncil.shared.birthDate" | translate
-                  }}</span>
+                }}</span>
                 <span class="form-val">{{
                   userModel?.BirthDate | date: "dd/MM/yyyy"
-                  }}</span>
+                }}</span>
               </div>
               <!-- <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">{{ 'electronicCouncil.shared.gender' | translate}}</span>
@@ -54,19 +54,19 @@
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">{{
                   "electronicCouncil.shared.email" | translate
-                  }}</span>
+                }}</span>
                 <span class="form-val">{{ userModel?.Email }}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
                 <span class="form-lbl lbl-33">{{
                   "electronicCouncil.shared.nationalId" | translate
-                  }}</span>
+                }}</span>
                 <span class="form-val">{{ userModel?.UserName }}</span>
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">{{
                   "electronicCouncil.shared.phoneNumber" | translate
-                  }}</span>
+                }}</span>
                 <span class="form-val">{{ userModel?.PhoneNumber }}</span>
               </div>
             </div>
@@ -83,8 +83,13 @@
                 <div class="form-group">
                   <label for="" class="form-lbl lbl-33">{{
                     "electronicCouncil.shared.requestType" | translate
-                    }}</label>
-                  <select class="form-control" name="" id="" formControlName="type">
+                  }}</label>
+                  <select
+                    class="form-control"
+                    name=""
+                    id=""
+                    formControlName="type"
+                  >
                     <option value="1" selected>
                       {{ "electronicCouncil.shared.order" | translate }}
                     </option>
@@ -99,14 +104,26 @@
                 <div class="form-group">
                   <label for="" class="form-lbl lbl-33">{{
                     "electronicCouncil.shared.requestAddress" | translate
-                    }}</label>
-                  <input type="text" name="" id="" class="form-control" formControlName="header" />
+                  }}</label>
+                  <input
+                    type="text"
+                    name=""
+                    id=""
+                    class="form-control"
+                    formControlName="header"
+                  />
                 </div>
                 <div class="form-group">
                   <label for="" class="form-lbl lbl-33">{{
                     "electronicCouncil.shared.description" | translate
-                    }}</label>
-                  <textarea rows="4" name="" id="" class="form-control" formControlName="content"></textarea>
+                  }}</label>
+                  <textarea
+                    rows="4"
+                    name=""
+                    id=""
+                    class="form-control"
+                    formControlName="content"
+                  ></textarea>
                 </div>
               </div>
             </div>
@@ -121,30 +138,58 @@
               </div>
               <div class="form-content">
                 <div class="px-3">
-                  <button class="btn btn-sm btn-primary" (click)="addAttachment()">
+                  <button
+                    class="btn btn-sm btn-primary"
+                    (click)="addAttachment()"
+                  >
                     {{ "electronicCouncil.shared.addAttachment" | translate }}
                   </button>
                 </div>
 
-                <div formArrayName="attahments" *ngFor="let attachment of attahments.controls; let i = index">
+                <div
+                  formArrayName="attahments"
+                  *ngFor="let attachment of attahments.controls; let i = index"
+                >
                   <div class="row mx-0 mt-3 pt-3 mx-3 repeated-row">
                     <div class="form-group col-sm-11 form-inline">
                       <label for="" class="form-lbl lbl-33">{{
                         "electronicCouncil.shared.attachmentName" | translate
-                        }}</label>
-                      <input type="text" name="" id="" class="form-control" [formControlName]="i" />
+                      }}</label>
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        class="form-control"
+                        [formControlName]="i"
+                      />
                     </div>
 
                     <div class="form-group col-sm-11">
-                      <p-fileUpload name="demo[]" #inputFile chooseLabel="{{
+                      <p-fileUpload
+                        name="demo[]"
+                        #inputFile
+                        chooseLabel="{{
                           'electronicCouncil.shared.downloadAttachment'
                             | translate
-                        }}" [auto]="true" (onSelect)="upload($event.currentFiles)" (onRemove)="remove($event.file)" [multiple]="true" [fileLimit]="1" mode="advanced" [maxFileSize]="5242880" accept="image/*,.pdf,.doc">
+                        }}"
+                        [auto]="true"
+                        (onSelect)="upload($event.currentFiles)"
+                        (onRemove)="remove($event.file)"
+                        [multiple]="true"
+                        [fileLimit]="1"
+                        mode="advanced"
+                        [maxFileSize]="5242880"
+                        accept="image/*,.pdf,.doc"
+                      >
                       </p-fileUpload>
                     </div>
 
                     <div class="col-sm-1 d-flex align-items-center">
-                      <button class="btn btn-danger btn-sm" type="button" (click)="removeAttachments(i)">
+                      <button
+                        class="btn btn-danger btn-sm"
+                        type="button"
+                        (click)="removeAttachments(i)"
+                      >
                         <i class="fa fa-close"></i>
                       </button>
                     </div>
@@ -158,7 +203,12 @@
     </div>
     <!-- form actions -->
     <div class="form-actions">
-      <button type="submit" class="btn btn-save" (click)="formSubmit()" [disabled]="orderForm.status == 'INVALID'">
+      <button
+        type="submit"
+        class="btn btn-save"
+        (click)="formSubmit()"
+        [disabled]="orderForm.status == 'INVALID'"
+      >
         {{ "electronicCouncil.shared.sendRequest" | translate }}
       </button>
       <button type="submit" class="btn btn-draft" (click)="saveAsDraft()">

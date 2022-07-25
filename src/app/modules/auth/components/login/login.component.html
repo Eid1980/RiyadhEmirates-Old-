@@ -4,19 +4,11 @@
   <div class="auth-head">
     <div class="flex_row">
       <a href="#">
-        <img src="assets/images/logo.svg" alt="" class="log-logo" width="180">
+        <img src="assets/images/logo.svg" alt="" class="log-logo" width="180" />
       </a>
       <span (click)="onChangeLang()">
-        <p-button
-          pRipple
-          label="ع"
-          *ngIf="currentLang == 'en'"
-        ></p-button>
-        <p-button
-          pRipple
-          label="en"
-          *ngIf="currentLang == 'ar'"
-        ></p-button>
+        <p-button pRipple label="ع" *ngIf="currentLang == 'en'"></p-button>
+        <p-button pRipple label="en" *ngIf="currentLang == 'ar'"></p-button>
       </span>
     </div>
   </div>
@@ -28,36 +20,45 @@
     <!-- Form -->
     <div class="row mx-0">
       <div class="col-md-8 mx-auto">
-
         <form [formGroup]="loginForm" (ngSubmit)="formSubmit()" class="fs-13px">
-              <!-- ID -->
-              <div class="form-group mb-lg-4">
-                <input type="text" name="" id="national_ID" class="form-control" formControlName="userName">
-                <label for="national_ID" class="label">{{ "login.text.nationalIdOrResidentNumber" | translate }}</label>
-              </div>
-              <!-- password -->
-              <div class="form-group">
-                <input type="password" name="" id="password" class="form-control" formControlName="password">
-                <label for="password" class="label">{{ "login.text.password" | translate }}</label>
-              </div>
-              <!-- Forget Password -->
-              <div class="">
-                <a [routerLink]="['/auth/forgot-password']" routerLinkActive="router-link-active" >
-                  <span class="forget-pass" >{{ "login.text.forgetPassword" | translate }}</span>
-                </a>
-              </div>
+          <!-- ID -->
+          <div class="form-group mb-lg-4">
+            <input type="text" name="userName" id="userName" class="form-control" formControlName="userName" />
+            <label for="userName" class="label">{{
+              "login.text.nationalIdOrResidentNumber" | translate
+              }}</label>
+          </div>
+          <!-- password -->
+          <div class="form-group">
+            <input type="password" name="" id="password" class="form-control" formControlName="password" />
+            <label for="password" class="label">{{
+              "login.text.password" | translate
+              }}</label>
+          </div>
+          <!-- Forget Password -->
+          <div class="">
+            <a [routerLink]="['/auth/forgot-password']" routerLinkActive="router-link-active">
+              <span class="forget-pass">{{
+                "login.text.forgetPassword" | translate
+                }}</span>
+            </a>
+          </div>
 
-              <!-- Login Button -->
-              <div class="">
-                <button type="submit" class="btn btn-primary submit">{{ "login.text.signIn" | translate }}</button>
-              </div>
+          <!-- Login Button -->
+          <div class="">
+            <button type="submit" class="btn btn-primary submit">
+              {{ "login.text.signIn" | translate }}
+            </button>
+          </div>
         </form>
 
         <!-- Have Account -->
         <div class="mt-4">
           <span class="">{{ "login.text.dontHaveAccount" | translate }}</span>
           <a [routerLink]="['/auth/register']">
-            <span class="primary-text">{{ "login.text.createNewAccount" | translate }}</span>
+            <span class="primary-text">{{
+              "login.text.createNewAccount" | translate
+              }}</span>
           </a>
         </div>
 
@@ -67,13 +68,11 @@
 
         <a href="#">
           <div class="unifyied-login">
-            <img src="./assets/images/NIC_logo.png" alt="" width="200">
+            <img src="./assets/images/NIC_logo.png" alt="" width="200" />
             <span>{{ "login.text.nafazSingIn" | translate }}</span>
           </div>
         </a>
-
       </div>
     </div>
-
   </div>
 </div>

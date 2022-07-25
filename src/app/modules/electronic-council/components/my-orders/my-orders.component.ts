@@ -75,7 +75,7 @@ export class MyOrdersComponent implements OnInit {
 
   showDialog(selectedRequest: RequestModel) {
     if (selectedRequest.RequestStatusId == RequestStatusEnum.Edit) {
-      this._router.navigate(['/e-council/create', selectedRequest.Id]);
+      this._router.navigate(['/e-council/request/edit', selectedRequest.Id]);
     } else {
       this._router.navigate(['/e-council/order-status/' + selectedRequest.Id]);
     }

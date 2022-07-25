@@ -73,7 +73,7 @@ export class SavedOrdersComponent implements OnInit {
     debugger;
     this._sharedService.selectedRequest = selectedOrder;
 
-    this._router.navigate(['/e-council/create' , selectedOrder.Id]);
+    this._router.navigate(['/e-council/request/edit' , selectedOrder.Id]);
 }
 
 sendRequest(selectedOrder : RequestModel){

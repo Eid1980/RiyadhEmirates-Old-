@@ -30,7 +30,9 @@
       "dontHaveAccount": "ليس لديك حساب؟",
       "createNewAccount": "إنشاء حساب جديد",
       "nafazSingIn": "عن طريق حسابك في منصة النفاذ الوطني الموحد",
-      "or": "أو"
+      "or": "أو",
+      "error": "خطأ",
+      "invalidUsernameOrPassword": "اسم المستخدم او كلمة المرور غير صحيحة"
     }
   },
   "register": {
@@ -59,7 +61,10 @@
   },
   "forgetPassword": {
     "text": {
-      "forgetPassword": "نسيت كلمة المرور"
+      "forgetPassword": "نسيت كلمة المرور",
+      "sendConfirmOTP": "تم إرسال الرمز التاكيدي . برجاء التاكد من بريدك الالكتروني",
+      "send": "إرسال",
+      "resendOTP": "إعادة إرسال"
     }
   },
   "electronicCouncil": {
@@ -70,6 +75,7 @@
       "noData": "لا يوجد بيانات",
       "title": "المجلس الإلكتروني لسمو أمير منطقة الرياض",
       "serviceType": "إنشاء طلب جديد",
+      "editRequest": "تعديل طلب",
       "applicantsInfo": "بيانات مقدم الطلب",
       "applicantsName": " : اسم مقدم الطلب",
       "birthDate": " : تاريخ الميلاد",
@@ -97,7 +103,15 @@
       "saveAsDraft": "حفظ كمسودة",
       "cancel": "إلغاء",
       "details": "التفاصيل",
-      "send": "إرسل"
+      "send": "إرسل",
+      "success": "نجاح",
+      "registeredSuccessfully": "تم التسجيل بنجاح",
+      "error": "خطأ",
+      "errorWhileSaving": "خطأ  في البيانات",
+      "alreadySent": "تم الارسال",
+      "sentSuccessfully": "تم الارسال بنجاح",
+      "alreadySaved": "تم الارسال",
+      "savedSuccessfully": "تم الارسال بنجاح"
     },
     "menus": {
       "profile": "الملف الشخصي",
@@ -154,7 +168,7 @@
     "signOut": "تسجيل الخروج",
     "signIn": "تسجيل الدخول",
     "newRegistration": "تسجيل جديد",
-    "aboutTheEmirate": " الإمارة",
+    "aboutTheEmirate": "عن الإمارة",
     "lordsOfTheRegion": "أمراء المنطقة",
     "provinces": "المحافظات",
     "electronicServices": "الخدمات الإلكترونية",

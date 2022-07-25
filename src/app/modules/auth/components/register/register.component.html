@@ -4,58 +4,59 @@
   <div class="auth-head">
     <div class="flex_row">
       <a href="#">
-        <img src="assets/images/logo.svg" alt="" class="log-logo" width="180">
+        <img src="assets/images/logo.svg" alt="" class="log-logo" width="180" />
       </a>
       <span (click)="onChangeLang()">
-        <p-button
-          pRipple
-          label="ع"
-          *ngIf="currentLang == 'en'"
-        ></p-button>
-        <p-button
-          pRipple
-          label="en"
-          *ngIf="currentLang == 'ar'"
-        ></p-button>
+        <p-button pRipple label="ع" *ngIf="currentLang == 'en'"></p-button>
+        <p-button pRipple label="en" *ngIf="currentLang == 'ar'"></p-button>
       </span>
     </div>
   </div>
   <div class="w-100">
-    <h4 class="title">{{ "register.text.singUp" | translate}}</h4>
+    <h4 class="title">{{ "register.text.singUp" | translate }}</h4>
 
     <!-- Form -->
     <div class="row mx-0">
       <div class="col-md-8 mx-auto">
         <form #f="ngForm" [formGroup]="registerationForm" (ngSubmit)="formSubmit()" class="fs-13px">
+          <!-- ID -->
+          <div class="form-group mb-lg-4">
+            <input type="text" name="" id="national_ID" class="form-control" required formControlName="userName" />
+            <label for="national_ID" class="label">{{
+              "register.text.nationalIdOrResidentNumber" | translate
+              }}</label>
 
-              <!-- ID -->
-              <div class="form-group mb-lg-4">
-                <input type="text" name="" id="national_ID" class="form-control" required  formControlName="userName">
-                <label for="national_ID" class="label">{{ "register.text.nationalIdOrResidentNumber" | translate}}</label>
-              
-                  <div *ngIf="registerationForm.controls['userName'].invalid && (registerationForm.controls['userName'].dirty || registerationForm.controls['userName'].touched)" class="text-danger">
-                    <div *ngIf="registerationForm.controls['userName'].errors?.required">
-                      {{ "global.message.reqiuredField" | translate}}
-                    </div>
-                    <div *ngIf="registerationForm.controls['userName'].errors?.['pattern']">
-                      {{ "register.text.invalidNationalId" | translate}}
-                    </div>
-                  </div>
+            <div class="text-danger">
+              <div *ngIf="
+                  isSubmitted &&
+                  registerationForm.controls['userName'].errors?.required
+                ">
+                {{ "global.message.reqiuredField" | translate }}
               </div>
-
-              <!-- username -->
-              <div class="form-group mb-lg-4">
-                <input type="text" name="" id="username" class="form-control" required formControlName="name">
-                <label for="username" class="label">{{ "register.text.name" | translate}}</label>
-                <div *ngIf="registerationForm.controls['name'].invalid && (registerationForm.controls['name'].dirty || registerationForm.controls['name'].touched)" class="text-danger">
-                  <div *ngIf="registerationForm.controls['name'].errors?.required">
-                    {{ "global.message.reqiuredField" | translate}}
-                  </div>
-                </div>
+              <div *ngIf="isSubmitted && registerationForm.controls['userName'].errors?.['pattern']">
+                {{ "register.text.invalidNationalId" | translate }}
               </div>
+            </div>
+          </div>
 
-              <!-- nationality -->
-              <div class="form-group mb-lg-4">
+          <!-- username -->
+          <div class="form-group mb-lg-4">
+            <input type="text" name="" id="username" class="form-control" required formControlName="name" />
+            <label for="username" class="label">{{
+              "register.text.name" | translate
+              }}</label>
+            <div class="text-danger">
+              <div *ngIf="
+                  isSubmitted &&
+                  registerationForm.controls['name'].errors?.required
+                ">
+                {{ "global.message.reqiuredField" | translate }}
+              </div>
+            </div>
+          </div>
+
+          <!-- nationality -->
+          <!-- <div class="form-group mb-lg-4">
                 <select  id="nationalities" class="form-control" required>
                   <option *ngFor="let item of nationalities" [value]="item.Id">{{item.Nationality}}</option>
                 </select> 
@@ -65,89 +66,99 @@
                     {{ "global.message.reqiuredField" | translate}}
                   </div>
                 </div>
+              </div> -->
+
+          <!-- birthdate -->
+          <div class="form-group mb-lg-4">
+            <hijri-gregorian-datepicker id="birthdate" [placeHolder]="'register.text.dateFormate' | translate" [(selectedDate)]="date" [isRequired]="true" [GregLabel]="'register.text.greg' | translate" [hijriLabel]="'register.text.higri' | translate" [minGreg]="minGreg" [maxGreg]="maxGreg"
+              [minHijri]="minHigriDate" [maxHijri]="maxHigriDate" [selectedDateType]="selectedDateType" [disabled]="isDisabled" [readonly]="isReadOnly" #datePicker>
+            </hijri-gregorian-datepicker>
+            <label for="birthdate" class="label">{{
+              "register.text.birthDate" | translate
+              }}</label>
+            <div class="text-danger">
+              <div *ngIf="isSubmitted && isValidDate">
+                {{ "global.message.reqiuredField" | translate }}
               </div>
-
-              <!-- birthdate -->
-              <div class="form-group mb-lg-4">
-                <hijri-gregorian-datepicker id="birthdate" [placeHolder]="'register.text.dateFormate' | translate"
-                    [(selectedDate)]="date"
-                    [isRequired]="true"
-                    [GregLabel]="'register.text.greg' | translate"
-                    [hijriLabel] ="'register.text.higri' | translate"
-                    [minGreg] = 'minGreg'
-                    [maxGreg] = 'maxGreg'
-                    [minHijri] = 'minHigriDate'
-                    [maxHijri] = 'maxHigriDate'
-                    [selectedDateType]="selectedDateType"
-                    [disabled]="isDisabled"
-                    [readonly]="isReadOnly"
-                    #datePicker>
-                </hijri-gregorian-datepicker>
-              <label for="birthdate" class="label">{{ "register.text.birthDate" | translate}}</label>
-
             </div>
+          </div>
 
-              <!-- phone -->
-              <div class="form-group mb-lg-4">
-                <input type="text" name="" id="phone" class="form-control" required formControlName="phoneNumber">
-                <label for="phone" class="label">{{ "register.text.phoneNumber" | translate}}</label>
-                <div *ngIf="registerationForm.controls['phoneNumber'].invalid && (registerationForm.controls['phoneNumber'].dirty || registerationForm.controls['phoneNumber'].touched)" class="text-danger">
-                  <div *ngIf="registerationForm.controls['phoneNumber'].errors?.required">
-                    {{ "global.message.reqiuredField" | translate}}
-                  </div>
-                  <div *ngIf="registerationForm.controls['phoneNumber'].errors?.['pattern']">
-                    {{ "register.text.invalidPhoneNumber" | translate}} 
-                  </div>
-                </div>
+          <!-- phone -->
+          <div class="form-group mb-lg-4">
+            <input type="text" name="" id="phone" class="form-control" required formControlName="phoneNumber" />
+            <label for="phone" class="label">{{
+              "register.text.phoneNumber" | translate
+              }}</label>
+            <div class="text-danger">
+              <div *ngIf="
+                  isSubmitted &&
+                  registerationForm.controls['phoneNumber'].errors?.required
+                ">
+                {{ "global.message.reqiuredField" | translate }}
               </div>
-
+              <div *ngIf="isSubmitted && registerationForm.controls['phoneNumber'].errors?.['pattern']">
+                {{ "register.text.invalidPhoneNumber" | translate }}
+              </div>
+            </div>
+          </div>
 
           <!-- Email -->
           <div class="form-group mb-lg-4">
-            <input type="text" name="" id="email" class="form-control" required formControlName="email">
-            <label for="email" class="label">{{ "register.text.email" | translate}}</label>
-            <div *ngIf="registerationForm.controls['email'].invalid && (registerationForm.controls['email'].dirty || registerationForm.controls['email'].touched)" class="text-danger">
-              <div *ngIf="registerationForm.controls['email'].errors?.required">
-                {{ "global.message.reqiuredField" | translate}}
+            <input type="text" name="" id="email" class="form-control" required formControlName="email" />
+            <label for="email" class="label">{{
+              "register.text.email" | translate
+              }}</label>
+            <div class="text-danger">
+              <div *ngIf="
+                  isSubmitted &&
+                  registerationForm.controls['email'].errors?.required
+                ">
+                {{ "global.message.reqiuredField" | translate }}
               </div>
-              <div *ngIf="registerationForm.controls['email'].errors?.['pattern']">
-                {{ "register.text.invalidEmail" | translate}}
+              <div *ngIf="isSubmitted && registerationForm.controls['email'].errors?.['pattern']">
+                {{ "register.text.invalidEmail" | translate }}
               </div>
             </div>
           </div>
 
           <!-- password -->
           <div class="form-group">
-            <input type="password" name="" id="password" class="form-control" required formControlName="password">
-            <label for="password" class="label">{{ "register.text.password" | translate}}</label>
+            <input type="password" name="" id="password" class="form-control" required formControlName="password" />
+            <label for="password" class="label">{{
+              "register.text.password" | translate
+              }}</label>
 
-            <div *ngIf="registerationForm.controls['password'].invalid && (registerationForm.controls['password'].dirty || registerationForm.controls['password'].touched)" class="text-danger">
-              <div *ngIf="registerationForm.controls['email'].errors?.required">
-                {{ "global.message.reqiuredField" | translate}}
+            <div class="text-danger">
+              <div *ngIf="
+                  isSubmitted &&
+                  registerationForm.controls['email'].errors?.required
+                ">
+                {{ "global.message.reqiuredField" | translate }}
               </div>
-              <div *ngIf="registerationForm.controls['password'].errors?.['pattern']">
-                {{ "register.text.passwordPattern" | translate}}               
+              <div *ngIf="isSubmitted && registerationForm.controls['password'].errors?.['pattern']">
+                {{ "register.text.passwordPattern" | translate }}
               </div>
             </div>
           </div>
 
           <!-- Login Button -->
           <div class="">
-            <button type="submit" class="btn btn-primary submit" [disabled]="registerationForm.status == 'INVALID'">{{ "register.text.createAccount" | translate}}</button>
+            <button type="submit" class="btn btn-primary submit">
+              {{ "register.text.createAccount" | translate }}
+            </button>
           </div>
-
         </form>
 
         <!-- Have Account -->
         <div class="mt-4">
-          <span class="">{{ "register.text.haveAnAccount" | translate}}</span>
+          <span class="">{{ "register.text.haveAnAccount" | translate }}</span>
           <a [routerLink]="['/auth/login']">
-            <span class="primary-text">{{ "register.text.backToLogin" | translate}}</span>
+            <span class="primary-text">{{
+              "register.text.backToLogin" | translate
+              }}</span>
           </a>
         </div>
-
       </div>
     </div>
-
   </div>
 </div>

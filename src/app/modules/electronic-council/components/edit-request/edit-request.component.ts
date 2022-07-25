@@ -7,20 +7,21 @@ import { RequestService } from '@shared/services/request.service';
 import { UserService } from '@shared/services/user.service';
 import {MessageService} from 'primeng/api';
 import { DateFormatterService } from 'ngx-hijri-gregorian-datepicker';
+import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestModel } from '@shared/models/request-model';
 import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
-  selector: 'app-create-request',
-  templateUrl: './create-request.component.html',
-  styleUrls: ['./create-request.component.scss'],
+  selector: 'app-edit-request',
+  templateUrl: './edit-request.component.html',
+  styleUrls: ['./edit-request.component.scss'],
   providers: [MessageService]
 
 })
 
 
-export class CreateRequestComponent implements OnInit {
+export class EditRequestComponent implements OnInit {
 
   @ViewChild('inputFile') inputFile: ElementRef;
 
@@ -46,6 +47,7 @@ export class CreateRequestComponent implements OnInit {
 
   constructor(private _requestService : RequestService,
     private _userService : UserService,
+    private route: ActivatedRoute,
     private fb: FormBuilder,
     private _router: Router,
     private messageService: MessageService,
@@ -54,6 +56,47 @@ export class CreateRequestComponent implements OnInit {
 
     this.orderFormData = new FormData()
     this.isRateService = false;
+
+    this.route.params.subscribe(params => {
+      this.requestId = params['id'];
+
+      if(this.requestId != undefined){
+        // get request by id
+
+        let inquire = new InquiryModel();
+        inquire.requestId = this.requestId
+
+        this._requestService.getRequestById( this.requestId ).subscribe(
+          (result : any) => {
+            debugger;
+            if(result.IsSuccess == true){
+              this.currentRequest = result.Data;
+              this.orderForm.setValue({
+                type : this.currentRequest.RequestTypeId,
+                header : this.currentRequest.Header,
+                content :  this.currentRequest.Content,
+                attahments : this.fb.array([]),
+                });
+            }else{
+              this.messageService.add({
+                severity:'error',
+                summary: 'خطأ',
+                detail: 'خطأ'
+              });
+            }
+          },
+          () => {
+            this.messageService.add({
+              severity:'error',
+              summary: this._translate.instant('login.text.error'),
+               detail: this._translate.instant('login.text.error'),
+              });
+
+          }
+        )
+      }
+    });
+
   }
 
   ngOnInit(): void {
@@ -119,13 +162,13 @@ saveRequest(requestStatusId : number){
       this.resetForm();
 
       this.messageService.add({
-        severity:'success',
-        summary: this._translate.instant('electronicCouncil.text.alreadySaved'),
-        detail: this._translate.instant('electronicCouncil.text.saveduccessfully'),
+        severity: 'success',
+        summary: this._translate.instant('electronicCouncil.shared.alreadySent'),
+          detail: this._translate.instant('electronicCouncil.shared.sentSuccessfully'),
       });
       setTimeout(() => {
-      this._router.navigate(['/e-council/my-orders']);
-      } , 3000);
+        this._router.navigate(['/e-council/my-orders']);
+      }, 2000);
 
     }},
 
@@ -173,28 +216,21 @@ saveRequest(requestStatusId : number){
       if(result.IsSuccess == true){
         this.resetForm();
 
-        this.messageService.add({
-          severity:'success',
-          summary: this._translate.instant('electronicCouncil.shared.alreadySent'),
-          detail: this._translate.instant('electronicCouncil.shared.sentSuccessfully'),
-        });
-        setTimeout(() => {
-          this._router.navigate(['/e-council/my-orders']);
-          } , 3000);
+        this.isRateService = true
+
       }else {
         this.messageService.add({
           severity:'error',
-          summary: 'خطأ',
-          detail: result.errorMessageAr
-        });
+          summary: this._translate.instant('login.shared.error'),
+           detail: result.errorMessageAr
+          });
       }
     },
     (err) =>{
       this.messageService.add({
         severity:'error',
-        summary: this._translate.instant('electronicCouncil.shared.error'),
-        detail:this._translate.instant('electronicCouncil.shared.errorWhileSaving')
-      });
+        summary: this._translate.instant('login.shared.error') ,
+        detail: this._translate.instant('login.shared.error')});
     }
   )
    }
@@ -217,44 +253,4 @@ onUpload(event : any) {
 }
 
 
-closeModal(){
-
-  console.log('close Modal')
-
-  if(this.requestStatusId == RequestStatusEnum.New){
-    this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
-    setTimeout(() => {
-      this._router.navigate(['/e-council/my-orders']);
-      } , 3000);
-  }
-
-  else if(this.requestStatusId == RequestStatusEnum.Drafted){
-    this.messageService.add({severity:'success', summary: 'تم الحفظ', detail: 'تم حفظ طلبك بنجاح'});
-    setTimeout(() => {
-        this._router.navigate(['/e-council/saved']);
-      } , 3000);
-  }
-
-}
-
-submitModal(){
-
-
-  // _userServiceRate.sendServiceRate().subscribe(()=>{} , ()=>{})
-  console.log('submit Modal')
-  if(this.requestStatusId == RequestStatusEnum.New){
-    this.messageService.add({severity:'success', summary: 'تم الارسال', detail: 'تم إرسال طلبك بنجاح'});
-    setTimeout(() => {
-      this._router.navigate(['/e-council/my-orders']);
-      } , 3000);
-  }
-
-  else if(this.requestStatusId == RequestStatusEnum.Drafted){
-    this.messageService.add({severity:'success', summary: 'تم الحفظ', detail: 'تم حفظ طلبك بنجاح'});
-    setTimeout(() => {
-        this._router.navigate(['/e-council/saved']);
-      } , 3000);
-  }
-
-}
 }
