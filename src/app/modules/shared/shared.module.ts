@@ -13,6 +13,7 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { NgxHijriGregorianDatepickerModule } from 'ngx-hijri-gregorian-datepicker';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {FileUploadModule} from 'primeng/fileupload';
@@ -23,6 +24,11 @@ import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { RequestAttachmentsComponent } from './components/request-attachments/request-attachments.component';
+import { UserDataViewComponent } from './components/user-data-view/user-data-view.component';
+import { RequestAttachmentPreviewComponent } from './components/request-attachment-preview/request-attachment-preview.component';
+import { RequestStageLogComponent } from './components/request-stage-log/request-stage-log.component';
+import { MessageService } from 'primeng/api';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,6 +44,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageNotFoundComponent,
     HigriDatePipe,
     LoaderComponent,
+    RequestAttachmentsComponent,
+    UserDataViewComponent,
+    RequestAttachmentPreviewComponent,
+    RequestStageLogComponent
 
   ],
   imports: [
@@ -53,13 +63,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgxHijriGregorianDatepickerModule,
     TabMenuModule,
     FileUploadModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
+    ConfirmDialogModule,
+
   ],
   exports: [
     CommonModule,
@@ -72,12 +77,20 @@ export function HttpLoaderFactory(http: HttpClient) {
     ButtonModule,
     ToastModule,
     TableModule,
+    ConfirmDialogModule,
     DialogModule,
     NgxHijriGregorianDatepickerModule,
     TabMenuModule,
     FileUploadModule,
     ProgressSpinnerModule,
-    TranslateModule
+    TranslateModule,
+    RequestAttachmentsComponent,
+    UserDataViewComponent,
+    RequestAttachmentPreviewComponent,
+    RequestStageLogComponent
   ],
+  providers: [
+    MessageService
+  ]
 })
 export class SharedModule {}

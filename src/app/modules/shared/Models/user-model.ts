@@ -1,23 +1,26 @@
 export class UserModel {
-    Id : string;
-    Name : string;
-    NationalId : string;
-    Email : string;
-    Address : string;
-    PhoneNumber : string;
-    BirthDate : Date;
-    Role : string;
-    UserName : string;
-    IsAdmin : boolean;
+  id: number;
+  userName: string;
 
+  nameAr: string;
+  shortNameAr: string;
+  nameEn: string;
+  shortNameEn: string;
 
-    constructor ()
-    {
-        this.Id = "";
-        this.Name = "";
-        this.Email = "";
-        this.Address = "";
-        this.PhoneNumber = "";
-        this.Role = "";
-    }
+  nationalId: string;
+  genderName: string;
+  address: string;
+  email: string;
+  phoneNumber: string;
+
+  nationalityName: string;
+  governorateName: string;
+
+  passwordHash: [];
+  passwordSalt: [];
+  isAdmin: boolean;
+  isActive: boolean;
+  oTP: string;
+  birthDate: string;
+
 }

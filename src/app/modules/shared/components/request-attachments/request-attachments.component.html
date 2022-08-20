@@ -1,0 +1,87 @@
+<p-table
+  #attachments
+  [value]="attachmentsDto"
+  [paginator]="false"
+  dataKey="id"
+  [autoLayout]="true"
+  [responsive]="true"
+  [scrollable]="true"
+  class="w-100"
+>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th>م</th>
+      <th>اسم المرفق</th>
+      <th>المرفق مطلوب</th>
+      <th></th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-i="rowIndex" let-attachment>
+    <tr>
+      <td>{{ i + 1 }}</td>
+      <td>{{ attachment.attachmentName }}</td>
+      <td>
+        <i class="pi pi-check" *ngIf="attachment.attachmentIsRequired"></i>
+        <i class="pi pi-times" *ngIf="!attachment.attachmentIsRequired"></i>
+      </td>
+      <td>
+        <ng-container *ngIf="!attachment.isAdded">
+          <p-fileUpload
+            #uploader
+            mode="basic"
+            [auto]="true"
+            [customUpload]="true"
+            [accept]="
+              attachment.extentionAllowed
+                ? attachment.extentionAllowed
+                : allowedExtensions
+            "
+            [maxFileSize]="
+              attachment.maxFileSize ? attachment.maxFileSize : fileSize
+            "
+            (uploadHandler)="onUpload($event, attachment.attachmentTypeId)"
+          >
+          </p-fileUpload>
+        </ng-container>
+        <ng-container *ngIf="attachment.isAdded">
+          <a
+            class="btn btn-primary mx-1 px-1 py-0"
+            title="عرض المرفق"
+            (click)="showAttachment(attachment.id)"
+          >
+            <i class="fa fa-eye"></i>
+          </a>
+          <a
+            class="btn btn-primary mx-1 px-1 py-0"
+            title="تنزيل المرفق"
+            (click)="downloadAttachment(attachment.id)"
+          >
+            <i class="fa fa-download"></i>
+          </a>
+          <a
+            class="btn btn-primary mx-1 px-1 py-0"
+            title="حذف المرفق"
+            (click)="deleteAttachment(attachment.id)"
+          >
+            <i class="fa fa-trash"></i>
+          </a>
+        </ng-container>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td colspan="5" class="empty-grid-table">لا يوجد بيانات</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog
+  header="عرض المرفق"
+  [(visible)]="isModalOpen"
+  [style]="{ width: '70vw' }"
+>
+  <img [src]="attachment" alt="" style="width: 100%" />
+</p-dialog>

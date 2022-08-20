@@ -67,19 +67,19 @@
         </ng-template>
         <ng-template pTemplate="body" let-request>
           <tr>
-            <td>{{ request.Header }}</td>
-            <td>{{ request.Content }}</td>
-            <td>{{ request.RequestTypeAr }}</td>
-            <td>{{ request.SerialNumber }}</td>
+            <td>{{ request.requestTitle }}</td>
+            <td>{{ request.requestContent }}</td>
+            <td>{{ request.requestTypeAr }}</td>
+            <td>{{ request.requestNumber }}</td>
             <td>
               <div
                 [class]="getStatusColor(request.RequestStatusId)"
                 role="alert"
               >
-                <strong>{{ request.StatusMsgAr }}</strong>
+                <strong>{{ request.stageName }}</strong>
               </div>
             </td>
-            <td>{{ request.CreationDate | date: "dd/MM/yyyy" }}</td>
+            <td>{{ request.requestDate | date: "dd/MM/yyyy" }}</td>
             <td>
               <i
                 class="fa fa-exclamation-circle"

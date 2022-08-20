@@ -1,0 +1,19 @@
+<div class="p-5">
+  <app-electronic-council-details [showStatusLog]="false" [requestId]="requestId"></app-electronic-council-details>
+
+  <div class="form-group col-6">
+    <label class="container-check">
+      أوافق علي الشروط والأحكام
+      <input [(ngModel)]="accept" type="checkbox" id="accept" />
+      <span class="checkmark"></span>
+    </label>
+  </div>
+
+  <div class="form-actions">
+    <button type="button" class="btn btn-save" (click)="sendRequest()">ارسال الطلب</button>
+    <a [routerLink]="['/eservice/electronic-summon-attachments/', requestId]" class="btn btn-cancel">السابق</a>
+    <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
+  </div>
+
+  <!--<app-rate-service [showServiceRate]="showServiceRate" [serviceId]="serviceId" [redirectUrl]="redirectUrl" (canRateEvent)="navigate($event)"></app-rate-service>-->
+</div>

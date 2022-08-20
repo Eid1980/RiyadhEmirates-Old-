@@ -1,0 +1,100 @@
+<form [formGroup]="electronicBoardForm" (ngSubmit)="formSubmit()" >
+  <div class="form-card">
+    <div class="form-content">
+      <div class="row mx-0">
+        <div class="form-group col-md-6" *ngIf="requestTypes?.length > 0">
+          <label for="requestTypeId" class="form-lbl"
+            >نوع الطلب<span class="danger">*</span></label
+          >
+          <select
+            class="form-control form-select"
+            formControlName="requestTypeId"
+            [ngClass]="{
+              invalid:
+                (isFormSubmitted ||
+                  electronicBoardForm.get('requestTypeId').touched) &&
+                electronicBoardForm.get('requestTypeId').errors?.required
+            }"
+          >
+            <option [ngValue]="null">-- اختر نوع الطلب --</option>
+            <option
+              *ngFor="let requestType of requestTypes"
+              [ngValue]="requestType.id"
+            >
+              {{ requestType.name }}
+            </option>
+          </select>
+          <small
+            *ngIf="
+              (isFormSubmitted ||
+                electronicBoardForm.get('requestTypeId').touched) &&
+              electronicBoardForm.get('requestTypeId').errors?.required
+            "
+            class="danger"
+            >هذاالحقل مطلوب</small
+          >
+        </div>
+        <div class="form-group col-md-12">
+          <label for="requestTitle" class="form-lbl"
+            >عنوان الطلب<span class="danger">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            autocomplete="off"
+            formControlName="requestTitle"
+            id="requestTitle"
+            [ngClass]="{
+              invalid:
+                (isFormSubmitted ||
+                  electronicBoardForm.get('requestTitle').touched) &&
+                electronicBoardForm.get('requestTitle').errors?.required
+            }"
+          />
+          <small
+            *ngIf="
+              (isFormSubmitted ||
+                electronicBoardForm.get('requestTitle').touched) &&
+              electronicBoardForm.get('requestTitle').errors?.required
+            "
+            class="danger"
+            >هذاالحقل مطلوب</small
+          >
+        </div>
+        <div class="form-group col-md-12">
+          <label for="requestContent" class="form-lbl"
+            >محتوى الطلب<span class="danger">*</span></label
+          >
+          <textarea
+            type="text"
+            class="form-control"
+            autocomplete="off"
+            formControlName="requestContent"
+            id="requestContent"
+            [ngClass]="{
+              invalid:
+                (isFormSubmitted ||
+                  electronicBoardForm.get('requestContent').touched) &&
+                electronicBoardForm.get('requestContent').errors?.required
+            }"
+          >
+          </textarea>
+          <small
+            *ngIf="
+              (isFormSubmitted ||
+                electronicBoardForm.get('requestContent').touched) &&
+              electronicBoardForm.get('requestContent').errors?.required
+            "
+            class="danger"
+            >هذاالحقل مطلوب</small
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-save">التالي</button>
+    <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
+  </div>
+</form>

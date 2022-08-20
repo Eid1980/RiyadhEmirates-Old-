@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private translationService: TranslationService
     ) {
-      if(_userService.currentUser.Id == undefined || _userService.currentUser.Id == "")
-      this.isAuthenticate = false;
+      if(!_userService.currentUser.id)
+        this.isAuthenticate = false;
     }
 
   ngOnInit() {

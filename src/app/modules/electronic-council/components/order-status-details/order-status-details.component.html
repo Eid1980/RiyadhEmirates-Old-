@@ -57,14 +57,14 @@
               <span class="form-lbl lbl-33">{{
                 "electronicCouncil.shared.applicantsName" | translate
                 }}</span>
-              <span class="form-val">{{ currentRequestInfo?.User?.Name }}</span>
+              <span class="form-val">{{ currentRequestInfo?.User?.shortNameAr }}</span>
             </div>
             <div class="info-col col-md-4 col-12 separator-af-be">
               <span class="form-lbl lbl-33">{{
                 "electronicCouncil.shared.birthDate" | translate
                 }}</span>
               <span class="form-val">{{
-                currentRequestInfo?.User?.BirthDate | date: "dd/MM/yyyy"
+                currentRequestInfo?.User?.birthDate | date: "dd/MM/yyyy"
                 }}</span>
             </div>
             <!-- <div class="info-col col-md-4 col-12">
@@ -76,7 +76,7 @@
                 "register.text.email" | translate
                 }}</span>
               <span class="form-val">{{
-                currentRequestInfo?.User?.Email
+                currentRequestInfo?.User?.email
                 }}</span>
             </div>
             <div class="info-col col-md-4 col-12 separator-af-be">
@@ -84,7 +84,7 @@
                 "register.text.nationalIdOrResidentNumber" | translate
                 }}</span>
               <span class="form-val">{{
-                currentRequestInfo?.User?.NationalId
+                currentRequestInfo?.User?.nationalId
                 }}</span>
             </div>
             <div class="info-col col-md-4 col-12">
@@ -92,7 +92,7 @@
                 "register.text.phoneNumber" | translate
                 }}</span>
               <span class="form-val">{{
-                currentRequestInfo?.User?.PhoneNumber
+                currentRequestInfo?.User?.phoneNumber
                 }}</span>
             </div>
           </div>
@@ -216,7 +216,7 @@
 
   <!--<div *ngIf="userModel.IsAdmin == true">-->
 
-  <div *ngIf="userModel.IsAdmin && currentRequestInfo?.RequestStatusId == 1">
+  <div *ngIf="userModel.isAdmin && currentRequestInfo?.RequestStatusId == 1">
     <button class="btn btn-success" (click)="acceptRequest()">
       موافق{{ "electronicCouncil.shared.main" | translate }}
     </button>
@@ -254,14 +254,14 @@
             <span class="form-lbl lbl-33">{{
               "electronicCouncil.shared.applicantsName" | translate
               }}</span>
-            <span class="form-val">{{ currentRequestInfo?.User?.Name }}</span>
+            <span class="form-val">{{ currentRequestInfo?.User?.shortNameAr }}</span>
           </div>
           <div class="info-col col-md-4 col-12 separator-af-be">
             <span class="form-lbl lbl-33">{{
               "electronicCouncil.shared.birthDate" | translate
               }}</span>
             <span class="form-val">{{
-              currentRequestInfo?.User?.BirthDate | date: "dd/MM/yyyy"
+              currentRequestInfo?.User?.birthDate | date: "dd/MM/yyyy"
               }}</span>
           </div>
           <!-- <div class="info-col col-md-4 col-12">
@@ -272,14 +272,14 @@
             <span class="form-lbl lbl-33">{{
               "register.text.email" | translate
               }}</span>
-            <span class="form-val">{{ currentRequestInfo?.User?.Email }}</span>
+            <span class="form-val">{{ currentRequestInfo?.User?.email }}</span>
           </div>
           <div class="info-col col-md-4 col-12 separator-af-be">
             <span class="form-lbl lbl-33">{{
               "register.text.nationalIdOrResidentNumber" | translate
               }}</span>
             <span class="form-val">{{
-              currentRequestInfo?.User?.NationalId
+              currentRequestInfo?.User?.nationalId
               }}</span>
           </div>
           <div class="info-col col-md-4 col-12">
@@ -287,7 +287,7 @@
               "register.text.phoneNumber" | translate
               }}</span>
             <span class="form-val">{{
-              currentRequestInfo?.User?.PhoneNumber
+              currentRequestInfo?.User?.phoneNumber
               }}</span>
           </div>
         </div>

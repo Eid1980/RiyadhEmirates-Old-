@@ -9,9 +9,7 @@ export class UserService {
 
   currentUser : UserModel ;
 
-  constructor(private sessionService : SessionStorageService) { 
-
-    
+  constructor(private sessionService : SessionStorageService) {
     this.currentUser = new UserModel();
     if(this.sessionService.get('user') != null &&  this.sessionService.get('user') != 'undefined'){
       let userInfojson : UserModel = JSON.parse( this.sessionService.get('user'));
@@ -23,7 +21,7 @@ export class UserService {
   }
 
   getAuthStatus() : boolean{
-    return this.currentUser.Id == null || this.currentUser.Id == undefined  || this.currentUser.Id == "" ? false : true
+    return this.currentUser.id == null || this.currentUser.id == undefined  ? false : true
   }
 
   saveUserInfo(userModel : UserModel){

@@ -37,14 +37,14 @@
                 <span class="form-lbl lbl-33">{{
                   "electronicCouncil.shared.applicantsName" | translate
                 }}</span>
-                <span class="form-val">{{ userModel?.Name }}</span>
+                <span class="form-val">{{ userModel?.shortNameAr }}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
                 <span class="form-lbl lbl-33">{{
                   "electronicCouncil.shared.birthDate" | translate
                 }}</span>
                 <span class="form-val">{{
-                  userModel?.BirthDate | date: "dd/MM/yyyy"
+                  userModel?.birthDate | date: "dd/MM/yyyy"
                 }}</span>
               </div>
               <!-- <div class="info-col col-md-4 col-12">
@@ -55,19 +55,19 @@
                 <span class="form-lbl lbl-33">{{
                   "electronicCouncil.shared.email" | translate
                 }}</span>
-                <span class="form-val">{{ userModel?.Email }}</span>
+                <span class="form-val">{{ userModel?.email }}</span>
               </div>
               <div class="info-col col-md-4 col-12 separator-af-be">
                 <span class="form-lbl lbl-33">{{
                   "electronicCouncil.shared.nationalId" | translate
                 }}</span>
-                <span class="form-val">{{ userModel?.UserName }}</span>
+                <span class="form-val">{{ userModel?.userName }}</span>
               </div>
               <div class="info-col col-md-4 col-12">
                 <span class="form-lbl lbl-33">{{
                   "electronicCouncil.shared.phoneNumber" | translate
                 }}</span>
-                <span class="form-val">{{ userModel?.PhoneNumber }}</span>
+                <span class="form-val">{{ userModel?.phoneNumber }}</span>
               </div>
             </div>
           </div>

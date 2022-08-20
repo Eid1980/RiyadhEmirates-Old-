@@ -6,10 +6,9 @@ import { RequestModel } from '@shared/models/request-model';
 })
 export class SharedService {
 
-  // TODO
   selectedRequest : RequestModel
 
-  constructor() { 
+  constructor() {
     this.selectedRequest = new RequestModel();
   }
 }

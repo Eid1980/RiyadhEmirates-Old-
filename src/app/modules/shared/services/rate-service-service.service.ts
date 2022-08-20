@@ -7,15 +7,11 @@ import { environment } from 'src/environments/environment';
 })
 export class RateServiceServiceService {
 
-  header : HttpHeaders
-
   constructor(
     private _httpClient : HttpClient) {
-
   }
 
-
   addRateService(requestModel : any){
-    return this._httpClient.post(`${environment.apiUrl}/ServiceRate/Create` , requestModel , {headers : this.header});
+    return this._httpClient.post(`${environment.apiUrl}/api/ServiceRate/Create` , requestModel);
   }
 }

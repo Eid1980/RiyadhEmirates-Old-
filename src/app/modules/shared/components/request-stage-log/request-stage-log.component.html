@@ -1,0 +1,30 @@
+
+
+<p-table #requestStageLogs [value]="requestStageLogsDto" [paginator]="false" dataKey="id" [autoLayout]="true" [responsive]="true" [scrollable]="true" class="w-100">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th>م</th>
+      <th>المرحلة</th>
+      <th>الملاحظات</th>
+      <th>التاريخ</th>
+      <th>منفذ القرار</th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-i="rowIndex" let-requestStageLog>
+    <tr>
+      <td> {{i+1}} </td>
+      <td> {{requestStageLog.stageName}} </td>
+      <td title="{{requestStageLog.notes}}" *ngIf="requestStageLog.notes"> {{requestStageLog.notes.length > 20 ? requestStageLog.notes.substring(0, 20) + ' ...' : requestStageLog.notes}} </td>
+      <td title="{{requestStageLog.notes}}" *ngIf="!requestStageLog.notes"></td>
+      <td> {{requestStageLog.createdDate}} </td>
+      <td> {{requestStageLog.createdByName}} </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td colspan="5" class="empty-grid-table">لا يوجد بيانات</td>
+    </tr>
+  </ng-template>
+</p-table>

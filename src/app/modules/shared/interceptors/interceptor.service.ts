@@ -12,6 +12,7 @@ import { GlobalService } from "@shared/services/global.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { LoaderService } from "@shared/services/loader.service";
 import { TranslationService } from "@shared/services/translation.service";
+import { SessionStorageService } from "@shared/services/session-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -22,25 +23,34 @@ export class InterceptorService implements HttpInterceptor {
   constructor(
     private progressSpinner: LoaderService,
     private translationService: TranslationService,
+    private _sessionStorage : SessionStorageService,
     private router: Router,
-    private globalService: GlobalService,
-    private active: ActivatedRoute,
   ) {}
 
   intercept(
-    req: HttpRequest<any>,
+    request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     this.progressSpinner.show();
 
-    req = req.clone({
-      headers: req.headers.set(
+    request = request.clone({
+      headers: request.headers.set(
         'accept-language',
         this.translationService.getCurrentLanguage().Name
       ),
     });
 
-    return next.handle(req).pipe(
+    // inject token to request
+    let token = this._sessionStorage.get('token');
+
+    if (token) {
+      // If we have a token, we set it to the header
+      request = request.clone({
+         setHeaders: {Authorization: `Bearer ${token}`}
+      });
+   }
+
+    return next.handle(request).pipe(
       finalize(() => {
         this.progressSpinner.hide();
       }),

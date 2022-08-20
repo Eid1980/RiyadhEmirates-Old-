@@ -23,15 +23,14 @@ export class UserSidemenuComponent implements OnInit {
     ) {
     this.userModel = new UserModel();
 
-
-    this.userModel.Name = this._userService.currentUser?.Name
-    this.userModel.Email = this._userService.currentUser?.Email
-    this.userModel.Address = this._userService.currentUser?.Address
-    this.userModel.PhoneNumber = this._userService.currentUser?.PhoneNumber
-    this.userModel.Role = this._userService.currentUser?.Role;
-    this.userModel.IsAdmin = this._userService.currentUser?.IsAdmin;
-
-    console.log(typeof(this._userService.currentUser))
+    debugger
+    this.userModel.nameAr = this._userService.currentUser?.nameAr
+    this.userModel.nameEn = this._userService.currentUser?.nameEn
+    this.userModel.shortNameAr = this._userService.currentUser?.shortNameAr;
+    this.userModel.shortNameEn = this._userService.currentUser?.shortNameEn;
+    this.userModel.email = this._userService.currentUser?.email;
+    this.userModel.phoneNumber = this._userService.currentUser?.phoneNumber
+    this.userModel.address = this._userService.currentUser?.address
   }
 
   ngOnInit(): void {}
@@ -41,10 +40,6 @@ export class UserSidemenuComponent implements OnInit {
   }
 
   submitModal(starsCount : number){
-    console.log('submit')
-    console.log(starsCount)
-
-
     let serviceRate : any = {StarsCount : starsCount}
 
     this._rateService.addRateService(serviceRate).subscribe(

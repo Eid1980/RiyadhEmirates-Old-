@@ -1,0 +1,8 @@
+<app-request-attachments allowedExtensions="image/*"></app-request-attachments>
+
+
+<div class="form-actions">
+  <button type="button" class="btn btn-save" (click)="nextPage()">التالي</button>
+  <a [routerLink]="['/eservice/prisoners-services/', 1]" class="btn btn-cancel">السابق</a>
+  <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
+</div>

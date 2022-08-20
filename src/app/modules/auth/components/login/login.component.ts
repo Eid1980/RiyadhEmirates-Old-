@@ -32,27 +32,25 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   formSubmit(){
-    console.log('formSubmit')
+    debugger
     this.authService.login(this.loginForm.value).subscribe(
       (result : any) => {
-
-        if(result.IsSuccess == true){
-
+        if(result.isSuccess == true){
           // save token
-          this.sessionService.set('token' , result.Data)
-          // call getAuthUser
+          this.sessionService.set('token' , result.data)
 
+          // get user info
           this.authService.getAuthUser().subscribe(
             (result : any) => {
-              if(result.IsSuccess == true){
-                this.userService.saveUserInfo(result.Data);
+              if(result.isSuccess == true){
+                this.userService.saveUserInfo(result.data);
                 this.router.navigate(['home']);
               }
             },
             () => {}
           )
         }else{
-          this.messageService.add({severity:'error', summary: 'خطأ', detail: result.Message});
+          this.messageService.add({severity:'error', summary: 'خطأ', detail: result.message});
         }
       },
       (err) => {

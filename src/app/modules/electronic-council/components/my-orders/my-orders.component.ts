@@ -3,9 +3,11 @@ import { InquiryModel } from '@shared/models/inquiry-model';
 import { RequestModel } from '@shared/models/request-model';
 import { RequestService } from '@shared/services/request.service';
 import { MessageService } from 'primeng/api';
-import { SharedService } from '@shared/services/shared.service';
 import { Router } from '@angular/router';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
+import { SearchModel } from '@shared/models/search-models';
+import { Service } from '@shared/enums/service.enum';
+import { ApiResponse } from '@shared/models/api-response.model';
 
 @Component({
   selector: 'app-my-orders',
@@ -30,8 +32,8 @@ export class MyOrdersComponent implements OnInit {
   loading: boolean = true;
 
   constructor(
-    private requsetService: RequestService,
-    private messageService: MessageService,
+    private _requsetService: RequestService,
+    private _messageService: MessageService,
     private _router: Router
   ) {
     this.searchCriteria = new InquiryModel();
@@ -44,28 +46,38 @@ export class MyOrdersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.requsetService.getRequests(this.searchCriteria).subscribe(
-      (result: any) => {
-        console.log(result);
-        if (result.IsSuccess == true) {
-          this.requests = result.Data;
-          this.loading = false;
-        } else {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'خطأ',
-            detail: result.errorMessageAr,
-          });
+
+    let searchModel: SearchModel = {
+      SearchFields: [
+        {
+          FieldName: "ServiceId",
+          Operator: "Equal",
+          Value: Service.ElectronicBoard.toString()
         }
-      },
+      ]
+    }
+
+    this._requsetService.inbox(searchModel).subscribe((result: ApiResponse<any>) => {
+      if (result.isSuccess) {
+        this.requests = result.data.gridItemsVM
+        console.log(this.requests)
+        this.loading = false;
+      } else {
+        this._messageService.add({
+          severity: 'error',
+          summary: 'خطأ',
+          detail: "",
+        });
+      }
+
+    },
       (error) => {
-        this.messageService.add({
+        this._messageService.add({
           severity: 'error',
           summary: 'خطأ',
           detail: error,
         });
-      }
-    );
+      })
 
     // sort critera
     this.multiSortMeta = [];
@@ -73,19 +85,21 @@ export class MyOrdersComponent implements OnInit {
     this.multiSortMeta.push({ field: 'statusMsgAr', order: -1 });
   }
 
-  showDialog(selectedRequest: RequestModel) {
-    if (selectedRequest.RequestStatusId == RequestStatusEnum.Edit) {
-      this._router.navigate(['/e-council/request/edit', selectedRequest.Id]);
+  showDialog(selectedRequest) {
+    this._router.navigate(['/e-council/electronic-board-view/'+selectedRequest.id]);
+
+    /*if (selectedRequest.RequestStatusId == RequestStatusEnum.Edit) {
+      this._router.navigate(['/e-council/electronic-board-view', selectedRequest.Id]);
     } else {
       this._router.navigate(['/e-council/order-status/' + selectedRequest.Id]);
-    }
+    }*/
   }
 
   reset() {
     this.first = 0;
   }
 
-  filter(value: any) {}
+  filter(value: any) { }
 
   getStatusColor(requestStatusId: number) {
     if (requestStatusId == RequestStatusEnum.New) {

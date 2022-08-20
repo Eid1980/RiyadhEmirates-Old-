@@ -2,9 +2,9 @@
   <div class="d-flex justify-content-start align-items-center user">
     <img src="./assets/images/user-img.svg" alt="" class="user-img" />
     <div>
-      <span class="d-block name">{{ userModel?.Name }}</span>
-      <span class="d-block mail">{{ userModel?.Email }}</span>
-      <span class="d-block phone">{{ userModel?.PhoneNumber }}</span>
+      <span class="d-block name">{{ userModel?.shortNameAr }}</span>
+      <span class="d-block mail">{{ userModel?.email }}</span>
+      <span class="d-block phone">{{ userModel?.phoneNumber }}</span>
     </div>
   </div>
   <ul class="prof-menu">
@@ -21,7 +21,7 @@
         {{ "electronicCouncil.menus.dashboard" | translate }}
       </a>
     </li>
-    <li *ngIf="userModel.IsAdmin">
+    <li *ngIf="userModel.isAdmin">
       <a routerLink="/e-council/incoming-orders" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-dash.svg" alt="" />
         {{ "electronicCouncil.menus.incommingOrders" | translate }}
@@ -34,13 +34,13 @@
         {{ "electronicCouncil.menus.newRequest" | translate }}
       </a>
     </li>
-    <li *ngIf="userModel.IsAdmin">
+    <li *ngIf="userModel.isAdmin">
       <a routerLink="/e-council/inquiry" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-search.svg" alt="" />
         {{ "electronicCouncil.menus.inquiry" | translate }}
       </a>
     </li>
-    <li *ngIf="!userModel.IsAdmin">
+    <li *ngIf="!userModel.isAdmin">
       <a routerLink="/e-council/my-orders" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-orders.svg" alt="" />
         {{ "electronicCouncil.menus.myOrders" | translate }}
@@ -52,7 +52,7 @@
         {{ "electronicCouncil.menus.savedRequest" | translate }}
       </a>
     </li>
-    <li *ngIf="!userModel.IsAdmin">
+    <li *ngIf="!userModel.isAdmin">
       <a (click)="showRateServiceModal = true" routerLinkActive="active" class="link">
         <img src="./assets/images/icons/prof-rate.svg" alt="" />
         {{ "electronicCouncil.menus.rateService" | translate }}

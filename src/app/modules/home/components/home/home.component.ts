@@ -1,8 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AdminService } from '@shared/services/admin.service';
+import { GetNewsDetailsDto } from '@shared/models/news-models';
+import { GetPosterDetailsDto } from '@shared/models/posters-models';
+import { GetServiceListDto } from '@shared/models/service-models';
+import { NewsService } from '@shared/services/news.service';
 import { GlobalService } from '@shared/services/global.service';
 import { UserService } from '@shared/services/user.service';
+import { ServiceService } from '@shared/services/service.service';
+import { PosterService } from '@shared/services/poster.service';
+import { ApiResponse } from '@shared/models/api-response.model';
+import { NewsTypes } from '@shared/enums/news-types.enum';
+import { ServiceResponseVM } from '@shared/models/response-models';
 declare let $: any;
 @Component({
   selector: 'app-home',
@@ -10,16 +18,20 @@ declare let $: any;
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  posters: any[] = [];
-  emiratesNews: any[] = [];
-  latestNews: any[] = [];
-  reports: any[] = [];
-  services: any[] = [];
+
+  news: GetNewsDetailsDto[] = [];
+  emiratesNews: GetNewsDetailsDto[] = [];
+  latestNews: GetNewsDetailsDto[] = [];
+  reports: GetNewsDetailsDto[] = [];
+  posters: GetPosterDetailsDto[] = [];
+  services: GetServiceListDto[] = [];
 
   constructor(
     private _userService: UserService,
+    private _newsService: NewsService,
+    private _serviceService: ServiceService,
+    private _posterService: PosterService,
     private _router: Router,
-    private _adminService: AdminService,
     private globalService: GlobalService
   ) {
   }
@@ -110,45 +122,52 @@ export class HomeComponent implements OnInit {
       });
     }, 8000);
 
-    this.getPosters();
-    this.getEmiratesNews();
-    this.getLatestNews();
-    this.getReports();
+    this.getAllNews();
     this.getServices();
+    this.getPosters();
   }
 
-  getPosters() {
-    this._adminService.getALlPosters('Poster').subscribe((result: any[]) => {
-      this.posters = result;
-    });
+  getAllNews() {
+    this._newsService.getAll().subscribe((result : ServiceResponseVM) => {
+        this.news = result.data;
+
+        this.emiratesNews = this.getNewsByNewsTypeId(NewsTypes.EmiratesNews);
+
+        this.latestNews = this.getNewsByNewsTypeId(NewsTypes.LatestNews);
+
+        this.reports = this.getNewsByNewsTypeId(NewsTypes.Reports);
+      });
   }
 
-  getEmiratesNews() {
-    this._adminService.getALlEmiratesNews().subscribe((result: any) => {
-      this.emiratesNews = result.Data;
-    });
-  }
-
-  getLatestNews() {
-    this._adminService.getALlLatesNews().subscribe((result: any) => {
-      this.latestNews = result.Data;
-    });
-  }
-
-  getReports() {
-    this._adminService.getALlReports().subscribe((result: any) => {
-      this.reports = result.Data;
-    });
+  getNewsByNewsTypeId(newsTypeId: number): GetNewsDetailsDto[] {
+    return this.news.filter((n) => n.newsTypeId == newsTypeId);
   }
 
   getServices() {
-    this._adminService.getALlServices().subscribe((result: any) => {
-      this.services = result.Data;
-    });
+    this._serviceService
+      .getAll()
+      .subscribe((result: ApiResponse<GetServiceListDto[]>) => {
+        this.services = result.data;
+      });
   }
 
+  getPosters() {
+    this._posterService.getAll().subscribe(
+      (res: ApiResponse<GetPosterDetailsDto[]>) => {
+        if (res.isSuccess) {
+          this.posters = res.data;
+        } else {
+          // TODO
+          // display error message
+        }
+      },
+      (err) => { }
+    );
+  }
+
+
   navigateTo() {
-    if (this._userService.currentUser.IsAdmin) {
+    if (this._userService.currentUser.isAdmin) {
       this._router.navigate(['/e-council/incoming-orders']);
     } else {
       this._router.navigate(['/e-council/create']);
@@ -185,8 +204,8 @@ export class HomeComponent implements OnInit {
   }
 
   getHijriDate(date: any) {
-    let newDate = new Date(date);
-    let hijriDate = this.globalService.convertToHijri(newDate, 'ar');
-    return hijriDate.toString();
+    /* let newDate = new Date(date);
+     let hijriDate = this.globalService.convertToHijri(newDate, 'ar');
+     return hijriDate.toString();*/
   }
 }

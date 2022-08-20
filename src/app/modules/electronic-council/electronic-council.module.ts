@@ -20,6 +20,13 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ImageModule } from 'primeng/image';
 import { DialogModule } from 'primeng/dialog';
 import { EditRequestComponent } from './components/edit-request/edit-request.component';
+import { ElectronicCouncilAttachmentsComponent } from './components/electronic-council-attachments/electronic-council-attachments.component';
+import { ElectronicCouncilComponent } from './components/electronic-council/electronic-council.component';
+import { ElectronicCouncilPreviewStepComponent } from './components/electronic-council-preview-step/electronic-council-preview-step.component';
+import { StepsModule } from 'primeng/steps';
+import { ElectronicCouncilDetailsComponent } from './components/electronic-council-details/electronic-council-details.component';
+import { ElectronicBoardViewComponent } from './components/electronic-board-view/electronic-board-view.component';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +44,11 @@ import { EditRequestComponent } from './components/edit-request/edit-request.com
     TableComponent,
     DraftRequestsComponent,
     EditRequestComponent,
+    ElectronicCouncilAttachmentsComponent,
+    ElectronicCouncilComponent,
+    ElectronicCouncilPreviewStepComponent,
+    ElectronicCouncilDetailsComponent,
+    ElectronicBoardViewComponent,
   ],
   imports: [
     ElectronicCouncilRoutingModule,
@@ -46,6 +58,8 @@ import { EditRequestComponent } from './components/edit-request/edit-request.com
     DropdownModule,
     ImageModule,
     DialogModule,
+    StepsModule,
+
   ],
 })
 export class ElectronicCouncilModule {}

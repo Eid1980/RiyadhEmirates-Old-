@@ -27,13 +27,9 @@ export class IncomingOrdersComponent implements OnInit {
   requestTypeCount: TypeCountModel[];
 
   first: number = 0;
-
   types: any[];
-
   loading: boolean = true;
-
   display: boolean = false;
-
   messageReason: string = '';
 
   constructor(

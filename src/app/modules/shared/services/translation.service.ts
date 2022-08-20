@@ -82,5 +82,4 @@ export class TranslationService {
 
     return this.currentLang;
   }
-
 }

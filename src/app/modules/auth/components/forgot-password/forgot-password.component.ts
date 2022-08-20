@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { ForgetPasswordStages } from '@shared/enums/forget-password-stages.enum';
+import { MessageType } from '@shared/enums/message-type.enum';
+import { ForgetPasswordDto, ResetPasswordDto, ValidateOTPDto } from '@shared/models/account-models';
+import { ApiResponse } from '@shared/models/api-response.model';
 import { AuthService } from '@shared/services/auth.service';
+import { GlobalService } from '@shared/services/global.service';
 import { TranslationService } from '@shared/services/translation.service';
 import { MessageService } from 'primeng/api';
 
@@ -13,122 +17,105 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 })
 export class ForgotPasswordComponent implements OnInit {
-  state: number = 1; // 1 => eneter userName, 2 => eneter otp, 3 => eneter new password
 
-  placeHolderText: string = 'ادخل اسم المستخدم او البريد الالكتروني';
-
-  inputText: string = '';
-
-  userName: string = '';
+  get currentLang() {
+    return this._translateService.getCurrentLanguage().Name;
+  }
+  stage: number
+  userName: string;
+  otp: string;
+  newPassword: string;
 
   forgetPasswordForm = this.fb.group({
     userName: ['', Validators.required],
   });
 
-  get currentLang() {
-    return this._translate.getCurrentLanguage().Name;
-  }
-
   constructor(
     private _authService: AuthService,
-    private _translate: TranslationService,
-    private _messageService: MessageService,
+    private _translateService: TranslationService,
     private fb: FormBuilder,
-    private _router: Router
-  ) {}
+    private _router: Router,
+    private _globalService: GlobalService,
+  ) {
 
-  ngOnInit() {}
-
-  btnClick(status: number = 0) {
-    debugger;
-    if (this.state == 1 || status != 0) {
-      if (this.state == 1) {
-        this.userName = this.inputText;
-      }
-
-      let forgetPassword: any = { UserName: this.userName };
-      this._authService.forgetPassword(forgetPassword).subscribe(
-        (result: any) => {
-          if (result.IsSuccess == true) {
-            debugger;
-            this._messageService.add({
-              severity: 'success',
-              summary: 'تم الارسال',
-              detail: 'تم ارسال الرقم التاكيدي الي البريد الالكتروني',
-            });
-            if (status == 0) {
-              this.updatePlaceHolder(++this.state);
-            }
-          } else {
-            this._messageService.add({
-              severity: 'error',
-              summary: 'حدث خطأ ',
-              detail: 'حدث خطأ اثناء الارسال',
-            });
-          }
-        },
-        () => {}
-      );
-    } else if (this.state == 2) {
-      let validateOTP: any = { UserName: this.userName, OTP: this.inputText };
-      this._authService.validateOTP(validateOTP).subscribe(
-        (result: any) => {
-          if (result.IsSuccess == true) {
-            this._messageService.add({
-              severity: 'success',
-              summary: 'تم  التخقق',
-              detail: 'تم التحقق من ارمز التاكيدي',
-            });
-            this.updatePlaceHolder(++this.state);
-          } else {
-            this._messageService.add({
-              severity: 'error',
-              summary: 'تم  التخقق',
-              detail: 'الرمز التأكيدي غير صحيح',
-            });
-          }
-        },
-        () => {}
-      );
-    } else if (this.state == 3) {
-      let resetPassword: any = {
-        UserName: this.userName,
-        NewPassword: this.inputText,
-      };
-      this._authService.resetPassword(resetPassword).subscribe(
-        (result: any) => {
-          if (result.IsSuccess == true) {
-            this._messageService.add({
-              severity: 'success',
-              summary: 'تم  التحديث',
-              detail: 'تم تحديث كلمة السر بيجاح ',
-            });
-            setTimeout(() => {
-              this._router.navigate(['/auth/login']);
-            }, 3000);
-          }
-        },
-        () => {}
-      );
-    }
+    this.userName = '';
+    this.otp = '';
+    this.newPassword = '';
+    this.stage = ForgetPasswordStages.EnterUserName;
   }
 
-  updatePlaceHolder(state: number) {
-    switch (state) {
-      case 1:
-        break;
-      case 2:
-        this.placeHolderText = 'ادخل الرمز التاكيدي';
-        this.inputText = '';
-        break;
-      case 3:
-        this.placeHolderText = 'ادخل كلمة السر الجديدة';
-        this.inputText = '';
-        break;
-    }
+  ngOnInit() {
   }
 
+
+  forgetPassword() {
+    let forgetPassword: ForgetPasswordDto = { userName: this.userName };
+
+    this._authService.forgetPassword(forgetPassword).subscribe(
+      (result: any) => {
+        if (result.isSuccess == true) {
+          this._globalService.messageAlert(
+            MessageType.Success,
+            this._translateService.instant('forgetPassword.messages.sentConfirmOTP')
+          );
+          if (this.stage != ForgetPasswordStages.EnterOTP) {
+            this.stage = ForgetPasswordStages.EnterOTP;
+          }
+        } else {
+          this._globalService.messageAlert(
+            MessageType.Error,
+            this._translateService.instant('forgetPassword.messages.errorWhileSendingRequest')
+          );
+        }
+      },
+      () => { }
+    );
+  }
+
+  validateOTP() {
+    let validateOTP: ValidateOTPDto = { userName: this.userName, oTP: this.otp };
+
+    this._authService.validateOTP(validateOTP).subscribe(
+      (result: ApiResponse<boolean>) => {
+        if (result.isSuccess && result.data) {
+          this._globalService.messageAlert(
+            MessageType.Success,
+            this._translateService.instant('forgetPassword.messages.otpIsCorrect')
+          );
+
+          this.stage = ForgetPasswordStages.SetNewPassword;
+        } else {
+          this._globalService.messageAlert(
+            MessageType.Error,
+            this._translateService.instant('forgetPassword.messages.invalidOTP')
+          );
+        }
+      },
+      (err) => { }
+    );
+  }
+
+  resetPassword() {
+    let resetPassword: ResetPasswordDto = { userName: this.userName, newPassword: this.newPassword };
+
+    this._authService.resetPassword(resetPassword).subscribe(
+      (result: ApiResponse<boolean>) => {
+        if (result.isSuccess && result.data) {
+          this._globalService.messageAlert(
+            MessageType.Success,
+            this._translateService.instant('forgetPassword.messages.resetPasswordSuccessfuly')
+          );
+          setTimeout(() => {
+            this._router.navigate(['/auth/login']);
+          }, 3000);
+        }
+      },
+      (err) => { }
+    );
+  }
+
+  // change language
   onChangeLang() {
-    this._translate.switchLanguage();
+    this._translateService.switchLanguage();
   }
 }
