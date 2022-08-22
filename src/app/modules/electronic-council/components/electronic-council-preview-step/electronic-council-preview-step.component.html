@@ -11,8 +11,8 @@
 
   <div class="form-actions">
     <button type="button" class="btn btn-save" (click)="sendRequest()">ارسال الطلب</button>
-    <a [routerLink]="['/eservice/electronic-summon-attachments/', requestId]" class="btn btn-cancel">السابق</a>
-    <a [routerLink]="['/eservice/my-requests']" class="btn btn-cancel">إلغاء</a>
+    <a (click) = "previousClick()" class="btn btn-cancel">السابق</a>
+    <a [routerLink]="['/e-council/my-requests']" class="btn btn-cancel">إلغاء</a>
   </div>
 
   <!--<app-rate-service [showServiceRate]="showServiceRate" [serviceId]="serviceId" [redirectUrl]="redirectUrl" (canRateEvent)="navigate($event)"></app-rate-service>-->

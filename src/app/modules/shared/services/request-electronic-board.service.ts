@@ -18,6 +18,7 @@ export class RequestElectronicBoardService {
   }
 
   getById = (id: string): Observable<ApiResponse<RequestElectronicBoardDto>> => {
+    debugger
     return this.httpClient.get<ApiResponse<RequestElectronicBoardDto>>(`${this.serviceUrl}/GetById/${id}`).pipe(
     );
   }

@@ -4,16 +4,16 @@ import { ElectronicCouncilRoutingModule } from './electronic-council-routing.mod
 import { SharedModule } from '@shared/shared.module';
 import { ServiceDetailsComponent } from './components/service-details/service-details.component';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
-import { OrderStatusDetailsComponent } from './components/order-status-details/order-status-details.component';
-import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { RequestStatusDetailsComponent } from './components/request-status-details/request-status-details.component';
+import { MyRequestsomponent } from './components/my-requests/my-requests.component';
 import { SavedOrdersComponent } from './components/saved-orders/saved-orders.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserDashboradComponent } from './components/user-dashborad/user-dashborad.component';
 import { UserSidemenuComponent } from './components/user-sidemenu/user-sidemenu.component';
-import { OrderInquiryComponent } from './components/order-inquiry/order-inquiry.component';
+import { RequestsInquireComponent } from './components/requests-inquire/requests-inquire.component';
 import { RateServiceComponent } from './components/rate-service/rate-service.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IncomingOrdersComponent } from './components/incoming-orders/incoming-orders.component';
+import { IncomingRequestsComponent } from './components/incoming-requests/incoming-requests.component';
 import { TableComponent } from './components/table/table.component';
 import { DraftRequestsComponent } from './components/draft-requests/draft-requests.component';
 import { DropdownModule } from 'primeng/dropdown';
@@ -32,15 +32,15 @@ import { ElectronicBoardViewComponent } from './components/electronic-board-view
   declarations: [
     ServiceDetailsComponent,
     CreateRequestComponent,
-    OrderStatusDetailsComponent,
-    MyOrdersComponent,
+    RequestStatusDetailsComponent,
+    MyRequestsomponent,
     SavedOrdersComponent,
     UserProfileComponent,
     UserDashboradComponent,
     UserSidemenuComponent,
-    OrderInquiryComponent,
+    RequestsInquireComponent,
     RateServiceComponent,
-    IncomingOrdersComponent,
+    IncomingRequestsComponent,
     TableComponent,
     DraftRequestsComponent,
     EditRequestComponent,

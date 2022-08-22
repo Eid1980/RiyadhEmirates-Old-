@@ -8,12 +8,12 @@ import { RequestService } from '@shared/services/request.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-incoming-orders',
-  templateUrl: './incoming-orders.component.html',
-  styleUrls: ['./incoming-orders.component.scss'],
-  providers: [MessageService],
+  selector: 'app-incoming-requests',
+  templateUrl: './incoming-requests.component.html',
+  styleUrls: ['./incoming-requests.component.scss'],
 })
-export class IncomingOrdersComponent implements OnInit {
+export class IncomingRequestsComponent implements OnInit {
+
   requests: RequestModel[];
   selectedOrder: RequestModel;
   searchCriteria: InquiryModel;
@@ -52,12 +52,12 @@ export class IncomingOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.searchCriteria = new InquiryModel();
 
-    this._requsetService.getRequestsTypeCount().subscribe(
+    /*this._requsetService.getRequestsTypeCount().subscribe(
       (result: any) => {
         this.requestTypeCount = result.Data;
       },
       () => {}
-    );
+    );*/
 
     this.getRequests(this.newRequest);
 
@@ -154,7 +154,7 @@ export class IncomingOrdersComponent implements OnInit {
           this.requests = this.requests.filter((r) => r.Id != request.Id);
         }
       },
-      () => {}
+      () => { }
     );
   }
 

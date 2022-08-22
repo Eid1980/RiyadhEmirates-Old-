@@ -23,7 +23,6 @@ export class UserSidemenuComponent implements OnInit {
     ) {
     this.userModel = new UserModel();
 
-    debugger
     this.userModel.nameAr = this._userService.currentUser?.nameAr
     this.userModel.nameEn = this._userService.currentUser?.nameEn
     this.userModel.shortNameAr = this._userService.currentUser?.shortNameAr;

@@ -11,13 +11,12 @@ import * as html2pdf from 'html2pdf.js';
 declare let $: any;
 
 @Component({
-  selector: 'app-order-status-details',
-  templateUrl: './order-status-details.component.html',
-  styleUrls: ['./order-status-details.component.scss'],
-  providers: [MessageService],
+  selector: 'app-request-status-details',
+  templateUrl: './request-status-details.component.html',
+  styleUrls: ['./request-status-details.component.scss']
 })
-export class OrderStatusDetailsComponent implements OnInit {
-  @Input() seletedOrder: RequestModel; // decorate the property with @Input()
+export class RequestStatusDetailsComponent implements OnInit {
+  @Input() seletedOrder: RequestModel;
 
   userModel: UserModel;
   currentRequestInfo: RequestModel;
@@ -177,7 +176,6 @@ export class OrderStatusDetailsComponent implements OnInit {
       .toPdf()
       .output('blob')
       .then((data: Blob) => {
-        debugger;
         this.reportUrl = URL.createObjectURL(data);
         $('#report').attr('src', this.reportUrl);
       });

@@ -48,7 +48,7 @@ export class SavedOrdersComponent implements OnInit {
 
     let inquire = {requestStatusId : RequestStatusEnum.Drafted};
 
-    this.requsetService.inquire(inquire).subscribe(
+    /*this.requsetService.inquire(inquire).subscribe(
       (result : any) => {
         console.log(result)
         if(result.IsSuccess == true){
@@ -61,7 +61,7 @@ export class SavedOrdersComponent implements OnInit {
       (error) => {
         this.messageService.add({severity:'error', summary: 'خطأ', detail: error});
       }
-      );
+      );*/
 
       // sort critera
       this.multiSortMeta = [];
@@ -70,7 +70,6 @@ export class SavedOrdersComponent implements OnInit {
   }
 
   showReuestInfo(selectedOrder : RequestModel) {
-    debugger;
     this._sharedService.selectedRequest = selectedOrder;
 
     this._router.navigate(['/e-council/request/edit' , selectedOrder.Id]);

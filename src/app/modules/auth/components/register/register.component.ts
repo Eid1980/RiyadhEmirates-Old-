@@ -127,7 +127,6 @@ export class RegisterComponent implements OnInit {
   _getNationalities() {
     this.authService.getNtationalities().subscribe(
       (result: any) => {
-        debugger;
         this.nationalities = result.Data;
       },
       (err) => {
@@ -149,7 +148,6 @@ export class RegisterComponent implements OnInit {
   }
 
   formSubmit() {
-    debugger;
     this.isSubmitted = true;
     this.isValidDate = false;
     if (!this.startDatePicker.selectedDate) {

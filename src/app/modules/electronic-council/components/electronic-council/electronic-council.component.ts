@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterViewChecked, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageType } from '@shared/enums/message-type.enum';
@@ -15,15 +15,16 @@ import { RequestTypeService } from '@shared/services/request-type.service';
   templateUrl: './electronic-council.component.html',
   styleUrls: ['./electronic-council.component.scss']
 })
-export class ElectronicCouncilComponent implements OnInit {
+export class ElectronicCouncilComponent implements OnInit, AfterViewChecked {
 
   @Output() onSubmit = new EventEmitter<StepInfoModel>();
+
+  @Input() requestId: string
 
   activeIndex: number = 0;
   electronicBoardForm: FormGroup;
   createRequestElectronicBoardDto = {} as CreateRequestElectronicBoardDto;
   serviceId: number = Service.ElectronicBoard;
-  requestId: string;
   requestTypes: LookupDto<number>[] = [];
   isFormSubmitted: boolean = false;
 
@@ -34,9 +35,20 @@ export class ElectronicCouncilComponent implements OnInit {
     private _globalService: GlobalService) {
   }
   ngOnInit(): void {
+    debugger
     this.buildForm();
     this.fillRequestType();
-    this.requestId = this._activatedRoute.snapshot.params['id'];
+
+    if (!this.requestId)
+      this.requestId = this._activatedRoute.snapshot.params['id'];
+
+    if (this.requestId) {
+      this.getDetails();
+    }
+  }
+
+  ngAfterViewChecked() {
+    debugger
   }
 
   formSubmit() {
@@ -88,7 +100,7 @@ export class ElectronicCouncilComponent implements OnInit {
   }
 
   nextPage() {
-    let info : StepInfoModel = {nextStep : 2 , requestId :  this.requestId}
+    let info: StepInfoModel = { nextStep: 2, requestId: this.requestId }
     this.onSubmit.emit(info)
   }
 

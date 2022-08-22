@@ -68,7 +68,6 @@ export class EditRequestComponent implements OnInit {
 
         this._requestService.getRequestById( this.requestId ).subscribe(
           (result : any) => {
-            debugger;
             if(result.IsSuccess == true){
               this.currentRequest = result.Data;
               this.orderForm.setValue({

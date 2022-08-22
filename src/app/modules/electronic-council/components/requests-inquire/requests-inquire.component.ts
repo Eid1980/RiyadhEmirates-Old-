@@ -4,13 +4,13 @@ import { RequestService } from '@shared/services/request.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-order-inquiry',
-  templateUrl: './order-inquiry.component.html',
-  styleUrls: ['./order-inquiry.component.scss'],
+  selector: 'app-requests-inquire',
+  templateUrl: './requests-inquire.component.html',
+  styleUrls: ['./requests-inquire.component.scss'],
   providers: [MessageService],
 
 })
-export class OrderInquiryComponent implements OnInit {
+export class RequestsInquireComponent implements OnInit {
 
   inquiryModel :  InquiryModel
 
@@ -22,7 +22,7 @@ export class OrderInquiryComponent implements OnInit {
   }
 
   inquiry(){
-    this.requestService.inquire(this.inquiryModel).subscribe(
+    /*this.requestService.inquire(this.inquiryModel).subscribe(
       (result : any) => {
         if(result.IsSuccess == true){
           console.log(result);
@@ -30,7 +30,7 @@ export class OrderInquiryComponent implements OnInit {
         }
       },
       (err) => {}
-    )
+    )*/
   }
 
 }

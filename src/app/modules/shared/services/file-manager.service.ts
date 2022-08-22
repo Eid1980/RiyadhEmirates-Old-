@@ -25,30 +25,30 @@ export class FileManagerService {
       formData.append('file' + index, file, file.name);
     });
 
-    return this.http.post(`${environment.apiUrl}/api/FileManager`, formData);
+    return this.http.post(`${environment.apiUrl}api/FileManager`, formData);
   }
 
   changeStatus(fileId: number) {
     return this.http.get(
-      `${environment.apiUrl}/api/FileManager/ChangeStatus/${fileId}`
+      `${environment.apiUrl}api/FileManager/ChangeStatus/${fileId}`
     );
   }
 
   delete(fileId: string) {
-    return this.http.delete(`${environment.apiUrl}/api/FileManager/${fileId}`);
+    return this.http.delete(`${environment.apiUrl}api/FileManager/${fileId}`);
   }
 
   deleteByEntityName(entityId: any, entityName: string) {
     entityId = entityId.toString();
     return this.http.post(
-      `${environment.apiUrl}/api/FileManager/DeleteByEntityName`,
+      `${environment.apiUrl}api/FileManager/DeleteByEntityName`,
       { entityName: entityName, entityId: entityId }
     );
   }
 
   download(id: string) {
     this.http
-      .get(`${environment.apiUrl}/api/FileManager/Download/${id}`)
+      .get(`${environment.apiUrl}api/FileManager/Download/${id}`)
       .subscribe((res: any) => {
         this.downloadFile(res);
       });
@@ -76,17 +76,17 @@ export class FileManagerService {
   }
 
   getById = (id: string): Observable<UploadedFileBase64Model> => {
-    return this.http.get<UploadedFileBase64Model>(`${environment.apiUrl}/api/FileManager/GetById/${id}`);
+    return this.http.get<UploadedFileBase64Model>(`${environment.apiUrl}api/FileManager/GetById/${id}`);
   }
   getByEntityId(entityId: string) {
     return this.http.get(
-      `${environment.apiUrl}/api/FileManager/GetByEntityId/${entityId}`
+      `${environment.apiUrl}api/FileManager/GetByEntityId/${entityId}`
     );
   }
 
   getByEntityName(entityName: string) {
     return this.http.get(
-      `${environment.apiUrl}/api/FileManager/GetByEntityName/${entityName}`
+      `${environment.apiUrl}api/FileManager/GetByEntityName/${entityName}`
     );
   }
 }

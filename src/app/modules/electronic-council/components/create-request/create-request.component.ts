@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { UserModel } from '@shared/models/user-model';
 import { RequestService } from '@shared/services/request.service';
@@ -37,6 +37,7 @@ export class CreateRequestComponent implements OnInit {
   isRateService: boolean
 
   constructor(private _userService: UserService,
+    private _activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private _router: Router,
     private messageService: MessageService,
@@ -47,6 +48,9 @@ export class CreateRequestComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    debugger
+    this.requestId = this._activatedRoute.snapshot.params['id'];
 
     this.wizardItems = [
       { label: 'بيانات الطلب' },
@@ -62,7 +66,6 @@ export class CreateRequestComponent implements OnInit {
   }
 
   changeActiveIndex(index) {
-
   }
 
   saveRequestInfo(info : StepInfoModel) {
@@ -74,5 +77,11 @@ export class CreateRequestComponent implements OnInit {
   saveRequestAttachment(nextStep) {
     this.activeIndex = nextStep - 1;
     this.currentStep = nextStep;
+  }
+
+  previosClick(prevStep){
+    debugger
+    this.activeIndex = prevStep - 1;
+    this.currentStep = prevStep;
   }
 }

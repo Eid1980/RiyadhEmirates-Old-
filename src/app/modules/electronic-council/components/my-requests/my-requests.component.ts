@@ -8,14 +8,14 @@ import { RequestStatusEnum } from '@shared/enums/request-status-enum';
 import { SearchModel } from '@shared/models/search-models';
 import { Service } from '@shared/enums/service.enum';
 import { ApiResponse } from '@shared/models/api-response.model';
+import { Stages } from '@shared/enums/stage.enum';
 
 @Component({
-  selector: 'app-my-orders',
-  templateUrl: './my-orders.component.html',
-  styleUrls: ['./my-orders.component.scss'],
-  providers: [MessageService],
+  selector: 'app-my-requests',
+  templateUrl: './my-requests.component.html',
+  styleUrls: ['./my-requests.component.scss'],
 })
-export class MyOrdersComponent implements OnInit {
+export class MyRequestsomponent implements OnInit {
   requests: RequestModel[];
   selectedOrder: RequestModel;
   searchCriteria: InquiryModel;
@@ -59,6 +59,7 @@ export class MyOrdersComponent implements OnInit {
 
     this._requsetService.inbox(searchModel).subscribe((result: ApiResponse<any>) => {
       if (result.isSuccess) {
+        debugger
         this.requests = result.data.gridItemsVM
         console.log(this.requests)
         this.loading = false;
@@ -86,7 +87,7 @@ export class MyOrdersComponent implements OnInit {
   }
 
   showDialog(selectedRequest) {
-    this._router.navigate(['/e-council/electronic-board-view/'+selectedRequest.id]);
+    this._router.navigate(['/e-council/electronic-board-view/' + selectedRequest.id]);
 
     /*if (selectedRequest.RequestStatusId == RequestStatusEnum.Edit) {
       this._router.navigate(['/e-council/electronic-board-view', selectedRequest.Id]);
@@ -101,19 +102,20 @@ export class MyOrdersComponent implements OnInit {
 
   filter(value: any) { }
 
-  getStatusColor(requestStatusId: number) {
-    if (requestStatusId == RequestStatusEnum.New) {
-      return 'alert alert-warning';
-    } else if (requestStatusId == RequestStatusEnum.Accept) {
+  getStatusColor(requestStageId: number) {
+
+    if (requestStageId == Stages.Draft) {
       return 'alert alert-primary';
-    } else if (requestStatusId == RequestStatusEnum.Pending) {
+    } else if (requestStageId == Stages.NewRequest) {
+      return 'alert alert-secondary';
+    } else if (requestStageId == Stages.CompleteDataFromRequester) {
       return 'alert alert-info';
-    } else if (requestStatusId == RequestStatusEnum.Rejected) {
+    } else if (requestStageId == Stages.UnderProcessing) {
+      return 'alert alert-warning';
+    } else if (requestStageId == Stages.RequestRejected) {
       return 'alert alert-danger';
-    } else if (requestStatusId == RequestStatusEnum.Drafted) {
-      return 'alert alert-light';
-    } else {
-      return 'alert alert-primary';
+    } else{
+      return 'alert alert-success';
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 export class ElectronicCouncilAttachmentsComponent implements OnInit {
 
   @Output() onSubmit = new EventEmitter<number>();
+  @Output() OnPreviousClick = new EventEmitter<number>();
+
+
+  @Input() requestId: string
 
   submitted: boolean = false;
 
@@ -19,6 +23,11 @@ export class ElectronicCouncilAttachmentsComponent implements OnInit {
 
   nextPage() {
     this.onSubmit.emit(3)
-}
+  }
+
+  clickPrevious(){
+    debugger
+    this.OnPreviousClick.emit(1)
+  }
 
 }

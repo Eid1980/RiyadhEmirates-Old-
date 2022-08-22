@@ -14,12 +14,12 @@ export class UserDashboradComponent implements OnInit {
   constructor(private _requestService : RequestService) { }
 
   ngOnInit(): void {
-    this._requestService.getRequestsTypeCount().subscribe(
+    /*this._requestService.getRequestsTypeCount().subscribe(
       (result : any) => {
         this.requestTypeCount = result.Data
       },
       () => {}
-    )
+    )*/
   }
 
 }

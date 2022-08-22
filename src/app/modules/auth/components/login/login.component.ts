@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   formSubmit(){
-    debugger
     this.authService.login(this.loginForm.value).subscribe(
       (result : any) => {
         if(result.isSuccess == true){

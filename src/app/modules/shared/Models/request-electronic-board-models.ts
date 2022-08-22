@@ -31,7 +31,7 @@ export interface GetRequestElectronicBoardDetailsDto {
   requestNumber: string;
   serviceName: string;
   requestDate: string;
-  requestStatusName: string;
+  stageName: string;
   canEdit: boolean;
   concurrencyStamp: string;
   requestTypeName: string;

@@ -31,16 +31,8 @@ export class RequestService {
     return this._httpClient.get(`${environment.apiUrl}/api/request/getById/${requestId}`);
   }
 
-  inquire(inquiryModel: any) {
-    return this._httpClient.post(`${environment.apiUrl}/api/request/Inquire`, inquiryModel)
-  }
-
   getRequests(searchCriteria: InquiryModel): Observable<RequestModel> {
     return this._httpClient.post<RequestModel>(`${environment.apiUrl}/api/request/Inquire`, searchCriteria)
-  }
-
-  getRequestsTypeCount(): Observable<TypeCountModel> {
-    return this._httpClient.post<TypeCountModel>(`${environment.apiUrl}/api/request/getRequestTypeCount`, null);
   }
 
   updateRequest(updatedRequestModel: any) {

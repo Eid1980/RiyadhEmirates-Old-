@@ -92,7 +92,7 @@ export class GlobalService {
     this.router.navigate(["/admin/eservice-admin/inbox"]);
   }
   navigateToRequesterDashboard() {
-    this.router.navigate(["/eservice/my-requests"]);
+    this.router.navigate(["/e-council/my-requests"]);
   }
 
   //#region markAllControls

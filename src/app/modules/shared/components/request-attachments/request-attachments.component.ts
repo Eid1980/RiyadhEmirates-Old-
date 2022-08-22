@@ -16,8 +16,9 @@ export class RequestAttachmentsComponent implements OnInit {
 
   @Input() allowedExtensions: string = environment.allowedExtensions;
   @Input() fileSize: number = environment.fileSize;
-  @Input() serviceName: string = "Request";
-  requestId: string;
+  @Input() serviceName: string = "ُ";
+  @Input() requestId: string;
+  @Input() isCreatRequest: boolean
   serviceId: number;
   attachmentsDto = [] as GetAttachmentsDto[];
   isModalOpen: boolean = false;
@@ -26,17 +27,16 @@ export class RequestAttachmentsComponent implements OnInit {
   constructor(private _fileManagerService: FileManagerService,
     private _requestService: RequestService,
     private _activatedRoute: ActivatedRoute,
-    /*private _globalService: GlobalService*/) {
+    private _globalService: GlobalService) {
   }
 
 
   ngOnInit(): void {
-    this.requestId = this._activatedRoute.snapshot.params['id'];
     if (this.requestId) {
       this.getRequestDetails();
     }
     else {
-      //this._globalService.navigateToRequesterDashboard();
+      this._globalService.navigateToRequesterDashboard();
     }
   }
 
@@ -70,7 +70,7 @@ export class RequestAttachmentsComponent implements OnInit {
           }
         }
         else {
-         // this._globalService.messageAlert(MessageType.Error, 'فشل في عرض المرفق');
+        this._globalService.messageAlert(MessageType.Error, 'فشل في عرض المرفق');
         }
       });
 
@@ -83,15 +83,15 @@ export class RequestAttachmentsComponent implements OnInit {
   }
   deleteAttachment(id: string) {
     if (id) {
-      /*this._globalService.showConfirm('هل تريد حذف هذا المرفق؟');
-      this._globalService.confirmSubmit = () => this.isconfirm(id);*/
+      this._globalService.showConfirm('هل تريد حذف هذا المرفق؟');
+      this._globalService.confirmSubmit = () => this.isconfirm(id);
     }
   }
   isconfirm(id: string) {
     this._fileManagerService.delete(id).subscribe((result) => {
       this.getRequestDetails();
     });
-   // this._globalService.clearMessages();
+    this._globalService.clearMessages();
   }
 
   checkRequiredAttachments() {
@@ -100,7 +100,7 @@ export class RequestAttachmentsComponent implements OnInit {
 
   onUpload(event: any, requestAttachmentType: string) {
     this._fileManagerService.upload(this.requestId, this.serviceName, requestAttachmentType, event.files).subscribe(res => {
-     // this._globalService.messageAlert(MessageType.Success, 'تم رفع المرفق بنجاح');
+     this._globalService.messageAlert(MessageType.Success, 'تم رفع المرفق بنجاح');
       this.getRequestDetails();
     })
 

@@ -23,6 +23,7 @@ export class ElectronicCouncilDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('electronic-council-detail-1')
     //this.requestId = this.activatedRoute.snapshot.params['id'];
     this.getDetails();
   }

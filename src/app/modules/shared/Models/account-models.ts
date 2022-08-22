@@ -34,9 +34,11 @@ export interface GetUserDataDto {
   birthDate: string;
   phoneNumber: string;
 
+  nationalId : string;
   nationalityName: string;
   governorateName: string;
   email: string;
+
 }
 
 

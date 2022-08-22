@@ -13,44 +13,49 @@
   }}</span>
 </nav>
 
-  <div class="page-wrapper">
-    <div class="row mx-0">
-      <!-- user side menu -->
-      <div class="col-md-3 col-12">
-        <app-user-sidemenu></app-user-sidemenu>
+<div class="page-wrapper">
+  <div class="row mx-0">
+    <!-- user side menu -->
+    <div class="col-md-3 col-12">
+      <app-user-sidemenu></app-user-sidemenu>
+    </div>
+
+    <!-- user page content -->
+    <div class="col-md-9 col-12">
+      <!-- page title -->
+      <div class="page-title">
+        <h4>
+          {{ "electronicCouncil.shared.title" | translate }} -
+          {{ "electronicCouncil.shared.serviceType" | translate }}
+        </h4>
       </div>
 
-      <!-- user page content -->
-      <div class="col-md-9 col-12">
-        <!-- page title -->
-        <div class="page-title">
-          <h4>
-            {{ "electronicCouncil.shared.title" | translate }} -
-            {{ "electronicCouncil.shared.serviceType" | translate }}
-          </h4>
-        </div>
+      <p-steps
+        [model]="wizardItems"
+        [(activeIndex)]="activeIndex"
+        [readonly]="true"
+        (activeIndexChange)="changeActiveIndex($event)"
+      ></p-steps>
 
-        <p-steps
-          [model]="wizardItems"
-          [(activeIndex)]="activeIndex"
-          [readonly]="true"
-          (activeIndexChange)="changeActiveIndex($event)"
-        ></p-steps>
-
-        <div *ngIf="currentStep == 1">
-          <app-electronic-council
-            (onSubmit)="saveRequestInfo($event)"
-          ></app-electronic-council>
-        </div>
-        <div *ngIf="currentStep == 2">
-          <app-electronic-council-attachments
-            (onSubmit)="saveRequestAttachment($event)"
-          ></app-electronic-council-attachments>
-        </div>
-        <div *ngIf="currentStep == 3">
-          <app-electronic-council-preview-step [requestId]="requestId"></app-electronic-council-preview-step>
-        </div>
-
+      <div *ngIf="currentStep == 1">
+        <app-electronic-council
+          [requestId]="requestId"
+          (onSubmit)="saveRequestInfo($event)"
+        ></app-electronic-council>
+      </div>
+      <div *ngIf="currentStep == 2">
+        <app-electronic-council-attachments
+          [requestId]="requestId"
+          (onSubmit) = "saveRequestAttachment($event)"
+          (OnPreviousClick) ="previosClick($event)"
+        ></app-electronic-council-attachments>
+      </div>
+      <div *ngIf="currentStep == 3">
+        <app-electronic-council-preview-step
+          [requestId]="requestId"
+          (OnPreviousClick) = "previosClick($event)"
+        ></app-electronic-council-preview-step>
       </div>
     </div>
   </div>
+</div>

@@ -5,7 +5,7 @@
   </div>
   <div class="info-col col-md-4 col-12">
     <span class="form-lbl lbl-33">رقم الهوية</span>
-    <span class="form-val">{{ userDataDto?.nationalityName }}</span>
+    <span class="form-val">{{ userDataDto?.nationalId }}</span>
   </div>
 
   <div class="info-col col-md-4 col-12">
@@ -14,7 +14,7 @@
   </div>
   <div class="info-col col-md-4 col-12">
     <span class="form-lbl lbl-33">تاريخ الميلاد</span>
-    <span class="form-val">{{ userDataDto?.birthDate }}</span>
+    <span class="form-val">{{ userDataDto?.birthDate  | date:'yyyy-MM-dd'}}</span>
   </div>
   <div class="info-col col-md-4 col-12">
     <span class="form-lbl lbl-33">رقم الجوال</span>

@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ServiceService {
-  serviceUrl: string = `${environment.apiUrl}-api/Service`;
+  serviceUrl: string = `${environment.apiUrl}api/Service`;
   constructor(public httpClient: HttpClient) {
   }
 

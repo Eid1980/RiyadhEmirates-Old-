@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageType } from '@shared/enums/message-type.enum';
 import { Service } from '@shared/enums/service.enum';
@@ -6,7 +6,6 @@ import { Stages } from '@shared/enums/stage.enum';
 import { RequestChangeStageDto } from '@shared/models/attachments-models';
 import { GlobalService } from '@shared/services/global.service';
 import { RequestService } from '@shared/services/request.service';
-import { MenuItem } from 'primeng/api';
 import { RateServiceComponent } from '../rate-service/rate-service.component';
 
 @Component({
@@ -18,10 +17,12 @@ export class ElectronicCouncilPreviewStepComponent implements OnInit {
 
   @ViewChild(RateServiceComponent, { static: true }) rateServiceComponent: RateServiceComponent;
 
+  @Output() OnPreviousClick = new EventEmitter<number>();
   @Input() requestId: string;
+
   serviceId: number = Service.ElectronicSummon;
   showServiceRate: boolean = false;
-  redirectUrl: string = "/eservice/my-requests";
+  redirectUrl: string = "/e-council/my-requests";
   accept: boolean = false;
 
   constructor(private _requestService: RequestService,
@@ -37,7 +38,7 @@ export class ElectronicCouncilPreviewStepComponent implements OnInit {
   sendRequest() {
 
     if (this.accept) {
-      this._globalService.showConfirm('هل تريد متأكد من ارسال طلب استدعاء الكتروني؟');
+      this._globalService.showConfirm('هل انت متأكد من ارسال طلبك إلي المجلس الكتروني؟');
       this._globalService.confirmSubmit = () => this.isconfirm();
     }
     else {
@@ -55,7 +56,7 @@ export class ElectronicCouncilPreviewStepComponent implements OnInit {
       this._globalService.showMessage(response.message);
       this.showServiceRate = true;
       //this.rateServiceComponent.buildForm();
-      this._globalService.navigate('/e-council/my-orders');
+      this._globalService.navigate('/e-council/my-requests');
     });
     this._globalService.clearMessages();
   }
@@ -64,5 +65,9 @@ export class ElectronicCouncilPreviewStepComponent implements OnInit {
     if (!event) {
       //this.globalService.navigateToRequesterDashboard();
     }
+  }
+
+  previousClick() {
+    this.OnPreviousClick.emit(2)
   }
 }
