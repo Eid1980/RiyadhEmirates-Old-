@@ -18,22 +18,38 @@
     <!-- Form -->
     <div class="row mx-0">
       <div class="col-md-8 mx-auto">
-        <form #f="ngForm" [formGroup]="registerationForm" (ngSubmit)="formSubmit()" class="fs-13px">
+        <form
+          #f="ngForm"
+          [formGroup]="registerationForm"
+          (ngSubmit)="formSubmit()"
+          class="fs-13px"
+        >
           <!-- ID -->
           <div class="form-group mb-lg-4">
-            <input type="text" name="" id="national_ID" class="form-control" required formControlName="userName" />
+            <input
+              type="text"
+              name=""
+              id="national_ID"
+              class="form-control"
+              required
+              formControlName="userName"
+            />
             <label for="national_ID" class="label">{{
               "register.text.nationalIdOrResidentNumber" | translate
-              }}</label>
+            }}</label>
 
             <div class="text-danger">
-              <div *ngIf="
+              <div
+                *ngIf="
                   isSubmitted &&
                   registerationForm.controls['userName'].errors?.required
-                ">
+                "
+              >
                 {{ "global.message.reqiuredField" | translate }}
               </div>
-              <div *ngIf="isSubmitted && registerationForm.controls['userName'].errors?.['pattern']">
+              <div
+                *ngIf="isSubmitted && registerationForm.controls['userName'].errors?.['pattern']"
+              >
                 {{ "register.text.invalidNationalId" | translate }}
               </div>
             </div>
@@ -41,15 +57,24 @@
 
           <!-- username -->
           <div class="form-group mb-lg-4">
-            <input type="text" name="" id="username" class="form-control" required formControlName="name" />
+            <input
+              type="text"
+              name=""
+              id="username"
+              class="form-control"
+              required
+              formControlName="name"
+            />
             <label for="username" class="label">{{
               "register.text.name" | translate
-              }}</label>
+            }}</label>
             <div class="text-danger">
-              <div *ngIf="
+              <div
+                *ngIf="
                   isSubmitted &&
                   registerationForm.controls['name'].errors?.required
-                ">
+                "
+              >
                 {{ "global.message.reqiuredField" | translate }}
               </div>
             </div>
@@ -70,12 +95,26 @@
 
           <!-- birthdate -->
           <div class="form-group mb-lg-4">
-            <hijri-gregorian-datepicker id="birthdate" [placeHolder]="'register.text.dateFormate' | translate" [(selectedDate)]="date" [isRequired]="true" [GregLabel]="'register.text.greg' | translate" [hijriLabel]="'register.text.higri' | translate" [minGreg]="minGreg" [maxGreg]="maxGreg"
-              [minHijri]="minHigriDate" [maxHijri]="maxHigriDate" [selectedDateType]="selectedDateType" [disabled]="isDisabled" [readonly]="isReadOnly" #datePicker>
+            <hijri-gregorian-datepicker
+              id="birthdate"
+              [placeHolder]="'register.text.dateFormate' | translate"
+              [(selectedDate)]="date"
+              [isRequired]="true"
+              [GregLabel]="'register.text.greg' | translate"
+              [hijriLabel]="'register.text.higri' | translate"
+              [minGreg]="minGreg"
+              [maxGreg]="maxGreg"
+              [minHijri]="minHigriDate"
+              [maxHijri]="maxHigriDate"
+              [selectedDateType]="selectedDateType"
+              [disabled]="isDisabled"
+              [readonly]="isReadOnly"
+              #datePicker
+            >
             </hijri-gregorian-datepicker>
             <label for="birthdate" class="label">{{
               "register.text.birthDate" | translate
-              }}</label>
+            }}</label>
             <div class="text-danger">
               <div *ngIf="isSubmitted && isValidDate">
                 {{ "global.message.reqiuredField" | translate }}
@@ -85,18 +124,29 @@
 
           <!-- phone -->
           <div class="form-group mb-lg-4">
-            <input type="text" name="" id="phone" class="form-control" required formControlName="phoneNumber" />
+            <input
+              type="text"
+              name=""
+              id="phone"
+              class="form-control"
+              required
+              formControlName="phoneNumber"
+            />
             <label for="phone" class="label">{{
               "register.text.phoneNumber" | translate
-              }}</label>
+            }}</label>
             <div class="text-danger">
-              <div *ngIf="
+              <div
+                *ngIf="
                   isSubmitted &&
                   registerationForm.controls['phoneNumber'].errors?.required
-                ">
+                "
+              >
                 {{ "global.message.reqiuredField" | translate }}
               </div>
-              <div *ngIf="isSubmitted && registerationForm.controls['phoneNumber'].errors?.['pattern']">
+              <div
+                *ngIf="isSubmitted && registerationForm.controls['phoneNumber'].errors?.['pattern']"
+              >
                 {{ "register.text.invalidPhoneNumber" | translate }}
               </div>
             </div>
@@ -104,18 +154,29 @@
 
           <!-- Email -->
           <div class="form-group mb-lg-4">
-            <input type="text" name="" id="email" class="form-control" required formControlName="email" />
+            <input
+              type="text"
+              name=""
+              id="email"
+              class="form-control"
+              required
+              formControlName="email"
+            />
             <label for="email" class="label">{{
               "register.text.email" | translate
-              }}</label>
+            }}</label>
             <div class="text-danger">
-              <div *ngIf="
+              <div
+                *ngIf="
                   isSubmitted &&
                   registerationForm.controls['email'].errors?.required
-                ">
+                "
+              >
                 {{ "global.message.reqiuredField" | translate }}
               </div>
-              <div *ngIf="isSubmitted && registerationForm.controls['email'].errors?.['pattern']">
+              <div
+                *ngIf="isSubmitted && registerationForm.controls['email'].errors?.['pattern']"
+              >
                 {{ "register.text.invalidEmail" | translate }}
               </div>
             </div>
@@ -123,19 +184,30 @@
 
           <!-- password -->
           <div class="form-group">
-            <input type="password" name="" id="password" class="form-control" required formControlName="password" />
+            <input
+              type="password"
+              name=""
+              id="password"
+              class="form-control"
+              required
+              formControlName="password"
+            />
             <label for="password" class="label">{{
               "register.text.password" | translate
-              }}</label>
+            }}</label>
 
             <div class="text-danger">
-              <div *ngIf="
+              <div
+                *ngIf="
                   isSubmitted &&
                   registerationForm.controls['email'].errors?.required
-                ">
+                "
+              >
                 {{ "global.message.reqiuredField" | translate }}
               </div>
-              <div *ngIf="isSubmitted && registerationForm.controls['password'].errors?.['pattern']">
+              <div
+                *ngIf="isSubmitted && registerationForm.controls['password'].errors?.['pattern']"
+              >
                 {{ "register.text.passwordPattern" | translate }}
               </div>
             </div>
@@ -155,7 +227,7 @@
           <a [routerLink]="['/auth/login']">
             <span class="primary-text">{{
               "register.text.backToLogin" | translate
-              }}</span>
+            }}</span>
           </a>
         </div>
       </div>
